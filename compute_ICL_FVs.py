@@ -52,7 +52,7 @@ if __name__ == '__main__':
         datasets = remaining_datasets
 
 
-    for dataset in datasets:
+    for dataset_idx, dataset in enumerate(datasets):
         print(f'Running completions on dataset: {dataset}\n')
         data_loader = ICLDataset(dataset=dataset, **dataset_config)
 
@@ -67,7 +67,7 @@ if __name__ == '__main__':
             FVs = np.concatenate([FVs, FVs_batch])
             completions.extend(completions_batch)
             Ys.extend(y)
-            print(f'Completed batch {idx+1}/{len(data_loader)} in {time.time()-t0:.2f} seconds\n')
+            print(f'Dataset: {dataset_idx+1}/{len(datasets)} --- Completed batch {idx+1}/{len(data_loader)} in {time.time()-t0:.2f} seconds\n')
 
         data[dataset] = {'FVs': FVs, 'completions': completions, 'Ys': Ys}
         pickle.dump(data, open(results_path, 'wb'))
