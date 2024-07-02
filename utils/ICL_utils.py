@@ -2,9 +2,7 @@ import os
 from typing import *
 import json
 import numpy as np
-import torch
-
-from utils.model_utils import ExtendedLanguageModel
+from textwrap import dedent
 
 class ICLSequence:
     '''
@@ -40,6 +38,68 @@ class ICLSequence:
         '''Prints a readable string representation of the prompt & completion (indep of template).'''
         return f"{', '.join([f'({x}, {y})' for x, y in self[:-1]])}, {self.x[-1]} ->".strip(", ")
     
+class ICLMultipleChoice:
+    def __init__(
+        self, 
+        word_pairs: List[List[str]], 
+        all_word_pairs: List[List[str]], 
+        seed: int = 0
+    ):
+        self.word_pairs = word_pairs
+        self.y_list = [pair[1] for pair in all_word_pairs]
+        self.x, self.y = zip(*word_pairs)
+
+        self.options = []
+        self.correct = []
+        for idx, word in enumerate(self.y):
+            np.random.seed(seed + idx*100)
+            options = self.generate_unique_options(word)
+            np.random.shuffle(options)
+            self.options.append(options)
+            self.correct.append(options.index(word))
+
+    def __len__(self):
+        return len(self.word_pairs)
+
+    def __getitem__(self, idx: int):
+        return self.word_pairs[idx]
+    
+    def generate_unique_options(self, correct):
+        # Generate 3 random options from all possible Ys 
+        # If all options are unique, then return
+        while True:
+            options = [correct] + [np.random.choice(self.y_list) for _ in range(3)]
+            if len(set(options)) == 4:
+                return options
+    
+    def prompt(self):
+        self.prompt = ''
+        for idx in range(len(self.word_pairs)):
+            if idx == len(self.word_pairs) - 1:
+                self.prompt += self.format_prompt(idx, correct=False)
+            else:
+                self.prompt += self.format_prompt(idx, correct=True)
+        return self.prompt
+    
+    def completion(self):
+        return ['a', 'b', 'c', 'd'][self.correct[-1]]
+    
+    def format_prompt(self, idx, correct=True):
+        prompt = f'''
+        ### Instruction: Q: {self.x[idx]} A: ?
+        (a) {self.options[idx][0]}
+        (b) {self.options[idx][1]}
+        (c) {self.options[idx][2]}
+        (d) {self.options[idx][3]}
+        '''
+        if correct:
+            prompt += f'### Response: ({['a', 'b', 'c', 'd'][self.correct[idx]]})\n' 
+        else:
+            prompt += '### Response: ('
+
+        return dedent(prompt.lstrip('\n'))
+        
+    
 class ICLDataset:
     '''
     Dataset to create antonym pair prompts, in ICL task format. We use random seeds for consistency
@@ -65,14 +125,18 @@ class ICLDataset:
         dataset: str,
         size: int,
         n_prepended: int,
+        response_type: str = 'open_ended',
         bidirectional: bool = True,
         seed: int = 0,
         corrupted: bool = False,
         padded_space: bool = True,
         batch_size: int = None,
-        root_data_dir: str = 'data/ICL/abstractive'
-    ):
-        d_path = os.path.join(root_data_dir, f'{dataset}.json')
+        data_source: str = 'abstractive',
+        root_data_dir: str = 'data/ICL'
+    ):  
+        # Load the data
+        data_dir = f'{root_data_dir}/{data_source}'
+        d_path = os.path.join(data_dir, f'{dataset}.json')
         raw_data = json.load(open(d_path, 'r'))
         self.word_pairs = [[i['input'], i['output']] for i in raw_data]        
 
@@ -99,7 +163,10 @@ class ICLDataset:
             if corrupted:
                 for i in range(len(word_pairs) - 1):
                     word_pairs[i][1] = np.random.choice(self.word_list)
-            seq = ICLSequence(word_pairs, padded_space=padded_space)
+            if response_type == 'open_ended':
+                seq = ICLSequence(word_pairs, padded_space=padded_space)
+            elif response_type == 'multiple_choice':
+                seq = ICLMultipleChoice(word_pairs, self.word_pairs, seed=seed+n)
 
             self.seqs.append(seq)
             self.prompts.append(seq.prompt())
@@ -127,59 +194,9 @@ class ICLDataset:
         batch_completions = self.completions[start_idx:end_idx]
         return batch_prompts, batch_completions
     
-
-def get_FVs_and_completions(model: ExtendedLanguageModel, prompts: List[str]) -> torch.Tensor:
-    '''
-    Get the relation vector per item by summing the output of the most influential attention heads for the 
-    model's output tokens given a prompt or list of prompts 
-
-    Args:
-        model (ExtendedLanguageModel): The model object
-        prompts (List[str]): The prompt or list of prompts to run the model on
-
-    Returns:
-        torch.Tensor: The relation vectors for the model's output tokens (shape: [batch_size, resid_dim])
-    '''
-    D_MODEL = model.config['resid_dim']
-    N_HEADS = model.config['n_heads']
-    D_HEAD = D_MODEL // N_HEADS # dimension of each head
-    B = len(prompts)
-    T = -1  # values taken from last token
-    head_dict = model.top_heads # get the top heads for each layer
-
-    relation_vec_list = []
-    with model.trace(remote=True) as runner:
-        with runner.invoke(prompts) as invoker:
-            for layer, head_list in head_dict.items():
-        
-                # Get the projection layer output
-                out_proj = model.config['out_proj'](layer)
-
-                # Output projection input
-                z = out_proj.input[0][0][:, T]
-
-                # Reshape output projection input into heads
-                z_ablated = z.view(B, N_HEADS, D_HEAD).clone()
-                
-                # Zero-ablate all heads which aren't in our list of infuential heads
-                heads_to_ablate = list(set(range(N_HEADS)) - head_list)
-                z_ablated[:, heads_to_ablate, :] = 0.0
-
-                # Concatanate the heads back into the residual dimension
-                z_ablated = z_ablated.view(B, -1) 
-
-                # Get the projection (if more than one head is in the list of heads to keep, 
-                # the output will be the sum of those heads)
-                out_proj_output = out_proj(z_ablated)
-
-                relation_vec_list.append(out_proj_output.save())
-
-                # Save the completions
-                token_ids = model.lm_head.output[:,T,:].argmax(dim=-1).save()
-
-    # Sum all the attention heads per item
-    relation_vecs = torch.sum(torch.stack(relation_vec_list),dim=0)
-    # Decode the completions
-    completions = model.tokenizer.batch_decode(token_ids)
-
-    return relation_vecs.numpy(), completions    
+    def multiple_choice(self, idx: int):
+        '''Returns the multiple choice options for the idx-th prompt.'''
+        x, y = self.seqs[idx].x[-1], self.seqs[idx].y[-1]
+        options = [y] + [np.random.choice(self.word_list) for _ in range(3)]
+        np.random.shuffle(options)
+        return options

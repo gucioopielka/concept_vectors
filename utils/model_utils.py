@@ -2,7 +2,7 @@ from collections import defaultdict
 from nnsight import LanguageModel
 
 class ExtendedLanguageModel(LanguageModel):
-    def __init__(self, model_name, top_heads_n=None):
+    def __init__(self, model_name='', top_heads_n=None):
         super().__init__(model_name)
         self.name = model_name
         self.nickname = model_name.split('/')[1]

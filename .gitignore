@@ -1,0 +1,4 @@
+# ignore all files ending with pickle npy and json in the data folder
+data/**/*.pkl
+data/**/*.npy
+data/**/*.json
