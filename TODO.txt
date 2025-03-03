@@ -1,6 +1,0 @@
-- ConceptNet
-    - ConceptNet to ICL -> ICL AHs
-    - ConceptNet to MC -> ICL AHs
-- Test with unrelated MC questions
-- Simple ICL
-    - to MC

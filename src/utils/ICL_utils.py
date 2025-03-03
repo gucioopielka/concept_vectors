@@ -1,0 +1,458 @@
+import os
+from typing import *
+import json
+import hashlib
+from textwrap import dedent
+
+import numpy as np
+from rich import print as rprint
+
+from utils.globals import DATASET_DIR
+
+class ICLSequence:
+    '''
+    Class to store a single item sequence.
+
+    Uses the default template "Q: {x}\nA: {y}" (with separate pairs split by "\n\n").
+    '''
+    def __init__(
+        self, 
+        word_pairs: List[List[str]],
+        padded_space: bool = True
+    ):
+        self.word_pairs = word_pairs
+        self.padded_space = padded_space
+        self.x, self.y = zip(*word_pairs)
+
+    def __len__(self):
+        return len(self.word_pairs)
+
+    def __getitem__(self, idx: int):
+        return self.word_pairs[idx]
+
+    def prompt(self):
+        '''Returns the prompt, which contains all but the second element in the last word pair.'''
+        p = "\n\n".join([f"Q: {x}\nA: {y}" for x, y in self.word_pairs])
+        return p[:-len(self.completion())]
+
+    def completion(self):
+        '''Returns the second element in the last word pair.'''
+        return " " + self.y[-1] if self.padded_space else self.y[-1]
+
+    def __str__(self):
+        '''Prints a readable string representation of the prompt & completion (indep of template).'''
+        return f"{', '.join([f'({x}, {y})' for x, y in self[:-1]])}, {self.x[-1]} ->".strip(", ")
+    
+class ICLMultipleChoice:
+    def __init__(
+        self, 
+        word_pairs: List[List[str]], 
+        all_word_pairs: List[List[str]],        
+        seed: int
+    ):
+        self.word_pairs = word_pairs
+        self.y_list = [pair[1] for pair in all_word_pairs]
+        self.x, self.y = zip(*word_pairs)
+
+        self.options = []
+        self.correct = []
+        for idx, word in enumerate(self.y):
+            np.random.seed(seed + idx*100)
+            options = self.generate_unique_options(word)
+            np.random.shuffle(options)
+            self.options.append(options)
+            self.correct.append(options.index(word))
+
+    def __len__(self):
+        return len(self.word_pairs)
+
+    def __getitem__(self, idx: int):
+        return self.word_pairs[idx]
+    
+    def generate_unique_options(self, correct):
+        # Generate 3 random options from all possible Ys 
+        # If all options are unique, then return
+        while True:
+            options = [correct] + [np.random.choice(self.y_list) for _ in range(3)]
+            if len(set(options)) == 4:
+                return options
+    
+    def prompt(self):
+        self.prompt = ''
+        for idx in range(len(self.word_pairs)):
+            if idx == len(self.word_pairs) - 1:
+                self.prompt += self.format_prompt(idx, correct=False)
+            else:
+                self.prompt += self.format_prompt(idx, correct=True)
+        return self.prompt
+    
+    def completion(self):
+        return ['a', 'b', 'c', 'd'][self.correct[-1]]
+    
+    def format_prompt(self, idx, correct=True):
+        prompt = f'''
+        ### Instruction: Q: {self.x[idx]} A: ?
+        (a) {self.options[idx][0]}
+        (b) {self.options[idx][1]}
+        (c) {self.options[idx][2]}
+        (d) {self.options[idx][3]}
+        '''
+        if correct:
+            prompt += f'### Response: ({['a', 'b', 'c', 'd'][self.correct[idx]]})\n' 
+        else:
+            prompt += '### Response: ('
+
+        return dedent(prompt.lstrip('\n'))
+
+class ICLAbstractSequence:
+    def __init__(
+        self, 
+        concept: str,
+        symbols: List[str],
+        seq_len: int,
+        seed: int = None
+    ):
+        assert concept in ['successor', 'predecessor'], "concept must be either 'successor' or 'predecessor"
+        assert len(symbols) >= 4, "symbols must be at least 4 characters long"
+        assert seq_len > 4, 'Sequence length must be longer than 4'
+        if seed:
+            np.random.seed(seed)
+
+        if len(symbols) > 4:
+            symbols = np.random.choice(symbols, 4, replace=False)
+        
+        elif symbols == 'number':
+            #TODO
+            pass
+        
+        self.x, self.y = self.generate_seq_task(concept, symbols, seq_len)
+
+    def generate_seq_task(self, concept, symbols, seq_len): 
+        # Generate the sequence with the letters at random positions 
+        seq = ['.']*seq_len
+        generate = True
+        while generate:
+            letter_pos = np.random.choice(seq_len, 4, replace=False)
+            empty_pos = set(range(seq_len)) - set(letter_pos)
+            # Ensure there is at least one empty position either after the last letter (successor) or before the first letter (predecessor)
+            if concept == 'successor':
+                generate = all([True if i > max(letter_pos) else False for i in empty_pos])
+            if concept == 'predecessor':
+                generate = all([True if i < min(letter_pos) else False for i in empty_pos])
+
+        for letter, pos in zip(symbols, letter_pos):
+            seq[pos] = letter
+
+        # Randomly select position for the indicator '*'
+        range_pos = range(min(letter_pos), seq_len) if concept == 'predecessor' else range(max(letter_pos)+1) # Predecessor only after the first letter and successor before the last letter
+        valid_pos = [i for i in range_pos if i not in letter_pos] # Can't be at the position of the letters
+        indicator_pos = np.random.choice(valid_pos)
+        seq[indicator_pos] = '*'
+        
+        # Determine the closest letter position based on the concept
+        if concept == 'predecessor':
+            closest_letter_pos = max([pos for pos in letter_pos if pos < indicator_pos])
+        elif concept == 'successor':
+            closest_letter_pos = min([pos for pos in letter_pos if pos > indicator_pos])
+        
+        return " ".join(str(x) for x in seq), seq[closest_letter_pos]
+
+
+class ICLDataset:
+    '''
+    Dataset to create antonym pair prompts, in ICL task format. We use random seeds for consistency
+    between the corrupted and clean datasets.
+
+    Inputs:
+        word_pairs:
+            list of ICL task, e.g. [["old", "young"], ["top", "bottom"], ...] for the antonym task
+        size:
+            number of prompts to generate
+        n_train:
+            number of antonym pairs before the single-word ICL task
+        bidirectional:
+            if True, then we also consider the reversed antonym pairs
+        corrupted:
+            if True, then the second word in each pair is replaced with a random word
+        seed:
+            random seed, for consistency & reproducibility
+    '''
+
+    def __init__(
+        self,
+        dataset: str,
+        size: int,
+        n_train: int,
+        response_type: str = 'open_ended',
+        bidirectional: bool = False,
+        seed: int = 0,
+        seed_shuffle: int = 1,
+        corrupted: bool = False,
+        shuffle_prompts: str = None,
+        symbols: str = 'letter',
+        seq_len: int = 20,
+        tokenizer: Any = None,
+        padded_space: bool = True,
+        batch_size: int = None,
+        data_dir: str = DATASET_DIR,
+    ):  
+        self.dataset = dataset
+        self.response_type = response_type   
+        self.size = size
+        self.n_train = n_train
+        self.bidirectional = bidirectional
+        self.padded_space = padded_space
+        self.corrupted = corrupted
+        self.symbols = symbols
+        self.seq_len = seq_len
+        self.tokenizer = tokenizer
+        self.seed = seed
+        self.shuffle_prompts = shuffle_prompts
+        self.seed_shuffle = seed_shuffle
+
+        self.seqs = []
+        self.prompts = []
+        self.completions = []
+
+        if dataset in ['predecessor', 'successor']:
+            if symbols == 'word':
+                # Create the word list from the datasets
+                datasets = ['antonym', 'capitalize_first_letter', 'capitalize_last_letter', 'capitalize', 'english-french', 'synonym']
+                word_list = []
+                for dataset in datasets:
+                    file = json.load(open(f'data/ICL/abstractive/{dataset}.json', 'r'))
+                    word_list.extend([i['input'] for i in file])
+                self.symbol_list = list(set(word_list)) # Remove duplicates
+                
+                if tokenizer:
+                    # Ensure that the words are tokenized as single tokens
+                    self.symbol_list = [word for word in word_list if len(tokenizer.tokenize(word)) == 1]
+            
+            elif symbols == 'letter':
+                self.symbol_list = ['a', 'b', 'c', 'd']
+            
+            self.create_seq_dataset()
+        
+        elif isinstance(dataset, list):
+            seqs = []
+            for d in dataset:
+                icl_d = ICLDataset(
+                    d,
+                    size,
+                    n_train,
+                    response_type=response_type,
+                    bidirectional=bidirectional,
+                    seed=generate_seed(d, seed),
+                    corrupted=corrupted,
+                    shuffle_prompts=shuffle_prompts,
+                    symbols=symbols,
+                    seq_len=seq_len,
+                    tokenizer=tokenizer,
+                    padded_space=padded_space,
+                    batch_size=batch_size,
+                    data_dir=data_dir
+                )
+                seqs.append(icl_d.seqs)
+            
+            for seq1, seq2 in zip(*seqs):
+                # Concatenate the two arrays without the first element of the first sequence
+                combined = np.concatenate((seq1[1:], seq2), axis=0)
+
+                # Create a random permutation of indices for the combined array
+                permuted_indices = np.random.permutation(len(combined))
+
+                # Shuffle combined, and add the first element of the first sequence to the end
+                shuffled = combined[permuted_indices]
+                interleaved_array = np.concatenate((shuffled, seq1[:1]), axis=0)
+                                
+                # Create the interleaved sequence
+                interleaved_seq = ICLSequence(interleaved_array.tolist(), padded_space=padded_space)
+
+                self.seqs.append(interleaved_seq)
+                self.prompts.append(interleaved_seq.prompt())
+                self.completions.append(interleaved_seq.completion())
+
+        else:
+            # Load the data
+            d_path = os.path.join(data_dir, f'{dataset}.json')
+            raw_data = json.load(open(d_path, 'r'))
+            self.word_pairs = [[i['input'], i['output']] for i in raw_data]   
+            self.word_list = [word for word_pair in self.word_pairs for word in word_pair]
+            self.create_json_dataset()
+                
+        self.batch_size = batch_size if batch_size else size
+        self.num_batches = self.calculate_n_batches(self.batch_size)
+    
+    def create_seq_dataset(self):
+        for n in range(self.size):
+            train_examples = []
+            for i in range(self.n_train+1):
+                abstract_seq = ICLAbstractSequence(self.dataset, self.symbol_list, self.seq_len, self.seed+i+n)
+                train_examples.append([abstract_seq.x, abstract_seq.y])
+            seq = ICLSequence(train_examples, padded_space=self.padded_space)
+            self.seqs.append(seq)
+            self.prompts.append(seq.prompt())
+            self.completions.append(seq.completion())
+
+    def create_json_dataset(self):
+        # Generate the dataset (by choosing random word pairs, and constructing `ICLSequence` objects)
+        word_pairs_list = []
+        for n in range(self.size):
+            np.random.seed(self.seed + n)
+            random_pairs = np.random.choice(len(self.word_pairs), self.n_train+1, replace=False)
+            # Randomize the order of each word pair (x, y). If not bidirectional, we always have x -> y not y -> x
+            random_orders = np.random.choice([1, -1], self.n_train+1)
+            if not(self.bidirectional): random_orders[:] = 1
+            word_pairs = [self.word_pairs[pair][::order] for pair, order in zip(random_pairs, random_orders)]
+            word_pairs_list.append(word_pairs)
+        
+        if self.shuffle_prompts:
+            assert self.shuffle_prompts in ['input', 'output'], "shuffle_prompts must be either 'input' or 'output'"
+            word_pairs_list = np.array(word_pairs_list)
+            np.random.seed(self.seed_shuffle)
+            indices = np.random.permutation(self.size)  # Create a shuffled index for the first dimension
+            if self.shuffle_prompts == 'input':
+                # Shuffle the first (m-1) elements (input) of the second dimension across the first dimension
+                word_pairs_list[:, :-1, :] = word_pairs_list[indices, :-1, :] 
+            elif self.shuffle_prompts == 'output':
+                # Shuffle the last element (output) of the second dimension across the first dimension
+                word_pairs_list[:, -1, :] = word_pairs_list[indices, -1, :]
+            word_pairs_list = word_pairs_list.tolist()
+        
+        for n, word_pairs in enumerate(word_pairs_list):
+            # If corrupted, then replace y with a random word in all (x, y) pairs except the last one
+            if self.corrupted:
+                for i in range(len(word_pairs) - 1):
+                    word_pairs[i][1] = np.random.choice(self.word_list)
+            if self.response_type == 'open_ended':
+                seq = ICLSequence(word_pairs, padded_space=self.padded_space)
+            elif self.response_type == 'multiple_choice':
+                seq = ICLMultipleChoice(word_pairs, self.word_pairs, seed=self.seed+n)
+
+            self.seqs.append(seq)
+            self.prompts.append(seq.prompt())
+            self.completions.append(seq.completion())
+
+    def create_corrupted_dataset(self):
+        '''Creates a corrupted version of the dataset (with same random seed).'''
+        return ICLDataset(
+            self.dataset,
+            self.size,
+            self.n_train,
+            response_type=self.response_type,
+            bidirectional=self.bidirectional,
+            seed=self.seed,
+            corrupted=True,
+            shuffle_prompts=self.shuffle_prompts,
+            symbols=self.symbols,
+            seq_len=self.seq_len,
+            tokenizer=self.tokenizer,
+            padded_space=self.padded_space,
+            batch_size=self.batch_size
+        )
+    
+    def calculate_n_batches(self, batch_size):
+        return self.size // batch_size + (0 if self.size % batch_size == 0 else 1)
+
+    def __len__(self):
+        return self.calculate_n_batches(self.batch_size)
+
+    def __getitem__(self, idx: int):
+        if idx >= len(self.prompts) // self.batch_size:
+            raise IndexError("Index out of range")
+        start_idx = idx * self.batch_size
+        end_idx = min(start_idx + self.batch_size, self.size)
+        batch_prompts = self.prompts[start_idx:end_idx]
+        batch_completions = self.completions[start_idx:end_idx]
+        return batch_prompts, batch_completions
+    
+    def print_example(self, item = 0):
+        '''Prints a single example from the dataset.'''
+        s = f"[b u]{self.dataset}[/]\n\n"
+        for idx, (x, y) in enumerate(zip(self.seqs[item].x, self.seqs[item].y)):
+            if idx == len(self.seqs[item]) - 1:
+                s += f"Q: {x}\n[b]A[/]: [b cyan]{y}[/]\n"
+            else:
+                s += f"Q: {x}\n[b]A: {y}[/]\n\n"
+        rprint(s)
+
+def generate_seed(value, seed=None):
+    '''Generate a hash seed for a given value'''
+    hash_object = hashlib.md5(value.encode())
+    hash_int = int(hash_object.hexdigest(), 16)
+    return (hash_int + (seed if seed else 0)) % (2**32 - 1) # Numpy seed must be between 0 and 2**32 - 1
+
+class DatasetConstructor:
+    def __init__(
+        self, 
+        dataset_ids: List[str] | str,
+        dataset_size: int,
+        n_train: int,
+        batch_size: int=None,
+        tokenizer: Any=None,
+        seq_len: int = 20,
+        seed: int = 42,
+        data_dir: str = DATASET_DIR
+    ):
+        self.seed = seed
+        
+        # Ensure dataset_ids is a list
+        dataset_ids = dataset_ids if isinstance(dataset_ids, list) else [dataset_ids]
+
+        # Split the dataset IDs into different types
+        abstract_datasets = [i for i in dataset_ids if i.split('_')[0] in ['predecessor', 'successor']]
+        mc_datasets = [i for i in dataset_ids if i.split('-')[-1] == 'mc']
+        json_datasets = [i for i in dataset_ids if i in [f.split('.')[0] for f in os.listdir(data_dir)]]
+
+        assert len(abstract_datasets) + len(mc_datasets) + len(json_datasets) == len(dataset_ids), "Not all datasets have been found. Check spelling."
+
+        # Create the datasets
+        self.datasets = []
+        self.prompts = []
+        self.completions = []
+        self.dataset_ids = []
+        for dataset_type in [json_datasets, mc_datasets, abstract_datasets]:
+            dataset_cfg = dict(
+                size=dataset_size,
+                n_train=n_train,
+            )
+
+            for dataset_id in dataset_type:
+                # Determine response type and symbols based on dataset type
+                if dataset_type == mc_datasets:
+                    dataset_cfg.update(
+                        dataset=dataset_id.split('-')[0],
+                        response_type='multiple_choice'
+                    )
+                elif dataset_type == abstract_datasets:
+                    dataset_cfg.update(
+                        dataset=dataset_id.split('_')[0],
+                        symbols=dataset_id.split('_')[1],
+                        seq_len=seq_len,
+                        tokenizer=tokenizer
+                    )
+                elif dataset_type == json_datasets:
+                    dataset_cfg.update(
+                        dataset=dataset_id,
+                    )
+                
+                # Create the dataset
+                dataset = ICLDataset(
+                    **dataset_cfg,
+                    seed=generate_seed(dataset_id, self.seed),
+                )
+
+                # Collect datasets, prompts, ys, and dataset names
+                self.datasets.append(dataset)
+                self.prompts.extend(dataset.prompts)
+                self.completions.extend(dataset.completions)
+                self.dataset_ids.append(dataset_id)
+        
+        self.batch_size = batch_size if batch_size else len(self.prompts)
+
+    def __getitem__(self, idx):
+        if idx >= len(self.prompts) // self.batch_size:
+            raise IndexError("Index out of range")
+        start_idx = idx * self.batch_size
+        end_idx = min(start_idx + self.batch_size, len(self.prompts))
+        return self.prompts[start_idx:end_idx], self.completions[start_idx:end_idx]

@@ -1,0 +1,4002 @@
+[
+    {
+        "input": "perfekt",
+        "output": "perfecto"
+    },
+    {
+        "input": "unorthodox",
+        "output": "poco ortodoxo"
+    },
+    {
+        "input": "falsch",
+        "output": "equivocado"
+    },
+    {
+        "input": "n\u00e4chtliche",
+        "output": "nocturna"
+    },
+    {
+        "input": "Konzentration",
+        "output": "Concentraci\u00f3n"
+    },
+    {
+        "input": "ung\u00fcltig",
+        "output": "No v\u00e1lido"
+    },
+    {
+        "input": "Vertrag",
+        "output": "Contrato"
+    },
+    {
+        "input": "unpraktisch",
+        "output": "poco pr\u00e1ctico"
+    },
+    {
+        "input": "Nachteil",
+        "output": "Desventaja"
+    },
+    {
+        "input": "winzige",
+        "output": "peque\u00f1o"
+    },
+    {
+        "input": "zugeh\u00f6rige",
+        "output": "asociado"
+    },
+    {
+        "input": "tags\u00fcber",
+        "output": "durante el d\u00eda"
+    },
+    {
+        "input": "dieselbe",
+        "output": "lo mismo"
+    },
+    {
+        "input": "Kreis",
+        "output": "C\u00edrculo"
+    },
+    {
+        "input": "solide",
+        "output": "s\u00f3lido"
+    },
+    {
+        "input": "einfach",
+        "output": "simple"
+    },
+    {
+        "input": "Armut",
+        "output": "Pobreza"
+    },
+    {
+        "input": "hemmen",
+        "output": "inhibir"
+    },
+    {
+        "input": "halt",
+        "output": "stop"
+    },
+    {
+        "input": "unfruchtbar",
+        "output": "inf\u00e9rtil"
+    },
+    {
+        "input": "theoretisch",
+        "output": "te\u00f3ricamente"
+    },
+    {
+        "input": "h\u00e4sslich",
+        "output": "feo"
+    },
+    {
+        "input": "emotional",
+        "output": "emocional"
+    },
+    {
+        "input": "ungl\u00fccklich",
+        "output": "desafortunado"
+    },
+    {
+        "input": "Kopf",
+        "output": "Cabeza"
+    },
+    {
+        "input": "\u00d6ffentlichkeitsarbeit",
+        "output": "Relaciones p\u00fablicas"
+    },
+    {
+        "input": "Absolvent",
+        "output": "Graduado"
+    },
+    {
+        "input": "entmutigen",
+        "output": "disuadir"
+    },
+    {
+        "input": "sicher",
+        "output": "seguro"
+    },
+    {
+        "input": "Amateur",
+        "output": "Aficionado"
+    },
+    {
+        "input": "langsam",
+        "output": "lentamente"
+    },
+    {
+        "input": "wertvoll",
+        "output": "valioso"
+    },
+    {
+        "input": "erweitert",
+        "output": "ampliado"
+    },
+    {
+        "input": "Poesie",
+        "output": "Poes\u00eda"
+    },
+    {
+        "input": "ignorieren.",
+        "output": "ignorar."
+    },
+    {
+        "input": "Sch\u00f6nheit",
+        "output": "Belleza"
+    },
+    {
+        "input": "con",
+        "output": "con"
+    },
+    {
+        "input": "l\u00e4rmend",
+        "output": "ruidoso"
+    },
+    {
+        "input": "Entz\u00fcndungshemmend",
+        "output": "Antiinflamatorio"
+    },
+    {
+        "input": "verlassen.",
+        "output": "vete."
+    },
+    {
+        "input": "rechts",
+        "output": "derecha"
+    },
+    {
+        "input": "Schrei",
+        "output": "Grita"
+    },
+    {
+        "input": "n\u00fcchtern",
+        "output": "sobrio"
+    },
+    {
+        "input": "Demokratie",
+        "output": "Democracia"
+    },
+    {
+        "input": "minderwertig",
+        "output": "inferior"
+    },
+    {
+        "input": "Tante",
+        "output": "T\u00eda"
+    },
+    {
+        "input": "Eintrag",
+        "output": "Entrada"
+    },
+    {
+        "input": "Antimaterie",
+        "output": "Antimateria"
+    },
+    {
+        "input": "Unklarheit",
+        "output": "Ambig\u00fcedad"
+    },
+    {
+        "input": "Geburt",
+        "output": "Nacimiento"
+    },
+    {
+        "input": "religi\u00f6s",
+        "output": "religioso"
+    },
+    {
+        "input": "Ankunft",
+        "output": "Llegada"
+    },
+    {
+        "input": "Hirsch",
+        "output": "Ciervos"
+    },
+    {
+        "input": "Boden",
+        "output": "Suelo"
+    },
+    {
+        "input": "Unauff\u00e4llig",
+        "output": "Discreto"
+    },
+    {
+        "input": "Fl\u00fcstern",
+        "output": "Susurro"
+    },
+    {
+        "input": "klar",
+        "output": "borrar"
+    },
+    {
+        "input": "vern\u00fcnftig",
+        "output": "razonable"
+    },
+    {
+        "input": "r\u00fcckw\u00e4rts",
+        "output": "hacia atr\u00e1s"
+    },
+    {
+        "input": "schmal",
+        "output": "estrecho"
+    },
+    {
+        "input": "beharren",
+        "output": "insista"
+    },
+    {
+        "input": "erf\u00fcllen",
+        "output": "cumplir"
+    },
+    {
+        "input": "zerbrechlich",
+        "output": "fr\u00e1gil"
+    },
+    {
+        "input": "leer",
+        "output": "Vac\u00edo"
+    },
+    {
+        "input": "klein",
+        "output": "peque\u00f1o"
+    },
+    {
+        "input": "suchen.",
+        "output": "b\u00fasqueda."
+    },
+    {
+        "input": "zerst\u00f6ren",
+        "output": "destruir"
+    },
+    {
+        "input": "Wahrheit",
+        "output": "La verdad"
+    },
+    {
+        "input": "vergessen",
+        "output": "olvida"
+    },
+    {
+        "input": "in",
+        "output": "en"
+    },
+    {
+        "input": "bekleidet",
+        "output": "vestido"
+    },
+    {
+        "input": "Schwimmer",
+        "output": "Flotador"
+    },
+    {
+        "input": "Frieden",
+        "output": "Paz"
+    },
+    {
+        "input": "Gift",
+        "output": "Veneno"
+    },
+    {
+        "input": "gef\u00e4lscht",
+        "output": "forjado"
+    },
+    {
+        "input": "ruhig",
+        "output": "tranquilo"
+    },
+    {
+        "input": "Misstrauen",
+        "output": "Desconfianza"
+    },
+    {
+        "input": "spezifisch",
+        "output": "espec\u00edfico"
+    },
+    {
+        "input": "Gro\u00dfvater",
+        "output": "Abuelo"
+    },
+    {
+        "input": "aufmerksam sein",
+        "output": "Estar atento"
+    },
+    {
+        "input": "Messe",
+        "output": "Feria de muestras"
+    },
+    {
+        "input": "Norden",
+        "output": "Norte"
+    },
+    {
+        "input": "weinen",
+        "output": "llorar"
+    },
+    {
+        "input": "unterscheidbar",
+        "output": "distinguible"
+    },
+    {
+        "input": "blau",
+        "output": "azul"
+    },
+    {
+        "input": "aktivieren.",
+        "output": "activar."
+    },
+    {
+        "input": "unsichtbar",
+        "output": "invisible"
+    },
+    {
+        "input": "zerst\u00f6ren",
+        "output": "destruir"
+    },
+    {
+        "input": "bewusst",
+        "output": "consciente"
+    },
+    {
+        "input": "Verteidigung",
+        "output": "Defensa"
+    },
+    {
+        "input": "Nachts",
+        "output": "Por la noche"
+    },
+    {
+        "input": "Verschwinden",
+        "output": "Desaparici\u00f3n"
+    },
+    {
+        "input": "erh\u00f6hen.",
+        "output": "aumentar."
+    },
+    {
+        "input": "arm",
+        "output": "pobre"
+    },
+    {
+        "input": "monosexuell",
+        "output": "monosexual"
+    },
+    {
+        "input": "m\u00fcndlich",
+        "output": "verbal"
+    },
+    {
+        "input": "Abwertung",
+        "output": "Devaluaci\u00f3n"
+    },
+    {
+        "input": "unbefugt",
+        "output": "sin autorizaci\u00f3n"
+    },
+    {
+        "input": "w\u00fcnschenswert",
+        "output": "Deseable"
+    },
+    {
+        "input": "gleich",
+        "output": "igual"
+    },
+    {
+        "input": "Deflation",
+        "output": "Deflaci\u00f3n"
+    },
+    {
+        "input": "falten",
+        "output": "pliegue"
+    },
+    {
+        "input": "unterdr\u00fccken.",
+        "output": "suprimir."
+    },
+    {
+        "input": "s\u00fcd\u00f6stlich",
+        "output": "sureste"
+    },
+    {
+        "input": "Minderheit",
+        "output": "Minor\u00eda"
+    },
+    {
+        "input": "theoretisch",
+        "output": "te\u00f3ricamente"
+    },
+    {
+        "input": "stabil",
+        "output": "estable"
+    },
+    {
+        "input": "besetzt",
+        "output": "ocupado"
+    },
+    {
+        "input": "ungew\u00fcrzt",
+        "output": "sin condimentar"
+    },
+    {
+        "input": "sammeln",
+        "output": "Recoger"
+    },
+    {
+        "input": "terrestrisch",
+        "output": "terrestre"
+    },
+    {
+        "input": "zerbrechlich",
+        "output": "fr\u00e1gil"
+    },
+    {
+        "input": "Funktion",
+        "output": "Funci\u00f3n"
+    },
+    {
+        "input": "Wiederbelebung",
+        "output": "Reanimaci\u00f3n"
+    },
+    {
+        "input": "gerade",
+        "output": "recto"
+    },
+    {
+        "input": "Insel",
+        "output": "Isla"
+    },
+    {
+        "input": "Belohnung",
+        "output": "Recompensa"
+    },
+    {
+        "input": "farblos",
+        "output": "incoloro"
+    },
+    {
+        "input": "Betrieb",
+        "output": "Operaci\u00f3n"
+    },
+    {
+        "input": "Algebra",
+        "output": "\u00c1lgebra"
+    },
+    {
+        "input": "tadellos",
+        "output": "impecable"
+    },
+    {
+        "input": "Exekutive",
+        "output": "Ejecutivo"
+    },
+    {
+        "input": "N\u00e4he",
+        "output": "Proximidad"
+    },
+    {
+        "input": "heilen",
+        "output": "curar"
+    },
+    {
+        "input": "Vorschuss",
+        "output": "Avanzar"
+    },
+    {
+        "input": "l\u00f6schen.",
+        "output": "borrar."
+    },
+    {
+        "input": "ber\u00fccksichtigen.",
+        "output": "tener en cuenta."
+    },
+    {
+        "input": "ausleihen.",
+        "output": "pedir prestado."
+    },
+    {
+        "input": "n\u00e4chste",
+        "output": "siguiente"
+    },
+    {
+        "input": "unzuverl\u00e4ssig",
+        "output": "poco fiable"
+    },
+    {
+        "input": "Fortschritte",
+        "output": "Progreso"
+    },
+    {
+        "input": "erleichtern.",
+        "output": "facilitar."
+    },
+    {
+        "input": "sicher",
+        "output": "seguro"
+    },
+    {
+        "input": "verflucht",
+        "output": "maldito"
+    },
+    {
+        "input": "\u00e4hnlich",
+        "output": "similar"
+    },
+    {
+        "input": "Osten",
+        "output": "Este"
+    },
+    {
+        "input": "Besch\u00e4ftigung",
+        "output": "Empleo"
+    },
+    {
+        "input": "Bulle",
+        "output": "Toro"
+    },
+    {
+        "input": "zuletzt",
+        "output": "\u00faltimo"
+    },
+    {
+        "input": "Unm\u00f6glichkeit",
+        "output": "Imposibilidad"
+    },
+    {
+        "input": "Hintergrund",
+        "output": "Fondo"
+    },
+    {
+        "input": "unbekannt",
+        "output": "desconocido"
+    },
+    {
+        "input": "zivilisiert",
+        "output": "civilizado"
+    },
+    {
+        "input": "kurze Zeit",
+        "output": "poco tiempo"
+    },
+    {
+        "input": "leidenschaftlich",
+        "output": "apasionado"
+    },
+    {
+        "input": "begrenzt",
+        "output": "limitado"
+    },
+    {
+        "input": "entsprechen",
+        "output": "corresponden"
+    },
+    {
+        "input": "hinten",
+        "output": "volver"
+    },
+    {
+        "input": "viele",
+        "output": "muchos"
+    },
+    {
+        "input": "unbegrenzt",
+        "output": "Sin l\u00edmites"
+    },
+    {
+        "input": "solide",
+        "output": "s\u00f3lido"
+    },
+    {
+        "input": "Unvermeidlich",
+        "output": "Inevitable"
+    },
+    {
+        "input": "gekr\u00fcmmt",
+        "output": "curva"
+    },
+    {
+        "input": "Winter",
+        "output": "Invierno"
+    },
+    {
+        "input": "wahrscheinlich",
+        "output": "probablemente"
+    },
+    {
+        "input": "neu",
+        "output": "nuevo"
+    },
+    {
+        "input": "himmlisch",
+        "output": "celestial"
+    },
+    {
+        "input": "theoretisch",
+        "output": "te\u00f3ricamente"
+    },
+    {
+        "input": "extremistisch",
+        "output": "extremista"
+    },
+    {
+        "input": "Erblindung",
+        "output": "Ceguera"
+    },
+    {
+        "input": "seitlich",
+        "output": "Lateral"
+    },
+    {
+        "input": "normal",
+        "output": "normal"
+    },
+    {
+        "input": "einrichten.",
+        "output": "preparada."
+    },
+    {
+        "input": "lachen",
+        "output": "r\u00edete"
+    },
+    {
+        "input": "tun",
+        "output": "do"
+    },
+    {
+        "input": "jeer",
+        "output": "burla"
+    },
+    {
+        "input": "Sanftheit",
+        "output": "Gentileza"
+    },
+    {
+        "input": "Ausgehakt",
+        "output": "Desenganchado"
+    },
+    {
+        "input": "richtig",
+        "output": "derecha"
+    },
+    {
+        "input": "j\u00fcngste",
+        "output": "el m\u00e1s joven"
+    },
+    {
+        "input": "roh",
+        "output": "en bruto"
+    },
+    {
+        "input": "desorganisieren.",
+        "output": "desorganizar."
+    },
+    {
+        "input": "anziehen.",
+        "output": "vestido."
+    },
+    {
+        "input": "schmal",
+        "output": "estrecho"
+    },
+    {
+        "input": "Missbilligung",
+        "output": "Desaprobaci\u00f3n"
+    },
+    {
+        "input": "westlich",
+        "output": "oeste"
+    },
+    {
+        "input": "\u00e4quatorial",
+        "output": "ecuatorial"
+    },
+    {
+        "input": "glaubw\u00fcrdig",
+        "output": "cre\u00edble"
+    },
+    {
+        "input": "ewig",
+        "output": "eterno"
+    },
+    {
+        "input": "entkoppeln",
+        "output": "desacoplar"
+    },
+    {
+        "input": "freigeben",
+        "output": "liberar"
+    },
+    {
+        "input": "Introvertiert",
+        "output": "Introvertido"
+    },
+    {
+        "input": "fruchtbar",
+        "output": "fruct\u00edfero"
+    },
+    {
+        "input": "schwarz",
+        "output": "negro"
+    },
+    {
+        "input": "nicht intuitiv",
+        "output": "no intuitivo"
+    },
+    {
+        "input": "gesetzestreuer B\u00fcrger",
+        "output": "ciudadano respetuoso con la ley"
+    },
+    {
+        "input": "legal",
+        "output": "legal"
+    },
+    {
+        "input": "Realit\u00e4t",
+        "output": "Realidad"
+    },
+    {
+        "input": "verbieten",
+        "output": "prohibir"
+    },
+    {
+        "input": "unintelligent",
+        "output": "poco inteligente"
+    },
+    {
+        "input": "f\u00e4llig",
+        "output": "debido"
+    },
+    {
+        "input": "\u00c4hnlichkeit",
+        "output": "Similitud"
+    },
+    {
+        "input": "Gegenwart",
+        "output": "Presente"
+    },
+    {
+        "input": "Divergenz",
+        "output": "Divergencia"
+    },
+    {
+        "input": "Ausgehend von",
+        "output": "A partir de"
+    },
+    {
+        "input": "rein",
+        "output": "puro"
+    },
+    {
+        "input": "Schwanz",
+        "output": "Cola"
+    },
+    {
+        "input": "traditionell",
+        "output": "tradicional"
+    },
+    {
+        "input": "ehrenwert",
+        "output": "honorable"
+    },
+    {
+        "input": "minderwertig",
+        "output": "inferior"
+    },
+    {
+        "input": "konzeptionell",
+        "output": "conceptual"
+    },
+    {
+        "input": "Nachkomme",
+        "output": "Descendiente"
+    },
+    {
+        "input": "Integration",
+        "output": "Integraci\u00f3n"
+    },
+    {
+        "input": "Nehmen Sie",
+        "output": "Toma"
+    },
+    {
+        "input": "zentral",
+        "output": "central"
+    },
+    {
+        "input": "gerade",
+        "output": "recto"
+    },
+    {
+        "input": "gestern",
+        "output": "ayer"
+    },
+    {
+        "input": "obere",
+        "output": "superior"
+    },
+    {
+        "input": "vor\u00fcbergehend",
+        "output": "Temporal"
+    },
+    {
+        "input": "ausleihen",
+        "output": "Pedir prestado"
+    },
+    {
+        "input": "unzivilisiert",
+        "output": "incivilizado"
+    },
+    {
+        "input": "real",
+        "output": "real"
+    },
+    {
+        "input": "aktiv",
+        "output": "activo"
+    },
+    {
+        "input": "Arbeitslosigkeit",
+        "output": "Desempleo"
+    },
+    {
+        "input": "Einfachheit",
+        "output": "Simplicidad"
+    },
+    {
+        "input": "entsprechen",
+        "output": "corresponden"
+    },
+    {
+        "input": "unkonventionell",
+        "output": "no convencional"
+    },
+    {
+        "input": "unerwartet",
+        "output": "inesperado"
+    },
+    {
+        "input": "Handbuch",
+        "output": "Manual"
+    },
+    {
+        "input": "H\u00f6schen",
+        "output": "Bragas"
+    },
+    {
+        "input": "ausschlie\u00dfen",
+        "output": "excluir"
+    },
+    {
+        "input": "Demut",
+        "output": "Humildad"
+    },
+    {
+        "input": "Eingabe",
+        "output": "Entrada"
+    },
+    {
+        "input": "nicht gehorchen",
+        "output": "desobedecer"
+    },
+    {
+        "input": "erstellen.",
+        "output": "crear."
+    },
+    {
+        "input": "hinzuf\u00fcgen.",
+        "output": "a\u00f1adir."
+    },
+    {
+        "input": "gerade",
+        "output": "recto"
+    },
+    {
+        "input": "Gl\u00fcck",
+        "output": "Felicidad"
+    },
+    {
+        "input": "verallgemeinern",
+        "output": "generalizar"
+    },
+    {
+        "input": "f\u00e4hig",
+        "output": "capaz"
+    },
+    {
+        "input": "menschlich",
+        "output": "humano"
+    },
+    {
+        "input": "direkt",
+        "output": "directo"
+    },
+    {
+        "input": "Die meisten",
+        "output": "M\u00e1s"
+    },
+    {
+        "input": "rational",
+        "output": "racional"
+    },
+    {
+        "input": "frisch",
+        "output": "fresco"
+    },
+    {
+        "input": "inklusive",
+        "output": "inclusivo"
+    },
+    {
+        "input": "zerbrechlich",
+        "output": "fr\u00e1gil"
+    },
+    {
+        "input": "Analphabeten",
+        "output": "Analfabetos"
+    },
+    {
+        "input": "Unregelm\u00e4\u00dfig",
+        "output": "Irregular"
+    },
+    {
+        "input": "falsch ausrichten",
+        "output": "desalinear"
+    },
+    {
+        "input": "m\u00f6glich",
+        "output": "posible"
+    },
+    {
+        "input": "zivil",
+        "output": "civil"
+    },
+    {
+        "input": "zufrieden",
+        "output": "Satisfecho"
+    },
+    {
+        "input": "real",
+        "output": "real"
+    },
+    {
+        "input": "genehmigen",
+        "output": "autorizar"
+    },
+    {
+        "input": "genau",
+        "output": "exactamente"
+    },
+    {
+        "input": "Pl\u00f6tzlich",
+        "output": "De repente"
+    },
+    {
+        "input": "praktisch",
+        "output": "pr\u00e1ctico"
+    },
+    {
+        "input": "Stirnrunzeln",
+        "output": "Frunce el ce\u00f1o"
+    },
+    {
+        "input": "illegitim",
+        "output": "ileg\u00edtimo"
+    },
+    {
+        "input": "steif",
+        "output": "r\u00edgido"
+    },
+    {
+        "input": "Wahrscheinlich",
+        "output": "Probablemente"
+    },
+    {
+        "input": "schlie\u00dfen",
+        "output": "cerrar"
+    },
+    {
+        "input": "Nehmen Sie",
+        "output": "Toma"
+    },
+    {
+        "input": "aufdecken.",
+        "output": "destapar."
+    },
+    {
+        "input": "Schwergewicht",
+        "output": "Peso pesado"
+    },
+    {
+        "input": "Ablehnung",
+        "output": "Rechazo"
+    },
+    {
+        "input": "Verbot",
+        "output": "Prohibici\u00f3n"
+    },
+    {
+        "input": "unbemannt",
+        "output": "Sin tripulaci\u00f3n"
+    },
+    {
+        "input": "wenige",
+        "output": "algunos"
+    },
+    {
+        "input": "investieren",
+        "output": "invertir"
+    },
+    {
+        "input": "polar",
+        "output": "polar"
+    },
+    {
+        "input": "Unwahrscheinlich",
+        "output": "Ins\u00f3lito"
+    },
+    {
+        "input": "verbessern",
+        "output": "mejorar"
+    },
+    {
+        "input": "verschl\u00fcsseln",
+        "output": "encriptar"
+    },
+    {
+        "input": "unzureichend",
+        "output": "insuficiente"
+    },
+    {
+        "input": "angreifen",
+        "output": "ataque"
+    },
+    {
+        "input": "Nordwesten",
+        "output": "Noroeste"
+    },
+    {
+        "input": "reaktiv",
+        "output": "reactivo"
+    },
+    {
+        "input": "Konvergenz",
+        "output": "Convergencia"
+    },
+    {
+        "input": "entspannt",
+        "output": "relajado"
+    },
+    {
+        "input": "behalten.",
+        "output": "retener."
+    },
+    {
+        "input": "achtern",
+        "output": "en popa"
+    },
+    {
+        "input": "loben",
+        "output": "alabanza"
+    },
+    {
+        "input": "neu",
+        "output": "nuevo"
+    },
+    {
+        "input": "Tod",
+        "output": "Muerte"
+    },
+    {
+        "input": "Verzweiflung",
+        "output": "Desesperaci\u00f3n"
+    },
+    {
+        "input": "erloschen",
+        "output": "extinguido"
+    },
+    {
+        "input": "einfach",
+        "output": "simple"
+    },
+    {
+        "input": "ausdr\u00fccklich",
+        "output": "expl\u00edcito"
+    },
+    {
+        "input": "tags\u00fcber",
+        "output": "durante el d\u00eda"
+    },
+    {
+        "input": "reife",
+        "output": "madura"
+    },
+    {
+        "input": "tragisch",
+        "output": "tr\u00e1gico"
+    },
+    {
+        "input": "unpers\u00f6nlich",
+        "output": "impersonal"
+    },
+    {
+        "input": "stark",
+        "output": "fuerte"
+    },
+    {
+        "input": "sichtbar",
+        "output": "visible"
+    },
+    {
+        "input": "nicht steuerpflichtig",
+        "output": "no imponible"
+    },
+    {
+        "input": "unter",
+        "output": "en"
+    },
+    {
+        "input": "Diener",
+        "output": "Siervo"
+    },
+    {
+        "input": "R\u00fcckzug",
+        "output": "Retiro"
+    },
+    {
+        "input": "mild",
+        "output": "Leve"
+    },
+    {
+        "input": "unbestimmt",
+        "output": "indeterminado"
+    },
+    {
+        "input": "Rundschreiben",
+        "output": "Carta circular"
+    },
+    {
+        "input": "unsterblich",
+        "output": "inmortal"
+    },
+    {
+        "input": "nach au\u00dfen",
+        "output": "hacia el exterior"
+    },
+    {
+        "input": "Mangel",
+        "output": "Deficiencia"
+    },
+    {
+        "input": "Weisheit",
+        "output": "Sabidur\u00eda"
+    },
+    {
+        "input": "Antwort",
+        "output": "Respuesta"
+    },
+    {
+        "input": "entsprechen",
+        "output": "corresponden"
+    },
+    {
+        "input": "analog",
+        "output": "anal\u00f3gico"
+    },
+    {
+        "input": "vermindern",
+        "output": "disminuir"
+    },
+    {
+        "input": "nicht m\u00f6gen",
+        "output": "no me gusta"
+    },
+    {
+        "input": "lang",
+        "output": "largo"
+    },
+    {
+        "input": "freundlich",
+        "output": "amable"
+    },
+    {
+        "input": "Gelee",
+        "output": "Jelly"
+    },
+    {
+        "input": "keine",
+        "output": "ninguno"
+    },
+    {
+        "input": "verunreinigen",
+        "output": "contaminar"
+    },
+    {
+        "input": "Breitengrad",
+        "output": "Latitud"
+    },
+    {
+        "input": "Wesentlich",
+        "output": "Esencial"
+    },
+    {
+        "input": "erschweren",
+        "output": "complicar"
+    },
+    {
+        "input": "intern",
+        "output": "interno"
+    },
+    {
+        "input": "langweilig",
+        "output": "aburrido"
+    },
+    {
+        "input": "Schwach",
+        "output": "D\u00e9bil"
+    },
+    {
+        "input": "Wurzel",
+        "output": "Ra\u00edz"
+    },
+    {
+        "input": "abbauen",
+        "output": "desmantelar"
+    },
+    {
+        "input": "Vergn\u00fcgen",
+        "output": "Placer"
+    },
+    {
+        "input": "verschwinden",
+        "output": "desaparecer"
+    },
+    {
+        "input": "Unbequem",
+        "output": "Inc\u00f3modo"
+    },
+    {
+        "input": "weiter",
+        "output": "m\u00e1s"
+    },
+    {
+        "input": "bedeutsam",
+        "output": "significativo"
+    },
+    {
+        "input": "Darlehensgeber",
+        "output": "Prestamista"
+    },
+    {
+        "input": "praktisch",
+        "output": "pr\u00e1ctico"
+    },
+    {
+        "input": "schnell",
+        "output": "r\u00e1pido"
+    },
+    {
+        "input": "geteilt",
+        "output": "compartido"
+    },
+    {
+        "input": "Startseite",
+        "output": "P\u00e1gina de inicio"
+    },
+    {
+        "input": "Waschbecken",
+        "output": "Lavabo"
+    },
+    {
+        "input": "sozial",
+        "output": "social"
+    },
+    {
+        "input": "Kr\u00f6te",
+        "output": "Sapo"
+    },
+    {
+        "input": "Vorderseite",
+        "output": "Portada"
+    },
+    {
+        "input": "sch\u00f6n",
+        "output": "hermoso"
+    },
+    {
+        "input": "konventionell",
+        "output": "Convencional"
+    },
+    {
+        "input": "wohlwollend",
+        "output": "benevolente"
+    },
+    {
+        "input": "Miss",
+        "output": "Srta."
+    },
+    {
+        "input": "Kom\u00f6die",
+        "output": "Comedia"
+    },
+    {
+        "input": "liberal",
+        "output": "liberal"
+    },
+    {
+        "input": "verschiedene",
+        "output": "varios"
+    },
+    {
+        "input": "besch\u00e4ftigt",
+        "output": "ocupado"
+    },
+    {
+        "input": "Anfang",
+        "output": "Inicio"
+    },
+    {
+        "input": "reaktiv",
+        "output": "reactivo"
+    },
+    {
+        "input": "echt",
+        "output": "aut\u00e9ntico"
+    },
+    {
+        "input": "Tal",
+        "output": "Valle"
+    },
+    {
+        "input": "verstreuen",
+        "output": "dispersi\u00f3n"
+    },
+    {
+        "input": "L\u00f6sung",
+        "output": "Soluci\u00f3n"
+    },
+    {
+        "input": "verf\u00fcgbar",
+        "output": "disponible"
+    },
+    {
+        "input": "zerebral",
+        "output": "cerebral"
+    },
+    {
+        "input": "subtil",
+        "output": "sutil"
+    },
+    {
+        "input": "sicher",
+        "output": "seguro"
+    },
+    {
+        "input": "traditionell",
+        "output": "tradicional"
+    },
+    {
+        "input": "Peripherieger\u00e4te",
+        "output": "Dispositivos perif\u00e9ricos"
+    },
+    {
+        "input": "einheitlich",
+        "output": "estandarizado"
+    },
+    {
+        "input": "bemannt",
+        "output": "Tripulado"
+    },
+    {
+        "input": "beg\u00fcnstigt",
+        "output": "favorecida"
+    },
+    {
+        "input": "ultraviolett",
+        "output": "ultravioleta"
+    },
+    {
+        "input": "St\u00e4rke",
+        "output": "Fuerza"
+    },
+    {
+        "input": "endemisch",
+        "output": "end\u00e9mico"
+    },
+    {
+        "input": "Geschwindigkeits\u00fcbertretung",
+        "output": "Infracci\u00f3n por exceso de velocidad"
+    },
+    {
+        "input": "\u00fcberdacht",
+        "output": "techado"
+    },
+    {
+        "input": "zustimmen",
+        "output": "de acuerdo"
+    },
+    {
+        "input": "l\u00f6schen.",
+        "output": "borrar."
+    },
+    {
+        "input": "Stand",
+        "output": "Stand"
+    },
+    {
+        "input": "vergeuden",
+        "output": "residuos"
+    },
+    {
+        "input": "Ersatz",
+        "output": "Sustituci\u00f3n"
+    },
+    {
+        "input": "ausblenden",
+        "output": "ocultar"
+    },
+    {
+        "input": "gewinnen",
+        "output": "Gana"
+    },
+    {
+        "input": "klar",
+        "output": "borrar"
+    },
+    {
+        "input": "rechtsgerichtete",
+        "output": "derecha"
+    },
+    {
+        "input": "stromabw\u00e4rts",
+        "output": "aguas abajo"
+    },
+    {
+        "input": "Endliche",
+        "output": "Finito"
+    },
+    {
+        "input": "Unerw\u00fcnschte",
+        "output": "No deseado"
+    },
+    {
+        "input": "unrein",
+        "output": "impuro"
+    },
+    {
+        "input": "Transparenz",
+        "output": "Transparencia"
+    },
+    {
+        "input": "K\u00fcste",
+        "output": "Costa"
+    },
+    {
+        "input": "n\u00fctzlich",
+        "output": "\u00fatil"
+    },
+    {
+        "input": "ignorieren.",
+        "output": "ignorar."
+    },
+    {
+        "input": "feige",
+        "output": "cobarde"
+    },
+    {
+        "input": "abgeschlossen",
+        "output": "finalizado"
+    },
+    {
+        "input": "Nachteil",
+        "output": "Desventaja"
+    },
+    {
+        "input": "unzusammenh\u00e4ngend",
+        "output": "incoherente"
+    },
+    {
+        "input": "sekund\u00e4r",
+        "output": "Secundaria"
+    },
+    {
+        "input": "Schmerzen",
+        "output": "Dolor"
+    },
+    {
+        "input": "Schweigen",
+        "output": "Silencio"
+    },
+    {
+        "input": "t\u00f6richt",
+        "output": "tonto"
+    },
+    {
+        "input": "einfach",
+        "output": "simple"
+    },
+    {
+        "input": "akzeptieren",
+        "output": "acepte"
+    },
+    {
+        "input": "Ausl\u00f6ten",
+        "output": "Desoldadura"
+    },
+    {
+        "input": "Empf\u00e4nger",
+        "output": "Receptor"
+    },
+    {
+        "input": "bedeutsam",
+        "output": "significativo"
+    },
+    {
+        "input": "nicht-numerisch",
+        "output": "no num\u00e9rico"
+    },
+    {
+        "input": "Stabilit\u00e4t",
+        "output": "Estabilidad"
+    },
+    {
+        "input": "deinstallieren",
+        "output": "Desinstalar"
+    },
+    {
+        "input": "komplex",
+        "output": "complejo"
+    },
+    {
+        "input": "Unterkunft",
+        "output": "Alojamiento"
+    },
+    {
+        "input": "arbeitslos",
+        "output": "desempleado"
+    },
+    {
+        "input": "erh\u00f6hen.",
+        "output": "aumentar."
+    },
+    {
+        "input": "unten",
+        "output": "debajo de"
+    },
+    {
+        "input": "unvereinbar",
+        "output": "incompatible"
+    },
+    {
+        "input": "nicht-geografische",
+        "output": "no geogr\u00e1fico"
+    },
+    {
+        "input": "endg\u00fcltig",
+        "output": "final"
+    },
+    {
+        "input": "gesetzestreuer B\u00fcrger",
+        "output": "ciudadano respetuoso con la ley"
+    },
+    {
+        "input": "Kummer",
+        "output": "Dolor"
+    },
+    {
+        "input": "aufgew\u00fchlt",
+        "output": "agitado"
+    },
+    {
+        "input": "haben",
+        "output": "tienen"
+    },
+    {
+        "input": "im Vordergrund",
+        "output": "en primer plano"
+    },
+    {
+        "input": "Anspruch",
+        "output": "Reclamaci\u00f3n"
+    },
+    {
+        "input": "abstrakt",
+        "output": "abstracto"
+    },
+    {
+        "input": "begrenzt",
+        "output": "limitado"
+    },
+    {
+        "input": "qualitativ",
+        "output": "cualitativo"
+    },
+    {
+        "input": "bew\u00f6lkt",
+        "output": "Nublado"
+    },
+    {
+        "input": "grausam",
+        "output": "cruel"
+    },
+    {
+        "input": "diskord",
+        "output": "discordia"
+    },
+    {
+        "input": "modern",
+        "output": "moderno"
+    },
+    {
+        "input": "Zusammenarbeit",
+        "output": "Cooperaci\u00f3n"
+    },
+    {
+        "input": "unf\u00e4hig",
+        "output": "incapaz"
+    },
+    {
+        "input": "Endliche",
+        "output": "Finito"
+    },
+    {
+        "input": "Aktion",
+        "output": "Acci\u00f3n"
+    },
+    {
+        "input": "verbergen",
+        "output": "ocultar"
+    },
+    {
+        "input": "kriminalisieren",
+        "output": "criminalizar"
+    },
+    {
+        "input": "direkt",
+        "output": "directo"
+    },
+    {
+        "input": "Norden",
+        "output": "Norte"
+    },
+    {
+        "input": "fallend",
+        "output": "cayendo"
+    },
+    {
+        "input": "Ausleger",
+        "output": "Outrigger"
+    },
+    {
+        "input": "Beleg",
+        "output": "Recibo"
+    },
+    {
+        "input": "inoffiziell",
+        "output": "no oficial"
+    },
+    {
+        "input": "Gefahr",
+        "output": "Peligro"
+    },
+    {
+        "input": "Zeile",
+        "output": "L\u00ednea"
+    },
+    {
+        "input": "libert\u00e4r",
+        "output": "libertario"
+    },
+    {
+        "input": "erhalten",
+        "output": "reciba"
+    },
+    {
+        "input": "variabel",
+        "output": "variable"
+    },
+    {
+        "input": "implizit",
+        "output": "impl\u00edcito"
+    },
+    {
+        "input": "lachen",
+        "output": "r\u00edete"
+    },
+    {
+        "input": "schmelzen",
+        "output": "Derretir"
+    },
+    {
+        "input": "Gegner",
+        "output": "Oponente"
+    },
+    {
+        "input": "funktionell",
+        "output": "funcional"
+    },
+    {
+        "input": "moralisch",
+        "output": "moral"
+    },
+    {
+        "input": "einheitlich",
+        "output": "estandarizado"
+    },
+    {
+        "input": "haarig",
+        "output": "peludo"
+    },
+    {
+        "input": "erweitern.",
+        "output": "expandirse."
+    },
+    {
+        "input": "unreif",
+        "output": "inmaduro"
+    },
+    {
+        "input": "zusammen",
+        "output": "juntos"
+    },
+    {
+        "input": "roh",
+        "output": "en bruto"
+    },
+    {
+        "input": "schw\u00e4chen",
+        "output": "debilitar"
+    },
+    {
+        "input": "Genehmigung",
+        "output": "Autorizaci\u00f3n"
+    },
+    {
+        "input": "Erweitern",
+        "output": "Ampliar"
+    },
+    {
+        "input": "homosexuell",
+        "output": "homosexual"
+    },
+    {
+        "input": "weiter",
+        "output": "m\u00e1s"
+    },
+    {
+        "input": "monochrom",
+        "output": "monocromo"
+    },
+    {
+        "input": "lethargisch",
+        "output": "let\u00e1rgico"
+    },
+    {
+        "input": "g\u00fcltig",
+        "output": "v\u00e1lido"
+    },
+    {
+        "input": "geeignet.",
+        "output": "adecuado."
+    },
+    {
+        "input": "unreguliert",
+        "output": "no regulado"
+    },
+    {
+        "input": "fangen",
+        "output": "captura"
+    },
+    {
+        "input": "Ungeeignet",
+        "output": "No apto"
+    },
+    {
+        "input": "Freundlichkeit",
+        "output": "Amabilidad"
+    },
+    {
+        "input": "nicht-einheimische",
+        "output": "no nativo"
+    },
+    {
+        "input": "wunderbar",
+        "output": "maravilloso"
+    },
+    {
+        "input": "Vater",
+        "output": "Padre"
+    },
+    {
+        "input": "winzige",
+        "output": "peque\u00f1o"
+    },
+    {
+        "input": "Antwort",
+        "output": "Respuesta"
+    },
+    {
+        "input": "angegeben",
+        "output": "especificado"
+    },
+    {
+        "input": "sinnvoll",
+        "output": "sensato"
+    },
+    {
+        "input": "Tod",
+        "output": "Muerte"
+    },
+    {
+        "input": "dynamisch",
+        "output": "din\u00e1mico"
+    },
+    {
+        "input": "m\u00e4nnlich",
+        "output": "Hombre"
+    },
+    {
+        "input": "Industrie",
+        "output": "Industria"
+    },
+    {
+        "input": "ungewohnt",
+        "output": "inusual"
+    },
+    {
+        "input": "nonverbal",
+        "output": "no verbal"
+    },
+    {
+        "input": "Geburt",
+        "output": "Nacimiento"
+    },
+    {
+        "input": "vorherige",
+        "output": "anterior"
+    },
+    {
+        "input": "Sterblichkeit",
+        "output": "Mortalidad"
+    },
+    {
+        "input": "dauerhaft",
+        "output": "permanente"
+    },
+    {
+        "input": "trocken",
+        "output": "seco"
+    },
+    {
+        "input": "gek\u00fchlt",
+        "output": "refrigerado"
+    },
+    {
+        "input": "abh\u00e4ngig",
+        "output": "dependiente"
+    },
+    {
+        "input": "Konfrontation",
+        "output": "Confrontaci\u00f3n"
+    },
+    {
+        "input": "ignorieren.",
+        "output": "ignorar."
+    },
+    {
+        "input": "Belletristik",
+        "output": "Ficci\u00f3n"
+    },
+    {
+        "input": "Umzug",
+        "output": "Traslado"
+    },
+    {
+        "input": "Ausleihe",
+        "output": "Pr\u00e9stamo"
+    },
+    {
+        "input": "nicht-chirurgisch",
+        "output": "no quir\u00fargico"
+    },
+    {
+        "input": "Erweiterung",
+        "output": "Extensi\u00f3n"
+    },
+    {
+        "input": "konservativ",
+        "output": "Conservador"
+    },
+    {
+        "input": "klar",
+        "output": "borrar"
+    },
+    {
+        "input": "regeln.",
+        "output": "regular."
+    },
+    {
+        "input": "Loyalist",
+        "output": "Lealista"
+    },
+    {
+        "input": "Vertrauen",
+        "output": "Conf\u00ede en"
+    },
+    {
+        "input": "Glaube",
+        "output": "Fe"
+    },
+    {
+        "input": "glatt",
+        "output": "suave"
+    },
+    {
+        "input": "physisch",
+        "output": "F\u00edsico"
+    },
+    {
+        "input": "am wenigsten beliebt",
+        "output": "El menos favorito"
+    },
+    {
+        "input": "verweigern",
+        "output": "basura"
+    },
+    {
+        "input": "geringf\u00fcgig",
+        "output": "Menor"
+    },
+    {
+        "input": "Gro\u00dfvater",
+        "output": "Abuelo"
+    },
+    {
+        "input": "aufsteigen",
+        "output": "asciende"
+    },
+    {
+        "input": "entmutigen",
+        "output": "disuadir"
+    },
+    {
+        "input": "freigeben",
+        "output": "liberar"
+    },
+    {
+        "input": "tr\u00e4ge",
+        "output": "lento"
+    },
+    {
+        "input": "nicht zufriedenstellen",
+        "output": "no satisfactorio"
+    },
+    {
+        "input": "schrumpfen",
+        "output": "retractil"
+    },
+    {
+        "input": "Hardware",
+        "output": "Hardware"
+    },
+    {
+        "input": "teilweise",
+        "output": "parcialmente"
+    },
+    {
+        "input": "entsch\u00e4rfen",
+        "output": "desactivar"
+    },
+    {
+        "input": "Vergangenheit",
+        "output": "El pasado"
+    },
+    {
+        "input": "absorbieren",
+        "output": "absorber"
+    },
+    {
+        "input": "nicht beschreibend",
+        "output": "no descriptivo"
+    },
+    {
+        "input": "spezifisch",
+        "output": "espec\u00edfico"
+    },
+    {
+        "input": "in der N\u00e4he von",
+        "output": "en las proximidades de"
+    },
+    {
+        "input": "mattes",
+        "output": "matt"
+    },
+    {
+        "input": "z\u00e4h",
+        "output": "duro"
+    },
+    {
+        "input": "Engel",
+        "output": "\u00c1ngeles"
+    },
+    {
+        "input": "Offensichtlich",
+        "output": "Obviamente"
+    },
+    {
+        "input": "solide",
+        "output": "s\u00f3lido"
+    },
+    {
+        "input": "Ungeduldig",
+        "output": "Impaciente"
+    },
+    {
+        "input": "abwehren",
+        "output": "rechazar"
+    },
+    {
+        "input": "zerbrechlich",
+        "output": "fr\u00e1gil"
+    },
+    {
+        "input": "integriert",
+        "output": "integrado"
+    },
+    {
+        "input": "unzureichend",
+        "output": "insuficiente"
+    },
+    {
+        "input": "Verzweiflung",
+        "output": "Desesperaci\u00f3n"
+    },
+    {
+        "input": "rutschig",
+        "output": "resbaladizo"
+    },
+    {
+        "input": "akut",
+        "output": "aguda"
+    },
+    {
+        "input": "ausgesetzt",
+        "output": "expuesto"
+    },
+    {
+        "input": "prim\u00e4r",
+        "output": "Principal"
+    },
+    {
+        "input": "zerst\u00f6ren",
+        "output": "destruir"
+    },
+    {
+        "input": "weich",
+        "output": "suave"
+    },
+    {
+        "input": "Protagonist",
+        "output": "Protagonista"
+    },
+    {
+        "input": "Wirkung",
+        "output": "Efecto"
+    },
+    {
+        "input": "vorhersehbar",
+        "output": "previsible"
+    },
+    {
+        "input": "nicht zustimmen",
+        "output": "en desacuerdo"
+    },
+    {
+        "input": "kontinuierlich",
+        "output": "continuo"
+    },
+    {
+        "input": "verseucht",
+        "output": "contaminado"
+    },
+    {
+        "input": "greifbar",
+        "output": "tangible"
+    },
+    {
+        "input": "Bepflanzung",
+        "output": "Plantar"
+    },
+    {
+        "input": "Stereo",
+        "output": "Est\u00e9reo"
+    },
+    {
+        "input": "Wesentlich",
+        "output": "Esencial"
+    },
+    {
+        "input": "Pause",
+        "output": "Pausa"
+    },
+    {
+        "input": "realistisch",
+        "output": "Realista"
+    },
+    {
+        "input": "erscheinen",
+        "output": "aparece"
+    },
+    {
+        "input": "ung\u00fcltig machen",
+        "output": "invalidar"
+    },
+    {
+        "input": "undurchsichtig",
+        "output": "opaco"
+    },
+    {
+        "input": "Tiefe",
+        "output": "Profundidad"
+    },
+    {
+        "input": "Gesundheit",
+        "output": "Salud"
+    },
+    {
+        "input": "modern",
+        "output": "moderno"
+    },
+    {
+        "input": "anmutig",
+        "output": "elegante"
+    },
+    {
+        "input": "Nachteil",
+        "output": "Desventaja"
+    },
+    {
+        "input": "au\u00dferordentlich",
+        "output": "extraordinario"
+    },
+    {
+        "input": "Anf\u00e4lligkeit",
+        "output": "Susceptibilidad"
+    },
+    {
+        "input": "bewaffnet",
+        "output": "armado"
+    },
+    {
+        "input": "einheitlich",
+        "output": "estandarizado"
+    },
+    {
+        "input": "unermesslich",
+        "output": "inconmensurable"
+    },
+    {
+        "input": "unsicher",
+        "output": "incierto"
+    },
+    {
+        "input": "Junior",
+        "output": "Junior"
+    },
+    {
+        "input": "Ausgang",
+        "output": "Salida"
+    },
+    {
+        "input": "unabh\u00e4ngig",
+        "output": "independiente"
+    },
+    {
+        "input": "unerfahrene",
+        "output": "inexperto"
+    },
+    {
+        "input": "hinzuf\u00fcgen.",
+        "output": "a\u00f1adir."
+    },
+    {
+        "input": "Einzelhandel",
+        "output": "Comercio al por menor"
+    },
+    {
+        "input": "einfach",
+        "output": "simple"
+    },
+    {
+        "input": "loben",
+        "output": "alabanza"
+    },
+    {
+        "input": "unterdimensioniert",
+        "output": "de tama\u00f1o insuficiente"
+    },
+    {
+        "input": "rein",
+        "output": "puro"
+    },
+    {
+        "input": "tief",
+        "output": "profundo"
+    },
+    {
+        "input": "entsch\u00e4rfen",
+        "output": "desactivar"
+    },
+    {
+        "input": "unvollendet",
+        "output": "inacabado"
+    },
+    {
+        "input": "Stadt",
+        "output": "Ciudad"
+    },
+    {
+        "input": "Unbest\u00e4ndig",
+        "output": "Inestable"
+    },
+    {
+        "input": "loben",
+        "output": "alabanza"
+    },
+    {
+        "input": "tief",
+        "output": "profundo"
+    },
+    {
+        "input": "lebendig",
+        "output": "vivo"
+    },
+    {
+        "input": "warm",
+        "output": "caliente"
+    },
+    {
+        "input": "destruktiv",
+        "output": "destructivo"
+    },
+    {
+        "input": "Opazit\u00e4t",
+        "output": "Opacidad"
+    },
+    {
+        "input": "erh\u00f6hen.",
+        "output": "aumentar."
+    },
+    {
+        "input": "vor\u00fcbergehend",
+        "output": "Temporal"
+    },
+    {
+        "input": "gesprochen",
+        "output": "hablado"
+    },
+    {
+        "input": "demontieren.",
+        "output": "desmantelar."
+    },
+    {
+        "input": "wahnsinnig",
+        "output": "demente"
+    },
+    {
+        "input": "Nacht",
+        "output": "Noche"
+    },
+    {
+        "input": "Zukunft",
+        "output": "El futuro"
+    },
+    {
+        "input": "Inflation",
+        "output": "Inflaci\u00f3n"
+    },
+    {
+        "input": "multiplizieren",
+        "output": "multiplicar"
+    },
+    {
+        "input": "nichts",
+        "output": "nada"
+    },
+    {
+        "input": "bergauf",
+        "output": "cuesta arriba"
+    },
+    {
+        "input": "fortfahren",
+        "output": "continuar"
+    },
+    {
+        "input": "freigeben",
+        "output": "liberar"
+    },
+    {
+        "input": "unmark",
+        "output": "desmarque"
+    },
+    {
+        "input": "anmutig",
+        "output": "elegante"
+    },
+    {
+        "input": "scheitern",
+        "output": "falla"
+    },
+    {
+        "input": "nicht medizinisch",
+        "output": "no m\u00e9dico"
+    },
+    {
+        "input": "abtrennen",
+        "output": "separar"
+    },
+    {
+        "input": "lose",
+        "output": "suelto"
+    },
+    {
+        "input": "Pause",
+        "output": "Pausa"
+    },
+    {
+        "input": "d\u00fcnn",
+        "output": "fino"
+    },
+    {
+        "input": "glatt",
+        "output": "suave"
+    },
+    {
+        "input": "alle",
+        "output": "todos"
+    },
+    {
+        "input": "vorbereitet",
+        "output": "preparado"
+    },
+    {
+        "input": "abnormale",
+        "output": "anormal"
+    },
+    {
+        "input": "verschlimmern",
+        "output": "agravar"
+    },
+    {
+        "input": "schal",
+        "output": "bufanda"
+    },
+    {
+        "input": "Gemeiner",
+        "output": "Com\u00fan"
+    },
+    {
+        "input": "ehrlich",
+        "output": "honesto"
+    },
+    {
+        "input": "einfach",
+        "output": "simple"
+    },
+    {
+        "input": "ausgenommen",
+        "output": "excluido"
+    },
+    {
+        "input": "einfach",
+        "output": "simple"
+    },
+    {
+        "input": "indirekt",
+        "output": "indirecta"
+    },
+    {
+        "input": "mental",
+        "output": "mental"
+    },
+    {
+        "input": "l\u00e4ssig",
+        "output": "casual"
+    },
+    {
+        "input": "zerst\u00f6ren",
+        "output": "destruir"
+    },
+    {
+        "input": "aufsteigen",
+        "output": "asciende"
+    },
+    {
+        "input": "gest\u00e4rkt",
+        "output": "Fortalecido"
+    },
+    {
+        "input": "gesegnet",
+        "output": "bendito"
+    },
+    {
+        "input": "beigef\u00fcgt",
+        "output": "adjunto"
+    },
+    {
+        "input": "gewaltt\u00e4tig",
+        "output": "violento"
+    },
+    {
+        "input": "individuell",
+        "output": "individual"
+    },
+    {
+        "input": "glatt",
+        "output": "suave"
+    },
+    {
+        "input": "Hand",
+        "output": "Mano"
+    },
+    {
+        "input": "Vertragspartner",
+        "output": "Socio contractual"
+    },
+    {
+        "input": "unbedeutend",
+        "output": "insignificante"
+    },
+    {
+        "input": "inl\u00e4ndisch",
+        "output": "dom\u00e9stico"
+    },
+    {
+        "input": "teuer",
+        "output": "caro"
+    },
+    {
+        "input": "erh\u00f6hen.",
+        "output": "aumentar."
+    },
+    {
+        "input": "betrunken",
+        "output": "borracho"
+    },
+    {
+        "input": "Unwichtiges",
+        "output": "Sin importancia"
+    },
+    {
+        "input": "perfekt",
+        "output": "perfecto"
+    },
+    {
+        "input": "Verr\u00e4ter",
+        "output": "Traidor"
+    },
+    {
+        "input": "Liebe",
+        "output": "Amor"
+    },
+    {
+        "input": "Favorit",
+        "output": "Favoritos"
+    },
+    {
+        "input": "Vorschuss",
+        "output": "Avanzar"
+    },
+    {
+        "input": "ungleich",
+        "output": "desigual"
+    },
+    {
+        "input": "Leichtigkeit",
+        "output": "Ligereza"
+    },
+    {
+        "input": "h\u00e4ufig",
+        "output": "con frecuencia"
+    },
+    {
+        "input": "bezahlt",
+        "output": "pagado"
+    },
+    {
+        "input": "maximal",
+        "output": "m\u00e1ximo"
+    },
+    {
+        "input": "behindern",
+        "output": "obstaculizar"
+    },
+    {
+        "input": "weit",
+        "output": "ancho"
+    },
+    {
+        "input": "Tochter",
+        "output": "Hija"
+    },
+    {
+        "input": "energisch",
+        "output": "en\u00e9rgico"
+    },
+    {
+        "input": "warm",
+        "output": "caliente"
+    },
+    {
+        "input": "langweilig",
+        "output": "aburrido"
+    },
+    {
+        "input": "K\u00f6nigin",
+        "output": "Reina"
+    },
+    {
+        "input": "Abneigung gegen",
+        "output": "Aversi\u00f3n a"
+    },
+    {
+        "input": "Himmel",
+        "output": "Cielo"
+    },
+    {
+        "input": "s\u00e4kulare",
+        "output": "secular"
+    },
+    {
+        "input": "modern",
+        "output": "moderno"
+    },
+    {
+        "input": "Ignorieren von",
+        "output": "Ignorar"
+    },
+    {
+        "input": "Vernachl\u00e4ssigung",
+        "output": "Negligencia"
+    },
+    {
+        "input": "vern\u00fcnftig",
+        "output": "razonable"
+    },
+    {
+        "input": "Milit\u00e4r",
+        "output": "Militar"
+    },
+    {
+        "input": "verfeinert",
+        "output": "refinado"
+    },
+    {
+        "input": "Portr\u00e4t",
+        "output": "Retrato"
+    },
+    {
+        "input": "Meinungsverschiedenheiten",
+        "output": "Diferencias de opini\u00f3n"
+    },
+    {
+        "input": "stabil",
+        "output": "estable"
+    },
+    {
+        "input": "Skinny",
+        "output": "Skinny"
+    },
+    {
+        "input": "geschlossen",
+        "output": "Cerrado"
+    },
+    {
+        "input": "morgen",
+        "output": "ma\u00f1ana"
+    },
+    {
+        "input": "sammeln.",
+        "output": "recoger."
+    },
+    {
+        "input": "Bedauern",
+        "output": "Arrepentirse"
+    },
+    {
+        "input": "unbeteiligt",
+        "output": "no implicado"
+    },
+    {
+        "input": "Kind",
+        "output": "Ni\u00f1o"
+    },
+    {
+        "input": "Bestrafung",
+        "output": "Castigo"
+    },
+    {
+        "input": "anbieten.",
+        "output": "oferta."
+    },
+    {
+        "input": "verweigern",
+        "output": "basura"
+    },
+    {
+        "input": "Zwerg",
+        "output": "Enano"
+    },
+    {
+        "input": "sauber",
+        "output": "limpiar"
+    },
+    {
+        "input": "gelegentlich",
+        "output": "ocasionalmente"
+    },
+    {
+        "input": "Verschlechterung",
+        "output": "Deterioro"
+    },
+    {
+        "input": "geschrumpft",
+        "output": "encogido"
+    },
+    {
+        "input": "gleichg\u00fcltig",
+        "output": "indiferente"
+    },
+    {
+        "input": "Verlierer",
+        "output": "Perdedor"
+    },
+    {
+        "input": "verlieren",
+        "output": "perder"
+    },
+    {
+        "input": "fokussiert",
+        "output": "focalizado"
+    },
+    {
+        "input": "unlogisch",
+        "output": "il\u00f3gico"
+    },
+    {
+        "input": "stimmlich",
+        "output": "vocal"
+    },
+    {
+        "input": "Abteilung",
+        "output": "Departamento"
+    },
+    {
+        "input": "gesund",
+        "output": "saludable"
+    },
+    {
+        "input": "nat\u00fcrlich",
+        "output": "natural"
+    },
+    {
+        "input": "unvergleichlich",
+        "output": "inigualable"
+    },
+    {
+        "input": "warm",
+        "output": "caliente"
+    },
+    {
+        "input": "arm",
+        "output": "pobre"
+    },
+    {
+        "input": "hart",
+        "output": "duro"
+    },
+    {
+        "input": "Senkrecht",
+        "output": "Vertical"
+    },
+    {
+        "input": "flexibel",
+        "output": "Flexible"
+    },
+    {
+        "input": "angemessen",
+        "output": "apropiado"
+    },
+    {
+        "input": "verd\u00fcnnt",
+        "output": "Diluido"
+    },
+    {
+        "input": "enth\u00fcllen",
+        "output": "desvelar"
+    },
+    {
+        "input": "M\u00e4dchen",
+        "output": "Chicas"
+    },
+    {
+        "input": "Wahnsinn",
+        "output": "Locura"
+    },
+    {
+        "input": "Problem",
+        "output": "Problema"
+    },
+    {
+        "input": "apathisch",
+        "output": "ap\u00e1tico"
+    },
+    {
+        "input": "cool",
+        "output": "genial"
+    },
+    {
+        "input": "Schuldner",
+        "output": "Deudor"
+    },
+    {
+        "input": "Narr",
+        "output": "Tonto"
+    },
+    {
+        "input": "dauerhaft",
+        "output": "permanente"
+    },
+    {
+        "input": "Kabine",
+        "output": "Cabina"
+    },
+    {
+        "input": "Tr\u00e4nen",
+        "output": "L\u00e1grimas"
+    },
+    {
+        "input": "fest",
+        "output": "firme"
+    },
+    {
+        "input": "Willkommen",
+        "output": "Bienvenido a"
+    },
+    {
+        "input": "kompetent",
+        "output": "competente"
+    },
+    {
+        "input": "Tipp",
+        "output": "Consejo"
+    },
+    {
+        "input": "Fehler",
+        "output": "Error"
+    },
+    {
+        "input": "Hemmstoff",
+        "output": "Inhibidor"
+    },
+    {
+        "input": "gerade",
+        "output": "recto"
+    },
+    {
+        "input": "J\u00fcngere",
+        "output": "M\u00e1s j\u00f3venes"
+    },
+    {
+        "input": "reife",
+        "output": "madura"
+    },
+    {
+        "input": "umarmen.",
+        "output": "abrazo."
+    },
+    {
+        "input": "unvorbereitet",
+        "output": "sin preparaci\u00f3n"
+    },
+    {
+        "input": "feige",
+        "output": "cobarde"
+    },
+    {
+        "input": "Gl\u00e4ubiger",
+        "output": "Acreedor"
+    },
+    {
+        "input": "Studienanf\u00e4nger",
+        "output": "Estudiantes de primer a\u00f1o"
+    },
+    {
+        "input": "undurchsichtig",
+        "output": "opaco"
+    },
+    {
+        "input": "dividieren",
+        "output": "dividir"
+    },
+    {
+        "input": "alt",
+        "output": "antiguo"
+    },
+    {
+        "input": "tapfer",
+        "output": "valiente"
+    },
+    {
+        "input": "mangelhaft",
+        "output": "inadecuado"
+    },
+    {
+        "input": "gef\u00e4lscht",
+        "output": "forjado"
+    },
+    {
+        "input": "missbilligen",
+        "output": "desaprobar"
+    },
+    {
+        "input": "dividieren",
+        "output": "dividir"
+    },
+    {
+        "input": "angepasst",
+        "output": "personalizado"
+    },
+    {
+        "input": "richtig",
+        "output": "derecha"
+    },
+    {
+        "input": "Suffix",
+        "output": "Sufijo"
+    },
+    {
+        "input": "wohlhabend",
+        "output": "Ricos"
+    },
+    {
+        "input": "smart",
+        "output": "inteligente"
+    },
+    {
+        "input": "warm",
+        "output": "caliente"
+    },
+    {
+        "input": "brutto",
+        "output": "bruto"
+    },
+    {
+        "input": "unwirtschaftlich",
+        "output": "antiecon\u00f3mico"
+    },
+    {
+        "input": "menschlich",
+        "output": "humano"
+    },
+    {
+        "input": "maximal",
+        "output": "m\u00e1ximo"
+    },
+    {
+        "input": "orthodox",
+        "output": "ortodoxo"
+    },
+    {
+        "input": "Scheidung",
+        "output": "Divorcio"
+    },
+    {
+        "input": "chaos",
+        "output": "caos"
+    },
+    {
+        "input": "normal",
+        "output": "normal"
+    },
+    {
+        "input": "fehlende",
+        "output": "falta"
+    },
+    {
+        "input": "Offensichtlich",
+        "output": "Obviamente"
+    },
+    {
+        "input": "ungenaue",
+        "output": "impreciso"
+    },
+    {
+        "input": "Verwirrung",
+        "output": "Confusi\u00f3n"
+    },
+    {
+        "input": "Empf\u00e4nger",
+        "output": "Receptor"
+    },
+    {
+        "input": "formal",
+        "output": "formal"
+    },
+    {
+        "input": "Vergn\u00fcgen",
+        "output": "Placer"
+    },
+    {
+        "input": "Verengung",
+        "output": "Estrechamiento"
+    },
+    {
+        "input": "Kl\u00e4ger",
+        "output": "Demandante"
+    },
+    {
+        "input": "Fluch",
+        "output": "Maldici\u00f3n"
+    },
+    {
+        "input": "materialistisch",
+        "output": "materialista"
+    },
+    {
+        "input": "Unsicherheit",
+        "output": "Incertidumbre"
+    },
+    {
+        "input": "ausweichend",
+        "output": "evasiva"
+    },
+    {
+        "input": "subjektiv",
+        "output": "subjetivo"
+    },
+    {
+        "input": "verbinden",
+        "output": "conecte"
+    },
+    {
+        "input": "Nachsichtige",
+        "output": "Indulgente"
+    },
+    {
+        "input": "freudig",
+        "output": "alegre"
+    },
+    {
+        "input": "extrem",
+        "output": "extremo"
+    },
+    {
+        "input": ".",
+        "output": "."
+    },
+    {
+        "input": "vertrauensw\u00fcrdig",
+        "output": "de confianza"
+    },
+    {
+        "input": "Freund",
+        "output": "Amigo"
+    },
+    {
+        "input": "empfindlich",
+        "output": "sensible"
+    },
+    {
+        "input": "unsympathisch",
+        "output": "antip\u00e1tico"
+    },
+    {
+        "input": "oben",
+        "output": "top"
+    },
+    {
+        "input": "posterior",
+        "output": "posterior"
+    },
+    {
+        "input": "gerade",
+        "output": "recto"
+    },
+    {
+        "input": "Ehe",
+        "output": "Matrimonio"
+    },
+    {
+        "input": "gro\u00df",
+        "output": "Grande"
+    },
+    {
+        "input": "Belletristik",
+        "output": "Ficci\u00f3n"
+    },
+    {
+        "input": "bads",
+        "output": "bads"
+    },
+    {
+        "input": "flach",
+        "output": "plano"
+    },
+    {
+        "input": "unerreichbar",
+        "output": "inalcanzable"
+    },
+    {
+        "input": "top",
+        "output": "top"
+    },
+    {
+        "input": "Wohnung",
+        "output": "Plano"
+    },
+    {
+        "input": "unvollst\u00e4ndig",
+        "output": "incompleto"
+    },
+    {
+        "input": "F\u00e4higkeit",
+        "output": "Capacidad"
+    },
+    {
+        "input": "Gl\u00fchlampe",
+        "output": "L\u00e1mpara incandescente"
+    },
+    {
+        "input": "am wenigsten",
+        "output": "menos"
+    },
+    {
+        "input": "still",
+        "output": "todav\u00eda"
+    },
+    {
+        "input": "sauber",
+        "output": "limpiar"
+    },
+    {
+        "input": "riesig",
+        "output": "enorme"
+    },
+    {
+        "input": "einfach",
+        "output": "simple"
+    },
+    {
+        "input": "leise",
+        "output": "Silencio"
+    },
+    {
+        "input": "Au\u00dfen",
+        "output": "Exterior"
+    },
+    {
+        "input": "deeskalieren",
+        "output": "desescalar"
+    },
+    {
+        "input": "man",
+        "output": "un"
+    },
+    {
+        "input": "Krieg",
+        "output": "Guerra"
+    },
+    {
+        "input": "Anziehungskraft",
+        "output": "Poder de atracci\u00f3n"
+    },
+    {
+        "input": "Kind",
+        "output": "Ni\u00f1o"
+    },
+    {
+        "input": "erhalten",
+        "output": "reciba"
+    },
+    {
+        "input": "dimmen",
+        "output": "dim"
+    },
+    {
+        "input": "unbedeutend",
+        "output": "insignificante"
+    },
+    {
+        "input": "Datenschutz",
+        "output": "Protecci\u00f3n de datos"
+    },
+    {
+        "input": "langsam",
+        "output": "lentamente"
+    },
+    {
+        "input": "Konsistenz",
+        "output": "Coherencia"
+    },
+    {
+        "input": "nicht funktionsf\u00e4hig",
+        "output": "No funcional"
+    },
+    {
+        "input": "allm\u00e4hlich",
+        "output": "Poco a poco"
+    },
+    {
+        "input": "Offensichtlich",
+        "output": "Obviamente"
+    },
+    {
+        "input": "dick",
+        "output": "gruesa"
+    },
+    {
+        "input": "nicht lebensf\u00e4hig",
+        "output": "inviable"
+    },
+    {
+        "input": "definitiv",
+        "output": "definitivo"
+    },
+    {
+        "input": "f\u00f6rderf\u00e4hig",
+        "output": "Elegible"
+    },
+    {
+        "input": "international",
+        "output": "internacional"
+    },
+    {
+        "input": "Sauberkeit",
+        "output": "Limpieza"
+    },
+    {
+        "input": "Gl\u00fccklich",
+        "output": "Feliz"
+    },
+    {
+        "input": "zufrieden",
+        "output": "Satisfecho"
+    },
+    {
+        "input": "Komfort",
+        "output": "Confort"
+    },
+    {
+        "input": "offline",
+        "output": "sin conexi\u00f3n"
+    },
+    {
+        "input": "klassisch",
+        "output": "cl\u00e1sico"
+    },
+    {
+        "input": "Sparsamkeit",
+        "output": "Ahorro"
+    },
+    {
+        "input": "gemeinsame",
+        "output": "com\u00fan"
+    },
+    {
+        "input": "modern",
+        "output": "moderno"
+    },
+    {
+        "input": "immateriell",
+        "output": "inmaterial"
+    },
+    {
+        "input": "Messe",
+        "output": "Feria de muestras"
+    },
+    {
+        "input": "Bilanz",
+        "output": "Balance"
+    },
+    {
+        "input": "invertiert",
+        "output": "invertido"
+    },
+    {
+        "input": "ungewichtet",
+        "output": "no ponderado"
+    },
+    {
+        "input": "M\u00f6glichkeit",
+        "output": "Posibilidad de"
+    },
+    {
+        "input": "Startup",
+        "output": "Puesta en marcha"
+    },
+    {
+        "input": "Feuer",
+        "output": "Fuego"
+    },
+    {
+        "input": "Indossament",
+        "output": "Aval"
+    },
+    {
+        "input": "konzentriert",
+        "output": "concentrado"
+    },
+    {
+        "input": "bekleidet",
+        "output": "vestido"
+    },
+    {
+        "input": "weich",
+        "output": "suave"
+    },
+    {
+        "input": "einzeln",
+        "output": "individualmente"
+    },
+    {
+        "input": "R\u00fcckzahlung",
+        "output": "Reembolso"
+    },
+    {
+        "input": "folgen Sie",
+        "output": "siga"
+    },
+    {
+        "input": "\u00e4ltere Menschen",
+        "output": "personas mayores"
+    },
+    {
+        "input": "Schw\u00e4che",
+        "output": "Debilidad"
+    },
+    {
+        "input": "verfolgen",
+        "output": "Pista"
+    },
+    {
+        "input": "Mut",
+        "output": "Valor"
+    },
+    {
+        "input": "Finale",
+        "output": "Final"
+    },
+    {
+        "input": "verlassen.",
+        "output": "vete."
+    },
+    {
+        "input": "Wohnung",
+        "output": "Plano"
+    },
+    {
+        "input": "stellar",
+        "output": "estelar"
+    },
+    {
+        "input": "Knappheit",
+        "output": "Escasez"
+    },
+    {
+        "input": "Anspruch",
+        "output": "Reclamaci\u00f3n"
+    },
+    {
+        "input": "Aussicht",
+        "output": "Ver"
+    },
+    {
+        "input": "Thema",
+        "output": "Tema"
+    },
+    {
+        "input": "Neffe",
+        "output": "Sobrino"
+    },
+    {
+        "input": "Schaden",
+        "output": "Da\u00f1os"
+    },
+    {
+        "input": "Dunkelheit",
+        "output": "Oscuridad"
+    },
+    {
+        "input": "proletarisch",
+        "output": "proletario"
+    },
+    {
+        "input": "verarmen",
+        "output": "empobrecer"
+    },
+    {
+        "input": "ignorieren.",
+        "output": "ignorar."
+    },
+    {
+        "input": "Informationen",
+        "output": "Informaci\u00f3n sobre"
+    },
+    {
+        "input": "beenden Sie",
+        "output": "acabado"
+    },
+    {
+        "input": "starr",
+        "output": "R\u00edgido"
+    },
+    {
+        "input": "schrecklich",
+        "output": "terrible"
+    },
+    {
+        "input": "\u00dcbersichtlichkeit",
+        "output": "Claridad"
+    },
+    {
+        "input": "Rundschreiben",
+        "output": "Carta circular"
+    },
+    {
+        "input": "informell",
+        "output": "informal"
+    },
+    {
+        "input": "minimal",
+        "output": "m\u00ednimo"
+    },
+    {
+        "input": "freischalten",
+        "output": "Desbloquear"
+    },
+    {
+        "input": "solide",
+        "output": "s\u00f3lido"
+    },
+    {
+        "input": "verteidigen",
+        "output": "defender"
+    },
+    {
+        "input": "Devolution",
+        "output": "Devoluci\u00f3n"
+    },
+    {
+        "input": "nat\u00fcrlich",
+        "output": "natural"
+    },
+    {
+        "input": "Bef\u00fcllung",
+        "output": "Relleno"
+    },
+    {
+        "input": "Unbequem",
+        "output": "Inc\u00f3modo"
+    },
+    {
+        "input": "einfach",
+        "output": "simple"
+    },
+    {
+        "input": "Mangel",
+        "output": "Deficiencia"
+    },
+    {
+        "input": "st\u00f6ren.",
+        "output": "interferir."
+    },
+    {
+        "input": "einfrieren",
+        "output": "congelar"
+    },
+    {
+        "input": "zur\u00fcckziehen",
+        "output": "retirar"
+    },
+    {
+        "input": "Beg\u00fcnstigter",
+        "output": "Beneficiario"
+    },
+    {
+        "input": "Obergeschoss",
+        "output": "Planta superior"
+    },
+    {
+        "input": "unbedeutend",
+        "output": "insignificante"
+    },
+    {
+        "input": "Kredit",
+        "output": "Cr\u00e9dito"
+    },
+    {
+        "input": "verstreuen",
+        "output": "dispersi\u00f3n"
+    },
+    {
+        "input": "authentisch",
+        "output": "aut\u00e9ntico"
+    },
+    {
+        "input": "Substantiv",
+        "output": "Sustantivo"
+    },
+    {
+        "input": "leer",
+        "output": "Vac\u00edo"
+    },
+    {
+        "input": "pro",
+        "output": "por"
+    },
+    {
+        "input": "anf\u00e4llig",
+        "output": "susceptible"
+    },
+    {
+        "input": "obligatorisch",
+        "output": "obligatorio"
+    },
+    {
+        "input": "nutzlos",
+        "output": "in\u00fatil"
+    },
+    {
+        "input": "K\u00fchlung",
+        "output": "Refrigeraci\u00f3n"
+    },
+    {
+        "input": "\u00fcberlegen",
+        "output": "superior"
+    },
+    {
+        "input": "spezifisch",
+        "output": "espec\u00edfico"
+    },
+    {
+        "input": "Gast",
+        "output": "Invitado"
+    },
+    {
+        "input": "Extrinsisch",
+        "output": "Extr\u00ednseco"
+    },
+    {
+        "input": "Zulassung",
+        "output": "Autorizaci\u00f3n"
+    },
+    {
+        "input": "inakzeptabel",
+        "output": "inaceptable"
+    },
+    {
+        "input": "tr\u00fcgerisch",
+        "output": "enga\u00f1oso"
+    },
+    {
+        "input": "leer",
+        "output": "Vac\u00edo"
+    },
+    {
+        "input": "prim\u00e4r",
+        "output": "Principal"
+    },
+    {
+        "input": "gut",
+        "output": "bien"
+    },
+    {
+        "input": "negativ",
+        "output": "negativo"
+    },
+    {
+        "input": "Er\u00f6ffnung",
+        "output": "Apertura"
+    },
+    {
+        "input": "rechtm\u00e4\u00dfig",
+        "output": "legal"
+    },
+    {
+        "input": "regelm\u00e4\u00dfig",
+        "output": "regularmente"
+    },
+    {
+        "input": "minus",
+        "output": "menos"
+    },
+    {
+        "input": "synthetisch",
+        "output": "Sint\u00e9tico"
+    },
+    {
+        "input": "Einbeziehung",
+        "output": "Inclusi\u00f3n"
+    },
+    {
+        "input": "unambitioniert",
+        "output": "poco ambicioso"
+    },
+    {
+        "input": "Synthese",
+        "output": "S\u00edntesis"
+    },
+    {
+        "input": "loben",
+        "output": "alabanza"
+    },
+    {
+        "input": "entstapeln",
+        "output": "desapilar"
+    },
+    {
+        "input": "n\u00e4her",
+        "output": "m\u00e1s cerca"
+    },
+    {
+        "input": "Unglaublich",
+        "output": "Incre\u00edble"
+    },
+    {
+        "input": "automatisch",
+        "output": "autom\u00e1ticamente"
+    },
+    {
+        "input": "vern\u00fcnftig",
+        "output": "razonable"
+    },
+    {
+        "input": "Kritik",
+        "output": "Cr\u00edtica"
+    },
+    {
+        "input": "vollst\u00e4ndig",
+        "output": "completa"
+    },
+    {
+        "input": "betroffen",
+        "output": "afectados"
+    },
+    {
+        "input": "L\u00e4rm",
+        "output": "Ruido"
+    },
+    {
+        "input": "Unterst\u00fctzung",
+        "output": "Apoyo a"
+    },
+    {
+        "input": "sauber",
+        "output": "limpiar"
+    },
+    {
+        "input": "letztere",
+        "output": "este \u00faltimo"
+    },
+    {
+        "input": "Mainstream",
+        "output": "Corriente principal"
+    },
+    {
+        "input": "geschrieben",
+        "output": "escrito"
+    },
+    {
+        "input": "Vergangenheit",
+        "output": "El pasado"
+    },
+    {
+        "input": "aktiv",
+        "output": "activo"
+    },
+    {
+        "input": "hart",
+        "output": "duro"
+    },
+    {
+        "input": "cool",
+        "output": "genial"
+    },
+    {
+        "input": "besiegt",
+        "output": "derrotado"
+    },
+    {
+        "input": "Vorteil",
+        "output": "Ventaja"
+    },
+    {
+        "input": "M\u00e4dchen",
+        "output": "Chicas"
+    },
+    {
+        "input": "Kunde",
+        "output": "Cliente"
+    },
+    {
+        "input": "erweiterte",
+        "output": "ampliado"
+    },
+    {
+        "input": "verwirren",
+        "output": "confundir"
+    },
+    {
+        "input": "markiert",
+        "output": "marcado"
+    },
+    {
+        "input": "Genossenschaft",
+        "output": "Cooperativa"
+    },
+    {
+        "input": "wie",
+        "output": "como"
+    },
+    {
+        "input": "Prominenz",
+        "output": "Famosos"
+    },
+    {
+        "input": "hinzuf\u00fcgen.",
+        "output": "a\u00f1adir."
+    },
+    {
+        "input": "professionell",
+        "output": "profesional"
+    },
+    {
+        "input": "einfach",
+        "output": "simple"
+    },
+    {
+        "input": "Hafenbecken",
+        "output": "D\u00e1rsena portuaria"
+    },
+    {
+        "input": "frisch",
+        "output": "fresco"
+    },
+    {
+        "input": "nicht verf\u00fcgbar",
+        "output": "no disponible"
+    },
+    {
+        "input": "Zerst\u00f6rer",
+        "output": "Destructor"
+    },
+    {
+        "input": "viele",
+        "output": "muchos"
+    },
+    {
+        "input": "Hungersnot",
+        "output": "Hambre"
+    },
+    {
+        "input": "Offensichtlich",
+        "output": "Obviamente"
+    },
+    {
+        "input": "fett",
+        "output": "negrita"
+    },
+    {
+        "input": "Sonnenaufgang",
+        "output": "Amanecer"
+    },
+    {
+        "input": "deaktivieren",
+        "output": "Desactivar"
+    },
+    {
+        "input": "unsicher",
+        "output": "incierto"
+    },
+    {
+        "input": "Wohnung",
+        "output": "Plano"
+    },
+    {
+        "input": "vergessen",
+        "output": "olvida"
+    },
+    {
+        "input": "Debit",
+        "output": "D\u00e9bito"
+    },
+    {
+        "input": "unh\u00f6flich",
+        "output": "grosero"
+    },
+    {
+        "input": "Vorderseite",
+        "output": "Portada"
+    },
+    {
+        "input": "gl\u00fccklich",
+        "output": "feliz"
+    },
+    {
+        "input": "Mondschein",
+        "output": "Luz de luna"
+    },
+    {
+        "input": "parteiisch",
+        "output": "sesgada"
+    },
+    {
+        "input": "winzige",
+        "output": "peque\u00f1o"
+    },
+    {
+        "input": "kontinuierlich",
+        "output": "continuo"
+    },
+    {
+        "input": "friedlich",
+        "output": "En paz"
+    },
+    {
+        "input": "individuell",
+        "output": "individual"
+    },
+    {
+        "input": "in Ruhe lassen",
+        "output": "dejar solo"
+    },
+    {
+        "input": "l\u00f6schen",
+        "output": "Borrar"
+    },
+    {
+        "input": "frisch",
+        "output": "fresco"
+    },
+    {
+        "input": "vermeidbar",
+        "output": "evitable"
+    },
+    {
+        "input": "ausgerichtet",
+        "output": "alineado"
+    },
+    {
+        "input": "gesund",
+        "output": "saludable"
+    },
+    {
+        "input": "horizontal",
+        "output": "horizontal"
+    },
+    {
+        "input": "zustimmen",
+        "output": "de acuerdo"
+    },
+    {
+        "input": "erste",
+        "output": "primero"
+    },
+    {
+        "input": "unethisch",
+        "output": "falta de \u00e9tica"
+    },
+    {
+        "input": "laufen.",
+        "output": "correr."
+    },
+    {
+        "input": "komplement\u00e4r",
+        "output": "complementario"
+    },
+    {
+        "input": "kaufen",
+        "output": "Comprar"
+    },
+    {
+        "input": "prim\u00e4r",
+        "output": "Principal"
+    },
+    {
+        "input": "Funktion",
+        "output": "Funci\u00f3n"
+    },
+    {
+        "input": "unvorbereitet",
+        "output": "sin preparaci\u00f3n"
+    },
+    {
+        "input": "unanst\u00e4ndig",
+        "output": "indecente"
+    },
+    {
+        "input": "bunt",
+        "output": "Colorido"
+    },
+    {
+        "input": "Breite",
+        "output": "Anchura"
+    },
+    {
+        "input": "abschalten",
+        "output": "apagar"
+    },
+    {
+        "input": "Frage",
+        "output": "Pregunta"
+    },
+    {
+        "input": "verdeckt",
+        "output": "oculto"
+    },
+    {
+        "input": "West",
+        "output": "Oeste"
+    },
+    {
+        "input": "schmal",
+        "output": "estrecho"
+    },
+    {
+        "input": "Zentrum",
+        "output": "Centro"
+    },
+    {
+        "input": "Antwort",
+        "output": "Respuesta"
+    },
+    {
+        "input": "Anf\u00fchrer",
+        "output": "L\u00edder"
+    },
+    {
+        "input": "Instabilit\u00e4t",
+        "output": "Inestabilidad"
+    },
+    {
+        "input": "konservieren",
+        "output": "conservar"
+    },
+    {
+        "input": "geladen",
+        "output": "cargado"
+    },
+    {
+        "input": "Stand",
+        "output": "Stand"
+    },
+    {
+        "input": "sonnig",
+        "output": "soleado"
+    },
+    {
+        "input": "eine falsche Darstellung",
+        "output": "una representaci\u00f3n falsa"
+    },
+    {
+        "input": "\u00e4hnlich",
+        "output": "similar"
+    },
+    {
+        "input": "d\u00fcnn",
+        "output": "fino"
+    },
+    {
+        "input": "chaos",
+        "output": "caos"
+    },
+    {
+        "input": "Gewinner",
+        "output": "Ganador"
+    },
+    {
+        "input": "Gehorsam",
+        "output": "Obediencia"
+    },
+    {
+        "input": "traditionell",
+        "output": "tradicional"
+    },
+    {
+        "input": "reife",
+        "output": "madura"
+    },
+    {
+        "input": "gew\u00e4hren",
+        "output": "subvenci\u00f3n"
+    },
+    {
+        "input": "Vernunft",
+        "output": "Raz\u00f3n"
+    },
+    {
+        "input": "Zweifel",
+        "output": "Dudas"
+    },
+    {
+        "input": "unabh\u00e4ngig",
+        "output": "independiente"
+    },
+    {
+        "input": "Depression",
+        "output": "Depresi\u00f3n"
+    },
+    {
+        "input": "zufrieden",
+        "output": "Satisfecho"
+    },
+    {
+        "input": "unfreundlich",
+        "output": "antip\u00e1tico"
+    },
+    {
+        "input": "segne",
+        "output": "bendice"
+    },
+    {
+        "input": "Kaution",
+        "output": "Fianza"
+    },
+    {
+        "input": "Komfort",
+        "output": "Confort"
+    },
+    {
+        "input": "Rebellen",
+        "output": "Rebeldes"
+    },
+    {
+        "input": "rechtm\u00e4\u00dfig",
+        "output": "legal"
+    },
+    {
+        "input": "Au\u00dfenbereich",
+        "output": "Zona exterior"
+    },
+    {
+        "input": "Junge",
+        "output": "Chico"
+    },
+    {
+        "input": "falsch",
+        "output": "equivocado"
+    },
+    {
+        "input": "Gru\u00df",
+        "output": "Saludos"
+    },
+    {
+        "input": "Vorfahren",
+        "output": "Antepasados"
+    },
+    {
+        "input": "Unt\u00e4tigkeit",
+        "output": "Inactividad"
+    },
+    {
+        "input": "Taubheit",
+        "output": "Sordera"
+    }
+]

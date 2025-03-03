@@ -1,0 +1,107 @@
+{
+    "antonym_eng": {
+        "prompt_format": "open_ended",
+        "relation": "antonym",
+        "response_type": "word",
+        "task_type": "abstractive",
+        "language": "EN"
+    },
+    "antonym_fr": {
+        "prompt_format": "open_ended",
+        "relation": "antonym",
+        "response_type": "word",
+        "task_type": "abstractive",
+        "language": "FR"
+    },
+    "english_french": {
+        "prompt_format": "open_ended",
+        "relation": "translation",
+        "response_type": "word",
+        "task_type": "abstractive",
+        "language": "FR"
+    },
+    "german_spanish": {
+        "prompt_format": "open_ended",
+        "relation": "translation",
+        "response_type": "word",
+        "task_type": "abstractive",
+        "language": "ES"
+    },
+    "categorical_eng": {
+        "prompt_format": "open_ended",
+        "relation": "categorical",
+        "response_type": "word",
+        "task_type": "abstractive",
+        "language": "EN"
+    },
+    "categorical_es": {
+        "prompt_format": "open_ended",
+        "relation": "categorical",
+        "response_type": "word",
+        "task_type": "abstractive",
+        "language": "ES"
+    },
+    "next_item": {
+        "prompt_format": "open_ended",
+        "relation": "successor",
+        "response_type": null,
+        "task_type": "abstractive",
+        "language": null
+    },
+    "prev_item": {
+        "prompt_format": "open_ended",
+        "relation": "predecessor",
+        "response_type": null,
+        "task_type": "abstractive",
+        "language": null
+    },
+    "antonym_eng-mc": {
+        "prompt_format": "multiple_choice",
+        "relation": "antonym",
+        "response_type": "letter",
+        "task_type": "extractive",
+        "language": null
+    },
+    "english_french-mc": {
+        "prompt_format": "multiple_choice",
+        "relation": "translation",
+        "response_type": "letter",
+        "task_type": "extractive",
+        "language": null
+    },
+    "categorical_eng-mc": {
+        "prompt_format": "multiple_choice",
+        "relation": "categorical",
+        "response_type": "letter",
+        "task_type": "extractive",
+        "language": null
+    },
+    "predecessor_letter": {
+        "prompt_format": "open_ended",
+        "relation": "predecessor",
+        "response_type": "letter",
+        "task_type": "extractive",
+        "language": null
+    },
+    "predecessor_word": {
+        "prompt_format": "open_ended",
+        "relation": "predecessor",
+        "response_type": "word",
+        "task_type": "extractive",
+        "language": "EN"
+    },
+    "successor_letter": {
+        "prompt_format": "open_ended",
+        "relation": "successor",
+        "response_type": "letter",
+        "task_type": "extractive",
+        "language": null
+    },
+    "successor_word": {
+        "prompt_format": "open_ended",
+        "relation": "successor",
+        "response_type": "word",
+        "task_type": "extractive",
+        "language": "EN"
+    }
+}

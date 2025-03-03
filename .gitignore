@@ -1,4 +1,12 @@
-# ignore all files ending with pickle npy and json in the data folder
-data/**/*.pkl
-data/**/*.npy
-data/**/*.json
+# Cache and Checkpoints
+.ipynb_checkpoints
+*.ipynb_checkpoints
+__pycache__
+*__pycache__
+
+# Results and Figures
+*results
+results/*
+*ConceptVectors_acl_2025
+ConceptVectors_acl_2025/*
+report.py

@@ -1,0 +1,3946 @@
+[
+    {
+        "input": "america",
+        "output": "country"
+    },
+    {
+        "input": "amiga",
+        "output": "computer"
+    },
+    {
+        "input": "africa",
+        "output": "continent"
+    },
+    {
+        "input": "air",
+        "output": "gas"
+    },
+    {
+        "input": "aluminum",
+        "output": "metal"
+    },
+    {
+        "input": "anatomy",
+        "output": "science"
+    },
+    {
+        "input": "ball",
+        "output": "toy"
+    },
+    {
+        "input": "avenue",
+        "output": "street"
+    },
+    {
+        "input": "atlanta",
+        "output": "city"
+    },
+    {
+        "input": "armchair",
+        "output": "chair"
+    },
+    {
+        "input": "auk",
+        "output": "bird"
+    },
+    {
+        "input": "badminton",
+        "output": "sport"
+    },
+    {
+        "input": "axe",
+        "output": "tool"
+    },
+    {
+        "input": "anger",
+        "output": "emotion"
+    },
+    {
+        "input": "baseball",
+        "output": "sport"
+    },
+    {
+        "input": "bass",
+        "output": "fish"
+    },
+    {
+        "input": "bar",
+        "output": "place"
+    },
+    {
+        "input": "beer",
+        "output": "beverage"
+    },
+    {
+        "input": "bed",
+        "output": "place"
+    },
+    {
+        "input": "bear",
+        "output": "mammal"
+    },
+    {
+        "input": "blue",
+        "output": "color"
+    },
+    {
+        "input": "bazaar",
+        "output": "marketplace"
+    },
+    {
+        "input": "box",
+        "output": "container"
+    },
+    {
+        "input": "beagle",
+        "output": "dog"
+    },
+    {
+        "input": "bin",
+        "output": "container"
+    },
+    {
+        "input": "bowling",
+        "output": "sport"
+    },
+    {
+        "input": "basil",
+        "output": "herb"
+    },
+    {
+        "input": "biology",
+        "output": "science"
+    },
+    {
+        "input": "bathroom",
+        "output": "room"
+    },
+    {
+        "input": "bomb",
+        "output": "device"
+    },
+    {
+        "input": "calcium",
+        "output": "element"
+    },
+    {
+        "input": "california",
+        "output": "state"
+    },
+    {
+        "input": "brie",
+        "output": "cheese"
+    },
+    {
+        "input": "butter",
+        "output": "food"
+    },
+    {
+        "input": "cannon",
+        "output": "weapon"
+    },
+    {
+        "input": "cancer",
+        "output": "disease"
+    },
+    {
+        "input": "cappuccino",
+        "output": "drink"
+    },
+    {
+        "input": "burlap",
+        "output": "fabric"
+    },
+    {
+        "input": "brown",
+        "output": "color"
+    },
+    {
+        "input": "breakfast",
+        "output": "meal"
+    },
+    {
+        "input": "cash",
+        "output": "money"
+    },
+    {
+        "input": "canada",
+        "output": "country"
+    },
+    {
+        "input": "celery",
+        "output": "vegetable"
+    },
+    {
+        "input": "cabbage",
+        "output": "plant"
+    },
+    {
+        "input": "carnation",
+        "output": "flower"
+    },
+    {
+        "input": "carbon",
+        "output": "element"
+    },
+    {
+        "input": "butterfly",
+        "output": "insect"
+    },
+    {
+        "input": "brazil",
+        "output": "country"
+    },
+    {
+        "input": "college",
+        "output": "place"
+    },
+    {
+        "input": "cobra",
+        "output": "snake"
+    },
+    {
+        "input": "cinnamon",
+        "output": "spice"
+    },
+    {
+        "input": "chess",
+        "output": "game"
+    },
+    {
+        "input": "chicken",
+        "output": "food"
+    },
+    {
+        "input": "christmas",
+        "output": "holiday"
+    },
+    {
+        "input": "circle",
+        "output": "shape"
+    },
+    {
+        "input": "colorado",
+        "output": "state"
+    },
+    {
+        "input": "china",
+        "output": "country"
+    },
+    {
+        "input": "christianity",
+        "output": "religion"
+    },
+    {
+        "input": "chemistry",
+        "output": "science"
+    },
+    {
+        "input": "cheese",
+        "output": "food"
+    },
+    {
+        "input": "chocolate",
+        "output": "candy"
+    },
+    {
+        "input": "coke",
+        "output": "soda"
+    },
+    {
+        "input": "clarinet",
+        "output": "instrument"
+    },
+    {
+        "input": "city",
+        "output": "place"
+    },
+    {
+        "input": "coffee",
+        "output": "stimulant"
+    },
+    {
+        "input": "cottage",
+        "output": "house"
+    },
+    {
+        "input": "copper",
+        "output": "metal"
+    },
+    {
+        "input": "cubicle",
+        "output": "workspace"
+    },
+    {
+        "input": "corn",
+        "output": "vegetable"
+    },
+    {
+        "input": "cucumber",
+        "output": "vegetable"
+    },
+    {
+        "input": "cotton",
+        "output": "crop"
+    },
+    {
+        "input": "crappie",
+        "output": "fish"
+    },
+    {
+        "input": "crow",
+        "output": "bird"
+    },
+    {
+        "input": "curry",
+        "output": "spice"
+    },
+    {
+        "input": "congress",
+        "output": "legislature"
+    },
+    {
+        "input": "disgust",
+        "output": "emotion"
+    },
+    {
+        "input": "desert",
+        "output": "terrain"
+    },
+    {
+        "input": "dog",
+        "output": "pet"
+    },
+    {
+        "input": "doll",
+        "output": "toy"
+    },
+    {
+        "input": "dna",
+        "output": "molecule"
+    },
+    {
+        "input": "dolphin",
+        "output": "animal"
+    },
+    {
+        "input": "dinner",
+        "output": "meal"
+    },
+    {
+        "input": "dollar",
+        "output": "money"
+    },
+    {
+        "input": "earth",
+        "output": "word"
+    },
+    {
+        "input": "desk",
+        "output": "furniture"
+    },
+    {
+        "input": "denim",
+        "output": "fabric"
+    },
+    {
+        "input": "drawer",
+        "output": "container"
+    },
+    {
+        "input": "ethanol",
+        "output": "alcohol"
+    },
+    {
+        "input": "finch",
+        "output": "bird"
+    },
+    {
+        "input": "epoxy",
+        "output": "glue"
+    },
+    {
+        "input": "falcon",
+        "output": "bird"
+    },
+    {
+        "input": "fear",
+        "output": "emotion"
+    },
+    {
+        "input": "garlic",
+        "output": "ingredient"
+    },
+    {
+        "input": "germany",
+        "output": "country"
+    },
+    {
+        "input": "game",
+        "output": "activity"
+    },
+    {
+        "input": "flamingo",
+        "output": "bird"
+    },
+    {
+        "input": "football",
+        "output": "game"
+    },
+    {
+        "input": "gasoline",
+        "output": "liquid"
+    },
+    {
+        "input": "france",
+        "output": "country"
+    },
+    {
+        "input": "geometry",
+        "output": "subject"
+    },
+    {
+        "input": "fish",
+        "output": "animal"
+    },
+    {
+        "input": "georgia",
+        "output": "state"
+    },
+    {
+        "input": "fly",
+        "output": "insect"
+    },
+    {
+        "input": "flute",
+        "output": "instrument"
+    },
+    {
+        "input": "geology",
+        "output": "science"
+    },
+    {
+        "input": "fox",
+        "output": "animal"
+    },
+    {
+        "input": "garnet",
+        "output": "stone"
+    },
+    {
+        "input": "fire",
+        "output": "combustion"
+    },
+    {
+        "input": "harmonica",
+        "output": "instrument"
+    },
+    {
+        "input": "glock",
+        "output": "gun"
+    },
+    {
+        "input": "harp",
+        "output": "instrument"
+    },
+    {
+        "input": "hawaii",
+        "output": "state"
+    },
+    {
+        "input": "happiness",
+        "output": "emotion"
+    },
+    {
+        "input": "heroin",
+        "output": "drug"
+    },
+    {
+        "input": "heart",
+        "output": "muscle"
+    },
+    {
+        "input": "handgun",
+        "output": "weapon"
+    },
+    {
+        "input": "god",
+        "output": "love"
+    },
+    {
+        "input": "hibiscus",
+        "output": "flower"
+    },
+    {
+        "input": "guitare",
+        "output": "instrument"
+    },
+    {
+        "input": "gull",
+        "output": "bird"
+    },
+    {
+        "input": "heat",
+        "output": "energy"
+    },
+    {
+        "input": "gorilla",
+        "output": "ape"
+    },
+    {
+        "input": "gravity",
+        "output": "force"
+    },
+    {
+        "input": "hawk",
+        "output": "bird"
+    },
+    {
+        "input": "highway",
+        "output": "road"
+    },
+    {
+        "input": "hamburger",
+        "output": "food"
+    },
+    {
+        "input": "golf",
+        "output": "sport"
+    },
+    {
+        "input": "glue",
+        "output": "substance"
+    },
+    {
+        "input": "helium",
+        "output": "gas"
+    },
+    {
+        "input": "goldfish",
+        "output": "carp"
+    },
+    {
+        "input": "goose",
+        "output": "bird"
+    },
+    {
+        "input": "hate",
+        "output": "emotion"
+    },
+    {
+        "input": "gold",
+        "output": "metal"
+    },
+    {
+        "input": "ignorance",
+        "output": "bliss"
+    },
+    {
+        "input": "imac",
+        "output": "computer"
+    },
+    {
+        "input": "human",
+        "output": "biped"
+    },
+    {
+        "input": "honda",
+        "output": "car"
+    },
+    {
+        "input": "holland",
+        "output": "country"
+    },
+    {
+        "input": "hydrogen",
+        "output": "element"
+    },
+    {
+        "input": "ibm",
+        "output": "company"
+    },
+    {
+        "input": "honesty",
+        "output": "virtue"
+    },
+    {
+        "input": "hunger",
+        "output": "sensation"
+    },
+    {
+        "input": "hockey",
+        "output": "sport"
+    },
+    {
+        "input": "india",
+        "output": "country"
+    },
+    {
+        "input": "hurricane",
+        "output": "storm"
+    },
+    {
+        "input": "ip",
+        "output": "protocol"
+    },
+    {
+        "input": "jazz",
+        "output": "music"
+    },
+    {
+        "input": "lemonade",
+        "output": "drink"
+    },
+    {
+        "input": "jam",
+        "output": "spread"
+    },
+    {
+        "input": "ledger",
+        "output": "book"
+    },
+    {
+        "input": "islam",
+        "output": "religion"
+    },
+    {
+        "input": "iraq",
+        "output": "country"
+    },
+    {
+        "input": "leather",
+        "output": "material"
+    },
+    {
+        "input": "jesus",
+        "output": "jew"
+    },
+    {
+        "input": "island",
+        "output": "land"
+    },
+    {
+        "input": "jogging",
+        "output": "exercise"
+    },
+    {
+        "input": "ivy",
+        "output": "vine"
+    },
+    {
+        "input": "iron",
+        "output": "metal"
+    },
+    {
+        "input": "knife",
+        "output": "tool"
+    },
+    {
+        "input": "japan",
+        "output": "country"
+    },
+    {
+        "input": "ireland",
+        "output": "country"
+    },
+    {
+        "input": "iris",
+        "output": "flower"
+    },
+    {
+        "input": "jupiter",
+        "output": "planet"
+    },
+    {
+        "input": "ketchup",
+        "output": "condiment"
+    },
+    {
+        "input": "italy",
+        "output": "country"
+    },
+    {
+        "input": "linen",
+        "output": "cloth"
+    },
+    {
+        "input": "library",
+        "output": "building"
+    },
+    {
+        "input": "marble",
+        "output": "rock"
+    },
+    {
+        "input": "mac",
+        "output": "computer"
+    },
+    {
+        "input": "london",
+        "output": "city"
+    },
+    {
+        "input": "maine",
+        "output": "state"
+    },
+    {
+        "input": "mansion",
+        "output": "house"
+    },
+    {
+        "input": "marijuana",
+        "output": "drug"
+    },
+    {
+        "input": "massachusetts",
+        "output": "state"
+    },
+    {
+        "input": "lettuce",
+        "output": "vegetable"
+    },
+    {
+        "input": "lion",
+        "output": "carnivore"
+    },
+    {
+        "input": "light",
+        "output": "energy"
+    },
+    {
+        "input": "lie",
+        "output": "deception"
+    },
+    {
+        "input": "mandolin",
+        "output": "instrument"
+    },
+    {
+        "input": "mushroom",
+        "output": "fungus"
+    },
+    {
+        "input": "movie",
+        "output": "film"
+    },
+    {
+        "input": "milk",
+        "output": "liquid"
+    },
+    {
+        "input": "murder",
+        "output": "crime"
+    },
+    {
+        "input": "mercury",
+        "output": "planet"
+    },
+    {
+        "input": "math",
+        "output": "subject"
+    },
+    {
+        "input": "mirror",
+        "output": "surface"
+    },
+    {
+        "input": "metal",
+        "output": "music"
+    },
+    {
+        "input": "mit",
+        "output": "university"
+    },
+    {
+        "input": "microsoft",
+        "output": "corporation"
+    },
+    {
+        "input": "moon",
+        "output": "place"
+    },
+    {
+        "input": "menorah",
+        "output": "candelabrum"
+    },
+    {
+        "input": "mexico",
+        "output": "country"
+    },
+    {
+        "input": "mouse",
+        "output": "mammal"
+    },
+    {
+        "input": "monkey",
+        "output": "primate"
+    },
+    {
+        "input": "nightingale",
+        "output": "bird"
+    },
+    {
+        "input": "necklace",
+        "output": "jewelry"
+    },
+    {
+        "input": "objectivism",
+        "output": "philosophy"
+    },
+    {
+        "input": "novel",
+        "output": "book"
+    },
+    {
+        "input": "orange",
+        "output": "color"
+    },
+    {
+        "input": "nebraska",
+        "output": "state"
+    },
+    {
+        "input": "oldsmobile",
+        "output": "car"
+    },
+    {
+        "input": "newsweek",
+        "output": "magazine"
+    },
+    {
+        "input": "neptune",
+        "output": "planet"
+    },
+    {
+        "input": "noise",
+        "output": "sound"
+    },
+    {
+        "input": "pain",
+        "output": "sensation"
+    },
+    {
+        "input": "oxygen",
+        "output": "gas"
+    },
+    {
+        "input": "ostrich",
+        "output": "bird"
+    },
+    {
+        "input": "organ",
+        "output": "instrument"
+    },
+    {
+        "input": "persian",
+        "output": "cat"
+    },
+    {
+        "input": "oregon",
+        "output": "state"
+    },
+    {
+        "input": "orthodox",
+        "output": "christian"
+    },
+    {
+        "input": "penny",
+        "output": "coin"
+    },
+    {
+        "input": "oriole",
+        "output": "bird"
+    },
+    {
+        "input": "peacock",
+        "output": "bird"
+    },
+    {
+        "input": "pheasant",
+        "output": "bird"
+    },
+    {
+        "input": "piano",
+        "output": "instrument"
+    },
+    {
+        "input": "pepper",
+        "output": "spice"
+    },
+    {
+        "input": "pet",
+        "output": "animal"
+    },
+    {
+        "input": "parakeet",
+        "output": "bird"
+    },
+    {
+        "input": "poodle",
+        "output": "dog"
+    },
+    {
+        "input": "pitcher",
+        "output": "container"
+    },
+    {
+        "input": "polo",
+        "output": "game"
+    },
+    {
+        "input": "pistol",
+        "output": "gun"
+    },
+    {
+        "input": "plastic",
+        "output": "material"
+    },
+    {
+        "input": "pineapple",
+        "output": "fruit"
+    },
+    {
+        "input": "pike",
+        "output": "fish"
+    },
+    {
+        "input": "portugal",
+        "output": "country"
+    },
+    {
+        "input": "pink",
+        "output": "color"
+    },
+    {
+        "input": "rock",
+        "output": "music"
+    },
+    {
+        "input": "pub",
+        "output": "place"
+    },
+    {
+        "input": "revolver",
+        "output": "weapon"
+    },
+    {
+        "input": "reading",
+        "output": "activity"
+    },
+    {
+        "input": "rifle",
+        "output": "weapon"
+    },
+    {
+        "input": "puzzle",
+        "output": "problem"
+    },
+    {
+        "input": "restaurant",
+        "output": "establishment"
+    },
+    {
+        "input": "quartz",
+        "output": "mineral"
+    },
+    {
+        "input": "puffin",
+        "output": "bird"
+    },
+    {
+        "input": "radish",
+        "output": "vegetable"
+    },
+    {
+        "input": "quail",
+        "output": "bird"
+    },
+    {
+        "input": "rap",
+        "output": "music"
+    },
+    {
+        "input": "robin",
+        "output": "bird"
+    },
+    {
+        "input": "quill",
+        "output": "feather"
+    },
+    {
+        "input": "refrigerator",
+        "output": "machine"
+    },
+    {
+        "input": "rain",
+        "output": "water"
+    },
+    {
+        "input": "queen",
+        "output": "royalty"
+    },
+    {
+        "input": "rice",
+        "output": "grain"
+    },
+    {
+        "input": "purple",
+        "output": "color"
+    },
+    {
+        "input": "sadness",
+        "output": "emotion"
+    },
+    {
+        "input": "saturn",
+        "output": "planet"
+    },
+    {
+        "input": "salt",
+        "output": "spice"
+    },
+    {
+        "input": "russia",
+        "output": "country"
+    },
+    {
+        "input": "rooster",
+        "output": "chicken"
+    },
+    {
+        "input": "satchel",
+        "output": "bag"
+    },
+    {
+        "input": "sex",
+        "output": "activity"
+    },
+    {
+        "input": "saw",
+        "output": "tool"
+    },
+    {
+        "input": "screwdriver",
+        "output": "drink"
+    },
+    {
+        "input": "salad",
+        "output": "food"
+    },
+    {
+        "input": "science",
+        "output": "subject"
+    },
+    {
+        "input": "sprite",
+        "output": "soda"
+    },
+    {
+        "input": "smtp",
+        "output": "protocol"
+    },
+    {
+        "input": "soccer",
+        "output": "sport"
+    },
+    {
+        "input": "square",
+        "output": "shape"
+    },
+    {
+        "input": "spear",
+        "output": "weapon"
+    },
+    {
+        "input": "spain",
+        "output": "country"
+    },
+    {
+        "input": "slave",
+        "output": "person"
+    },
+    {
+        "input": "soup",
+        "output": "food"
+    },
+    {
+        "input": "soda",
+        "output": "drink"
+    },
+    {
+        "input": "sport",
+        "output": "game"
+    },
+    {
+        "input": "skiing",
+        "output": "activity"
+    },
+    {
+        "input": "silver",
+        "output": "metal"
+    },
+    {
+        "input": "spaniel",
+        "output": "dog"
+    },
+    {
+        "input": "shotgun",
+        "output": "gun"
+    },
+    {
+        "input": "star",
+        "output": "sun"
+    },
+    {
+        "input": "submarine",
+        "output": "boat"
+    },
+    {
+        "input": "tea",
+        "output": "drink"
+    },
+    {
+        "input": "steel",
+        "output": "metal"
+    },
+    {
+        "input": "swan",
+        "output": "bird"
+    },
+    {
+        "input": "tablespoon",
+        "output": "measurement"
+    },
+    {
+        "input": "text",
+        "output": "book"
+    },
+    {
+        "input": "tennis",
+        "output": "game"
+    },
+    {
+        "input": "switzerland",
+        "output": "country"
+    },
+    {
+        "input": "texas",
+        "output": "state"
+    },
+    {
+        "input": "stethoscope",
+        "output": "device"
+    },
+    {
+        "input": "sweden",
+        "output": "country"
+    },
+    {
+        "input": "surgeon",
+        "output": "doctor"
+    },
+    {
+        "input": "topology",
+        "output": "math"
+    },
+    {
+        "input": "trout",
+        "output": "fish"
+    },
+    {
+        "input": "trumpet",
+        "output": "instrument"
+    },
+    {
+        "input": "triangle",
+        "output": "shape"
+    },
+    {
+        "input": "truck",
+        "output": "vehicle"
+    },
+    {
+        "input": "uranus",
+        "output": "planet"
+    },
+    {
+        "input": "tool",
+        "output": "object"
+    },
+    {
+        "input": "unix",
+        "output": "system"
+    },
+    {
+        "input": "university",
+        "output": "place"
+    },
+    {
+        "input": "turkey",
+        "output": "country"
+    },
+    {
+        "input": "thunder",
+        "output": "noise"
+    },
+    {
+        "input": "theft",
+        "output": "crime"
+    },
+    {
+        "input": "toyota",
+        "output": "company"
+    },
+    {
+        "input": "woodwind",
+        "output": "instrument"
+    },
+    {
+        "input": "viola",
+        "output": "instrument"
+    },
+    {
+        "input": "wicca",
+        "output": "religion"
+    },
+    {
+        "input": "washington",
+        "output": "state"
+    },
+    {
+        "input": "violet",
+        "output": "flower"
+    },
+    {
+        "input": "usa",
+        "output": "country"
+    },
+    {
+        "input": "water",
+        "output": "life"
+    },
+    {
+        "input": "verb",
+        "output": "word"
+    },
+    {
+        "input": "winter",
+        "output": "season"
+    },
+    {
+        "input": "war",
+        "output": "hell"
+    },
+    {
+        "input": "wheat",
+        "output": "grain"
+    },
+    {
+        "input": "venus",
+        "output": "planet"
+    },
+    {
+        "input": "volvo",
+        "output": "car"
+    },
+    {
+        "input": "utah",
+        "output": "state"
+    },
+    {
+        "input": "vermont",
+        "output": "state"
+    },
+    {
+        "input": "wood",
+        "output": "material"
+    },
+    {
+        "input": "wine",
+        "output": "beverage"
+    },
+    {
+        "input": "yoyo",
+        "output": "toy"
+    },
+    {
+        "input": "zombie",
+        "output": "undead"
+    },
+    {
+        "input": "yellow",
+        "output": "color"
+    },
+    {
+        "input": "zero",
+        "output": "number"
+    },
+    {
+        "input": "xylophone",
+        "output": "instrument"
+    },
+    {
+        "input": "apple",
+        "output": "fruit"
+    },
+    {
+        "input": "saab",
+        "output": "car"
+    },
+    {
+        "input": "tiger",
+        "output": "animal"
+    },
+    {
+        "input": "lamp",
+        "output": "furniture"
+    },
+    {
+        "input": "tulip",
+        "output": "flower"
+    },
+    {
+        "input": "harry",
+        "output": "name"
+    },
+    {
+        "input": "drama",
+        "output": "genre"
+    },
+    {
+        "input": "picasso",
+        "output": "artist"
+    },
+    {
+        "input": "vinegar",
+        "output": "condiment"
+    },
+    {
+        "input": "acid",
+        "output": "chemical"
+    },
+    {
+        "input": "elephant",
+        "output": "mammal"
+    },
+    {
+        "input": "netflix",
+        "output": "service"
+    },
+    {
+        "input": "pizza",
+        "output": "dish"
+    },
+    {
+        "input": "iphone",
+        "output": "gadget"
+    },
+    {
+        "input": "jeans",
+        "output": "clothing"
+    },
+    {
+        "input": "cosmos",
+        "output": "flower"
+    },
+    {
+        "input": "protein",
+        "output": "nutrient"
+    },
+    {
+        "input": "basketball",
+        "output": "ball"
+    },
+    {
+        "input": "lily",
+        "output": "plant"
+    },
+    {
+        "input": "samsung",
+        "output": "company"
+    },
+    {
+        "input": "algebra",
+        "output": "mathematics"
+    },
+    {
+        "input": "nike",
+        "output": "brand"
+    },
+    {
+        "input": "spiderman",
+        "output": "character"
+    },
+    {
+        "input": "tango",
+        "output": "dance"
+    },
+    {
+        "input": "river",
+        "output": "geographic"
+    },
+    {
+        "input": "bible",
+        "output": "book"
+    },
+    {
+        "input": "python",
+        "output": "language"
+    },
+    {
+        "input": "saxophone",
+        "output": "instrument"
+    },
+    {
+        "input": "tokyo",
+        "output": "city"
+    },
+    {
+        "input": "wool",
+        "output": "material"
+    },
+    {
+        "input": "cat",
+        "output": "pet"
+    },
+    {
+        "input": "van",
+        "output": "vehicle"
+    },
+    {
+        "input": "ruby",
+        "output": "gem"
+    },
+    {
+        "input": "biotin",
+        "output": "vitamin"
+    },
+    {
+        "input": "shirt",
+        "output": "clothing"
+    },
+    {
+        "input": "piston",
+        "output": "machine"
+    },
+    {
+        "input": "maize",
+        "output": "grain"
+    },
+    {
+        "input": "comet",
+        "output": "astronomical"
+    },
+    {
+        "input": "monday",
+        "output": "weekday"
+    },
+    {
+        "input": "microscope",
+        "output": "equipment"
+    },
+    {
+        "input": "cola",
+        "output": "drink"
+    },
+    {
+        "input": "nightmare",
+        "output": "dream"
+    },
+    {
+        "input": "tuscan",
+        "output": "wine"
+    },
+    {
+        "input": "rose",
+        "output": "flower"
+    },
+    {
+        "input": "facebook",
+        "output": "socialmedia"
+    },
+    {
+        "input": "diamond",
+        "output": "jewelry"
+    },
+    {
+        "input": "tofu",
+        "output": "vegetarian"
+    },
+    {
+        "input": "skyscraper",
+        "output": "architecture"
+    },
+    {
+        "input": "daisy",
+        "output": "blossom"
+    },
+    {
+        "input": "november",
+        "output": "month"
+    },
+    {
+        "input": "grasshopper",
+        "output": "insect"
+    },
+    {
+        "input": "cheetah",
+        "output": "animal"
+    },
+    {
+        "input": "bamboo",
+        "output": "plant"
+    },
+    {
+        "input": "sushi",
+        "output": "cuisine"
+    },
+    {
+        "input": "titanic",
+        "output": "movie"
+    },
+    {
+        "input": "whiskey",
+        "output": "alcohol"
+    },
+    {
+        "input": "locomotive",
+        "output": "train"
+    },
+    {
+        "input": "cheddar",
+        "output": "cheese"
+    },
+    {
+        "input": "dragonfly",
+        "output": "insect"
+    },
+    {
+        "input": "chevrolet",
+        "output": "automobile"
+    },
+    {
+        "input": "volleyball",
+        "output": "sport"
+    },
+    {
+        "input": "vertigo",
+        "output": "condition"
+    },
+    {
+        "input": "oak",
+        "output": "tree"
+    },
+    {
+        "input": "lavender",
+        "output": "herb"
+    },
+    {
+        "input": "visor",
+        "output": "hat"
+    },
+    {
+        "input": "hummock",
+        "output": "hill"
+    },
+    {
+        "input": "broadway",
+        "output": "theatre"
+    },
+    {
+        "input": "kiwi",
+        "output": "bird"
+    },
+    {
+        "input": "lasagna",
+        "output": "pasta"
+    },
+    {
+        "input": "crayon",
+        "output": "color"
+    },
+    {
+        "input": "marshmallow",
+        "output": "candy"
+    },
+    {
+        "input": "sega",
+        "output": "videogame"
+    },
+    {
+        "input": "gothic",
+        "output": "style"
+    },
+    {
+        "input": "oracle",
+        "output": "database"
+    },
+    {
+        "input": "champagne",
+        "output": "beverage"
+    },
+    {
+        "input": "manga",
+        "output": "art"
+    },
+    {
+        "input": "samba",
+        "output": "dance"
+    },
+    {
+        "input": "amber",
+        "output": "color"
+    },
+    {
+        "input": "grass",
+        "output": "vegetation"
+    },
+    {
+        "input": "love",
+        "output": "emotion"
+    },
+    {
+        "input": "hotdog",
+        "output": "food"
+    },
+    {
+        "input": "banana",
+        "output": "fruit"
+    },
+    {
+        "input": "hatred",
+        "output": "emotion"
+    },
+    {
+        "input": "guitar",
+        "output": "instrument"
+    },
+    {
+        "input": "pear",
+        "output": "fruit"
+    },
+    {
+        "input": "green",
+        "output": "color"
+    },
+    {
+        "input": "bronze",
+        "output": "metal"
+    },
+    {
+        "input": "violin",
+        "output": "instrument"
+    },
+    {
+        "input": "australia",
+        "output": "country"
+    },
+    {
+        "input": "raspberry",
+        "output": "fruit"
+    },
+    {
+        "input": "red",
+        "output": "color"
+    },
+    {
+        "input": "cricket",
+        "output": "sport"
+    },
+    {
+        "input": "drums",
+        "output": "instrument"
+    },
+    {
+        "input": "noodles",
+        "output": "food"
+    },
+    {
+        "input": "grape",
+        "output": "fruit"
+    },
+    {
+        "input": "black",
+        "output": "color"
+    },
+    {
+        "input": "platinum",
+        "output": "metal"
+    },
+    {
+        "input": "joy",
+        "output": "emotion"
+    },
+    {
+        "input": "peach",
+        "output": "fruit"
+    },
+    {
+        "input": "white",
+        "output": "color"
+    },
+    {
+        "input": "zebra",
+        "output": "animal"
+    },
+    {
+        "input": "donut",
+        "output": "food"
+    },
+    {
+        "input": "watermelon",
+        "output": "fruit"
+    },
+    {
+        "input": "lead",
+        "output": "metal"
+    },
+    {
+        "input": "surprise",
+        "output": "emotion"
+    },
+    {
+        "input": "tacos",
+        "output": "food"
+    },
+    {
+        "input": "blueberry",
+        "output": "fruit"
+    },
+    {
+        "input": "giraffe",
+        "output": "animal"
+    },
+    {
+        "input": "cello",
+        "output": "instrument"
+    },
+    {
+        "input": "argentina",
+        "output": "country"
+    },
+    {
+        "input": "falafel",
+        "output": "food"
+    },
+    {
+        "input": "cherry",
+        "output": "fruit"
+    },
+    {
+        "input": "snake",
+        "output": "animal"
+    },
+    {
+        "input": "rugby",
+        "output": "sport"
+    },
+    {
+        "input": "zinc",
+        "output": "metal"
+    },
+    {
+        "input": "pancake",
+        "output": "food"
+    },
+    {
+        "input": "parrot",
+        "output": "animal"
+    },
+    {
+        "input": "squash",
+        "output": "sport"
+    },
+    {
+        "input": "nickel",
+        "output": "metal"
+    },
+    {
+        "input": "boredom",
+        "output": "emotion"
+    },
+    {
+        "input": "strawberry",
+        "output": "fruit"
+    },
+    {
+        "input": "gray",
+        "output": "color"
+    },
+    {
+        "input": "leopard",
+        "output": "animal"
+    },
+    {
+        "input": "titanium",
+        "output": "metal"
+    },
+    {
+        "input": "excitement",
+        "output": "emotion"
+    },
+    {
+        "input": "mercedes",
+        "output": "car"
+    },
+    {
+        "input": "summer",
+        "output": "season"
+    },
+    {
+        "input": "bicycle",
+        "output": "vehicle"
+    },
+    {
+        "input": "boeing",
+        "output": "airplane"
+    },
+    {
+        "input": "halloween",
+        "output": "holiday"
+    },
+    {
+        "input": "shirts",
+        "output": "clothes"
+    },
+    {
+        "input": "adidas",
+        "output": "brand"
+    },
+    {
+        "input": "comedy",
+        "output": "genre"
+    },
+    {
+        "input": "amazon",
+        "output": "company"
+    },
+    {
+        "input": "paris",
+        "output": "city"
+    },
+    {
+        "input": "mozart",
+        "output": "composer"
+    },
+    {
+        "input": "poetry",
+        "output": "literature"
+    },
+    {
+        "input": "buddhism",
+        "output": "religion"
+    },
+    {
+        "input": "kindness",
+        "output": "virtue"
+    },
+    {
+        "input": "physics",
+        "output": "science"
+    },
+    {
+        "input": "catholicism",
+        "output": "religion"
+    },
+    {
+        "input": "emerald",
+        "output": "gem"
+    },
+    {
+        "input": "seven",
+        "output": "number"
+    },
+    {
+        "input": "english",
+        "output": "language"
+    },
+    {
+        "input": "bat",
+        "output": "animal"
+    },
+    {
+        "input": "february",
+        "output": "month"
+    },
+    {
+        "input": "chrysler",
+        "output": "car"
+    },
+    {
+        "input": "volkswagen",
+        "output": "car"
+    },
+    {
+        "input": "snow",
+        "output": "weather"
+    },
+    {
+        "input": "spanish",
+        "output": "language"
+    },
+    {
+        "input": "software",
+        "output": "technology"
+    },
+    {
+        "input": "rainbow",
+        "output": "phenomenon"
+    },
+    {
+        "input": "winner",
+        "output": "status"
+    },
+    {
+        "input": "autumn",
+        "output": "season"
+    },
+    {
+        "input": "medicine",
+        "output": "profession"
+    },
+    {
+        "input": "beef",
+        "output": "meat"
+    },
+    {
+        "input": "coca-cola",
+        "output": "drink"
+    },
+    {
+        "input": "detective",
+        "output": "profession"
+    },
+    {
+        "input": "evening",
+        "output": "time"
+    },
+    {
+        "input": "photography",
+        "output": "hobby"
+    },
+    {
+        "input": "laptop",
+        "output": "electronics"
+    },
+    {
+        "input": "philosophy",
+        "output": "discipline"
+    },
+    {
+        "input": "drawing",
+        "output": "art"
+    },
+    {
+        "input": "dance",
+        "output": "artform"
+    },
+    {
+        "input": "batman",
+        "output": "superhero"
+    },
+    {
+        "input": "rolex",
+        "output": "watch"
+    },
+    {
+        "input": "fork",
+        "output": "utensil"
+    },
+    {
+        "input": "puma",
+        "output": "animal"
+    },
+    {
+        "input": "yoga",
+        "output": "fitness"
+    },
+    {
+        "input": "greece",
+        "output": "country"
+    },
+    {
+        "input": "architecture",
+        "output": "profession"
+    },
+    {
+        "input": "eagle",
+        "output": "bird"
+    },
+    {
+        "input": "psychology",
+        "output": "science"
+    },
+    {
+        "input": "mathematics",
+        "output": "subject"
+    },
+    {
+        "input": "accountant",
+        "output": "profession"
+    },
+    {
+        "input": "tequila",
+        "output": "drink"
+    },
+    {
+        "input": "swimming",
+        "output": "activity"
+    },
+    {
+        "input": "nurse",
+        "output": "occupation"
+    },
+    {
+        "input": "romance",
+        "output": "genre"
+    },
+    {
+        "input": "canon",
+        "output": "brand"
+    },
+    {
+        "input": "bread",
+        "output": "food"
+    },
+    {
+        "input": "euro",
+        "output": "currency"
+    },
+    {
+        "input": "october",
+        "output": "month"
+    },
+    {
+        "input": "hen",
+        "output": "bird"
+    },
+    {
+        "input": "potato",
+        "output": "vegetable"
+    },
+    {
+        "input": "cow",
+        "output": "animal"
+    },
+    {
+        "input": "shampoo",
+        "output": "product"
+    },
+    {
+        "input": "siberian",
+        "output": "husky"
+    },
+    {
+        "input": "casio",
+        "output": "watch"
+    },
+    {
+        "input": "doctor",
+        "output": "profession"
+    },
+    {
+        "input": "glass",
+        "output": "material"
+    },
+    {
+        "input": "law",
+        "output": "subject"
+    },
+    {
+        "input": "ozone",
+        "output": "layer"
+    },
+    {
+        "input": "juice",
+        "output": "beverage"
+    },
+    {
+        "input": "kentucky",
+        "output": "state"
+    },
+    {
+        "input": "tomato",
+        "output": "vegetable"
+    },
+    {
+        "input": "periscope",
+        "output": "equipment"
+    },
+    {
+        "input": "hammer",
+        "output": "tool"
+    },
+    {
+        "input": "benz",
+        "output": "car"
+    },
+    {
+        "input": "pencil",
+        "output": "stationery"
+    },
+    {
+        "input": "orchid",
+        "output": "flower"
+    },
+    {
+        "input": "onion",
+        "output": "vegetable"
+    },
+    {
+        "input": "omelet",
+        "output": "dish"
+    },
+    {
+        "input": "roses",
+        "output": "flower"
+    },
+    {
+        "input": "zen",
+        "output": "philosophy"
+    },
+    {
+        "input": "sahara",
+        "output": "desert"
+    },
+    {
+        "input": "shakespeare",
+        "output": "author"
+    },
+    {
+        "input": "leo",
+        "output": "zodiac"
+    },
+    {
+        "input": "hacking",
+        "output": "crime"
+    },
+    {
+        "input": "meditation",
+        "output": "activity"
+    },
+    {
+        "input": "dollars",
+        "output": "currency"
+    },
+    {
+        "input": "everest",
+        "output": "mountain"
+    },
+    {
+        "input": "hippo",
+        "output": "mammal"
+    },
+    {
+        "input": "atlantic",
+        "output": "ocean"
+    },
+    {
+        "input": "tornado",
+        "output": "disaster"
+    },
+    {
+        "input": "oreo",
+        "output": "snack"
+    },
+    {
+        "input": "safari",
+        "output": "browser"
+    },
+    {
+        "input": "voldemort",
+        "output": "villain"
+    },
+    {
+        "input": "celsius",
+        "output": "temperature"
+    },
+    {
+        "input": "january",
+        "output": "month"
+    },
+    {
+        "input": "democracy",
+        "output": "government"
+    },
+    {
+        "input": "bitcoin",
+        "output": "cryptocurrency"
+    },
+    {
+        "input": "buddha",
+        "output": "religion"
+    },
+    {
+        "input": "vegan",
+        "output": "diet"
+    },
+    {
+        "input": "kindle",
+        "output": "e-reader"
+    },
+    {
+        "input": "tesla",
+        "output": "car"
+    },
+    {
+        "input": "pearl",
+        "output": "gemstone"
+    },
+    {
+        "input": "may",
+        "output": "month"
+    },
+    {
+        "input": "infinity",
+        "output": "concept"
+    },
+    {
+        "input": "kilkenny",
+        "output": "city"
+    },
+    {
+        "input": "coconut",
+        "output": "fruit"
+    },
+    {
+        "input": "kangaroo",
+        "output": "mammal"
+    },
+    {
+        "input": "gladiators",
+        "output": "warriors"
+    },
+    {
+        "input": "turquoise",
+        "output": "color"
+    },
+    {
+        "input": "scorpions",
+        "output": "animal"
+    },
+    {
+        "input": "vanilla",
+        "output": "flavor"
+    },
+    {
+        "input": "yukon",
+        "output": "place"
+    },
+    {
+        "input": "mango",
+        "output": "fruit"
+    },
+    {
+        "input": "vodka",
+        "output": "beverage"
+    },
+    {
+        "input": "marathon",
+        "output": "race"
+    },
+    {
+        "input": "asphalt",
+        "output": "material"
+    },
+    {
+        "input": "crocodile",
+        "output": "reptile"
+    },
+    {
+        "input": "swahili",
+        "output": "language"
+    },
+    {
+        "input": "lizard",
+        "output": "reptile"
+    },
+    {
+        "input": "brooklyn",
+        "output": "borough"
+    },
+    {
+        "input": "wednesday",
+        "output": "day"
+    },
+    {
+        "input": "sapphire",
+        "output": "gem"
+    },
+    {
+        "input": "bacon",
+        "output": "food"
+    },
+    {
+        "input": "fluoride",
+        "output": "chemical"
+    },
+    {
+        "input": "sauna",
+        "output": "facility"
+    },
+    {
+        "input": "incense",
+        "output": "aroma"
+    },
+    {
+        "input": "polyester",
+        "output": "fabric"
+    },
+    {
+        "input": "french",
+        "output": "language"
+    },
+    {
+        "input": "manchester",
+        "output": "city"
+    },
+    {
+        "input": "beatles",
+        "output": "band"
+    },
+    {
+        "input": "ferrari",
+        "output": "car"
+    },
+    {
+        "input": "calculator",
+        "output": "tool"
+    },
+    {
+        "input": "brazillian",
+        "output": "language"
+    },
+    {
+        "input": "burger",
+        "output": "food"
+    },
+    {
+        "input": "shark",
+        "output": "animal"
+    },
+    {
+        "input": "photoshop",
+        "output": "software"
+    },
+    {
+        "input": "diamante",
+        "output": "gemstone"
+    },
+    {
+        "input": "ford",
+        "output": "car"
+    },
+    {
+        "input": "instagram",
+        "output": "application"
+    },
+    {
+        "input": "omlette",
+        "output": "dish"
+    },
+    {
+        "input": "rome",
+        "output": "city"
+    },
+    {
+        "input": "salman",
+        "output": "actor"
+    },
+    {
+        "input": "acrylic",
+        "output": "paint"
+    },
+    {
+        "input": "fridge",
+        "output": "appliance"
+    },
+    {
+        "input": "dubai",
+        "output": "city"
+    },
+    {
+        "input": "net",
+        "output": "tool"
+    },
+    {
+        "input": "boots",
+        "output": "shoes"
+    },
+    {
+        "input": "adobe",
+        "output": "company"
+    },
+    {
+        "input": "witch",
+        "output": "character"
+    },
+    {
+        "input": "ronaldo",
+        "output": "footballer"
+    },
+    {
+        "input": "reebok",
+        "output": "brand"
+    },
+    {
+        "input": "miami",
+        "output": "city"
+    },
+    {
+        "input": "equator",
+        "output": "geography"
+    },
+    {
+        "input": "renaissance",
+        "output": "era"
+    },
+    {
+        "input": "bolero",
+        "output": "dance"
+    },
+    {
+        "input": "google",
+        "output": "company"
+    },
+    {
+        "input": "uplifting",
+        "output": "emotion"
+    },
+    {
+        "input": "cyprus",
+        "output": "country"
+    },
+    {
+        "input": "zirconium",
+        "output": "element"
+    },
+    {
+        "input": "checkers",
+        "output": "game"
+    },
+    {
+        "input": "tree",
+        "output": "plant"
+    },
+    {
+        "input": "dell",
+        "output": "company"
+    },
+    {
+        "input": "gratitude",
+        "output": "emotion"
+    },
+    {
+        "input": "netball",
+        "output": "sport"
+    },
+    {
+        "input": "astronaut",
+        "output": "occupation"
+    },
+    {
+        "input": "umbrella",
+        "output": "utility"
+    },
+    {
+        "input": "funnel",
+        "output": "tool"
+    },
+    {
+        "input": "baker",
+        "output": "profession"
+    },
+    {
+        "input": "broccoli",
+        "output": "vegetable"
+    },
+    {
+        "input": "ebony",
+        "output": "wood"
+    },
+    {
+        "input": "monet",
+        "output": "painter"
+    },
+    {
+        "input": "new york",
+        "output": "city"
+    },
+    {
+        "input": "german",
+        "output": "language"
+    },
+    {
+        "input": "pacific",
+        "output": "ocean"
+    },
+    {
+        "input": "bordeaux",
+        "output": "wine"
+    },
+    {
+        "input": "taj mahal",
+        "output": "monument"
+    },
+    {
+        "input": "harry potter",
+        "output": "book"
+    },
+    {
+        "input": "bruce lee",
+        "output": "actor"
+    },
+    {
+        "input": "aladdin",
+        "output": "movie"
+    },
+    {
+        "input": "new zealand",
+        "output": "country"
+    },
+    {
+        "input": "diamonds",
+        "output": "gemstone"
+    },
+    {
+        "input": "illustration",
+        "output": "art"
+    },
+    {
+        "input": "sunday",
+        "output": "day"
+    },
+    {
+        "input": "billie eilish",
+        "output": "singer"
+    },
+    {
+        "input": "tracey emin",
+        "output": "artist"
+    },
+    {
+        "input": "quidditch",
+        "output": "sport"
+    },
+    {
+        "input": "colosseum",
+        "output": "landmark"
+    },
+    {
+        "input": "eiffel tower",
+        "output": "monument"
+    },
+    {
+        "input": "mona lisa",
+        "output": "painting"
+    },
+    {
+        "input": "aristotle",
+        "output": "philosopher"
+    },
+    {
+        "input": "salsa",
+        "output": "dance"
+    },
+    {
+        "input": "ganges",
+        "output": "river"
+    },
+    {
+        "input": "ginger",
+        "output": "spice"
+    },
+    {
+        "input": "clam",
+        "output": "seafood"
+    },
+    {
+        "input": "superman",
+        "output": "superhero"
+    },
+    {
+        "input": "audi",
+        "output": "car"
+    },
+    {
+        "input": "mug",
+        "output": "container"
+    },
+    {
+        "input": "bald",
+        "output": "characteristic"
+    },
+    {
+        "input": "t-shirt",
+        "output": "clothing"
+    },
+    {
+        "input": "whatsapp",
+        "output": "application"
+    },
+    {
+        "input": "terror",
+        "output": "emotion"
+    },
+    {
+        "input": "sunflower",
+        "output": "plant"
+    },
+    {
+        "input": "sony",
+        "output": "corporation"
+    },
+    {
+        "input": "balloon",
+        "output": "object"
+    },
+    {
+        "input": "thinkpad",
+        "output": "laptop"
+    },
+    {
+        "input": "oval",
+        "output": "shape"
+    },
+    {
+        "input": "corona",
+        "output": "beer"
+    },
+    {
+        "input": "limestone",
+        "output": "rock"
+    },
+    {
+        "input": "spoon",
+        "output": "utensil"
+    },
+    {
+        "input": "newspaper",
+        "output": "media"
+    },
+    {
+        "input": "mandarin",
+        "output": "dialect"
+    },
+    {
+        "input": "statue",
+        "output": "monument"
+    },
+    {
+        "input": "seagull",
+        "output": "seabird"
+    },
+    {
+        "input": "fever",
+        "output": "sickness"
+    },
+    {
+        "input": "train",
+        "output": "transportation"
+    },
+    {
+        "input": "daffodil",
+        "output": "flower"
+    },
+    {
+        "input": "bee",
+        "output": "insect"
+    },
+    {
+        "input": "salmon",
+        "output": "fish"
+    },
+    {
+        "input": "bonsai",
+        "output": "plant"
+    },
+    {
+        "input": "athens",
+        "output": "city"
+    },
+    {
+        "input": "brave",
+        "output": "adjective"
+    },
+    {
+        "input": "buick",
+        "output": "car"
+    },
+    {
+        "input": "boxing",
+        "output": "sport"
+    },
+    {
+        "input": "morning",
+        "output": "timeofday"
+    },
+    {
+        "input": "rings",
+        "output": "accessories"
+    },
+    {
+        "input": "oatmeal",
+        "output": "cereal"
+    },
+    {
+        "input": "ink",
+        "output": "stationery"
+    },
+    {
+        "input": "solitaire",
+        "output": "cardgame"
+    },
+    {
+        "input": "pacifier",
+        "output": "babyitem"
+    },
+    {
+        "input": "egypt",
+        "output": "ancient civilization"
+    },
+    {
+        "input": "telescope",
+        "output": "astronomy equipment"
+    },
+    {
+        "input": "desktop",
+        "output": "computer"
+    },
+    {
+        "input": "cardiology",
+        "output": "medical specialty"
+    },
+    {
+        "input": "cheerleading",
+        "output": "sport"
+    },
+    {
+        "input": "candle",
+        "output": "decor"
+    },
+    {
+        "input": "rubik",
+        "output": "puzzle"
+    },
+    {
+        "input": "husky",
+        "output": "breedofdog"
+    },
+    {
+        "input": "enthused",
+        "output": "emotion"
+    },
+    {
+        "input": "ibuprofen",
+        "output": "medication"
+    },
+    {
+        "input": "sun",
+        "output": "star"
+    },
+    {
+        "input": "carpenter",
+        "output": "profession"
+    },
+    {
+        "input": "diabetes",
+        "output": "disease"
+    },
+    {
+        "input": "pistachio",
+        "output": "flavor"
+    },
+    {
+        "input": "august",
+        "output": "month"
+    },
+    {
+        "input": "granite",
+        "output": "rock"
+    },
+    {
+        "input": "monopoly",
+        "output": "board game"
+    },
+    {
+        "input": "magician",
+        "output": "entertainer"
+    },
+    {
+        "input": "hypnosis",
+        "output": "therapy"
+    },
+    {
+        "input": "alpaca",
+        "output": "animal"
+    },
+    {
+        "input": "jump",
+        "output": "body movement"
+    },
+    {
+        "input": "bicep",
+        "output": "muscle"
+    },
+    {
+        "input": "helicopter",
+        "output": "aircraft"
+    },
+    {
+        "input": "art",
+        "output": "subject"
+    },
+    {
+        "input": "robbery",
+        "output": "crime"
+    },
+    {
+        "input": "smartphone",
+        "output": "gadget"
+    },
+    {
+        "input": "barista",
+        "output": "job"
+    },
+    {
+        "input": "clown",
+        "output": "circus performer"
+    },
+    {
+        "input": "optimist",
+        "output": "personality"
+    },
+    {
+        "input": "hiv",
+        "output": "virus"
+    },
+    {
+        "input": "sunscreen",
+        "output": "skincare product"
+    },
+    {
+        "input": "pilot",
+        "output": "profession"
+    },
+    {
+        "input": "banjo",
+        "output": "instrument"
+    },
+    {
+        "input": "park",
+        "output": "public place"
+    },
+    {
+        "input": "sunshine",
+        "output": "weather condition"
+    },
+    {
+        "input": "wisdom",
+        "output": "virtue"
+    },
+    {
+        "input": "saturday",
+        "output": "weekday"
+    },
+    {
+        "input": "goblin",
+        "output": "mythical creature"
+    },
+    {
+        "input": "panda",
+        "output": "animal"
+    },
+    {
+        "input": "juliet",
+        "output": "name"
+    },
+    {
+        "input": "omaha",
+        "output": "city"
+    },
+    {
+        "input": "mars",
+        "output": "planet"
+    },
+    {
+        "input": "albatross",
+        "output": "bird"
+    },
+    {
+        "input": "poker",
+        "output": "game"
+    },
+    {
+        "input": "rajasthan",
+        "output": "state"
+    },
+    {
+        "input": "starbucks",
+        "output": "company"
+    },
+    {
+        "input": "blues",
+        "output": "music"
+    },
+    {
+        "input": "alaska",
+        "output": "state"
+    },
+    {
+        "input": "smurf",
+        "output": "cartoon character"
+    },
+    {
+        "input": "omega",
+        "output": "greek alphabet"
+    },
+    {
+        "input": "history",
+        "output": "school subject"
+    },
+    {
+        "input": "pasta",
+        "output": "food"
+    },
+    {
+        "input": "jalapeno",
+        "output": "pepper"
+    },
+    {
+        "input": "durian",
+        "output": "fruit"
+    },
+    {
+        "input": "thriller",
+        "output": "movie genre"
+    },
+    {
+        "input": "aerosmith",
+        "output": "band"
+    },
+    {
+        "input": "obama",
+        "output": "president"
+    },
+    {
+        "input": "forest",
+        "output": "biome"
+    },
+    {
+        "input": "iguana",
+        "output": "reptile"
+    },
+    {
+        "input": "gospel",
+        "output": "music"
+    },
+    {
+        "input": "anthropology",
+        "output": "science"
+    },
+    {
+        "input": "book",
+        "output": "object"
+    },
+    {
+        "input": "jumper",
+        "output": "clothing"
+    },
+    {
+        "input": "asia",
+        "output": "continent"
+    },
+    {
+        "input": "goat",
+        "output": "animal"
+    },
+    {
+        "input": "tourism",
+        "output": "industry"
+    },
+    {
+        "input": "drum",
+        "output": "instrument"
+    },
+    {
+        "input": "walnut",
+        "output": "nut"
+    },
+    {
+        "input": "dab",
+        "output": "dance move"
+    },
+    {
+        "input": "onions",
+        "output": "vegetable"
+    },
+    {
+        "input": "expectorate",
+        "output": "verbs"
+    },
+    {
+        "input": "penguin",
+        "output": "bird"
+    },
+    {
+        "input": "antarctica",
+        "output": "continent"
+    },
+    {
+        "input": "michigan",
+        "output": "state"
+    },
+    {
+        "input": "constitution",
+        "output": "legal document"
+    },
+    {
+        "input": "news",
+        "output": "media"
+    },
+    {
+        "input": "barracuda",
+        "output": "fish"
+    },
+    {
+        "input": "evolution",
+        "output": "scientific theory."
+    },
+    {
+        "input": "mahogany",
+        "output": "wood"
+    },
+    {
+        "input": "twitter",
+        "output": "application"
+    },
+    {
+        "input": "volcano",
+        "output": "geological formation"
+    },
+    {
+        "input": "oscar",
+        "output": "award"
+    },
+    {
+        "input": "modernism",
+        "output": "art movement"
+    },
+    {
+        "input": "gabardine",
+        "output": "fabric"
+    },
+    {
+        "input": "atlantis",
+        "output": "mythology"
+    },
+    {
+        "input": "chemist",
+        "output": "profession"
+    },
+    {
+        "input": "hamlet",
+        "output": "play"
+    },
+    {
+        "input": "java",
+        "output": "programming language"
+    },
+    {
+        "input": "john",
+        "output": "name"
+    },
+    {
+        "input": "pentagon",
+        "output": "shape"
+    },
+    {
+        "input": "eraser",
+        "output": "stationery"
+    },
+    {
+        "input": "einstein",
+        "output": "scientist"
+    },
+    {
+        "input": "noose",
+        "output": "knot"
+    },
+    {
+        "input": "avocado",
+        "output": "fruit"
+    },
+    {
+        "input": "android",
+        "output": "operating system"
+    },
+    {
+        "input": "scorpion",
+        "output": "arachnid"
+    },
+    {
+        "input": "blender",
+        "output": "appliance"
+    },
+    {
+        "input": "almond",
+        "output": "nut"
+    },
+    {
+        "input": "apartment",
+        "output": "housing"
+    },
+    {
+        "input": "gin",
+        "output": "beverage"
+    },
+    {
+        "input": "coral",
+        "output": "animal"
+    },
+    {
+        "input": "horse",
+        "output": "mammal"
+    },
+    {
+        "input": "pyramid",
+        "output": "building"
+    },
+    {
+        "input": "polaroid",
+        "output": "camera"
+    },
+    {
+        "input": "aries",
+        "output": "zodiac sign"
+    },
+    {
+        "input": "puppy",
+        "output": "animal"
+    },
+    {
+        "input": "scarlet",
+        "output": "colour"
+    },
+    {
+        "input": "hamster",
+        "output": "pet"
+    },
+    {
+        "input": "happy",
+        "output": "emotion"
+    },
+    {
+        "input": "mystery",
+        "output": "genre"
+    },
+    {
+        "input": "thesun",
+        "output": "newspaper"
+    },
+    {
+        "input": "hiker",
+        "output": "activity"
+    },
+    {
+        "input": "ikea",
+        "output": "brand"
+    },
+    {
+        "input": "bengali",
+        "output": "language"
+    },
+    {
+        "input": "ballet",
+        "output": "dance"
+    },
+    {
+        "input": "aspirin",
+        "output": "medicine"
+    },
+    {
+        "input": "cactus",
+        "output": "plant"
+    },
+    {
+        "input": "money",
+        "output": "currency"
+    },
+    {
+        "input": "ambulance",
+        "output": "vehicle"
+    },
+    {
+        "input": "origami",
+        "output": "craft"
+    },
+    {
+        "input": "croissant",
+        "output": "pastry"
+    },
+    {
+        "input": "dallas",
+        "output": "city"
+    },
+    {
+        "input": "asparagus",
+        "output": "vegetable"
+    },
+    {
+        "input": "mayonnaise",
+        "output": "condiment"
+    },
+    {
+        "input": "obelisk",
+        "output": "monument"
+    },
+    {
+        "input": "hamstring",
+        "output": "muscle"
+    },
+    {
+        "input": "dodge",
+        "output": "car"
+    },
+    {
+        "input": "mojito",
+        "output": "cocktail"
+    },
+    {
+        "input": "cosmetology",
+        "output": "profession"
+    },
+    {
+        "input": "spring",
+        "output": "season"
+    },
+    {
+        "input": "rabbit",
+        "output": "animal"
+    },
+    {
+        "input": "vancouver",
+        "output": "city"
+    },
+    {
+        "input": "wikipedia",
+        "output": "website."
+    },
+    {
+        "input": "england",
+        "output": "country"
+    },
+    {
+        "input": "chinese",
+        "output": "language"
+    },
+    {
+        "input": "carrot",
+        "output": "vegetable"
+    },
+    {
+        "input": "pop",
+        "output": "genre"
+    },
+    {
+        "input": "eiffel",
+        "output": "landmark"
+    },
+    {
+        "input": "coal",
+        "output": "fossil fuel"
+    },
+    {
+        "input": "olive",
+        "output": "tree"
+    },
+    {
+        "input": "berlin",
+        "output": "city"
+    },
+    {
+        "input": "greek",
+        "output": "language"
+    },
+    {
+        "input": "eclipse",
+        "output": "astronomical event"
+    },
+    {
+        "input": "octopus",
+        "output": "animal"
+    },
+    {
+        "input": "silk",
+        "output": "textile"
+    },
+    {
+        "input": "leonardo",
+        "output": "artist"
+    },
+    {
+        "input": "cantaloupe",
+        "output": "melon"
+    },
+    {
+        "input": "dove",
+        "output": "bird."
+    },
+    {
+        "input": "ski",
+        "output": "sport"
+    },
+    {
+        "input": "dictionary",
+        "output": "book"
+    },
+    {
+        "input": "sparrow",
+        "output": "bird"
+    },
+    {
+        "input": "mermaid",
+        "output": "myth"
+    },
+    {
+        "input": "explorer",
+        "output": "profession"
+    },
+    {
+        "input": "ripple",
+        "output": "cryptocurrency"
+    },
+    {
+        "input": "baltic",
+        "output": "sea"
+    },
+    {
+        "input": "turtle",
+        "output": "reptile"
+    },
+    {
+        "input": "caviar",
+        "output": "food"
+    },
+    {
+        "input": "nile",
+        "output": "river"
+    },
+    {
+        "input": "espresso",
+        "output": "coffee"
+    },
+    {
+        "input": "pumpkin",
+        "output": "vegetable"
+    },
+    {
+        "input": "deodorant",
+        "output": "toiletry"
+    },
+    {
+        "input": "lobster",
+        "output": "seafood"
+    },
+    {
+        "input": "jaguar",
+        "output": "automobile"
+    },
+    {
+        "input": "beethoven",
+        "output": "composer"
+    },
+    {
+        "input": "insurance",
+        "output": "industry"
+    },
+    {
+        "input": "firefox",
+        "output": "browser"
+    },
+    {
+        "input": "influenza",
+        "output": "disease"
+    },
+    {
+        "input": "ramen",
+        "output": "food"
+    },
+    {
+        "input": "september",
+        "output": "month"
+    },
+    {
+        "input": "cashew",
+        "output": "nut"
+    },
+    {
+        "input": "youtube",
+        "output": "platform"
+    },
+    {
+        "input": "peridot",
+        "output": "gemstone"
+    },
+    {
+        "input": "thunderstorm",
+        "output": "weather"
+    },
+    {
+        "input": "marlboro",
+        "output": "cigarettes"
+    },
+    {
+        "input": "horoscope",
+        "output": "prediction"
+    },
+    {
+        "input": "lego",
+        "output": "toy"
+    },
+    {
+        "input": "zodiac",
+        "output": "astrology"
+    },
+    {
+        "input": "iceberg",
+        "output": "ice"
+    },
+    {
+        "input": "jacket",
+        "output": "clothing"
+    },
+    {
+        "input": "bus",
+        "output": "vehicle"
+    },
+    {
+        "input": "firewall",
+        "output": "technology"
+    },
+    {
+        "input": "candy",
+        "output": "snack"
+    },
+    {
+        "input": "bottle",
+        "output": "container"
+    },
+    {
+        "input": "decathlon",
+        "output": "event"
+    },
+    {
+        "input": "mountain",
+        "output": "landform"
+    },
+    {
+        "input": "hindi",
+        "output": "language"
+    },
+    {
+        "input": "printer",
+        "output": "electronics"
+    },
+    {
+        "input": "peanut",
+        "output": "nut"
+    },
+    {
+        "input": "italian",
+        "output": "language"
+    },
+    {
+        "input": "kite",
+        "output": "toy"
+    },
+    {
+        "input": "farsi",
+        "output": "language"
+    },
+    {
+        "input": "march",
+        "output": "month"
+    },
+    {
+        "input": "paper",
+        "output": "material"
+    },
+    {
+        "input": "literature",
+        "output": "subject"
+    },
+    {
+        "input": "steak",
+        "output": "food"
+    },
+    {
+        "input": "oranges",
+        "output": "fruit"
+    },
+    {
+        "input": "geography",
+        "output": "subject"
+    },
+    {
+        "input": "frog",
+        "output": "animal"
+    },
+    {
+        "input": "burgers",
+        "output": "food"
+    },
+    {
+        "input": "fries",
+        "output": "food"
+    },
+    {
+        "input": "mcdonald's",
+        "output": "brand"
+    },
+    {
+        "input": "grapes",
+        "output": "fruit"
+    },
+    {
+        "input": "pepsi",
+        "output": "brand"
+    },
+    {
+        "input": "sociology",
+        "output": "subject"
+    },
+    {
+        "input": "pancakes",
+        "output": "food"
+    },
+    {
+        "input": "wolf",
+        "output": "animal"
+    },
+    {
+        "input": "gucci",
+        "output": "brand"
+    },
+    {
+        "input": "maroon",
+        "output": "color"
+    },
+    {
+        "input": "chanel",
+        "output": "brand"
+    },
+    {
+        "input": "papaya",
+        "output": "fruit"
+    },
+    {
+        "input": "grey",
+        "output": "color"
+    },
+    {
+        "input": "owl",
+        "output": "animal"
+    },
+    {
+        "input": "cycling",
+        "output": "sport"
+    },
+    {
+        "input": "beige",
+        "output": "color"
+    },
+    {
+        "input": "engineering",
+        "output": "subject"
+    },
+    {
+        "input": "uk",
+        "output": "country"
+    },
+    {
+        "input": "sausages",
+        "output": "food"
+    },
+    {
+        "input": "lemon",
+        "output": "fruit"
+    },
+    {
+        "input": "chair",
+        "output": "furniture"
+    },
+    {
+        "input": "april",
+        "output": "month"
+    },
+    {
+        "input": "atom",
+        "output": "science"
+    },
+    {
+        "input": "cornell",
+        "output": "university"
+    },
+    {
+        "input": "calculus",
+        "output": "mathematics"
+    },
+    {
+        "input": "popcorn",
+        "output": "snack"
+    },
+    {
+        "input": "nikon",
+        "output": "camera"
+    },
+    {
+        "input": "sudoku",
+        "output": "puzzle"
+    },
+    {
+        "input": "frisbee",
+        "output": "toy"
+    },
+    {
+        "input": "wallet",
+        "output": "object"
+    },
+    {
+        "input": "cookie",
+        "output": "food"
+    },
+    {
+        "input": "music",
+        "output": "art"
+    },
+    {
+        "input": "elevator",
+        "output": "transport"
+    },
+    {
+        "input": "europe",
+        "output": "continent"
+    },
+    {
+        "input": "cell",
+        "output": "biology"
+    },
+    {
+        "input": "computer",
+        "output": "electronics"
+    },
+    {
+        "input": "kia",
+        "output": "car"
+    },
+    {
+        "input": "fitness",
+        "output": "activity"
+    },
+    {
+        "input": "armadillo",
+        "output": "animal"
+    },
+    {
+        "input": "beret",
+        "output": "hat"
+    },
+    {
+        "input": "sodoku",
+        "output": "game"
+    },
+    {
+        "input": "spongebone",
+        "output": "cartoon"
+    },
+    {
+        "input": "aspen",
+        "output": "tree"
+    },
+    {
+        "input": "astronomy",
+        "output": "science"
+    },
+    {
+        "input": "yoghurt",
+        "output": "dairy"
+    },
+    {
+        "input": "frozen",
+        "output": "movie"
+    },
+    {
+        "input": "kanye",
+        "output": "singer"
+    },
+    {
+        "input": "beach",
+        "output": "location"
+    },
+    {
+        "input": "diesel",
+        "output": "fuel"
+    },
+    {
+        "input": "photographer",
+        "output": "occupation"
+    },
+    {
+        "input": "trump",
+        "output": "politician"
+    },
+    {
+        "input": "martini",
+        "output": "cocktail"
+    },
+    {
+        "input": "monalisa",
+        "output": "painting"
+    },
+    {
+        "input": "basketbal",
+        "output": "sport"
+    },
+    {
+        "input": "elder",
+        "output": "sibling"
+    },
+    {
+        "input": "rhubarb",
+        "output": "vegetable"
+    },
+    {
+        "input": "forsythia",
+        "output": "plant"
+    },
+    {
+        "input": "woodpecker",
+        "output": "bird"
+    },
+    {
+        "input": "checks",
+        "output": "pattern"
+    },
+    {
+        "input": "gouda",
+        "output": "cheese"
+    },
+    {
+        "input": "publicist",
+        "output": "career"
+    },
+    {
+        "input": "orthodontist",
+        "output": "occupation"
+    },
+    {
+        "input": "botticelli",
+        "output": "artist"
+    },
+    {
+        "input": "chicago",
+        "output": "city"
+    },
+    {
+        "input": "vulture",
+        "output": "bird"
+    },
+    {
+        "input": "maple",
+        "output": "tree"
+    },
+    {
+        "input": "sonnet",
+        "output": "poetry"
+    },
+    {
+        "input": "monotheism",
+        "output": "religion"
+    },
+    {
+        "input": "stonehenge",
+        "output": "landmark"
+    },
+    {
+        "input": "mace",
+        "output": "weapon"
+    },
+    {
+        "input": "nylon",
+        "output": "material"
+    },
+    {
+        "input": "neuschwanstein",
+        "output": "castle"
+    },
+    {
+        "input": "amethyst",
+        "output": "mineral"
+    },
+    {
+        "input": "alps",
+        "output": "mountain"
+    },
+    {
+        "input": "donkey",
+        "output": "animal"
+    },
+    {
+        "input": "spatula",
+        "output": "utensil"
+    },
+    {
+        "input": "loafers",
+        "output": "shoes"
+    },
+    {
+        "input": "barcelona",
+        "output": "city"
+    },
+    {
+        "input": "ipad",
+        "output": "gadget"
+    },
+    {
+        "input": "oprah",
+        "output": "celebrity"
+    },
+    {
+        "input": "snapchat",
+        "output": "app"
+    },
+    {
+        "input": "maths",
+        "output": "subject"
+    },
+    {
+        "input": "bieber",
+        "output": "musician"
+    },
+    {
+        "input": "eurostar",
+        "output": "train"
+    },
+    {
+        "input": "brussels",
+        "output": "city"
+    },
+    {
+        "input": "anime",
+        "output": "genre"
+    },
+    {
+        "input": "microwave",
+        "output": "appliance"
+    },
+    {
+        "input": "sydney",
+        "output": "city"
+    },
+    {
+        "input": "madona",
+        "output": "celebrity"
+    },
+    {
+        "input": "diving",
+        "output": "activity"
+    },
+    {
+        "input": "painting",
+        "output": "art"
+    },
+    {
+        "input": "rectangle",
+        "output": "shape"
+    },
+    {
+        "input": "compassion",
+        "output": "virtue"
+    },
+    {
+        "input": "rihanna",
+        "output": "celebrity"
+    },
+    {
+        "input": "hiking",
+        "output": "activity"
+    },
+    {
+        "input": "gardening",
+        "output": "hobby"
+    },
+    {
+        "input": "sculpture",
+        "output": "art"
+    },
+    {
+        "input": "integrity",
+        "output": "virtue"
+    },
+    {
+        "input": "messi",
+        "output": "celebrity"
+    },
+    {
+        "input": "cooking",
+        "output": "hobby"
+    },
+    {
+        "input": "patience",
+        "output": "virtue"
+    },
+    {
+        "input": "adele",
+        "output": "celebrity"
+    },
+    {
+        "input": "skirt",
+        "output": "clothing"
+    },
+    {
+        "input": "climbing",
+        "output": "activity"
+    },
+    {
+        "input": "knitting",
+        "output": "hobby"
+    },
+    {
+        "input": "hexagon",
+        "output": "shape"
+    },
+    {
+        "input": "humility",
+        "output": "virtue"
+    },
+    {
+        "input": "beyonce",
+        "output": "celebrity"
+    },
+    {
+        "input": "trousers",
+        "output": "clothing"
+    },
+    {
+        "input": "writing",
+        "output": "hobby"
+    },
+    {
+        "input": "calligraphy",
+        "output": "art"
+    },
+    {
+        "input": "courage",
+        "output": "virtue"
+    },
+    {
+        "input": "porsche",
+        "output": "car"
+    },
+    {
+        "input": "peony",
+        "output": "flower"
+    }
+]
