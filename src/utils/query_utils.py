@@ -6,8 +6,8 @@ import einops
 import torch
 import torch.nn.functional as F
 
-from utils.model_utils import ExtendedLanguageModel
-from utils.ICL_utils import ICLDataset, DatasetConstructor
+from .model_utils import ExtendedLanguageModel
+from .ICL_utils import ICLDataset, DatasetConstructor
 
 def generate_completions(
     model: ExtendedLanguageModel,

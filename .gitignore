@@ -3,9 +3,10 @@
 *.ipynb_checkpoints
 __pycache__
 *__pycache__
+.DS_Store
+*.DS_Store
 
-# Results and Figures
-*results
+# Files 
 results/*
 *ConceptVectors_acl_2025
 ConceptVectors_acl_2025/*

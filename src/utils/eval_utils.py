@@ -12,7 +12,7 @@ from scipy.ndimage import label
 from scipy.stats import spearmanr
 from scipy.spatial.distance import squareform
 
-from utils.model_utils import ExtendedLanguageModel
+from .model_utils import ExtendedLanguageModel
 
 
 def batch_process_layers(n_layers, batch_size, start=0):
@@ -112,68 +112,54 @@ def accuracy_completions(
     accuracy = np.mean(correct)
     return (accuracy, correct) if return_correct else accuracy
     
+def get_bounds(design_matrix) -> List[Tuple[int, int]]:
+    labeled, num_features = label(design_matrix)
+    # For each connected component, compute its bounding box.
+    # The bounding box is given by the top-left and bottom-right indices.
+    rectangles = []
+    for region in range(1, num_features + 1):
+        # Get the indices (row, col) where the region is located.
+        coords = np.argwhere(labeled == region)
+        # The top-left corner is the minimum row and col;
+        # the bottom-right corner is the maximum row and col.
+        top_left = coords.min(axis=0)
+        bottom_right = coords.max(axis=0)
+        rectangles.append((tuple(top_left), tuple(bottom_right)))
+    return rectangles
+
 class SimilarityMatrix:
     def __init__(self, 
-        data: np.ndarray|List[np.ndarray] = None,
         sim_mat: np.ndarray = None,
         tasks: List[str]|np.ndarray = None,
-        design_matrix_list: List[str] = None
+        attribute_list: List[str] = None
     ):
-        assert data is not None or sim_mat is not None, 'Either data or a similarity matrix must be provided'
-
-        if data is not None:
-            data = np.concatenate(data) if isinstance(data, list) else data
-            self.matrix = get_similarity_matrix(self.data)
-        else:
-            self.matrix = sim_mat
-
+        self.matrix = sim_mat
         self.sim_mode = 'Similarity'
-        self.design_matrix_list = np.array(design_matrix_list)
+        self.design_matrix = None
         
         if tasks is not None:
-
             # Repeat the task names if the data is divisible by the number of tasks
             if self.matrix.shape[0] % len(tasks) == 0:
                 self.tasks_list = np.repeat(tasks, self.matrix.shape[0] // len(tasks))
+            elif self.matrix.shape[0] == len(tasks):
+                self.tasks_list = np.array(tasks)
             else:
-                self.tasks_list = tasks
+                raise ValueError('The number of tasks must be equal to the number of rows in the similarity matrix, or the number of rows must be divisible by the number of tasks.')
             
             # Create a dictionary of unique indices for each task
             self.tasks_idx = get_unique_indices(self.tasks_list)
-
-            # Calculate the similarity ratio and RSA
-            # self.calculate_metrics()
-        
-        else:
-            self.design_matrix = None
-            self.within_sim = None
-            self.between_sim = None
-            self.sim_ratio = None
-            self.RSA = None
-        
-        if design_matrix_list is not None:
-            self.design_matrix = create_design_matrix(design_matrix_list)
-
-            np.fill_diagonal(self.design_matrix, 1)
-        else:
-            self.design_matrix = None
-
-    # def __str__(self):
-    #     top = f'[b]{self.sim_mode} Matrix[/] [b]({self.matrix.shape[0]} x {self.matrix.shape[1]})[/]'
-    #     if self.tasks_idx:
-    #         tasks = f'\nTasks: {list(self.tasks_idx.keys())}'
-    #     else:
-    #         tasks = '\nTasks: None'
-    #     top_length = max(len(top), len(tasks))
-    #     s = top + tasks + '\n' + '-'*top_length
-    #     s += f'\nWithin Task {self.sim_mode}: {self.within_sim:.2f}'
-    #     s += f'\nBetween Task {self.sim_mode}: {self.between_sim:.2f}'
-    #     s += f'\n{self.sim_mode} Ratio: {self.sim_ratio:.2f}'
-    #     s += f'\nRSA: {self.RSA:.2f}'
-    #     return s
     
-    def pretty_print(self):
-        rprint(str(self))
+        if attribute_list is not None:
+            # Repeat the task names if the data is divisible by the number of tasks
+            if self.matrix.shape[0] % len(attribute_list) == 0:
+                self.attribute_list = np.repeat(attribute_list, self.matrix.shape[0] // len(attribute_list))
+            elif self.matrix.shape[0] == len(attribute_list):
+                self.attribute_list = np.array(attribute_list)
+            else:
+                raise ValueError('The number of attributes must be equal to the number of rows in the similarity matrix, or the number of rows must be divisible by the number of attributes.')
+            
+            self.design_matrix = create_design_matrix(self.attribute_list)
+            np.fill_diagonal(self.design_matrix, 1)
 
     def toggle_similarity(self):
         '''
@@ -181,21 +167,6 @@ class SimilarityMatrix:
         '''
         self.matrix = 1 - self.matrix
         self.sim_mode = 'Similarity' if self.sim_mode == 'Dissimilarity' else 'Dissimilarity'
-        self.calculate_metrics(within_between=True, RSA=False) # RSA is not affected by the similarity mode
-
-    def calculate_metrics(self, within_between=True, RSA=True):
-        if within_between:
-            # Calculate the within and between task similarities
-            self.within_task_sims = within_task_similarity(self.matrix, self.tasks_idx)
-            self.between_task_sims = between_task_similarity(self.matrix, self.tasks_idx)
-
-            self.within_sim = np.mean(list(self.within_task_sims.values()))
-            self.between_sim = np.mean(list(self.between_task_sims.values()))
-            self.sim_ratio = self.within_sim / self.between_sim
-        if RSA:
-            self.design_matrix = self.create_design_matrix()
-            dissimilarity_matrix = 1 - self.matrix if self.sim_mode == 'Similarity' else self.matrix
-            self.RSA = compute_RSA(dissimilarity_matrix, self.design_matrix)
 
     def create_design_matrix(self):
         '''
@@ -205,19 +176,6 @@ class SimilarityMatrix:
         for task, (start, end) in self.tasks_idx.items():
             design_matrix[start:end+1, start:end+1] = 0
         return design_matrix
-    
-    def add_data(self, data: np.ndarray, tasks: Dict|List[str] = None):
-        '''
-        Add data to the similarity matrix
-        '''
-        add_mat = SimilarityMatrix(data, tasks)
-        if any(x == self.tasks_idx.values() for x in add_mat.tasks_idx.values()):
-            raise ValueError('Tasks in the new data are already present in the similarity matrix')
-        if self.tasks_idx:
-            add_mat.tasks_idx = {task: (start+len(self.tasks_list), end+len(self.tasks_list)) for task, (start, end) in add_mat.tasks_idx.items()}
-            self.tasks_idx = {**self.tasks_idx, **add_mat.tasks_idx}
-            self.tasks_list = np.concatenate([self.tasks_list, add_mat.tasks_list])
-            self.calculate_metrics()
     
     def relocate_tasks(self, tasks: List[str]):
         '''
@@ -233,7 +191,7 @@ class SimilarityMatrix:
         self.matrix = self.matrix[np.ix_(new_indices, new_indices)]
         if self.design_matrix is not None:
             self.design_matrix = self.design_matrix[np.ix_(new_indices, new_indices)]
-            self.design_matrix_list = self.design_matrix_list[new_indices]
+            self.attribute_list = self.attribute_list[new_indices]
         
     def filter_tasks(self, tasks: List[str]):
         '''
@@ -245,7 +203,6 @@ class SimilarityMatrix:
         tasks = tasks if isinstance(tasks, list) else [tasks]
 
         tasks_to_delete = [task for task in self.tasks_idx if task not in tasks]
-        print(tasks_to_delete)
         indices_to_delete = []
         for task in tasks_to_delete:
             if task not in self.tasks_idx:
@@ -258,7 +215,7 @@ class SimilarityMatrix:
             if self.design_matrix is not None:
                 self.design_matrix = np.delete(self.design_matrix, np.s_[start:end+1], axis=0)
                 self.design_matrix = np.delete(self.design_matrix, np.s_[start:end+1], axis=1)
-                self.design_matrix_list = np.delete(self.design_matrix_list, np.s_[start:end+1])
+                self.attribute_list = np.delete(self.attribute_list, np.s_[start:end+1])
             
             self.tasks_list = np.delete(self.tasks_list, np.s_[start:end+1])
             self.tasks_idx = get_unique_indices(self.tasks_list)
@@ -277,7 +234,7 @@ class SimilarityMatrix:
     def plot(
             self,
             title: str = None,
-            norm: Tuple[int, int] = None,
+            norm: Tuple[int, int] = (0, 1),
             rel_ticks: bool = True, 
             axis: plt.Axes = None, 
             labels: List[str] = None,
@@ -382,21 +339,6 @@ class SimilarityMatrix:
                 plt.show()
                 plt.close()
 
-def get_bounds(design_matrix) -> List[Tuple[int, int]]:
-    labeled, num_features = label(design_matrix)
-    # For each connected component, compute its bounding box.
-    # The bounding box is given by the top-left and bottom-right indices.
-    rectangles = []
-    for region in range(1, num_features + 1):
-        # Get the indices (row, col) where the region is located.
-        coords = np.argwhere(labeled == region)
-        # The top-left corner is the minimum row and col;
-        # the bottom-right corner is the maximum row and col.
-        top_left = coords.min(axis=0)
-        bottom_right = coords.max(axis=0)
-        rectangles.append((tuple(top_left), tuple(bottom_right)))
-    return rectangles
-
 class AccSimMat(SimilarityMatrix):
     def __init__(
         self,
@@ -404,7 +346,7 @@ class AccSimMat(SimilarityMatrix):
         acc_bool: List[bool]
     ):
         self.full_mat = sim_mat.matrix
-        self.full_design_matrix_list = sim_mat.design_matrix_list
+        self.full_design_matrix_list = sim_mat.attribute_list
         self.acc_bool = np.array(acc_bool)
         self.full_tasks_list = np.array(sim_mat.tasks_list)
         self.acc_mode = 'Correct'
@@ -414,7 +356,7 @@ class AccSimMat(SimilarityMatrix):
         sim_mat = self.full_mat[np.ix_(acc_bool, acc_bool)]
         tasks_list = self.full_tasks_list[acc_bool]
         design_matrix_list = self.full_design_matrix_list[acc_bool]
-        super().__init__(sim_mat=sim_mat, tasks=tasks_list, design_matrix_list=design_matrix_list)
+        super().__init__(sim_mat=sim_mat, tasks=tasks_list, attribute_list=design_matrix_list)
     
     def toggle_accuracy(self):
         self.acc_mode = 'Correct' if self.acc_mode == 'Incorrect' else 'Incorrect'

@@ -16,7 +16,7 @@ for index in ${!model_names[@]}; do
             --dataset_extract_size 50 \
             --dataset_eval_size 50 \
             --prompt_batch_size 50 \
-            --n_train 5 \
+            --n_train 10 \
             --remote_run \
             --seed 42 \
             --output_dir causal/ \

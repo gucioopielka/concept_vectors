@@ -16,6 +16,7 @@ for model_name in ${model_names[@]}; do
             --n_train 5 \
             --remote_run \
             --seed 42 \
+            --dataset_dir ../../data/todd_et_al/ \
             --output_dir CIE/
         
         if [ $? -eq 0 ]; then

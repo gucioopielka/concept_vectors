@@ -1,7 +1,8 @@
 import os
+import json
 import pandas as pd
 from nnsight import LanguageModel
-from globals import RESULTS_DIR
+from .globals import RESULTS_DIR
 
 
 class ExtendedLanguageModel:
@@ -17,7 +18,7 @@ class ExtendedLanguageModel:
 
         # Construct file paths for head data
         self.cie_path = os.path.join(RESULTS_DIR, 'CIE', f'{self.nickname}.csv')
-        self.rsa_path = os.path.join(RESULTS_DIR, 'RSA', f'{self.nickname}.csv')
+        self.rsa_path = os.path.join(RESULTS_DIR, 'RSA', f'rsa_{self.nickname}.csv')
 
         # Load fv heads if available
         if os.path.exists(self.cie_path):
@@ -30,6 +31,12 @@ class ExtendedLanguageModel:
             self.set_cv_heads()
         else:
             self.cv_heads = None
+
+        # Load best layer to intervene with if available
+        self.int_layer_path = os.path.join(RESULTS_DIR, 'intervention', f"{self.nickname}_intervene_layers.json")
+        if os.path.exists(self.int_layer_path):
+            layers = json.load(open(self.int_layer_path, 'r'))
+            self.cv_intervention_layer = int(layers.index(max(layers)))
 
     def __str__(self) -> str:
         return self.name
@@ -53,8 +60,8 @@ class ExtendedLanguageModel:
         df = pd.read_csv(self.cie_path)
 
         # Ensure the 'layer' and 'head' columns are of integer type
-        df['layer'] = df['layer'].astype(int)
-        df['head'] = df['head'].astype(int)
+        df['layer'] = df['Layer'].astype(int)
+        df['head'] = df['Head'].astype(int)
 
         # Create a list of (layer, head) tuples
         fv_heads = list(zip(df['layer'], df['head']))

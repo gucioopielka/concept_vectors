@@ -7,7 +7,8 @@ from textwrap import dedent
 import numpy as np
 from rich import print as rprint
 
-from utils.globals import DATASET_DIR
+from .globals import DATASET_DIR
+
 
 class ICLSequence:
     '''
@@ -220,7 +221,8 @@ class ICLDataset:
                 datasets = ['antonym', 'capitalize_first_letter', 'capitalize_last_letter', 'capitalize', 'english-french', 'synonym']
                 word_list = []
                 for dataset in datasets:
-                    file = json.load(open(f'data/ICL/abstractive/{dataset}.json', 'r'))
+                    file_path = os.path.join(data_dir, '..', 'todd_et_al', f'{dataset}.json')
+                    file = json.load(open(file_path, 'r'))
                     word_list.extend([i['input'] for i in file])
                 self.symbol_list = list(set(word_list)) # Remove duplicates
                 
@@ -239,7 +241,7 @@ class ICLDataset:
                 icl_d = ICLDataset(
                     d,
                     size,
-                    n_train,
+                    n_train // len(dataset),
                     response_type=response_type,
                     bidirectional=bidirectional,
                     seed=generate_seed(d, seed),
@@ -368,13 +370,24 @@ class ICLDataset:
     
     def print_example(self, item = 0):
         '''Prints a single example from the dataset.'''
-        s = f"[b u]{self.dataset}[/]\n\n"
-        for idx, (x, y) in enumerate(zip(self.seqs[item].x, self.seqs[item].y)):
-            if idx == len(self.seqs[item]) - 1:
-                s += f"Q: {x}\n[b]A[/]: [b cyan]{y}[/]\n"
-            else:
-                s += f"Q: {x}\n[b]A: {y}[/]\n\n"
-        rprint(s)
+        if self.response_type == 'multiple_choice':
+            s = f"[b u]{self.dataset}-mc[/]\n\n"
+            for idx, (x, y, options, correct) in enumerate(zip(self.seqs[item].x, self.seqs[item].y, self.seqs[item].options, self.seqs[item].correct)):
+                s += f"### Instruction: Q: {x} A: \n\n"
+                s += f"(a) {options[0]}\n(b) {options[1]}\n(c) {options[2]}\n(d) {options[3]}\n\n"
+                if idx == len(self.seqs[item]) - 1:
+                    s += f"### Response: ([b cyan]{['a', 'b', 'c', 'd'][correct]}[/]\n\n"
+                else:
+                    s += f"### Response: ([b]{['a', 'b', 'c', 'd'][correct]}[/])\n\n"
+            rprint(s)
+        else:
+            s = f"[b u]{self.dataset}[/]\n\n"
+            for idx, (x, y) in enumerate(zip(self.seqs[item].x, self.seqs[item].y)):
+                if idx == len(self.seqs[item]) - 1:
+                    s += f"Q: {x}\n[b]A[/]: [b cyan]{y}[/]\n"
+                else:
+                    s += f"Q: {x}\n[b]A: {y}[/]\n\n"
+            rprint(s)
 
 def generate_seed(value, seed=None):
     '''Generate a hash seed for a given value'''
@@ -395,59 +408,55 @@ class DatasetConstructor:
         data_dir: str = DATASET_DIR
     ):
         self.seed = seed
-        
-        # Ensure dataset_ids is a list
-        dataset_ids = dataset_ids if isinstance(dataset_ids, list) else [dataset_ids]
-
-        # Split the dataset IDs into different types
-        abstract_datasets = [i for i in dataset_ids if i.split('_')[0] in ['predecessor', 'successor']]
-        mc_datasets = [i for i in dataset_ids if i.split('-')[-1] == 'mc']
-        json_datasets = [i for i in dataset_ids if i in [f.split('.')[0] for f in os.listdir(data_dir)]]
-
-        assert len(abstract_datasets) + len(mc_datasets) + len(json_datasets) == len(dataset_ids), "Not all datasets have been found. Check spelling."
+        dataset_ids = dataset_ids if isinstance(dataset_ids, list) else [dataset_ids] # Ensure dataset_ids is a list
 
         # Create the datasets
         self.datasets = []
         self.prompts = []
         self.completions = []
         self.dataset_ids = []
-        for dataset_type in [json_datasets, mc_datasets, abstract_datasets]:
-            dataset_cfg = dict(
-                size=dataset_size,
-                n_train=n_train,
+        for dataset_id in dataset_ids:
+            # Determine the type and update dataset_cfg accordingly
+            if dataset_id.split('_')[0] in ['predecessor', 'successor']:
+                # It's an abstract dataset
+                dataset_cfg = {
+                    'size': dataset_size,
+                    'n_train': n_train,
+                    'dataset': dataset_id.split('_')[0],
+                    'symbols': dataset_id.split('_')[1],
+                    'seq_len': seq_len,
+                    'tokenizer': tokenizer,
+                }
+            elif dataset_id.split('-')[-1] == 'mc':
+                # It's a multiple choice dataset
+                dataset_cfg = {
+                    'size': dataset_size,
+                    'n_train': n_train,
+                    'dataset': dataset_id.split('-')[0],
+                    'response_type': 'multiple_choice'
+                }
+            elif dataset_id in [f.split('.')[0] for f in os.listdir(data_dir)]:
+                # It's a JSON dataset
+                dataset_cfg = {
+                    'size': dataset_size,
+                    'n_train': n_train,
+                    'dataset': dataset_id,
+                }
+            else:
+                raise ValueError(f"Dataset {dataset_id} not recognized.")
+            
+            # Create the dataset with a generated seed
+            dataset = ICLDataset(
+                **dataset_cfg,
+                seed=generate_seed(dataset_id, self.seed),
             )
+            
+            # Append dataset and its associated prompts/completions in order
+            self.datasets.append(dataset)
+            self.prompts.extend(dataset.prompts)
+            self.completions.extend(dataset.completions)
+            self.dataset_ids.append(dataset_id)
 
-            for dataset_id in dataset_type:
-                # Determine response type and symbols based on dataset type
-                if dataset_type == mc_datasets:
-                    dataset_cfg.update(
-                        dataset=dataset_id.split('-')[0],
-                        response_type='multiple_choice'
-                    )
-                elif dataset_type == abstract_datasets:
-                    dataset_cfg.update(
-                        dataset=dataset_id.split('_')[0],
-                        symbols=dataset_id.split('_')[1],
-                        seq_len=seq_len,
-                        tokenizer=tokenizer
-                    )
-                elif dataset_type == json_datasets:
-                    dataset_cfg.update(
-                        dataset=dataset_id,
-                    )
-                
-                # Create the dataset
-                dataset = ICLDataset(
-                    **dataset_cfg,
-                    seed=generate_seed(dataset_id, self.seed),
-                )
-
-                # Collect datasets, prompts, ys, and dataset names
-                self.datasets.append(dataset)
-                self.prompts.extend(dataset.prompts)
-                self.completions.extend(dataset.completions)
-                self.dataset_ids.append(dataset_id)
-        
         self.batch_size = batch_size if batch_size else len(self.prompts)
 
     def __getitem__(self, idx):

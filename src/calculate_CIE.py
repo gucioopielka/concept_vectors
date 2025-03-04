@@ -49,6 +49,7 @@ if __name__ == "__main__":
     parser.add_argument('--n_train', type=int, help="Number of training examples to use.", default=5)
     parser.add_argument("--remote_run", type=bool, help="Whether to run the script on a remote server.", default=True, action=argparse.BooleanOptionalAction)
     parser.add_argument("--seed", type=int, help="Random seed to use.", default=42)
+    parser.add_argument("--dataset_dir", type=str, help="Path to the directory with the data.", default=RESULTS_DIR)
     parser.add_argument("--output_dir", type=str, help="Path to save the files.")
 
     args = parser.parse_args()
@@ -59,7 +60,7 @@ if __name__ == "__main__":
     n_layers = model.config['n_layers']
 
     # Load intermediate results if they exist
-    intermediate_results_path = os.path.join(RESULTS_DIR, args.output_dir, f'cie_{model.nickname}.pkl')
+    intermediate_results_path = os.path.join(args.dataset_dir, args.output_dir, f'cie_{model.nickname}.pkl')
     if os.path.exists(intermediate_results_path):
         cie = pickle.load(open(intermediate_results_path, 'rb'))
         datasets = args.datasets[len(cie):] # Only process the remaining datasets
@@ -75,7 +76,7 @@ if __name__ == "__main__":
         print(f"\n{'- *'*5}\nProcessing dataset: {dataset_name} ...\n{'* -'*5}")
         
         # Load intermediate results if they exist
-        intermediate_results_dataset_path = os.path.join(RESULTS_DIR, args.output_dir, f'cie_{model.nickname}_{dataset_name}.pkl')
+        intermediate_results_dataset_path = os.path.join(args.dataset_dir, args.output_dir, f'cie_{model.nickname}_{dataset_name}.pkl')
         if os.path.exists(intermediate_results_dataset_path):
             results = pickle.load(open(intermediate_results_dataset_path, 'rb'))
             start = sum(batch.size(0) for batch in results) # Calculate the total number of layers processed so far
@@ -110,5 +111,5 @@ if __name__ == "__main__":
     aie = cie.mean(dim=0)
 
     # Save to CSV
-    output_path = os.path.join(RESULTS_DIR, args.output_dir, f'{model.nickname}.csv')
+    output_path = os.path.join(args.dataset_dir, args.output_dir, f'{model.nickname}.csv')
     save_to_csv(aie, output_path)
