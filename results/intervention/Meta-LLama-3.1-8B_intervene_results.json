@@ -1,0 +1,20 @@
+{
+    "zero_shot": {
+        "accuracy_org": 0.0,
+        "accuracy_fv": 0.5,
+        "accuracy_rv": 0.14
+    },
+    "antonym_eng": {
+        "accuracy_fv": 0.48,
+        "accuracy_rv": 0.42
+    },
+    "antonym_fr": {
+        "accuracy_fv": 0.2,
+        "accuracy_rv": 0.36
+    },
+    "antonym_eng-mc": {
+        "accuracy_fv": 0.2,
+        "accuracy_rv": 0.2
+    },
+    "original": 0.16
+}

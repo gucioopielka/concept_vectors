@@ -368,7 +368,7 @@ class ICLDataset:
         batch_completions = self.completions[start_idx:end_idx]
         return batch_prompts, batch_completions
     
-    def print_example(self, item = 0):
+    def pretty_print_item(self, item = 0):
         '''Prints a single example from the dataset.'''
         if self.response_type == 'multiple_choice':
             s = f"[b u]{self.dataset}-mc[/]\n\n"

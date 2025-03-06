@@ -21,7 +21,7 @@ for index in ${!model_names[@]}; do
             --remote_run \
             --seed 42 \
             --output_dir sim_mat/ \
-            --indicators_file ../data/task_attributes/indicators.json
+            --indicators_file ../data/task_attributes.json
         
         if [ $? -eq 0 ]; then
             echo "Script finished successfully for model ${model_name}."

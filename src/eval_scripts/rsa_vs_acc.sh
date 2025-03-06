@@ -16,7 +16,7 @@ for model_name in ${model_names[@]}; do
                 --remote_run \
                 --seed 42 \
                 --output_dir rsa_vs_acc/$(basename ${model_name})/ \
-                --indicators_file ../data/task_attributes/indicators.json
+                --indicators_file ../data/indicators.json
             
             if [ $? -eq 0 ]; then
                 echo "Script finished successfully for model ${model_name}."

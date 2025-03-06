@@ -6,7 +6,11 @@ from .globals import RESULTS_DIR
 
 
 class ExtendedLanguageModel:
-    def __init__(self, model_name: str, fv_heads_n: int = None, cv_heads_n: int = None):
+    def __init__(
+        self, model_name: str, 
+        cv_heads_n: int = None,
+        fv_heads_n: int = None 
+    ):
         self.lm = LanguageModel(model_name)
         self.name = model_name.lower()
         self.nickname = model_name.split('/')[1]

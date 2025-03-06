@@ -49,17 +49,6 @@ def get_unique_indices(s: pd.Series) -> Dict:
         result_dict[value] = (first_idx, last_idx)
     
     return result_dict
-
-def get_rule_sim_diagonal(rdm, rel_idx, sort=True):
-    rule_similarity = []
-    for relation, indices in rel_idx.items():
-        rule_similarity.append(np.mean(rdm[indices[0]:indices[1], indices[0]:indices[1]]))
-    
-    sim_df = pd.DataFrame({'Concept' : rel_idx.keys(), 'Similarity' : rule_similarity})
-    if sort:
-        return sim_df.sort_values(by='Similarity', ascending=False)
-    else:
-        return sim_df
     
 def within_task_similarity(rdm: np.ndarray, rel_idx: Dict[str, Tuple[int, int]]) -> Dict[str, float]:
     within_task_similarities = {}
@@ -96,7 +85,8 @@ def accuracy_completions(
         return_correct: bool = False
     ) -> Union[float, Tuple[float, List[bool]]]:
     '''
-    Calculate the accuracy of the model on the completions
+    Calculate the accuracy of the model on the completions.
+    Accuracy is defined as the proportion of completions that match the first token of the expected completions.
 
     Args:
         model (ExtendedLanguageModel): The model object
@@ -148,6 +138,10 @@ class SimilarityMatrix:
             
             # Create a dictionary of unique indices for each task
             self.tasks_idx = get_unique_indices(self.tasks_list)
+
+            # Calculate within and between task similarities
+            self.within_task_sims = within_task_similarity(self.matrix, self.tasks_idx)
+            self.between_task_sims = between_task_similarity(self.matrix, self.tasks_idx)
     
         if attribute_list is not None:
             # Repeat the task names if the data is divisible by the number of tasks
@@ -257,7 +251,7 @@ class SimilarityMatrix:
             
             if plot_lower_diag:
                 # Mask the upper diagonal
-                mask = np.triu(np.ones_like(self.matrix, dtype=bool), k=1)  
+                mask = np.triu(np.ones_like(self.matrix, dtype=bool), k=0)  
                 matrix_to_plot = np.ma.array(self.matrix, mask=mask) 
             else:
                 matrix_to_plot = self.matrix
@@ -267,16 +261,7 @@ class SimilarityMatrix:
             if title:
                 ax.set_title(title, fontsize=16)
 
-            if self.tasks_idx:
-                if plot_lower_diag:
-                    for i, (task1, (start1, end1)) in enumerate(self.tasks_idx.items()):
-                        for j, (task2, (start2, end2)) in enumerate(self.tasks_idx.items()):
-                            if i > j:  # Plot rectangles only for the lower triangle
-                                width = height = end2 - start2
-
-                                rect = patches.Rectangle((start2, start1), width, height, linewidth=0.5, edgecolor='black', facecolor='none')
-                                ax.add_patch(rect)
-            
+            if self.tasks_idx:            
                 if rel_ticks:
                     midpoints = [(start + end) / 2 for start, end in self.tasks_idx.values()]
                     ax.set_xticks(midpoints)
@@ -302,12 +287,13 @@ class SimilarityMatrix:
                             if i == j:  # Within-task mean value
                                 mean_value = self.within_task_sims[task1]
                                 ax.text(midpoint1, midpoint1, f'{mean_value:.2f}', ha='center', va='center', fontsize=9, color='black')
-                            elif i > j and not plot_lower_diag:  # Between-task mean value (upper diagonal)
-                                mean_value = self.between_task_sims[(task1, task2)]
-                                ax.text(midpoint1, midpoint2, f'{mean_value:.2f}', ha='center', va='center', fontsize=9, color='black')
-                            elif i < j: # Between-task mean value (lower diagonal)
-                                mean_value = self.between_task_sims[(task2, task1)]
-                                ax.text(midpoint1, midpoint2, f'{mean_value:.2f}', ha='center', va='center', fontsize=9, color='black')
+                            else:
+                                mean_value = self.between_task_sims.get((task1, task2), self.between_task_sims.get((task2, task1)))
+
+                            if i > j and plot_lower_diag:  # Between-task mean value (upper diagonal)
+                                continue
+                            
+                            ax.text(midpoint1, midpoint2, f'{mean_value:.2f}', ha='center', va='center', fontsize=9, color='black')
             
             if bounding_boxes: 
                 assert self.design_matrix is not None, 'Design matrix must be provided to plot bounding boxes'
@@ -328,9 +314,10 @@ class SimilarityMatrix:
                 cbar.ax.tick_params(labelsize=12)
 
             if plot_lower_diag:
-                # remove the top and right spines
                 ax.spines['top'].set_visible(False)
                 ax.spines['right'].set_visible(False)
+                ax.spines['left'].set_visible(False)
+                ax.spines['bottom'].set_visible(False)
 
             if save_path:
                 plt.savefig(save_path, dpi=dpi)

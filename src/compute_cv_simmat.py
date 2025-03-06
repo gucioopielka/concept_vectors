@@ -35,6 +35,9 @@ if __name__ == "__main__":
     indicators = json.load(open(args.indicators_file, 'r'))
     dataset_ids = list(indicators.keys())
 
+    # Filter abstract concepts
+    dataset_ids = [d for d in dataset_ids if d.split('_')[0] not in ['prev', 'next', 'predecessor', 'successor']]
+
     
     ### Create the dataset ###
     dataset_constructor = DatasetConstructor(
