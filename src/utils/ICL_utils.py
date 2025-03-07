@@ -5,7 +5,7 @@ import hashlib
 from textwrap import dedent
 
 import numpy as np
-from rich import print as rprint
+from rich.console import Console
 
 from .globals import DATASET_DIR
 
@@ -122,10 +122,6 @@ class ICLAbstractSequence:
         if len(symbols) > 4:
             symbols = np.random.choice(symbols, 4, replace=False)
         
-        elif symbols == 'number':
-            #TODO
-            pass
-        
         self.x, self.y = self.generate_seq_task(concept, symbols, seq_len)
 
     def generate_seq_task(self, concept, symbols, seq_len): 
@@ -198,6 +194,7 @@ class ICLDataset:
         data_dir: str = DATASET_DIR,
     ):  
         self.dataset = dataset
+        self.dataset_name = dataset
         self.response_type = response_type   
         self.size = size
         self.n_train = n_train
@@ -215,7 +212,7 @@ class ICLDataset:
         self.prompts = []
         self.completions = []
 
-        if dataset in ['predecessor', 'successor']:
+        if self.dataset in ['predecessor', 'successor']:
             if symbols == 'word':
                 # Create the word list from the datasets
                 datasets = ['antonym', 'capitalize_first_letter', 'capitalize_last_letter', 'capitalize', 'english-french', 'synonym']
@@ -234,6 +231,7 @@ class ICLDataset:
                 self.symbol_list = ['a', 'b', 'c', 'd']
             
             self.create_seq_dataset()
+            self.dataset_name = f"{self.dataset}_{symbols}"
         
         elif isinstance(dataset, list):
             seqs = []
@@ -281,6 +279,8 @@ class ICLDataset:
             self.word_pairs = [[i['input'], i['output']] for i in raw_data]   
             self.word_list = [word for word_pair in self.word_pairs for word in word_pair]
             self.create_json_dataset()
+            if response_type == 'multiple_choice':
+                self.dataset_name = f"{dataset}-mc"
                 
         self.batch_size = batch_size if batch_size else size
         self.num_batches = self.calculate_n_batches(self.batch_size)
@@ -371,7 +371,7 @@ class ICLDataset:
     def pretty_print_item(self, item = 0):
         '''Prints a single example from the dataset.'''
         if self.response_type == 'multiple_choice':
-            s = f"[b u]{self.dataset}-mc[/]\n\n"
+            s = f"[b u]{self.dataset_name}[/]\n\n"
             for idx, (x, y, options, correct) in enumerate(zip(self.seqs[item].x, self.seqs[item].y, self.seqs[item].options, self.seqs[item].correct)):
                 s += f"### Instruction: Q: {x} A: \n\n"
                 s += f"(a) {options[0]}\n(b) {options[1]}\n(c) {options[2]}\n(d) {options[3]}\n\n"
@@ -379,15 +379,14 @@ class ICLDataset:
                     s += f"### Response: ([b cyan]{['a', 'b', 'c', 'd'][correct]}[/]\n\n"
                 else:
                     s += f"### Response: ([b]{['a', 'b', 'c', 'd'][correct]}[/])\n\n"
-            rprint(s)
         else:
-            s = f"[b u]{self.dataset}[/]\n\n"
+            s = f"[b u]{self.dataset_name}[/]\n\n"
             for idx, (x, y) in enumerate(zip(self.seqs[item].x, self.seqs[item].y)):
                 if idx == len(self.seqs[item]) - 1:
                     s += f"Q: {x}\n[b]A[/]: [b cyan]{y}[/]\n"
                 else:
                     s += f"Q: {x}\n[b]A: {y}[/]\n\n"
-            rprint(s)
+        Console().print(s, highlight=False)
 
 def generate_seed(value, seed=None):
     '''Generate a hash seed for a given value'''

@@ -286,14 +286,13 @@ class SimilarityMatrix:
                             midpoint2 = (start2 + end2) / 2
                             if i == j:  # Within-task mean value
                                 mean_value = self.within_task_sims[task1]
-                                ax.text(midpoint1, midpoint1, f'{mean_value:.2f}', ha='center', va='center', fontsize=9, color='black')
                             else:
                                 mean_value = self.between_task_sims.get((task1, task2), self.between_task_sims.get((task2, task1)))
 
                             if i > j and plot_lower_diag:  # Between-task mean value (upper diagonal)
                                 continue
                             
-                            ax.text(midpoint1, midpoint2, f'{mean_value:.2f}', ha='center', va='center', fontsize=9, color='black')
+                            ax.text(midpoint1, midpoint2, f'{mean_value:.2f}', ha='center', va='center', color='black')
             
             if bounding_boxes: 
                 assert self.design_matrix is not None, 'Design matrix must be provided to plot bounding boxes'
@@ -306,7 +305,7 @@ class SimilarityMatrix:
                         linewidth=2, edgecolor=bounding_box_color, facecolor='none', linestyle='--'
                     )
                     ax.add_patch(rect)
-
+                
             # Add colorbar for the axes
             if axis is None:
                 cbar = plt.colorbar(cax, ax=ax)

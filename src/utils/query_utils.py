@@ -185,6 +185,7 @@ def get_simmats(
     model: ExtendedLanguageModel,
     dataset: ICLDataset | DatasetConstructor,
     layers: List[int] = None,
+    heads: List[List[int]] = None,
     remote: bool = True
 ):
     layers = range(model.config['n_layers']) if (layers is None) else layers
