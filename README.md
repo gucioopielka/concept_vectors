@@ -7,7 +7,7 @@ This repository contains data and code for the paper: [Analogical Reasoning Insi
 Checkout `demo/demo_notebook.ipynb` for a jupyter notebook with a demonstration of our main findings and tutorials on how to use Concept Vectors.
 
 ## Setup
-List of our dependencies can be found in `requirments.txt` file.
+List of our dependencies can be found in `requirments.txt` file. Python version == 3.12
 
 ## Data
 The datasets used in our project can be found in the `data` directory.

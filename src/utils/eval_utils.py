@@ -26,6 +26,7 @@ def create_design_matrix(info_list: List[Any]):
         for j in range(i+1, n_items):
             m[i, j] = int(info_list[i] == info_list[j])
             m[j, i] = int(info_list[i] == info_list[j])
+    np.fill_diagonal(m, 1)  # Set diagonal to 1 
     return m
 
 def rsa(X: np.ndarray, Y: np.ndarray) -> float:
@@ -68,15 +69,6 @@ def between_task_similarity(rdm: np.ndarray, rel_idx: Dict[str, Tuple[int, int]]
                 between_task_similarities[(task1, task2)] = np.mean(between_rdm)
 
     return between_task_similarities
-
-def create_design_matrix(info_list: List[Any]):
-    n_items = len(info_list)
-    m = np.zeros((n_items, n_items))
-    for i in range(n_items):
-        for j in range(i+1, n_items):
-            m[i, j] = int(info_list[i] == info_list[j])
-            m[j, i] = int(info_list[i] == info_list[j])
-    return m
 
 def accuracy_completions(
         model: ExtendedLanguageModel, 

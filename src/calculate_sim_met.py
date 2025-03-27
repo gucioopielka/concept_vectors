@@ -107,17 +107,6 @@ if __name__ == "__main__":
         pickle.dump(simmat_tensor, open(intermediate_results_path, 'wb'))
     print(f"Similarity matrices computed for {n_layers} layers and {n_heads} heads.")
 
-
-    ### Compute function vectors over the dataset ###
-
-    fv_path = os.path.join(RESULTS_DIR, args.output_dir, f'fv_simmat_{model.nickname}.pkl')
-    if not os.path.exists(fv_path):
-        print('Computing FVs...')
-        fv = get_summed_vec_per_item(model, dataset_constructor, model.fv_heads, remote=args.remote_run)
-        fv_simmat = compute_similarity_matrix(fv)
-        pickle.dump(fv_simmat, open(fv_path, 'wb'))
-    print('Function vectors computed.')
-
         
     ### Compute RSA for each layer and head
 
@@ -183,3 +172,15 @@ if __name__ == "__main__":
         rv = get_summed_vec_per_item(model, dataset_constructor, model.rv_heads, remote=args.remote_run)
         rv_simmat = compute_similarity_matrix(rv)
         pickle.dump(rv_simmat, open(rv_path, 'wb'))
+    print('RVs computed.')
+
+    
+    ### Compute function vectors over the dataset ###
+
+    fv_path = os.path.join(RESULTS_DIR, args.output_dir, f'fv_simmat_{model.nickname}.pkl')
+    if not os.path.exists(fv_path):
+        print('Computing FVs...')
+        fv = get_summed_vec_per_item(model, dataset_constructor, model.fv_heads, remote=args.remote_run)
+        fv_simmat = compute_similarity_matrix(fv)
+        pickle.dump(fv_simmat, open(fv_path, 'wb'))
+    print('Function vectors computed.')

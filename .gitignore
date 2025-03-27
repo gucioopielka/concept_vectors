@@ -7,8 +7,10 @@ __pycache__
 *.DS_Store
 
 # Files 
-# pkl in results folder
 results/**/*.pkl
 *write_up
 write_up/*
 src/report.py
+
+# Virtual environment
+.venv

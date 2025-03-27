@@ -165,7 +165,7 @@ def get_summed_vec_per_item(
 
                     # Get the projection (if more than one head is in the list of heads to keep, 
                     # the output will be the sum of those heads)
-                    out_proj_output = out_proj(z_ablated)  
+                    out_proj_output = out_proj(z_ablated)
 
                     batch_relation_vecs.append(out_proj_output.save())
             relation_vec_list.append(batch_relation_vecs)
