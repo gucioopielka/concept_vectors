@@ -37,13 +37,10 @@ def intervene_with_vec(
     model: ExtendedLanguageModel,
     dataset: ICLDataset | DatasetConstructor,
     vector: torch.Tensor,
-    layers: int | List[int] = None,
+    layers: List[int] = None,
     remote: bool = True
 ) -> Dict[int, List[str]]:
     T = -1 # values taken from last token
-    if isinstance(layers, int):
-        layers = [layers]
-
     with model.lm.session(remote=remote) as sess:
         intervention_top_ind = {layer: [] for layer in layers}
         for prompts, _ in dataset:

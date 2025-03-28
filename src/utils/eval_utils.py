@@ -115,6 +115,12 @@ class SimilarityMatrix:
         tasks: List[str]|np.ndarray = None,
         attribute_list: List[str] = None
     ):
+        '''
+        Args:
+            sim_mat (np.ndarray): The similarity matrix
+            tasks (List[str]): The tasks (must be equal to the number of rows in the similarity matrix or divisible by the number of rows)
+            attribute_list (List[str]): The attributes of the tasks (e.g. the concepts that represent the tasks). The number of attributes must be equal to the number of rows in the similarity matrix, or the number of rows must be divisible by the number of attributes.
+        '''
         self.matrix = sim_mat
         self.sim_mode = 'Similarity'
         self.design_matrix = None
@@ -145,7 +151,6 @@ class SimilarityMatrix:
                 raise ValueError('The number of attributes must be equal to the number of rows in the similarity matrix, or the number of rows must be divisible by the number of attributes.')
             
             self.design_matrix = create_design_matrix(self.attribute_list)
-            np.fill_diagonal(self.design_matrix, 1)
 
     def toggle_similarity(self):
         '''
@@ -161,6 +166,7 @@ class SimilarityMatrix:
         design_matrix = np.ones((self.matrix.shape[0], self.matrix.shape[1]))
         for task, (start, end) in self.tasks_idx.items():
             design_matrix[start:end+1, start:end+1] = 0
+        np.fill_diagonal(design_matrix, 1)
         return design_matrix
     
     def relocate_tasks(self, tasks: List[str]):
