@@ -3,10 +3,8 @@ import copy
 
 import pandas as pd
 import numpy as np
-from rich import print as rprint
+import torch
 import matplotlib.pyplot as plt
-import matplotlib.patches as patches
-from matplotlib.colors import Normalize
 from matplotlib.patches import Rectangle
 from scipy.ndimage import label
 from scipy.stats import spearmanr
@@ -15,6 +13,65 @@ from scipy.spatial.distance import squareform
 from .model_utils import ExtendedLanguageModel
 
 
+def spearman_rho_torch(x, y):
+    """
+    Compute Spearman's rank correlation coefficient between two 1D tensors.
+    
+    Args:
+        x (torch.Tensor): A 1D tensor of values.
+        y (torch.Tensor): A 1D tensor of values.
+        
+    Returns:
+        torch.Tensor: A scalar tensor containing the Spearman correlation coefficient.
+    """
+    # if x.ndim != 1 or y.ndim != 1:
+    #     raise ValueError("Both x and y must be 1-dimensional tensors.")
+    # if x.size(0) != y.size(0):
+    #     raise ValueError("x and y must have the same number of elements.")
+
+    # Compute ranks using the double argsort method.
+    # The first argsort returns indices that would sort the tensor,
+    # the second argsort gives the rank of each element.
+    x_rank = torch.argsort(torch.argsort(x))
+    y_rank = torch.argsort(torch.argsort(y))
+
+    # Convert ranks to float for computation
+    x_rank = x_rank.to(torch.float32)
+    y_rank = y_rank.to(torch.float32)
+
+    # Compute the mean of the ranks
+    x_mean = torch.mean(x_rank)
+    y_mean = torch.mean(y_rank)
+
+    # Compute covariance between the ranks
+    cov = torch.mean((x_rank - x_mean) * (y_rank - y_mean))
+    
+    # Compute the standard deviations (using population std, unbiased=False)
+    std_x = torch.std(x_rank, unbiased=False)
+    std_y = torch.std(y_rank, unbiased=False)
+
+    # Avoid division by zero in case of constant inputs
+    if std_x == 0 or std_y == 0:
+        return torch.tensor(0.0)
+
+    # Spearman correlation is the Pearson correlation of the ranks
+    return cov / (std_x * std_y)
+
+def condense_matrix(X):
+    '''
+    Condense a square matrix into a condensed vector
+    '''
+    if hasattr(X.size(0), 'item'):
+        print(X.size(0).item())
+    n = X.size(0).item() if hasattr(X.size(0), 'item') else X.size(0)
+    inds = torch.triu_indices(n, n, offset=1)
+    return X[inds[0], inds[1]]
+
+def rsa_torch(x, y):
+    x_condensed = condense_matrix(x)
+    y_condensed = condense_matrix(y)
+    return spearman_rho_torch(x_condensed, y_condensed)
+    
 def batch_process_layers(n_layers, batch_size, start=0):
     for i in range(start, n_layers, batch_size):
         yield range(n_layers)[i : i + batch_size]

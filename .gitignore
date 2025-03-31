@@ -11,6 +11,7 @@ results/**/*.pkl
 *write_up
 write_up/*
 src/report.py
+test.py
 
 # Virtual environment
 .venv

@@ -5,8 +5,10 @@ import numpy as np
 import einops
 import torch
 import torch.nn.functional as F
+import nnsight
 
 from .model_utils import ExtendedLanguageModel
+from .eval_utils import rsa_torch, condense_matrix, spearman_rho_torch
 from .ICL_utils import ICLDataset, DatasetConstructor
 
 def generate_completions(
@@ -38,9 +40,10 @@ def intervene_with_vec(
     dataset: ICLDataset | DatasetConstructor,
     vector: torch.Tensor,
     layers: List[int] = None,
+    token: int = -1,
     remote: bool = True
 ) -> Dict[int, List[str]]:
-    T = -1 # values taken from last token
+    T = token
     with model.lm.session(remote=remote) as sess:
         intervention_top_ind = {layer: [] for layer in layers}
         for prompts, _ in dataset:
@@ -61,6 +64,7 @@ def get_avg_summed_vec(
     model: ExtendedLanguageModel, 
     dataset: ICLDataset | DatasetConstructor,
     heads: List[Tuple[int, int, float]],
+    token: int = -1,
     remote: bool = True
 ) -> torch.Tensor:
     '''
@@ -78,7 +82,7 @@ def get_avg_summed_vec(
     N_HEADS = model.config['n_heads']
     D_HEAD = D_MODEL // N_HEADS # dimension of each head
     B = len(dataset.prompts)
-    T = -1  # values taken from last token
+    T = token
 
     # Turn head_list into a dict of {layer: heads we need in this layer}
     head_dict = defaultdict(set)
@@ -123,12 +127,13 @@ def get_summed_vec_per_item(
     model: ExtendedLanguageModel,
     dataset: ICLDataset | DatasetConstructor,
     heads: List[Tuple[int, int]],
+    token: int = -1,
     remote: bool = True
 ):
     D_MODEL = model.config['resid_dim']
     N_HEADS = model.config['n_heads']
     D_HEAD = D_MODEL // N_HEADS # dimension of each head
-    T = -1  # values taken from last token
+    T = token
 
     # Turn head_list into a dict of {layer: heads we need in this layer}
     head_dict = defaultdict(set)
@@ -183,13 +188,14 @@ def get_simmats(
     dataset: ICLDataset | DatasetConstructor,
     layers: List[int] = None,
     heads: List[List[int]] = None,
+    token: int = -1,
     remote: bool = True
 ):
     layers = range(model.config['n_layers']) if (layers is None) else layers
     heads = range(model.config['n_heads'])
     N_HEADS = model.config['n_heads']
     D_HEAD = model.config['resid_dim'] // N_HEADS
-    T = -1 # values taken from last token
+    T = token
 
     with model.lm.session(remote=remote) as sess:
 
@@ -205,7 +211,7 @@ def get_simmats(
                     z = out_proj.inputs[0][0][:, T]
                     z_reshaped = z.reshape(len(batched_prompts), N_HEADS, D_HEAD)
                     for head in heads:
-                        z_head = z_reshaped[:, head].save()
+                        z_head = z_reshaped[:, head]
                         simmat_dict[(layer, head)].extend([z_head])
 
         sess.log(f"Computing similarity matrices ...")
@@ -213,6 +219,70 @@ def get_simmats(
             simmat_dict[k] = compute_similarity_matrix(torch.concat(v)).save()
     
     return simmat_dict
+
+def get_rsa(
+    model: ExtendedLanguageModel,
+    dataset: ICLDataset | DatasetConstructor,
+    design_matrix: torch.Tensor,
+    layers: Optional[List[int]] = None,
+    heads: Optional[List[int]] = None,
+    token: int = -1,
+    remote: bool = True
+) -> np.ndarray:
+    layers = range(model.config['n_layers']) if (layers is None) else layers
+    heads = range(model.config['n_heads'])
+    N_HEADS = model.config['n_heads']
+    D_HEAD = model.config['resid_dim'] // N_HEADS
+    T = token
+
+    with model.lm.session(remote=remote) as sess:
+        simmat_dict = {(layer, head): [] for layer in layers for head in heads}
+        for idx, (batched_prompts, _) in enumerate(dataset):
+            sess.log(f"Batch: {idx}")
+            
+            # Collect the hidden states for each head
+            with model.lm.trace(batched_prompts) as t:
+                for layer in layers:
+                    # Get hidden states, reshape to get head dimension, store the mean tensor
+                    out_proj = model.config['out_proj'](layer)
+                    z = out_proj.inputs[0][0][:, T]
+                    z_reshaped = z.reshape(len(batched_prompts), N_HEADS, D_HEAD)
+                    for head in heads:
+                        z_head = z_reshaped[:, head]
+                        simmat_dict[(layer, head)].extend([z_head])
+
+        sess.log(f"Computing similarity matrices ...")
+        for k, v in simmat_dict.items():
+            # Save the concatenated tensor
+            concat_tensor = torch.concat(v)
+            # Compute and save similarity matrix
+            simmat_dict[k] = compute_similarity_matrix(concat_tensor)
+        
+        sess.log(f"Computing RSA ...")
+        n = len(dataset.prompts)
+        inds = torch.triu_indices(n, n, offset=1)
+
+        rsa_dict = {(layer, head): 0 for layer in layers for head in heads}
+        for k, v in simmat_dict.items():
+            # Extract and save upper triangular values
+            v_condensed = v[inds[0], inds[1]]
+            design_matrix_condensed = design_matrix[inds[0], inds[1]]
+            
+            # Save intermediate computations for spearman correlation
+            x_rank = torch.argsort(torch.argsort(v_condensed)).float()
+            y_rank = torch.argsort(torch.argsort(design_matrix_condensed)).float()
+            
+            x_mean = x_rank.mean()
+            y_mean = y_rank.mean()
+            
+            cov = ((x_rank - x_mean) * (y_rank - y_mean)).mean()
+            std_x = torch.sqrt(((x_rank - x_mean) ** 2).mean())
+            std_y = torch.sqrt(((y_rank - y_mean) ** 2).mean())
+            
+            # Compute final correlation
+            rsa_dict[k] = nnsight.float((cov / (std_x * std_y)).item()).save()
+    
+    return rsa_dict
 
 def calculate_CIE(
     model: ExtendedLanguageModel,
