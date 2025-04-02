@@ -32,30 +32,26 @@ def spearman_rho_torch(x, y):
     # Compute ranks using the double argsort method.
     # The first argsort returns indices that would sort the tensor,
     # the second argsort gives the rank of each element.
-    x_rank = torch.argsort(torch.argsort(x))
-    y_rank = torch.argsort(torch.argsort(y))
-
-    # Convert ranks to float for computation
-    x_rank = x_rank.to(torch.float32)
-    y_rank = y_rank.to(torch.float32)
+    x_rank = torch.argsort(torch.argsort(x)).float()
+    y_rank = torch.argsort(torch.argsort(y)).float()
 
     # Compute the mean of the ranks
-    x_mean = torch.mean(x_rank)
-    y_mean = torch.mean(y_rank)
+    x_mean = x_rank.mean()
+    y_mean = y_rank.mean()
 
     # Compute covariance between the ranks
-    cov = torch.mean((x_rank - x_mean) * (y_rank - y_mean))
+    cov = ((x_rank - x_mean) * (y_rank - y_mean)).mean()
     
     # Compute the standard deviations (using population std, unbiased=False)
-    std_x = torch.std(x_rank, unbiased=False)
-    std_y = torch.std(y_rank, unbiased=False)
+    std_x = torch.sqrt(((x_rank - x_mean) ** 2).mean())
+    std_y = torch.sqrt(((y_rank - y_mean) ** 2).mean())
 
     # Avoid division by zero in case of constant inputs
-    if std_x == 0 or std_y == 0:
-        return torch.tensor(0.0)
+    # if std_x == 0 or std_y == 0:
+    #     return 0.0
 
     # Spearman correlation is the Pearson correlation of the ranks
-    return cov / (std_x * std_y)
+    return (cov / (std_x * std_y)).item()
 
 def condense_matrix(X):
     '''

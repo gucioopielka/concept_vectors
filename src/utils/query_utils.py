@@ -228,12 +228,11 @@ def get_rsa(
     heads: Optional[List[int]] = None,
     token: int = -1,
     remote: bool = True
-) -> np.ndarray:
+) -> torch.Tensor:
     layers = range(model.config['n_layers']) if (layers is None) else layers
-    heads = range(model.config['n_heads'])
+    heads = range(model.config['n_heads']) if (heads is None) else layers
     N_HEADS = model.config['n_heads']
     D_HEAD = model.config['resid_dim'] // N_HEADS
-    T = token
 
     with model.lm.session(remote=remote) as sess:
         simmat_dict = {(layer, head): [] for layer in layers for head in heads}
@@ -245,7 +244,7 @@ def get_rsa(
                 for layer in layers:
                     # Get hidden states, reshape to get head dimension, store the mean tensor
                     out_proj = model.config['out_proj'](layer)
-                    z = out_proj.inputs[0][0][:, T]
+                    z = out_proj.inputs[0][0][:, token]
                     z_reshaped = z.reshape(len(batched_prompts), N_HEADS, D_HEAD)
                     for head in heads:
                         z_head = z_reshaped[:, head]
@@ -253,36 +252,25 @@ def get_rsa(
 
         sess.log(f"Computing similarity matrices ...")
         for k, v in simmat_dict.items():
-            # Save the concatenated tensor
-            concat_tensor = torch.concat(v)
-            # Compute and save similarity matrix
-            simmat_dict[k] = compute_similarity_matrix(concat_tensor)
+            simmat_dict[k] = compute_similarity_matrix(torch.concat(v))
         
         sess.log(f"Computing RSA ...")
+        
+        # Get the upper triangular indices of the similarity matrix
         n = len(dataset.prompts)
         inds = torch.triu_indices(n, n, offset=1)
+        
+        # Get the condensed design matrix
+        design_matrix_condensed = design_matrix[inds[0], inds[1]]
 
-        rsa_dict = {(layer, head): 0 for layer in layers for head in heads}
-        for k, v in simmat_dict.items():
-            # Extract and save upper triangular values
-            v_condensed = v[inds[0], inds[1]]
-            design_matrix_condensed = design_matrix[inds[0], inds[1]]
-            
-            # Save intermediate computations for spearman correlation
-            x_rank = torch.argsort(torch.argsort(v_condensed)).float()
-            y_rank = torch.argsort(torch.argsort(design_matrix_condensed)).float()
-            
-            x_mean = x_rank.mean()
-            y_mean = y_rank.mean()
-            
-            cov = ((x_rank - x_mean) * (y_rank - y_mean)).mean()
-            std_x = torch.sqrt(((x_rank - x_mean) ** 2).mean())
-            std_y = torch.sqrt(((y_rank - y_mean) ** 2).mean())
-            
-            # Compute final correlation
-            rsa_dict[k] = nnsight.float((cov / (std_x * std_y)).item()).save()
+        rsa_vals = nnsight.list([[] for _ in layers]).save()
+        for i, layer in enumerate(layers):
+            for head in heads:
+                v_condensed = simmat_dict[(layer, head)][inds[0], inds[1]]
+                rho = spearman_rho_torch(v_condensed, design_matrix_condensed)
+                rsa_vals[i].append(rho)
     
-    return rsa_dict
+    return torch.tensor(rsa_vals)
 
 def calculate_CIE(
     model: ExtendedLanguageModel,

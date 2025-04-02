@@ -4,6 +4,8 @@ import os
 import time
 from functools import wraps
 import numpy as np
+import sys
+import pandas as pd
 
 from utils.query_utils import get_completions, get_avg_summed_vec, intervene_with_vec
 from utils.ICL_utils import ICLDataset, DatasetConstructor
@@ -13,22 +15,40 @@ from utils.globals import RESULTS_DIR
 
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Compute function vectors for a given model.")
-    
-    parser.add_argument("--model", type=str, help="Name of the model to use.")
-    parser.add_argument("--interleaved_datasets", nargs="+", type=str, help="List of datasets to intervene on.")
-    parser.add_argument("--extract_datasets", nargs="+", type=str, help="List of datasets to extract vectors from.")
-    parser.add_argument("--layer_batch_size", type=int, help="Number of layers to process at once.", default=4)
-    parser.add_argument("--dataset_extract_size", type=int, help="Size of the dataset to extract vectors from.", default=50)
-    parser.add_argument("--dataset_eval_size", type=int, help="Size of the dataset to evaluate on.", default=50)
-    parser.add_argument("--prompt_batch_size", type=int, help="Number of prompts to process at once.", default=50)
-    parser.add_argument('--n_train', type=int, help="Number of training examples to use.", default=5)
-    parser.add_argument("--remote_run", type=bool, help="Whether to run the script on a remote server.", default=True, action=argparse.BooleanOptionalAction)
-    parser.add_argument("--seed", type=int, help="Random seed to use.", default=42)
-    parser.add_argument("--output_dir", type=str, help="Path to save the output CSV file.", default='data/causal')
-    parser.add_argument("--sleep_time", type=int, help="Time to sleep between remote runs.", default=10)
+    # check if we're running from the command line
+    if len(sys.argv) > 2:
+        parser = argparse.ArgumentParser(description="Compute function vectors for a given model.")
+        
+        parser.add_argument("--model", type=str, help="Name of the model to use.")
+        parser.add_argument("--interleaved_datasets", nargs="+", type=str, help="List of datasets to intervene on.")
+        parser.add_argument("--extract_datasets", nargs="+", type=str, help="List of datasets to extract vectors from.")
+        parser.add_argument("--layer_batch_size", type=int, help="Number of layers to process at once.", default=4)
+        parser.add_argument("--dataset_extract_size", type=int, help="Size of the dataset to extract vectors from.", default=50)
+        parser.add_argument("--dataset_eval_size", type=int, help="Size of the dataset to evaluate on.", default=50)
+        parser.add_argument("--prompt_batch_size", type=int, help="Number of prompts to process at once.", default=50)
+        parser.add_argument('--n_train', type=int, help="Number of training examples to use.", default=5)
+        parser.add_argument("--remote_run", type=bool, help="Whether to run the script on a remote server.", default=True, action=argparse.BooleanOptionalAction)
+        parser.add_argument("--seed", type=int, help="Random seed to use.", default=42)
+        parser.add_argument("--output_dir", type=str, help="Path to save the output CSV file.", default='data/causal')
+        parser.add_argument("--sleep_time", type=int, help="Time to sleep between remote runs.", default=10)
 
-    args = parser.parse_args()
+        args = parser.parse_args()
+    else:
+        args = {
+            'model': 'meta-llama/Meta-LLama-3.1-70B',
+            'interleaved_datasets': ['antonym_eng', 'english_french'],
+            'extract_datasets': ['antonym_eng', 'antonym_fr', 'antonym_eng-mc'],
+            'layer_batch_size': 4,
+            'dataset_extract_size': 50,
+            'dataset_eval_size': 50,
+            'prompt_batch_size': 50,
+            'n_train': 5,
+            'remote_run': True,
+            'sleep_time': 5,
+            'seed': 42,
+            'output_dir': 'intervention/'
+        }
+        args = argparse.Namespace(**args)
 
     def sleep_after_call(sleep_time):
         """Decorator to sleep after calling the function."""
@@ -48,7 +68,7 @@ if __name__ == "__main__":
 
 
     # Load the model 
-    model = ExtendedLanguageModel(args.model)
+    model = ExtendedLanguageModel(args.model, cv_heads_n=3, fv_heads_n=3)
     n_heads = model.config['n_heads']
     n_layers = model.config['n_layers']
     
@@ -64,7 +84,7 @@ if __name__ == "__main__":
             dataset_size=args.dataset_extract_size, 
             n_train=args.n_train,
             batch_size=args.prompt_batch_size,
-            tokenizer=model.lm.tokenizer,
+            #tokenizer=model.lm.tokenizer,
             seed=args.seed
         )
 
@@ -73,7 +93,7 @@ if __name__ == "__main__":
         fvs[dataset] = get_avg_summed_vec(model, dataset_extract, model.fv_heads, remote=args.remote_run)
         
         print('Computing RVs...')
-        rvs[dataset] = get_avg_summed_vec(model, dataset_extract, model.rv_heads, remote=args.remote_run)
+        rvs[dataset] = get_avg_summed_vec(model, dataset_extract, model.cv_heads, remote=args.remote_run)
 
 
     ### Find the best layer to intervene with ###
@@ -149,16 +169,18 @@ if __name__ == "__main__":
     org_cmpl = get_completions(model, dataset_intervene, remote=args.remote_run)
     accuracy_org = accuracy_completions(model, org_cmpl, dataset_intervene.completions)
 
+    dfs = []
     # Intervene
     for dataset_name in args.extract_datasets:
         print(f"\n{'- *'*5}\nIntervening with vectors extracted from {dataset_name} ...\n{'* -'*5}")
 
         print('\nIntervening with FVs...\n')
-        fv_inter_cmpl = intervene_with_vec(model, dataset_intervene, fvs[dataset_name], layers=fv_intervention_layer, remote=args.remote_run)
+        fv_inter_cmpl = intervene_with_vec(model, dataset_intervene, fvs[dataset_name]*10, layers=[fv_intervention_layer], remote=args.remote_run)
         accuracy_fv = accuracy_completions(model, fv_inter_cmpl[fv_intervention_layer], dataset_intervene.completions)
+        print(f"Accuracy: {accuracy_fv}")
         
         print('\nIntervening with RVs...\n')
-        rv_inter_cmpl = intervene_with_vec(model, dataset_intervene, rvs[dataset_name]*10, layers=rv_intervention_layer, remote=args.remote_run)
+        rv_inter_cmpl = intervene_with_vec(model, dataset_intervene, rvs[dataset_name]*10, layers=[rv_intervention_layer], remote=args.remote_run)
         accuracy_rv = accuracy_completions(model, rv_inter_cmpl[rv_intervention_layer], dataset_intervene.completions)
         print(f"Accuracy: {accuracy_rv}")
 

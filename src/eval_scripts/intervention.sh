@@ -19,7 +19,7 @@ for index in ${!model_names[@]}; do
             --n_train 10 \
             --remote_run \
             --seed 42 \
-            --output_dir causal/ \
+            --output_dir intervention/ \
             --sleep_time 5
         
         if [ $? -eq 0 ]; then

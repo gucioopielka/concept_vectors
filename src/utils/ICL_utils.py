@@ -464,3 +464,6 @@ class DatasetConstructor:
         start_idx = idx * self.batch_size
         end_idx = min(start_idx + self.batch_size, len(self.prompts))
         return self.prompts[start_idx:end_idx], self.completions[start_idx:end_idx]
+
+    def __len__(self):
+        return len(self.prompts) // self.batch_size + (0 if len(self.prompts) % self.batch_size == 0 else 1)
