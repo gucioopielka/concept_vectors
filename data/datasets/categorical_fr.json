@@ -1,0 +1,3946 @@
+[
+    {
+        "input": "Am\u00e9rique",
+        "output": "pays"
+    },
+    {
+        "input": "amie",
+        "output": "ordinateur"
+    },
+    {
+        "input": "Afrique",
+        "output": "continent"
+    },
+    {
+        "input": "air",
+        "output": "gaz"
+    },
+    {
+        "input": "aluminium",
+        "output": "m\u00e9tal"
+    },
+    {
+        "input": "anatomie",
+        "output": "science"
+    },
+    {
+        "input": "balle",
+        "output": "jouet"
+    },
+    {
+        "input": "avenue",
+        "output": "rue"
+    },
+    {
+        "input": "Atlanta",
+        "output": "ville"
+    },
+    {
+        "input": "fauteuil",
+        "output": "chaise"
+    },
+    {
+        "input": "alque",
+        "output": "oiseau"
+    },
+    {
+        "input": "badminton",
+        "output": "sport"
+    },
+    {
+        "input": "hache",
+        "output": "outil"
+    },
+    {
+        "input": "col\u00e8re",
+        "output": "\u00e9motion"
+    },
+    {
+        "input": "baseball",
+        "output": "sport"
+    },
+    {
+        "input": "basse",
+        "output": "poisson"
+    },
+    {
+        "input": "bar",
+        "output": "lieu"
+    },
+    {
+        "input": "bi\u00e8re",
+        "output": "boisson"
+    },
+    {
+        "input": "lit",
+        "output": "lieu"
+    },
+    {
+        "input": "ours",
+        "output": "mammif\u00e8re"
+    },
+    {
+        "input": "bleu",
+        "output": "couleur"
+    },
+    {
+        "input": "bazar",
+        "output": "place de march\u00e9"
+    },
+    {
+        "input": "bo\u00eete",
+        "output": "r\u00e9cipient"
+    },
+    {
+        "input": "beagle",
+        "output": "chien"
+    },
+    {
+        "input": "poubelle",
+        "output": "r\u00e9cipient"
+    },
+    {
+        "input": "bowling",
+        "output": "sport"
+    },
+    {
+        "input": "basilic",
+        "output": "herbe"
+    },
+    {
+        "input": "biologie",
+        "output": "science"
+    },
+    {
+        "input": "salle de bain",
+        "output": "pi\u00e8ce"
+    },
+    {
+        "input": "bombe",
+        "output": "appareil"
+    },
+    {
+        "input": "calcium",
+        "output": "\u00e9l\u00e9ment"
+    },
+    {
+        "input": "Californie",
+        "output": "\u00e9tat"
+    },
+    {
+        "input": "brie",
+        "output": "fromage"
+    },
+    {
+        "input": "beurre",
+        "output": "nourriture"
+    },
+    {
+        "input": "canon",
+        "output": "arme"
+    },
+    {
+        "input": "cancer",
+        "output": "maladie"
+    },
+    {
+        "input": "cappuccino",
+        "output": "boire"
+    },
+    {
+        "input": "toile de jute",
+        "output": "tissu"
+    },
+    {
+        "input": "brun",
+        "output": "couleur"
+    },
+    {
+        "input": "petit-d\u00e9jeuner",
+        "output": "repas"
+    },
+    {
+        "input": "argent liquide",
+        "output": "argent"
+    },
+    {
+        "input": "Canada",
+        "output": "pays"
+    },
+    {
+        "input": "c\u00e9leri",
+        "output": "l\u00e9gume"
+    },
+    {
+        "input": "chou",
+        "output": "plante"
+    },
+    {
+        "input": "\u0153illet",
+        "output": "fleur"
+    },
+    {
+        "input": "carbone",
+        "output": "\u00e9l\u00e9ment"
+    },
+    {
+        "input": "papillon",
+        "output": "insecte"
+    },
+    {
+        "input": "Br\u00e9sil",
+        "output": "pays"
+    },
+    {
+        "input": "universit\u00e9",
+        "output": "lieu"
+    },
+    {
+        "input": "cobra",
+        "output": "serpent"
+    },
+    {
+        "input": "cannelle",
+        "output": "\u00e9pice"
+    },
+    {
+        "input": "\u00e9checs",
+        "output": "jeu"
+    },
+    {
+        "input": "poulet",
+        "output": "nourriture"
+    },
+    {
+        "input": "No\u00ebl",
+        "output": "vacances"
+    },
+    {
+        "input": "cercle",
+        "output": "forme"
+    },
+    {
+        "input": "Colorado",
+        "output": "\u00e9tat"
+    },
+    {
+        "input": "Chine",
+        "output": "pays"
+    },
+    {
+        "input": "christianisme",
+        "output": "religion"
+    },
+    {
+        "input": "chimie",
+        "output": "science"
+    },
+    {
+        "input": "fromage",
+        "output": "nourriture"
+    },
+    {
+        "input": "chocolat",
+        "output": "bonbon"
+    },
+    {
+        "input": "coke",
+        "output": "soda"
+    },
+    {
+        "input": "clarinette",
+        "output": "instrument"
+    },
+    {
+        "input": "ville",
+        "output": "lieu"
+    },
+    {
+        "input": "caf\u00e9",
+        "output": "stimulant"
+    },
+    {
+        "input": "chalet",
+        "output": "maison"
+    },
+    {
+        "input": "cuivre",
+        "output": "m\u00e9tal"
+    },
+    {
+        "input": "cabine",
+        "output": "espace de travail"
+    },
+    {
+        "input": "ma\u00efs",
+        "output": "l\u00e9gume"
+    },
+    {
+        "input": "concombre",
+        "output": "l\u00e9gume"
+    },
+    {
+        "input": "coton",
+        "output": "r\u00e9colte"
+    },
+    {
+        "input": "crappie",
+        "output": "poisson"
+    },
+    {
+        "input": "corneille",
+        "output": "oiseau"
+    },
+    {
+        "input": "curry",
+        "output": "\u00e9pice"
+    },
+    {
+        "input": "congr\u00e8s",
+        "output": "l\u00e9gislature"
+    },
+    {
+        "input": "d\u00e9go\u00fbt",
+        "output": "\u00e9motion"
+    },
+    {
+        "input": "d\u00e9sert",
+        "output": "terrain"
+    },
+    {
+        "input": "chien",
+        "output": "animal de compagnie"
+    },
+    {
+        "input": "poup\u00e9e",
+        "output": "jouet"
+    },
+    {
+        "input": "ADN",
+        "output": "mol\u00e9cule"
+    },
+    {
+        "input": "dauphin",
+        "output": "animal"
+    },
+    {
+        "input": "d\u00eener",
+        "output": "repas"
+    },
+    {
+        "input": "dollar",
+        "output": "argent"
+    },
+    {
+        "input": "terre",
+        "output": "mot"
+    },
+    {
+        "input": "bureau",
+        "output": "mobilier"
+    },
+    {
+        "input": "denim",
+        "output": "tissu"
+    },
+    {
+        "input": "tiroir",
+        "output": "r\u00e9cipient"
+    },
+    {
+        "input": "\u00e9thanol",
+        "output": "alcool"
+    },
+    {
+        "input": "pinson",
+        "output": "oiseau"
+    },
+    {
+        "input": "\u00e9poxy",
+        "output": "colle"
+    },
+    {
+        "input": "faucon",
+        "output": "oiseau"
+    },
+    {
+        "input": "peur",
+        "output": "\u00e9motion"
+    },
+    {
+        "input": "ail",
+        "output": "ingr\u00e9dient"
+    },
+    {
+        "input": "Allemagne",
+        "output": "pays"
+    },
+    {
+        "input": "jeu",
+        "output": "activit\u00e9"
+    },
+    {
+        "input": "flamant rose",
+        "output": "oiseau"
+    },
+    {
+        "input": "football",
+        "output": "jeu"
+    },
+    {
+        "input": "essence",
+        "output": "liquide"
+    },
+    {
+        "input": "France",
+        "output": "pays"
+    },
+    {
+        "input": "g\u00e9om\u00e9trie",
+        "output": "sujet"
+    },
+    {
+        "input": "poisson",
+        "output": "animal"
+    },
+    {
+        "input": "G\u00e9orgie",
+        "output": "\u00e9tat"
+    },
+    {
+        "input": "voler",
+        "output": "insecte"
+    },
+    {
+        "input": "fl\u00fbte",
+        "output": "instrument"
+    },
+    {
+        "input": "g\u00e9ologie",
+        "output": "science"
+    },
+    {
+        "input": "renard",
+        "output": "animal"
+    },
+    {
+        "input": "grenat",
+        "output": "pierre"
+    },
+    {
+        "input": "feu",
+        "output": "combustion"
+    },
+    {
+        "input": "harmonica",
+        "output": "instrument"
+    },
+    {
+        "input": "glock",
+        "output": "arme \u00e0 feu"
+    },
+    {
+        "input": "harpe",
+        "output": "instrument"
+    },
+    {
+        "input": "Hawa\u00ef",
+        "output": "\u00e9tat"
+    },
+    {
+        "input": "bonheur",
+        "output": "\u00e9motion"
+    },
+    {
+        "input": "h\u00e9ro\u00efne",
+        "output": "m\u00e9dicament"
+    },
+    {
+        "input": "c\u0153ur",
+        "output": "muscle"
+    },
+    {
+        "input": "arme de poing",
+        "output": "arme"
+    },
+    {
+        "input": "Dieu",
+        "output": "amour"
+    },
+    {
+        "input": "hibiscus",
+        "output": "fleur"
+    },
+    {
+        "input": "guitare",
+        "output": "instrument"
+    },
+    {
+        "input": "mouette",
+        "output": "oiseau"
+    },
+    {
+        "input": "chaleur",
+        "output": "\u00e9nergie"
+    },
+    {
+        "input": "gorille",
+        "output": "singe"
+    },
+    {
+        "input": "gravit\u00e9",
+        "output": "force"
+    },
+    {
+        "input": "faucon",
+        "output": "oiseau"
+    },
+    {
+        "input": "autoroute",
+        "output": "route"
+    },
+    {
+        "input": "hamburger",
+        "output": "nourriture"
+    },
+    {
+        "input": "golf",
+        "output": "sport"
+    },
+    {
+        "input": "colle",
+        "output": "substance"
+    },
+    {
+        "input": "h\u00e9lium",
+        "output": "gaz"
+    },
+    {
+        "input": "poisson rouge",
+        "output": "carpe"
+    },
+    {
+        "input": "oie",
+        "output": "oiseau"
+    },
+    {
+        "input": "ha\u00efr",
+        "output": "\u00e9motion"
+    },
+    {
+        "input": "or",
+        "output": "m\u00e9tal"
+    },
+    {
+        "input": "ignorance",
+        "output": "bonheur"
+    },
+    {
+        "input": "imac",
+        "output": "ordinateur"
+    },
+    {
+        "input": "humain",
+        "output": "bip\u00e8de"
+    },
+    {
+        "input": "Honda",
+        "output": "voiture"
+    },
+    {
+        "input": "Pays-Bas",
+        "output": "pays"
+    },
+    {
+        "input": "hydrog\u00e8ne",
+        "output": "\u00e9l\u00e9ment"
+    },
+    {
+        "input": "IBM",
+        "output": "entreprise"
+    },
+    {
+        "input": "honn\u00eatet\u00e9",
+        "output": "vertu"
+    },
+    {
+        "input": "faim",
+        "output": "sensation"
+    },
+    {
+        "input": "hockey",
+        "output": "sport"
+    },
+    {
+        "input": "Inde",
+        "output": "pays"
+    },
+    {
+        "input": "ouragan",
+        "output": "temp\u00eate"
+    },
+    {
+        "input": "ip",
+        "output": "protocole"
+    },
+    {
+        "input": "jazz",
+        "output": "musique"
+    },
+    {
+        "input": "limonade",
+        "output": "boire"
+    },
+    {
+        "input": "confiture",
+        "output": "r\u00e9pandre"
+    },
+    {
+        "input": "grand livre",
+        "output": "livre"
+    },
+    {
+        "input": "islam",
+        "output": "religion"
+    },
+    {
+        "input": "Irak",
+        "output": "pays"
+    },
+    {
+        "input": "cuir",
+        "output": "mat\u00e9riel"
+    },
+    {
+        "input": "J\u00e9sus",
+        "output": "juif"
+    },
+    {
+        "input": "\u00eele",
+        "output": "terrain"
+    },
+    {
+        "input": "jogging",
+        "output": "exercice"
+    },
+    {
+        "input": "lierre",
+        "output": "vigne"
+    },
+    {
+        "input": "fer",
+        "output": "m\u00e9tal"
+    },
+    {
+        "input": "couteau",
+        "output": "outil"
+    },
+    {
+        "input": "Japon",
+        "output": "pays"
+    },
+    {
+        "input": "Irlande",
+        "output": "pays"
+    },
+    {
+        "input": "iris",
+        "output": "fleur"
+    },
+    {
+        "input": "Jupiter",
+        "output": "plan\u00e8te"
+    },
+    {
+        "input": "ketchup",
+        "output": "condiment"
+    },
+    {
+        "input": "Italie",
+        "output": "pays"
+    },
+    {
+        "input": "lin",
+        "output": "tissu"
+    },
+    {
+        "input": "biblioth\u00e8que",
+        "output": "b\u00e2timent"
+    },
+    {
+        "input": "marbre",
+        "output": "rocher"
+    },
+    {
+        "input": "Mac",
+        "output": "ordinateur"
+    },
+    {
+        "input": "Londres",
+        "output": "ville"
+    },
+    {
+        "input": "Maine",
+        "output": "\u00e9tat"
+    },
+    {
+        "input": "manoir",
+        "output": "maison"
+    },
+    {
+        "input": "marijuana",
+        "output": "m\u00e9dicament"
+    },
+    {
+        "input": "Massachusetts",
+        "output": "\u00e9tat"
+    },
+    {
+        "input": "laitue",
+        "output": "l\u00e9gume"
+    },
+    {
+        "input": "lion",
+        "output": "carnivore"
+    },
+    {
+        "input": "lumi\u00e8re",
+        "output": "\u00e9nergie"
+    },
+    {
+        "input": "mentir",
+        "output": "tromperie"
+    },
+    {
+        "input": "mandoline",
+        "output": "instrument"
+    },
+    {
+        "input": "champignon",
+        "output": "champignon"
+    },
+    {
+        "input": "film",
+        "output": "film"
+    },
+    {
+        "input": "lait",
+        "output": "liquide"
+    },
+    {
+        "input": "meurtre",
+        "output": "crime"
+    },
+    {
+        "input": "mercure",
+        "output": "plan\u00e8te"
+    },
+    {
+        "input": "math\u00e9matiques",
+        "output": "sujet"
+    },
+    {
+        "input": "miroir",
+        "output": "surface"
+    },
+    {
+        "input": "m\u00e9tal",
+        "output": "musique"
+    },
+    {
+        "input": "avec",
+        "output": "universit\u00e9"
+    },
+    {
+        "input": "Microsoft",
+        "output": "soci\u00e9t\u00e9"
+    },
+    {
+        "input": "lune",
+        "output": "lieu"
+    },
+    {
+        "input": "menorah",
+        "output": "cand\u00e9labre"
+    },
+    {
+        "input": "Mexique",
+        "output": "pays"
+    },
+    {
+        "input": "souris",
+        "output": "mammif\u00e8re"
+    },
+    {
+        "input": "singe",
+        "output": "primate"
+    },
+    {
+        "input": "rossignol",
+        "output": "oiseau"
+    },
+    {
+        "input": "collier",
+        "output": "bijoux"
+    },
+    {
+        "input": "objectivisme",
+        "output": "philosophie"
+    },
+    {
+        "input": "roman",
+        "output": "livre"
+    },
+    {
+        "input": "orange",
+        "output": "couleur"
+    },
+    {
+        "input": "Nebraska",
+        "output": "\u00e9tat"
+    },
+    {
+        "input": "Oldsmobile",
+        "output": "voiture"
+    },
+    {
+        "input": "Newsweek",
+        "output": "magazine"
+    },
+    {
+        "input": "Neptune",
+        "output": "plan\u00e8te"
+    },
+    {
+        "input": "bruit",
+        "output": "son"
+    },
+    {
+        "input": "douleur",
+        "output": "sensation"
+    },
+    {
+        "input": "oxyg\u00e8ne",
+        "output": "gaz"
+    },
+    {
+        "input": "autruche",
+        "output": "oiseau"
+    },
+    {
+        "input": "organe",
+        "output": "instrument"
+    },
+    {
+        "input": "persan",
+        "output": "chat"
+    },
+    {
+        "input": "Oregon",
+        "output": "\u00e9tat"
+    },
+    {
+        "input": "orthodoxe",
+        "output": "chr\u00e9tien"
+    },
+    {
+        "input": "penny",
+        "output": "pi\u00e8ce de monnaie"
+    },
+    {
+        "input": "oriole",
+        "output": "oiseau"
+    },
+    {
+        "input": "paon",
+        "output": "oiseau"
+    },
+    {
+        "input": "faisan",
+        "output": "oiseau"
+    },
+    {
+        "input": "piano",
+        "output": "instrument"
+    },
+    {
+        "input": "poivre",
+        "output": "\u00e9pice"
+    },
+    {
+        "input": "animal de compagnie",
+        "output": "animal"
+    },
+    {
+        "input": "perruche",
+        "output": "oiseau"
+    },
+    {
+        "input": "caniche",
+        "output": "chien"
+    },
+    {
+        "input": "lanceur",
+        "output": "r\u00e9cipient"
+    },
+    {
+        "input": "polo",
+        "output": "jeu"
+    },
+    {
+        "input": "pistolet",
+        "output": "arme \u00e0 feu"
+    },
+    {
+        "input": "plastique",
+        "output": "mat\u00e9riel"
+    },
+    {
+        "input": "ananas",
+        "output": "fruit"
+    },
+    {
+        "input": "brochet",
+        "output": "poisson"
+    },
+    {
+        "input": "Portugal",
+        "output": "pays"
+    },
+    {
+        "input": "rose",
+        "output": "couleur"
+    },
+    {
+        "input": "rocher",
+        "output": "musique"
+    },
+    {
+        "input": "pub",
+        "output": "lieu"
+    },
+    {
+        "input": "revolver",
+        "output": "arme"
+    },
+    {
+        "input": "lecture",
+        "output": "activit\u00e9"
+    },
+    {
+        "input": "fusil",
+        "output": "arme"
+    },
+    {
+        "input": "puzzle",
+        "output": "probl\u00e8me"
+    },
+    {
+        "input": "restaurant",
+        "output": "\u00e9tablissement"
+    },
+    {
+        "input": "quartz",
+        "output": "min\u00e9ral"
+    },
+    {
+        "input": "macareux",
+        "output": "oiseau"
+    },
+    {
+        "input": "radis",
+        "output": "l\u00e9gume"
+    },
+    {
+        "input": "caille",
+        "output": "oiseau"
+    },
+    {
+        "input": "rap",
+        "output": "musique"
+    },
+    {
+        "input": "robin",
+        "output": "oiseau"
+    },
+    {
+        "input": "plume",
+        "output": "plume"
+    },
+    {
+        "input": "r\u00e9frig\u00e9rateur",
+        "output": "machine"
+    },
+    {
+        "input": "pluie",
+        "output": "eau"
+    },
+    {
+        "input": "reine",
+        "output": "redevance"
+    },
+    {
+        "input": "riz",
+        "output": "grain"
+    },
+    {
+        "input": "violet",
+        "output": "couleur"
+    },
+    {
+        "input": "tristesse",
+        "output": "\u00e9motion"
+    },
+    {
+        "input": "Saturne",
+        "output": "plan\u00e8te"
+    },
+    {
+        "input": "sel",
+        "output": "\u00e9pice"
+    },
+    {
+        "input": "Russie",
+        "output": "pays"
+    },
+    {
+        "input": "coq",
+        "output": "poulet"
+    },
+    {
+        "input": "sacoche",
+        "output": "sac"
+    },
+    {
+        "input": "sexe",
+        "output": "activit\u00e9"
+    },
+    {
+        "input": "vu",
+        "output": "outil"
+    },
+    {
+        "input": "tournevis",
+        "output": "boire"
+    },
+    {
+        "input": "salade",
+        "output": "nourriture"
+    },
+    {
+        "input": "science",
+        "output": "sujet"
+    },
+    {
+        "input": "sprite",
+        "output": "soda"
+    },
+    {
+        "input": "SMTP",
+        "output": "protocole"
+    },
+    {
+        "input": "football",
+        "output": "sport"
+    },
+    {
+        "input": "carr\u00e9",
+        "output": "forme"
+    },
+    {
+        "input": "lance",
+        "output": "arme"
+    },
+    {
+        "input": "Espagne",
+        "output": "pays"
+    },
+    {
+        "input": "esclave",
+        "output": "personne"
+    },
+    {
+        "input": "soupe",
+        "output": "nourriture"
+    },
+    {
+        "input": "soda",
+        "output": "boire"
+    },
+    {
+        "input": "sport",
+        "output": "jeu"
+    },
+    {
+        "input": "ski",
+        "output": "activit\u00e9"
+    },
+    {
+        "input": "argent",
+        "output": "m\u00e9tal"
+    },
+    {
+        "input": "\u00e9pagneul",
+        "output": "chien"
+    },
+    {
+        "input": "fusil de chasse",
+        "output": "arme \u00e0 feu"
+    },
+    {
+        "input": "\u00e9toile",
+        "output": "soleil"
+    },
+    {
+        "input": "sous-marin",
+        "output": "bateau"
+    },
+    {
+        "input": "th\u00e9",
+        "output": "boire"
+    },
+    {
+        "input": "acier",
+        "output": "m\u00e9tal"
+    },
+    {
+        "input": "cygne",
+        "output": "oiseau"
+    },
+    {
+        "input": "cuill\u00e8re \u00e0 soupe",
+        "output": "mesure"
+    },
+    {
+        "input": "texte",
+        "output": "livre"
+    },
+    {
+        "input": "tennis",
+        "output": "jeu"
+    },
+    {
+        "input": "Suisse",
+        "output": "pays"
+    },
+    {
+        "input": "Texas",
+        "output": "\u00e9tat"
+    },
+    {
+        "input": "st\u00e9thoscope",
+        "output": "appareil"
+    },
+    {
+        "input": "Su\u00e8de",
+        "output": "pays"
+    },
+    {
+        "input": "chirurgien",
+        "output": "m\u00e9decin"
+    },
+    {
+        "input": "topologie",
+        "output": "math\u00e9matiques"
+    },
+    {
+        "input": "truite",
+        "output": "poisson"
+    },
+    {
+        "input": "trompette",
+        "output": "instrument"
+    },
+    {
+        "input": "triangle",
+        "output": "forme"
+    },
+    {
+        "input": "camion",
+        "output": "v\u00e9hicule"
+    },
+    {
+        "input": "Uranus",
+        "output": "plan\u00e8te"
+    },
+    {
+        "input": "outil",
+        "output": "objet"
+    },
+    {
+        "input": "Unix",
+        "output": "syst\u00e8me"
+    },
+    {
+        "input": "universit\u00e9",
+        "output": "lieu"
+    },
+    {
+        "input": "dinde",
+        "output": "pays"
+    },
+    {
+        "input": "tonnerre",
+        "output": "bruit"
+    },
+    {
+        "input": "vol",
+        "output": "crime"
+    },
+    {
+        "input": "Toyota",
+        "output": "entreprise"
+    },
+    {
+        "input": "instrument \u00e0 vent",
+        "output": "instrument"
+    },
+    {
+        "input": "alto",
+        "output": "instrument"
+    },
+    {
+        "input": "wicca",
+        "output": "religion"
+    },
+    {
+        "input": "Washington",
+        "output": "\u00e9tat"
+    },
+    {
+        "input": "violet",
+        "output": "fleur"
+    },
+    {
+        "input": "\u00c9tats-Unis",
+        "output": "pays"
+    },
+    {
+        "input": "eau",
+        "output": "vie"
+    },
+    {
+        "input": "verbe",
+        "output": "mot"
+    },
+    {
+        "input": "hiver",
+        "output": "saison"
+    },
+    {
+        "input": "guerre",
+        "output": "enfer"
+    },
+    {
+        "input": "bl\u00e9",
+        "output": "grain"
+    },
+    {
+        "input": "V\u00e9nus",
+        "output": "plan\u00e8te"
+    },
+    {
+        "input": "Volvo",
+        "output": "voiture"
+    },
+    {
+        "input": "Utah",
+        "output": "\u00e9tat"
+    },
+    {
+        "input": "Vermont",
+        "output": "\u00e9tat"
+    },
+    {
+        "input": "bois",
+        "output": "mat\u00e9riel"
+    },
+    {
+        "input": "vin",
+        "output": "boisson"
+    },
+    {
+        "input": "yo-yo",
+        "output": "jouet"
+    },
+    {
+        "input": "zombie",
+        "output": "mort-vivant"
+    },
+    {
+        "input": "jaune",
+        "output": "couleur"
+    },
+    {
+        "input": "z\u00e9ro",
+        "output": "nombre"
+    },
+    {
+        "input": "xylophone",
+        "output": "instrument"
+    },
+    {
+        "input": "pomme",
+        "output": "fruit"
+    },
+    {
+        "input": "saab",
+        "output": "voiture"
+    },
+    {
+        "input": "tigre",
+        "output": "animal"
+    },
+    {
+        "input": "lampe",
+        "output": "mobilier"
+    },
+    {
+        "input": "tulipe",
+        "output": "fleur"
+    },
+    {
+        "input": "Harry",
+        "output": "nom"
+    },
+    {
+        "input": "drame",
+        "output": "genre"
+    },
+    {
+        "input": "Picasso",
+        "output": "artiste"
+    },
+    {
+        "input": "vinaigre",
+        "output": "condiment"
+    },
+    {
+        "input": "acide",
+        "output": "chimique"
+    },
+    {
+        "input": "\u00e9l\u00e9phant",
+        "output": "mammif\u00e8re"
+    },
+    {
+        "input": "Netflix",
+        "output": "service"
+    },
+    {
+        "input": "pizza",
+        "output": "plat"
+    },
+    {
+        "input": "iPhone",
+        "output": "gadget"
+    },
+    {
+        "input": "jeans",
+        "output": "v\u00eatements"
+    },
+    {
+        "input": "cosmos",
+        "output": "fleur"
+    },
+    {
+        "input": "prot\u00e9ine",
+        "output": "nutriment"
+    },
+    {
+        "input": "basket",
+        "output": "balle"
+    },
+    {
+        "input": "lys",
+        "output": "plante"
+    },
+    {
+        "input": "Samsung",
+        "output": "entreprise"
+    },
+    {
+        "input": "alg\u00e8bre",
+        "output": "math\u00e9matiques"
+    },
+    {
+        "input": "Nike",
+        "output": "marque"
+    },
+    {
+        "input": "spiderman",
+        "output": "caract\u00e8re"
+    },
+    {
+        "input": "tango",
+        "output": "danse"
+    },
+    {
+        "input": "rivi\u00e8re",
+        "output": "g\u00e9ographique"
+    },
+    {
+        "input": "Bible",
+        "output": "livre"
+    },
+    {
+        "input": "python",
+        "output": "langue"
+    },
+    {
+        "input": "saxophone",
+        "output": "instrument"
+    },
+    {
+        "input": "Tokyo",
+        "output": "ville"
+    },
+    {
+        "input": "laine",
+        "output": "mat\u00e9riel"
+    },
+    {
+        "input": "chat",
+        "output": "animal de compagnie"
+    },
+    {
+        "input": "fourgon",
+        "output": "v\u00e9hicule"
+    },
+    {
+        "input": "rubis",
+        "output": "gemme"
+    },
+    {
+        "input": "biotine",
+        "output": "vitamine"
+    },
+    {
+        "input": "chemise",
+        "output": "v\u00eatements"
+    },
+    {
+        "input": "piston",
+        "output": "machine"
+    },
+    {
+        "input": "ma\u00efs",
+        "output": "grain"
+    },
+    {
+        "input": "com\u00e8te",
+        "output": "astronomique"
+    },
+    {
+        "input": "lundi",
+        "output": "jour de la semaine"
+    },
+    {
+        "input": "microscope",
+        "output": "\u00e9quipement"
+    },
+    {
+        "input": "cola",
+        "output": "boire"
+    },
+    {
+        "input": "cauchemar",
+        "output": "r\u00eave"
+    },
+    {
+        "input": "toscan",
+        "output": "vin"
+    },
+    {
+        "input": "rose",
+        "output": "fleur"
+    },
+    {
+        "input": "Facebook",
+        "output": "r\u00e9seaux sociaux"
+    },
+    {
+        "input": "diamant",
+        "output": "bijoux"
+    },
+    {
+        "input": "tofu",
+        "output": "v\u00e9g\u00e9tarien"
+    },
+    {
+        "input": "gratte-ciel",
+        "output": "architecture"
+    },
+    {
+        "input": "marguerite",
+        "output": "fleurir"
+    },
+    {
+        "input": "novembre",
+        "output": "mois"
+    },
+    {
+        "input": "sauterelle",
+        "output": "insecte"
+    },
+    {
+        "input": "gu\u00e9pard",
+        "output": "animal"
+    },
+    {
+        "input": "bambou",
+        "output": "plante"
+    },
+    {
+        "input": "sushi",
+        "output": "cuisine"
+    },
+    {
+        "input": "titanesque",
+        "output": "film"
+    },
+    {
+        "input": "whisky",
+        "output": "alcool"
+    },
+    {
+        "input": "locomotive",
+        "output": "train"
+    },
+    {
+        "input": "cheddar",
+        "output": "fromage"
+    },
+    {
+        "input": "libellule",
+        "output": "insecte"
+    },
+    {
+        "input": "Chevrolet",
+        "output": "automobile"
+    },
+    {
+        "input": "volley-ball",
+        "output": "sport"
+    },
+    {
+        "input": "vertige",
+        "output": "condition"
+    },
+    {
+        "input": "ch\u00eane",
+        "output": "arbre"
+    },
+    {
+        "input": "lavande",
+        "output": "herbe"
+    },
+    {
+        "input": "visi\u00e8re",
+        "output": "chapeau"
+    },
+    {
+        "input": "butte",
+        "output": "colline"
+    },
+    {
+        "input": "Broadway",
+        "output": "th\u00e9\u00e2tre"
+    },
+    {
+        "input": "kiwi",
+        "output": "oiseau"
+    },
+    {
+        "input": "lasagne",
+        "output": "p\u00e2tes"
+    },
+    {
+        "input": "crayon",
+        "output": "couleur"
+    },
+    {
+        "input": "guimauve",
+        "output": "bonbon"
+    },
+    {
+        "input": "Sega",
+        "output": "jeu vid\u00e9o"
+    },
+    {
+        "input": "gothique",
+        "output": "style"
+    },
+    {
+        "input": "oracle",
+        "output": "base de donn\u00e9es"
+    },
+    {
+        "input": "champagne",
+        "output": "boisson"
+    },
+    {
+        "input": "manga",
+        "output": "art"
+    },
+    {
+        "input": "samba",
+        "output": "danse"
+    },
+    {
+        "input": "ambre",
+        "output": "couleur"
+    },
+    {
+        "input": "herbe",
+        "output": "v\u00e9g\u00e9tation"
+    },
+    {
+        "input": "amour",
+        "output": "\u00e9motion"
+    },
+    {
+        "input": "hot-dog",
+        "output": "nourriture"
+    },
+    {
+        "input": "banane",
+        "output": "fruit"
+    },
+    {
+        "input": "haine",
+        "output": "\u00e9motion"
+    },
+    {
+        "input": "guitare",
+        "output": "instrument"
+    },
+    {
+        "input": "poire",
+        "output": "fruit"
+    },
+    {
+        "input": "vert",
+        "output": "couleur"
+    },
+    {
+        "input": "bronze",
+        "output": "m\u00e9tal"
+    },
+    {
+        "input": "violon",
+        "output": "instrument"
+    },
+    {
+        "input": "Australie",
+        "output": "pays"
+    },
+    {
+        "input": "framboise",
+        "output": "fruit"
+    },
+    {
+        "input": "rouge",
+        "output": "couleur"
+    },
+    {
+        "input": "cricket",
+        "output": "sport"
+    },
+    {
+        "input": "tambours",
+        "output": "instrument"
+    },
+    {
+        "input": "nouilles",
+        "output": "nourriture"
+    },
+    {
+        "input": "raisin",
+        "output": "fruit"
+    },
+    {
+        "input": "noir",
+        "output": "couleur"
+    },
+    {
+        "input": "platine",
+        "output": "m\u00e9tal"
+    },
+    {
+        "input": "joie",
+        "output": "\u00e9motion"
+    },
+    {
+        "input": "p\u00eache",
+        "output": "fruit"
+    },
+    {
+        "input": "blanc",
+        "output": "couleur"
+    },
+    {
+        "input": "z\u00e8bre",
+        "output": "animal"
+    },
+    {
+        "input": "beignet",
+        "output": "nourriture"
+    },
+    {
+        "input": "past\u00e8que",
+        "output": "fruit"
+    },
+    {
+        "input": "plomb",
+        "output": "m\u00e9tal"
+    },
+    {
+        "input": "surprise",
+        "output": "\u00e9motion"
+    },
+    {
+        "input": "tacos",
+        "output": "nourriture"
+    },
+    {
+        "input": "myrtille",
+        "output": "fruit"
+    },
+    {
+        "input": "girafe",
+        "output": "animal"
+    },
+    {
+        "input": "violoncelle",
+        "output": "instrument"
+    },
+    {
+        "input": "Argentine",
+        "output": "pays"
+    },
+    {
+        "input": "falafel",
+        "output": "nourriture"
+    },
+    {
+        "input": "cerise",
+        "output": "fruit"
+    },
+    {
+        "input": "serpent",
+        "output": "animal"
+    },
+    {
+        "input": "rugby",
+        "output": "sport"
+    },
+    {
+        "input": "zinc",
+        "output": "m\u00e9tal"
+    },
+    {
+        "input": "cr\u00eape",
+        "output": "nourriture"
+    },
+    {
+        "input": "perroquet",
+        "output": "animal"
+    },
+    {
+        "input": "courge",
+        "output": "sport"
+    },
+    {
+        "input": "nickel",
+        "output": "m\u00e9tal"
+    },
+    {
+        "input": "ennui",
+        "output": "\u00e9motion"
+    },
+    {
+        "input": "fraise",
+        "output": "fruit"
+    },
+    {
+        "input": "gris",
+        "output": "couleur"
+    },
+    {
+        "input": "l\u00e9opard",
+        "output": "animal"
+    },
+    {
+        "input": "titane",
+        "output": "m\u00e9tal"
+    },
+    {
+        "input": "excitation",
+        "output": "\u00e9motion"
+    },
+    {
+        "input": "Mercedes",
+        "output": "voiture"
+    },
+    {
+        "input": "\u00e9t\u00e9",
+        "output": "saison"
+    },
+    {
+        "input": "v\u00e9lo",
+        "output": "v\u00e9hicule"
+    },
+    {
+        "input": "Boeing",
+        "output": "avion"
+    },
+    {
+        "input": "Halloween",
+        "output": "vacances"
+    },
+    {
+        "input": "chemises",
+        "output": "v\u00eatements"
+    },
+    {
+        "input": "adidas",
+        "output": "marque"
+    },
+    {
+        "input": "com\u00e9die",
+        "output": "genre"
+    },
+    {
+        "input": "Amazon",
+        "output": "entreprise"
+    },
+    {
+        "input": "Paris",
+        "output": "ville"
+    },
+    {
+        "input": "Mozart",
+        "output": "compositeur"
+    },
+    {
+        "input": "po\u00e9sie",
+        "output": "litt\u00e9rature"
+    },
+    {
+        "input": "bouddhisme",
+        "output": "religion"
+    },
+    {
+        "input": "bont\u00e9",
+        "output": "vertu"
+    },
+    {
+        "input": "physique",
+        "output": "science"
+    },
+    {
+        "input": "catholicisme",
+        "output": "religion"
+    },
+    {
+        "input": "\u00e9meraude",
+        "output": "gemme"
+    },
+    {
+        "input": "sept",
+        "output": "nombre"
+    },
+    {
+        "input": "anglais",
+        "output": "langue"
+    },
+    {
+        "input": "chauve-souris",
+        "output": "animal"
+    },
+    {
+        "input": "f\u00e9vrier",
+        "output": "mois"
+    },
+    {
+        "input": "Chrysler",
+        "output": "voiture"
+    },
+    {
+        "input": "Volkswagen",
+        "output": "voiture"
+    },
+    {
+        "input": "neige",
+        "output": "temps"
+    },
+    {
+        "input": "espagnol",
+        "output": "langue"
+    },
+    {
+        "input": "logiciel",
+        "output": "technologie"
+    },
+    {
+        "input": "arc-en-ciel",
+        "output": "ph\u00e9nom\u00e8ne"
+    },
+    {
+        "input": "gagnant",
+        "output": "statut"
+    },
+    {
+        "input": "automne",
+        "output": "saison"
+    },
+    {
+        "input": "m\u00e9decine",
+        "output": "profession"
+    },
+    {
+        "input": "b\u0153uf",
+        "output": "viande"
+    },
+    {
+        "input": "coca-cola",
+        "output": "boire"
+    },
+    {
+        "input": "d\u00e9tective",
+        "output": "profession"
+    },
+    {
+        "input": "soir",
+        "output": "temps"
+    },
+    {
+        "input": "photographie",
+        "output": "loisir"
+    },
+    {
+        "input": "ordinateur portable",
+        "output": "\u00e9lectronique"
+    },
+    {
+        "input": "philosophie",
+        "output": "discipline"
+    },
+    {
+        "input": "dessin",
+        "output": "art"
+    },
+    {
+        "input": "danse",
+        "output": "forme d'art"
+    },
+    {
+        "input": "batman",
+        "output": "super-h\u00e9ros"
+    },
+    {
+        "input": "Rolex",
+        "output": "regarder"
+    },
+    {
+        "input": "fourche",
+        "output": "ustensile"
+    },
+    {
+        "input": "puma",
+        "output": "animal"
+    },
+    {
+        "input": "yoga",
+        "output": "condition physique"
+    },
+    {
+        "input": "Gr\u00e8ce",
+        "output": "pays"
+    },
+    {
+        "input": "architecture",
+        "output": "profession"
+    },
+    {
+        "input": "aigle",
+        "output": "oiseau"
+    },
+    {
+        "input": "psychologie",
+        "output": "science"
+    },
+    {
+        "input": "math\u00e9matiques",
+        "output": "sujet"
+    },
+    {
+        "input": "comptable",
+        "output": "profession"
+    },
+    {
+        "input": "tequila",
+        "output": "boire"
+    },
+    {
+        "input": "natation",
+        "output": "activit\u00e9"
+    },
+    {
+        "input": "infirmi\u00e8re",
+        "output": "profession"
+    },
+    {
+        "input": "romance",
+        "output": "genre"
+    },
+    {
+        "input": "canon",
+        "output": "marque"
+    },
+    {
+        "input": "pain",
+        "output": "nourriture"
+    },
+    {
+        "input": "euro",
+        "output": "monnaie"
+    },
+    {
+        "input": "octobre",
+        "output": "mois"
+    },
+    {
+        "input": "poule",
+        "output": "oiseau"
+    },
+    {
+        "input": "pomme de terre",
+        "output": "l\u00e9gume"
+    },
+    {
+        "input": "vache",
+        "output": "animal"
+    },
+    {
+        "input": "shampooing",
+        "output": "produit"
+    },
+    {
+        "input": "sib\u00e9rien",
+        "output": "enrou\u00e9"
+    },
+    {
+        "input": "Casio",
+        "output": "regarder"
+    },
+    {
+        "input": "m\u00e9decin",
+        "output": "profession"
+    },
+    {
+        "input": "verre",
+        "output": "mat\u00e9riel"
+    },
+    {
+        "input": "loi",
+        "output": "sujet"
+    },
+    {
+        "input": "ozone",
+        "output": "couche"
+    },
+    {
+        "input": "jus",
+        "output": "boisson"
+    },
+    {
+        "input": "Kentucky",
+        "output": "\u00e9tat"
+    },
+    {
+        "input": "tomate",
+        "output": "l\u00e9gume"
+    },
+    {
+        "input": "periscope",
+        "output": "\u00e9quipement"
+    },
+    {
+        "input": "marteau",
+        "output": "outil"
+    },
+    {
+        "input": "benz",
+        "output": "voiture"
+    },
+    {
+        "input": "crayon",
+        "output": "papeterie"
+    },
+    {
+        "input": "orchid\u00e9e",
+        "output": "fleur"
+    },
+    {
+        "input": "oignon",
+        "output": "l\u00e9gume"
+    },
+    {
+        "input": "omelette",
+        "output": "plat"
+    },
+    {
+        "input": "roses",
+        "output": "fleur"
+    },
+    {
+        "input": "zen",
+        "output": "philosophie"
+    },
+    {
+        "input": "Sahara",
+        "output": "d\u00e9sert"
+    },
+    {
+        "input": "Shakespeare",
+        "output": "auteur"
+    },
+    {
+        "input": "l\u00e9on",
+        "output": "zodiaque"
+    },
+    {
+        "input": "piratage",
+        "output": "crime"
+    },
+    {
+        "input": "m\u00e9ditation",
+        "output": "activit\u00e9"
+    },
+    {
+        "input": "dollars",
+        "output": "monnaie"
+    },
+    {
+        "input": "Everest",
+        "output": "montagne"
+    },
+    {
+        "input": "hippopotame",
+        "output": "mammif\u00e8re"
+    },
+    {
+        "input": "atlantique",
+        "output": "oc\u00e9an"
+    },
+    {
+        "input": "tornade",
+        "output": "catastrophe"
+    },
+    {
+        "input": "Oreo",
+        "output": "collation"
+    },
+    {
+        "input": "safari",
+        "output": "navigateur"
+    },
+    {
+        "input": "Voldemort",
+        "output": "m\u00e9chant"
+    },
+    {
+        "input": "degr\u00e9 Celsius",
+        "output": "temp\u00e9rature"
+    },
+    {
+        "input": "janvier",
+        "output": "mois"
+    },
+    {
+        "input": "d\u00e9mocratie",
+        "output": "gouvernement"
+    },
+    {
+        "input": "bitcoin",
+        "output": "monnaie cryptographique"
+    },
+    {
+        "input": "Bouddha",
+        "output": "religion"
+    },
+    {
+        "input": "v\u00e9g\u00e9talien",
+        "output": "r\u00e9gime alimentaire"
+    },
+    {
+        "input": "allumer",
+        "output": "liseuse"
+    },
+    {
+        "input": "tesla",
+        "output": "voiture"
+    },
+    {
+        "input": "perle",
+        "output": "pierre pr\u00e9cieuse"
+    },
+    {
+        "input": "peuvent",
+        "output": "mois"
+    },
+    {
+        "input": "infini",
+        "output": "concept"
+    },
+    {
+        "input": "Kilkenny",
+        "output": "ville"
+    },
+    {
+        "input": "noix de coco",
+        "output": "fruit"
+    },
+    {
+        "input": "kangourou",
+        "output": "mammif\u00e8re"
+    },
+    {
+        "input": "gladiateurs",
+        "output": "guerriers"
+    },
+    {
+        "input": "turquoise",
+        "output": "couleur"
+    },
+    {
+        "input": "scorpions",
+        "output": "animal"
+    },
+    {
+        "input": "vanille",
+        "output": "saveur"
+    },
+    {
+        "input": "Yukon",
+        "output": "lieu"
+    },
+    {
+        "input": "mangue",
+        "output": "fruit"
+    },
+    {
+        "input": "vodka",
+        "output": "boisson"
+    },
+    {
+        "input": "marathon",
+        "output": "course"
+    },
+    {
+        "input": "asphalte",
+        "output": "mat\u00e9riel"
+    },
+    {
+        "input": "crocodile",
+        "output": "reptile"
+    },
+    {
+        "input": "swahili",
+        "output": "langue"
+    },
+    {
+        "input": "l\u00e9zard",
+        "output": "reptile"
+    },
+    {
+        "input": "Brooklyn",
+        "output": "arrondissement"
+    },
+    {
+        "input": "mercredi",
+        "output": "jour"
+    },
+    {
+        "input": "saphir",
+        "output": "gemme"
+    },
+    {
+        "input": "bacon",
+        "output": "nourriture"
+    },
+    {
+        "input": "fluorure",
+        "output": "chimique"
+    },
+    {
+        "input": "sauna",
+        "output": "installation"
+    },
+    {
+        "input": "encens",
+        "output": "ar\u00f4me"
+    },
+    {
+        "input": "polyester",
+        "output": "tissu"
+    },
+    {
+        "input": "fran\u00e7ais",
+        "output": "langue"
+    },
+    {
+        "input": "Manchester",
+        "output": "ville"
+    },
+    {
+        "input": "Beatles",
+        "output": "bande"
+    },
+    {
+        "input": "Ferrari",
+        "output": "voiture"
+    },
+    {
+        "input": "calculatrice",
+        "output": "outil"
+    },
+    {
+        "input": "br\u00e9silien",
+        "output": "langue"
+    },
+    {
+        "input": "burger",
+        "output": "nourriture"
+    },
+    {
+        "input": "requin",
+        "output": "animal"
+    },
+    {
+        "input": "Photoshop",
+        "output": "logiciel"
+    },
+    {
+        "input": "diamant",
+        "output": "pierre pr\u00e9cieuse"
+    },
+    {
+        "input": "Ford",
+        "output": "voiture"
+    },
+    {
+        "input": "Instagram",
+        "output": "application"
+    },
+    {
+        "input": "omelette",
+        "output": "plat"
+    },
+    {
+        "input": "Rome",
+        "output": "ville"
+    },
+    {
+        "input": "Salman",
+        "output": "acteur"
+    },
+    {
+        "input": "acrylique",
+        "output": "peindre"
+    },
+    {
+        "input": "r\u00e9frig\u00e9rateur",
+        "output": "appareil"
+    },
+    {
+        "input": "Duba\u00ef",
+        "output": "ville"
+    },
+    {
+        "input": "net",
+        "output": "outil"
+    },
+    {
+        "input": "bottes",
+        "output": "chaussures"
+    },
+    {
+        "input": "adobe",
+        "output": "entreprise"
+    },
+    {
+        "input": "sorci\u00e8re",
+        "output": "caract\u00e8re"
+    },
+    {
+        "input": "Ronaldo",
+        "output": "footballeur"
+    },
+    {
+        "input": "Reebok",
+        "output": "marque"
+    },
+    {
+        "input": "Miami",
+        "output": "ville"
+    },
+    {
+        "input": "\u00e9quateur",
+        "output": "g\u00e9ographie"
+    },
+    {
+        "input": "Renaissance",
+        "output": "\u00e9poque"
+    },
+    {
+        "input": "bol\u00e9ro",
+        "output": "danse"
+    },
+    {
+        "input": "Google",
+        "output": "entreprise"
+    },
+    {
+        "input": "\u00e9difiant",
+        "output": "\u00e9motion"
+    },
+    {
+        "input": "Chypre",
+        "output": "pays"
+    },
+    {
+        "input": "zirconium",
+        "output": "\u00e9l\u00e9ment"
+    },
+    {
+        "input": "joueurs de dames",
+        "output": "jeu"
+    },
+    {
+        "input": "arbre",
+        "output": "plante"
+    },
+    {
+        "input": "Dell",
+        "output": "entreprise"
+    },
+    {
+        "input": "reconnaissance",
+        "output": "\u00e9motion"
+    },
+    {
+        "input": "netball",
+        "output": "sport"
+    },
+    {
+        "input": "astronaute",
+        "output": "profession"
+    },
+    {
+        "input": "parapluie",
+        "output": "utilit\u00e9"
+    },
+    {
+        "input": "entonnoir",
+        "output": "outil"
+    },
+    {
+        "input": "boulanger",
+        "output": "profession"
+    },
+    {
+        "input": "brocoli",
+        "output": "l\u00e9gume"
+    },
+    {
+        "input": "\u00e9b\u00e8ne",
+        "output": "bois"
+    },
+    {
+        "input": "monnaie",
+        "output": "peintre"
+    },
+    {
+        "input": "New York",
+        "output": "ville"
+    },
+    {
+        "input": "allemand",
+        "output": "langue"
+    },
+    {
+        "input": "pacifique",
+        "output": "oc\u00e9an"
+    },
+    {
+        "input": "bordeaux",
+        "output": "vin"
+    },
+    {
+        "input": "Taj Mahal",
+        "output": "monument"
+    },
+    {
+        "input": "Harry Potter",
+        "output": "livre"
+    },
+    {
+        "input": "Bruce Lee",
+        "output": "acteur"
+    },
+    {
+        "input": "Aladdin",
+        "output": "film"
+    },
+    {
+        "input": "Nouvelle-Z\u00e9lande",
+        "output": "pays"
+    },
+    {
+        "input": "diamants",
+        "output": "pierre pr\u00e9cieuse"
+    },
+    {
+        "input": "illustration",
+        "output": "art"
+    },
+    {
+        "input": "dimanche",
+        "output": "jour"
+    },
+    {
+        "input": "Billie Eilish",
+        "output": "chanteur"
+    },
+    {
+        "input": "Tracey Emin",
+        "output": "artiste"
+    },
+    {
+        "input": "quidditch",
+        "output": "sport"
+    },
+    {
+        "input": "Colis\u00e9e",
+        "output": "point de rep\u00e8re"
+    },
+    {
+        "input": "tour Eiffel",
+        "output": "monument"
+    },
+    {
+        "input": "Mona Lisa",
+        "output": "peinture"
+    },
+    {
+        "input": "Aristote",
+        "output": "philosophe"
+    },
+    {
+        "input": "salsa",
+        "output": "danse"
+    },
+    {
+        "input": "Gange",
+        "output": "rivi\u00e8re"
+    },
+    {
+        "input": "gingembre",
+        "output": "\u00e9pice"
+    },
+    {
+        "input": "palourde",
+        "output": "fruits de mer"
+    },
+    {
+        "input": "superman",
+        "output": "super-h\u00e9ros"
+    },
+    {
+        "input": "Audi",
+        "output": "voiture"
+    },
+    {
+        "input": "tasse",
+        "output": "r\u00e9cipient"
+    },
+    {
+        "input": "chauve",
+        "output": "caract\u00e9ristique"
+    },
+    {
+        "input": "t-shirt",
+        "output": "v\u00eatements"
+    },
+    {
+        "input": "WhatsApp",
+        "output": "application"
+    },
+    {
+        "input": "terreur",
+        "output": "\u00e9motion"
+    },
+    {
+        "input": "tournesol",
+        "output": "plante"
+    },
+    {
+        "input": "Sony",
+        "output": "soci\u00e9t\u00e9"
+    },
+    {
+        "input": "ballon",
+        "output": "objet"
+    },
+    {
+        "input": "ThinkPad",
+        "output": "ordinateur portable"
+    },
+    {
+        "input": "ovale",
+        "output": "forme"
+    },
+    {
+        "input": "couronne",
+        "output": "bi\u00e8re"
+    },
+    {
+        "input": "calcaire",
+        "output": "rocher"
+    },
+    {
+        "input": "cuill\u00e8re",
+        "output": "ustensile"
+    },
+    {
+        "input": "journal",
+        "output": "m\u00e9dias"
+    },
+    {
+        "input": "mandarin",
+        "output": "dialecte"
+    },
+    {
+        "input": "statue",
+        "output": "monument"
+    },
+    {
+        "input": "mouette",
+        "output": "oiseau marin"
+    },
+    {
+        "input": "fi\u00e8vre",
+        "output": "maladie"
+    },
+    {
+        "input": "train",
+        "output": "transport"
+    },
+    {
+        "input": "jonquille",
+        "output": "fleur"
+    },
+    {
+        "input": "abeille",
+        "output": "insecte"
+    },
+    {
+        "input": "saumon",
+        "output": "poisson"
+    },
+    {
+        "input": "bonsa\u00ef",
+        "output": "plante"
+    },
+    {
+        "input": "Ath\u00e8nes",
+        "output": "ville"
+    },
+    {
+        "input": "courageux",
+        "output": "adjectif"
+    },
+    {
+        "input": "Buick",
+        "output": "voiture"
+    },
+    {
+        "input": "boxe",
+        "output": "sport"
+    },
+    {
+        "input": "matin",
+        "output": "heure de la journ\u00e9e"
+    },
+    {
+        "input": "anneaux",
+        "output": "accessoires"
+    },
+    {
+        "input": "farine d'avoine",
+        "output": "c\u00e9r\u00e9ale"
+    },
+    {
+        "input": "encre",
+        "output": "papeterie"
+    },
+    {
+        "input": "solitaire",
+        "output": "jeu de cartes"
+    },
+    {
+        "input": "sucette",
+        "output": "article pour b\u00e9b\u00e9"
+    },
+    {
+        "input": "\u00c9gypte",
+        "output": "civilisation ancienne"
+    },
+    {
+        "input": "t\u00e9lescope",
+        "output": "mat\u00e9riel d'astronomie"
+    },
+    {
+        "input": "bureau",
+        "output": "ordinateur"
+    },
+    {
+        "input": "cardiologie",
+        "output": "sp\u00e9cialit\u00e9 m\u00e9dicale"
+    },
+    {
+        "input": "cheerleading",
+        "output": "sport"
+    },
+    {
+        "input": "bougie",
+        "output": "d\u00e9cor"
+    },
+    {
+        "input": "rubik",
+        "output": "puzzle"
+    },
+    {
+        "input": "enrou\u00e9",
+        "output": "race de chien"
+    },
+    {
+        "input": "enthousiasm\u00e9",
+        "output": "\u00e9motion"
+    },
+    {
+        "input": "ibuprof\u00e8ne",
+        "output": "m\u00e9dicament"
+    },
+    {
+        "input": "soleil",
+        "output": "\u00e9toile"
+    },
+    {
+        "input": "charpentier",
+        "output": "profession"
+    },
+    {
+        "input": "diab\u00e8te",
+        "output": "maladie"
+    },
+    {
+        "input": "pistache",
+        "output": "saveur"
+    },
+    {
+        "input": "ao\u00fbt",
+        "output": "mois"
+    },
+    {
+        "input": "granite",
+        "output": "rocher"
+    },
+    {
+        "input": "monopole",
+        "output": "jeu de soci\u00e9t\u00e9"
+    },
+    {
+        "input": "magicien",
+        "output": "animateur"
+    },
+    {
+        "input": "hypnose",
+        "output": "th\u00e9rapie"
+    },
+    {
+        "input": "alpaga",
+        "output": "animal"
+    },
+    {
+        "input": "sauter",
+        "output": "mouvement du corps"
+    },
+    {
+        "input": "biceps",
+        "output": "muscle"
+    },
+    {
+        "input": "h\u00e9licopt\u00e8re",
+        "output": "a\u00e9ronef"
+    },
+    {
+        "input": "art",
+        "output": "sujet"
+    },
+    {
+        "input": "vol qualifi\u00e9",
+        "output": "crime"
+    },
+    {
+        "input": "t\u00e9l\u00e9phone intelligent",
+        "output": "gadget"
+    },
+    {
+        "input": "barista",
+        "output": "travail"
+    },
+    {
+        "input": "clown",
+        "output": "artiste de cirque"
+    },
+    {
+        "input": "optimiste",
+        "output": "personnalit\u00e9"
+    },
+    {
+        "input": "VIH",
+        "output": "virus"
+    },
+    {
+        "input": "cr\u00e8me solaire",
+        "output": "produit de soin pour la peau"
+    },
+    {
+        "input": "pilote",
+        "output": "profession"
+    },
+    {
+        "input": "banjo",
+        "output": "instrument"
+    },
+    {
+        "input": "parc",
+        "output": "lieu public"
+    },
+    {
+        "input": "ensoleillement",
+        "output": "conditions m\u00e9t\u00e9orologiques"
+    },
+    {
+        "input": "sagesse",
+        "output": "vertu"
+    },
+    {
+        "input": "samedi",
+        "output": "jour de la semaine"
+    },
+    {
+        "input": "gobelin",
+        "output": "cr\u00e9ature mythique"
+    },
+    {
+        "input": "panda",
+        "output": "animal"
+    },
+    {
+        "input": "Juliette",
+        "output": "nom"
+    },
+    {
+        "input": "Omaha",
+        "output": "ville"
+    },
+    {
+        "input": "mars",
+        "output": "plan\u00e8te"
+    },
+    {
+        "input": "albatros",
+        "output": "oiseau"
+    },
+    {
+        "input": "poker",
+        "output": "jeu"
+    },
+    {
+        "input": "Rajasthan",
+        "output": "\u00e9tat"
+    },
+    {
+        "input": "Starbucks",
+        "output": "entreprise"
+    },
+    {
+        "input": "blues",
+        "output": "musique"
+    },
+    {
+        "input": "Alaska",
+        "output": "\u00e9tat"
+    },
+    {
+        "input": "schtroumpf",
+        "output": "personnage de dessin anim\u00e9"
+    },
+    {
+        "input": "om\u00e9ga",
+        "output": "alphabet grec"
+    },
+    {
+        "input": "histoire",
+        "output": "mati\u00e8re scolaire"
+    },
+    {
+        "input": "p\u00e2tes",
+        "output": "nourriture"
+    },
+    {
+        "input": "piment jalape\u00f1o",
+        "output": "poivre"
+    },
+    {
+        "input": "durian",
+        "output": "fruit"
+    },
+    {
+        "input": "thriller",
+        "output": "genre cin\u00e9matographique"
+    },
+    {
+        "input": "Aerosmith",
+        "output": "bande"
+    },
+    {
+        "input": "Obama",
+        "output": "pr\u00e9sident"
+    },
+    {
+        "input": "for\u00eat",
+        "output": "biome"
+    },
+    {
+        "input": "iguane",
+        "output": "reptile"
+    },
+    {
+        "input": "\u00e9vangile",
+        "output": "musique"
+    },
+    {
+        "input": "anthropologie",
+        "output": "science"
+    },
+    {
+        "input": "livre",
+        "output": "objet"
+    },
+    {
+        "input": "sauter",
+        "output": "v\u00eatements"
+    },
+    {
+        "input": "Asie",
+        "output": "continent"
+    },
+    {
+        "input": "ch\u00e8vre",
+        "output": "animal"
+    },
+    {
+        "input": "tourisme",
+        "output": "industrie"
+    },
+    {
+        "input": "tambour",
+        "output": "instrument"
+    },
+    {
+        "input": "noix",
+        "output": "\u00e9crou"
+    },
+    {
+        "input": "toucher l\u00e9g\u00e8rement",
+        "output": "pas de danse"
+    },
+    {
+        "input": "oignons",
+        "output": "l\u00e9gume"
+    },
+    {
+        "input": "expectorer",
+        "output": "verbes"
+    },
+    {
+        "input": "pingouin",
+        "output": "oiseau"
+    },
+    {
+        "input": "Antarctique",
+        "output": "continent"
+    },
+    {
+        "input": "Michigan",
+        "output": "\u00e9tat"
+    },
+    {
+        "input": "constitution",
+        "output": "document juridique"
+    },
+    {
+        "input": "actualit\u00e9s",
+        "output": "m\u00e9dias"
+    },
+    {
+        "input": "barracuda",
+        "output": "poisson"
+    },
+    {
+        "input": "\u00e9volution",
+        "output": "th\u00e9orie scientifique."
+    },
+    {
+        "input": "acajou",
+        "output": "bois"
+    },
+    {
+        "input": "Twitter",
+        "output": "application"
+    },
+    {
+        "input": "volcan",
+        "output": "formation g\u00e9ologique"
+    },
+    {
+        "input": "oscar",
+        "output": "r\u00e9compense"
+    },
+    {
+        "input": "modernisme",
+        "output": "mouvement artistique"
+    },
+    {
+        "input": "gabardine",
+        "output": "tissu"
+    },
+    {
+        "input": "Atlantis",
+        "output": "mythologie"
+    },
+    {
+        "input": "chimiste",
+        "output": "profession"
+    },
+    {
+        "input": "hameau",
+        "output": "jouer"
+    },
+    {
+        "input": "java",
+        "output": "langage de programmation"
+    },
+    {
+        "input": "Jean",
+        "output": "nom"
+    },
+    {
+        "input": "pentagone",
+        "output": "forme"
+    },
+    {
+        "input": "gomme",
+        "output": "papeterie"
+    },
+    {
+        "input": "Einstein",
+        "output": "scientifique"
+    },
+    {
+        "input": "cordeau",
+        "output": "n\u0153ud"
+    },
+    {
+        "input": "avocat",
+        "output": "fruit"
+    },
+    {
+        "input": "Android",
+        "output": "syst\u00e8me d'exploitation"
+    },
+    {
+        "input": "scorpion",
+        "output": "arachnide"
+    },
+    {
+        "input": "mixeur",
+        "output": "appareil"
+    },
+    {
+        "input": "amande",
+        "output": "\u00e9crou"
+    },
+    {
+        "input": "appartement",
+        "output": "logement"
+    },
+    {
+        "input": "gin",
+        "output": "boisson"
+    },
+    {
+        "input": "corail",
+        "output": "animal"
+    },
+    {
+        "input": "cheval",
+        "output": "mammif\u00e8re"
+    },
+    {
+        "input": "pyramide",
+        "output": "b\u00e2timent"
+    },
+    {
+        "input": "polaroid",
+        "output": "appareil photo"
+    },
+    {
+        "input": "B\u00e9lier",
+        "output": "signe du zodiaque"
+    },
+    {
+        "input": "chiot",
+        "output": "animal"
+    },
+    {
+        "input": "\u00e9carlate",
+        "output": "couleur"
+    },
+    {
+        "input": "hamster",
+        "output": "animal de compagnie"
+    },
+    {
+        "input": "heureux",
+        "output": "\u00e9motion"
+    },
+    {
+        "input": "myst\u00e8re",
+        "output": "genre"
+    },
+    {
+        "input": "le soleil",
+        "output": "journal"
+    },
+    {
+        "input": "randonneur",
+        "output": "activit\u00e9"
+    },
+    {
+        "input": "ikea",
+        "output": "marque"
+    },
+    {
+        "input": "bengali",
+        "output": "langue"
+    },
+    {
+        "input": "ballet",
+        "output": "danse"
+    },
+    {
+        "input": "aspirine",
+        "output": "m\u00e9decine"
+    },
+    {
+        "input": "cactus",
+        "output": "plante"
+    },
+    {
+        "input": "argent",
+        "output": "monnaie"
+    },
+    {
+        "input": "ambulance",
+        "output": "v\u00e9hicule"
+    },
+    {
+        "input": "origami",
+        "output": "artisanat"
+    },
+    {
+        "input": "croissant",
+        "output": "p\u00e2tisserie"
+    },
+    {
+        "input": "Dallas",
+        "output": "ville"
+    },
+    {
+        "input": "asperge",
+        "output": "l\u00e9gume"
+    },
+    {
+        "input": "mayonnaise",
+        "output": "condiment"
+    },
+    {
+        "input": "ob\u00e9lisque",
+        "output": "monument"
+    },
+    {
+        "input": "ischio-jambiers",
+        "output": "muscle"
+    },
+    {
+        "input": "esquiver",
+        "output": "voiture"
+    },
+    {
+        "input": "mojito",
+        "output": "cocktail"
+    },
+    {
+        "input": "cosm\u00e9tologie",
+        "output": "profession"
+    },
+    {
+        "input": "printemps",
+        "output": "saison"
+    },
+    {
+        "input": "lapin",
+        "output": "animal"
+    },
+    {
+        "input": "Vancouver",
+        "output": "ville"
+    },
+    {
+        "input": "Wikip\u00e9dia",
+        "output": "site web."
+    },
+    {
+        "input": "Angleterre",
+        "output": "pays"
+    },
+    {
+        "input": "chinois",
+        "output": "langue"
+    },
+    {
+        "input": "carotte",
+        "output": "l\u00e9gume"
+    },
+    {
+        "input": "pop",
+        "output": "genre"
+    },
+    {
+        "input": "eiffel",
+        "output": "point de rep\u00e8re"
+    },
+    {
+        "input": "charbon",
+        "output": "combustible fossile"
+    },
+    {
+        "input": "olive",
+        "output": "arbre"
+    },
+    {
+        "input": "Berlin",
+        "output": "ville"
+    },
+    {
+        "input": "grec",
+        "output": "langue"
+    },
+    {
+        "input": "\u00e9clipse",
+        "output": "\u00e9v\u00e9nement astronomique"
+    },
+    {
+        "input": "poulpe",
+        "output": "animal"
+    },
+    {
+        "input": "soie",
+        "output": "textile"
+    },
+    {
+        "input": "L\u00e9onard",
+        "output": "artiste"
+    },
+    {
+        "input": "melon cantaloup",
+        "output": "melon"
+    },
+    {
+        "input": "colombe",
+        "output": "oiseau."
+    },
+    {
+        "input": "ski",
+        "output": "sport"
+    },
+    {
+        "input": "dictionnaire",
+        "output": "livre"
+    },
+    {
+        "input": "moineau",
+        "output": "oiseau"
+    },
+    {
+        "input": "sir\u00e8ne",
+        "output": "mythe"
+    },
+    {
+        "input": "explorateur",
+        "output": "profession"
+    },
+    {
+        "input": "ondulation",
+        "output": "monnaie cryptographique"
+    },
+    {
+        "input": "baltique",
+        "output": "mer"
+    },
+    {
+        "input": "tortue",
+        "output": "reptile"
+    },
+    {
+        "input": "caviar",
+        "output": "nourriture"
+    },
+    {
+        "input": "Nil",
+        "output": "rivi\u00e8re"
+    },
+    {
+        "input": "express",
+        "output": "caf\u00e9"
+    },
+    {
+        "input": "citrouille",
+        "output": "l\u00e9gume"
+    },
+    {
+        "input": "d\u00e9odorant",
+        "output": "articles de toilette"
+    },
+    {
+        "input": "homard",
+        "output": "fruits de mer"
+    },
+    {
+        "input": "jaguar",
+        "output": "automobile"
+    },
+    {
+        "input": "Beethoven",
+        "output": "compositeur"
+    },
+    {
+        "input": "assurance",
+        "output": "industrie"
+    },
+    {
+        "input": "Firefox",
+        "output": "navigateur"
+    },
+    {
+        "input": "grippe",
+        "output": "maladie"
+    },
+    {
+        "input": "ramen",
+        "output": "nourriture"
+    },
+    {
+        "input": "septembre",
+        "output": "mois"
+    },
+    {
+        "input": "noix de cajou",
+        "output": "\u00e9crou"
+    },
+    {
+        "input": "YouTube",
+        "output": "plateforme"
+    },
+    {
+        "input": "p\u00e9ridot",
+        "output": "pierre pr\u00e9cieuse"
+    },
+    {
+        "input": "orage",
+        "output": "temps"
+    },
+    {
+        "input": "Marlboro",
+        "output": "cigarettes"
+    },
+    {
+        "input": "horoscope",
+        "output": "pr\u00e9diction"
+    },
+    {
+        "input": "Lego",
+        "output": "jouet"
+    },
+    {
+        "input": "zodiaque",
+        "output": "astrologie"
+    },
+    {
+        "input": "iceberg",
+        "output": "glace"
+    },
+    {
+        "input": "veste",
+        "output": "v\u00eatements"
+    },
+    {
+        "input": "autobus",
+        "output": "v\u00e9hicule"
+    },
+    {
+        "input": "pare-feu",
+        "output": "technologie"
+    },
+    {
+        "input": "bonbon",
+        "output": "collation"
+    },
+    {
+        "input": "bouteille",
+        "output": "r\u00e9cipient"
+    },
+    {
+        "input": "d\u00e9cathlon",
+        "output": "\u00e9v\u00e9nement"
+    },
+    {
+        "input": "montagne",
+        "output": "relief"
+    },
+    {
+        "input": "hindi",
+        "output": "langue"
+    },
+    {
+        "input": "imprimante",
+        "output": "\u00e9lectronique"
+    },
+    {
+        "input": "arachide",
+        "output": "\u00e9crou"
+    },
+    {
+        "input": "italien",
+        "output": "langue"
+    },
+    {
+        "input": "cerf-volant",
+        "output": "jouet"
+    },
+    {
+        "input": "farsi",
+        "output": "langue"
+    },
+    {
+        "input": "mars",
+        "output": "mois"
+    },
+    {
+        "input": "papier",
+        "output": "mat\u00e9riel"
+    },
+    {
+        "input": "litt\u00e9rature",
+        "output": "sujet"
+    },
+    {
+        "input": "steak",
+        "output": "nourriture"
+    },
+    {
+        "input": "oranges",
+        "output": "fruit"
+    },
+    {
+        "input": "g\u00e9ographie",
+        "output": "sujet"
+    },
+    {
+        "input": "grenouille",
+        "output": "animal"
+    },
+    {
+        "input": "burgers",
+        "output": "nourriture"
+    },
+    {
+        "input": "frites",
+        "output": "nourriture"
+    },
+    {
+        "input": "McDonald's",
+        "output": "marque"
+    },
+    {
+        "input": "raisins",
+        "output": "fruit"
+    },
+    {
+        "input": "Pepsi",
+        "output": "marque"
+    },
+    {
+        "input": "sociologie",
+        "output": "sujet"
+    },
+    {
+        "input": "cr\u00eapes",
+        "output": "nourriture"
+    },
+    {
+        "input": "loup",
+        "output": "animal"
+    },
+    {
+        "input": "Gucci",
+        "output": "marque"
+    },
+    {
+        "input": "marron",
+        "output": "couleur"
+    },
+    {
+        "input": "chanel",
+        "output": "marque"
+    },
+    {
+        "input": "papaye",
+        "output": "fruit"
+    },
+    {
+        "input": "gris",
+        "output": "couleur"
+    },
+    {
+        "input": "hibou",
+        "output": "animal"
+    },
+    {
+        "input": "cyclisme",
+        "output": "sport"
+    },
+    {
+        "input": "beige",
+        "output": "couleur"
+    },
+    {
+        "input": "ing\u00e9nierie",
+        "output": "sujet"
+    },
+    {
+        "input": "Royaume-Uni",
+        "output": "pays"
+    },
+    {
+        "input": "saucisses",
+        "output": "nourriture"
+    },
+    {
+        "input": "citron",
+        "output": "fruit"
+    },
+    {
+        "input": "chaise",
+        "output": "mobilier"
+    },
+    {
+        "input": "avril",
+        "output": "mois"
+    },
+    {
+        "input": "atome",
+        "output": "science"
+    },
+    {
+        "input": "cornouaille",
+        "output": "universit\u00e9"
+    },
+    {
+        "input": "calcul",
+        "output": "math\u00e9matiques"
+    },
+    {
+        "input": "popcorn",
+        "output": "collation"
+    },
+    {
+        "input": "Nikon",
+        "output": "appareil photo"
+    },
+    {
+        "input": "sudoku",
+        "output": "puzzle"
+    },
+    {
+        "input": "frisbee",
+        "output": "jouet"
+    },
+    {
+        "input": "portefeuille",
+        "output": "objet"
+    },
+    {
+        "input": "biscuit",
+        "output": "nourriture"
+    },
+    {
+        "input": "musique",
+        "output": "art"
+    },
+    {
+        "input": "ascenseur",
+        "output": "transport"
+    },
+    {
+        "input": "Europe",
+        "output": "continent"
+    },
+    {
+        "input": "cellule",
+        "output": "biologie"
+    },
+    {
+        "input": "ordinateur",
+        "output": "\u00e9lectronique"
+    },
+    {
+        "input": "Kia",
+        "output": "voiture"
+    },
+    {
+        "input": "condition physique",
+        "output": "activit\u00e9"
+    },
+    {
+        "input": "tatou",
+        "output": "animal"
+    },
+    {
+        "input": "b\u00e9ret",
+        "output": "chapeau"
+    },
+    {
+        "input": "sodoku",
+        "output": "jeu"
+    },
+    {
+        "input": "os spongieux",
+        "output": "dessin anim\u00e9"
+    },
+    {
+        "input": "peuplier",
+        "output": "arbre"
+    },
+    {
+        "input": "astronomie",
+        "output": "science"
+    },
+    {
+        "input": "yaourt",
+        "output": "produit laitier"
+    },
+    {
+        "input": "gel\u00e9",
+        "output": "film"
+    },
+    {
+        "input": "kanye",
+        "output": "chanteur"
+    },
+    {
+        "input": "plage",
+        "output": "emplacement"
+    },
+    {
+        "input": "diesel",
+        "output": "carburant"
+    },
+    {
+        "input": "photographe",
+        "output": "profession"
+    },
+    {
+        "input": "atout",
+        "output": "homme politique"
+    },
+    {
+        "input": "martini",
+        "output": "cocktail"
+    },
+    {
+        "input": "Monalisa",
+        "output": "peinture"
+    },
+    {
+        "input": "basket",
+        "output": "sport"
+    },
+    {
+        "input": "a\u00een\u00e9",
+        "output": "fr\u00e8re ou s\u0153ur"
+    },
+    {
+        "input": "rhubarbe",
+        "output": "l\u00e9gume"
+    },
+    {
+        "input": "forsythie",
+        "output": "plante"
+    },
+    {
+        "input": "pic",
+        "output": "oiseau"
+    },
+    {
+        "input": "contr\u00f4les",
+        "output": "mod\u00e8le"
+    },
+    {
+        "input": "gouda",
+        "output": "fromage"
+    },
+    {
+        "input": "attach\u00e9 de presse",
+        "output": "carri\u00e8re"
+    },
+    {
+        "input": "orthodontiste",
+        "output": "profession"
+    },
+    {
+        "input": "Botticelli",
+        "output": "artiste"
+    },
+    {
+        "input": "Chicago",
+        "output": "ville"
+    },
+    {
+        "input": "vautour",
+        "output": "oiseau"
+    },
+    {
+        "input": "\u00e9rable",
+        "output": "arbre"
+    },
+    {
+        "input": "sonnet",
+        "output": "po\u00e9sie"
+    },
+    {
+        "input": "monoth\u00e9isme",
+        "output": "religion"
+    },
+    {
+        "input": "Stonehenge",
+        "output": "point de rep\u00e8re"
+    },
+    {
+        "input": "masse",
+        "output": "arme"
+    },
+    {
+        "input": "nylon",
+        "output": "mat\u00e9riel"
+    },
+    {
+        "input": "Neuschwanstein",
+        "output": "ch\u00e2teau"
+    },
+    {
+        "input": "am\u00e9thyste",
+        "output": "min\u00e9ral"
+    },
+    {
+        "input": "Alpes",
+        "output": "montagne"
+    },
+    {
+        "input": "\u00e2ne",
+        "output": "animal"
+    },
+    {
+        "input": "spatule",
+        "output": "ustensile"
+    },
+    {
+        "input": "mocassins",
+        "output": "chaussures"
+    },
+    {
+        "input": "Barcelone",
+        "output": "ville"
+    },
+    {
+        "input": "iPad",
+        "output": "gadget"
+    },
+    {
+        "input": "Oprah",
+        "output": "c\u00e9l\u00e9brit\u00e9"
+    },
+    {
+        "input": "Snapchat",
+        "output": "application"
+    },
+    {
+        "input": "math\u00e9matiques",
+        "output": "sujet"
+    },
+    {
+        "input": "Bieber",
+        "output": "musicien"
+    },
+    {
+        "input": "Eurostar",
+        "output": "train"
+    },
+    {
+        "input": "Bruxelles",
+        "output": "ville"
+    },
+    {
+        "input": "anime",
+        "output": "genre"
+    },
+    {
+        "input": "micro-ondes",
+        "output": "appareil"
+    },
+    {
+        "input": "Sydney",
+        "output": "ville"
+    },
+    {
+        "input": "Madone",
+        "output": "c\u00e9l\u00e9brit\u00e9"
+    },
+    {
+        "input": "plong\u00e9e",
+        "output": "activit\u00e9"
+    },
+    {
+        "input": "peinture",
+        "output": "art"
+    },
+    {
+        "input": "rectangle",
+        "output": "forme"
+    },
+    {
+        "input": "compassion",
+        "output": "vertu"
+    },
+    {
+        "input": "Rihanna",
+        "output": "c\u00e9l\u00e9brit\u00e9"
+    },
+    {
+        "input": "randonn\u00e9e",
+        "output": "activit\u00e9"
+    },
+    {
+        "input": "jardinage",
+        "output": "loisir"
+    },
+    {
+        "input": "sculpture",
+        "output": "art"
+    },
+    {
+        "input": "int\u00e9grit\u00e9",
+        "output": "vertu"
+    },
+    {
+        "input": "Messi",
+        "output": "c\u00e9l\u00e9brit\u00e9"
+    },
+    {
+        "input": "cuisson",
+        "output": "loisir"
+    },
+    {
+        "input": "patience",
+        "output": "vertu"
+    },
+    {
+        "input": "Adele",
+        "output": "c\u00e9l\u00e9brit\u00e9"
+    },
+    {
+        "input": "jupe",
+        "output": "v\u00eatements"
+    },
+    {
+        "input": "escalade",
+        "output": "activit\u00e9"
+    },
+    {
+        "input": "tricot",
+        "output": "loisir"
+    },
+    {
+        "input": "hexagone",
+        "output": "forme"
+    },
+    {
+        "input": "humilit\u00e9",
+        "output": "vertu"
+    },
+    {
+        "input": "Beyonc\u00e9",
+        "output": "c\u00e9l\u00e9brit\u00e9"
+    },
+    {
+        "input": "pantalon",
+        "output": "v\u00eatements"
+    },
+    {
+        "input": "\u00e9criture",
+        "output": "loisir"
+    },
+    {
+        "input": "calligraphie",
+        "output": "art"
+    },
+    {
+        "input": "courage",
+        "output": "vertu"
+    },
+    {
+        "input": "Porsche",
+        "output": "voiture"
+    },
+    {
+        "input": "pivoine",
+        "output": "fleur"
+    }
+]

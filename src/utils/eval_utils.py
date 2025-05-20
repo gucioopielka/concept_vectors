@@ -9,8 +9,27 @@ from matplotlib.patches import Rectangle
 from scipy.ndimage import label
 from scipy.stats import spearmanr
 from scipy.spatial.distance import squareform
+from transformers import AutoTokenizer
+import nnsight
+from nnsight.intervention.graph.proxy import InterventionProxy
 
-from .model_utils import ExtendedLanguageModel
+class InterventionResults:
+    def __init__(self):
+        self.completion_ids = nnsight.list().save()
+        self.completion_probs = nnsight.list().save()
+        self.y_probs_1 = nnsight.list().save()
+        self.y_probs_2 = nnsight.list().save()
+        self.top_delta_ids = nnsight.list().save()
+        self.top_delta_probs = nnsight.list().save()
+        self.bottom_delta_ids = nnsight.list().save()
+        self.bottom_delta_probs = nnsight.list().save()
+        self.y_probs_1_fr = nnsight.list().save()
+        self.y_probs_1_es = nnsight.list().save()
+
+    def save(self):
+        for key, value in self.__dict__.items():
+            if isinstance(value, InterventionProxy):
+                self.__dict__[key] = value.value
 
 
 def spearman_rho_torch(x, y):
@@ -24,11 +43,6 @@ def spearman_rho_torch(x, y):
     Returns:
         torch.Tensor: A scalar tensor containing the Spearman correlation coefficient.
     """
-    # if x.ndim != 1 or y.ndim != 1:
-    #     raise ValueError("Both x and y must be 1-dimensional tensors.")
-    # if x.size(0) != y.size(0):
-    #     raise ValueError("x and y must have the same number of elements.")
-
     # Compute ranks using the double argsort method.
     # The first argsort returns indices that would sort the tensor,
     # the second argsort gives the rank of each element.
@@ -45,10 +59,6 @@ def spearman_rho_torch(x, y):
     # Compute the standard deviations (using population std, unbiased=False)
     std_x = torch.sqrt(((x_rank - x_mean) ** 2).mean())
     std_y = torch.sqrt(((y_rank - y_mean) ** 2).mean())
-
-    # Avoid division by zero in case of constant inputs
-    # if std_x == 0 or std_y == 0:
-    #     return 0.0
 
     # Spearman correlation is the Pearson correlation of the ranks
     return (cov / (std_x * std_y)).item()
@@ -124,7 +134,7 @@ def between_task_similarity(rdm: np.ndarray, rel_idx: Dict[str, Tuple[int, int]]
     return between_task_similarities
 
 def accuracy_completions(
-        model: ExtendedLanguageModel, 
+        tokenizer: AutoTokenizer, 
         completions: List[str],
         Ys: List[str],
         return_correct: bool = False
@@ -141,8 +151,10 @@ def accuracy_completions(
     '''
     correct = []
     for completion, y in zip(completions, Ys):
-        correct_completion_first_token = model.config['get_first_token'](y)
-        correct.append(completion == correct_completion_first_token)
+        correct_completion_first_token = tokenizer.decode([
+            toks[1] for toks in tokenizer(completion)["input_ids"]
+        ])
+        correct.append(y == correct_completion_first_token)
     
     accuracy = np.mean(correct)
     return (accuracy, correct) if return_correct else accuracy

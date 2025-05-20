@@ -1,0 +1,1174 @@
+[
+    {
+        "input": "acelerar",
+        "output": "acelerado"
+    },
+    {
+        "input": "adaptarse",
+        "output": "adaptado"
+    },
+    {
+        "input": "direcci\u00f3n",
+        "output": "dirigido"
+    },
+    {
+        "input": "objetivo",
+        "output": "dirigido"
+    },
+    {
+        "input": "analizar",
+        "output": "analizado"
+    },
+    {
+        "input": "aparecer",
+        "output": "apareci\u00f3"
+    },
+    {
+        "input": "aplicar",
+        "output": "aplicado"
+    },
+    {
+        "input": "llegar",
+        "output": "llegado"
+    },
+    {
+        "input": "evaluar",
+        "output": "evaluado"
+    },
+    {
+        "input": "ayudar",
+        "output": "asistido"
+    },
+    {
+        "input": "atraer",
+        "output": "atra\u00eddo"
+    },
+    {
+        "input": "equilibrio",
+        "output": "equilibrado"
+    },
+    {
+        "input": "comenzar",
+        "output": "comenz\u00f3"
+    },
+    {
+        "input": "creer",
+        "output": "cre\u00eddo"
+    },
+    {
+        "input": "impulso",
+        "output": "impulsado"
+    },
+    {
+        "input": "respirar",
+        "output": "respir\u00f3"
+    },
+    {
+        "input": "construir",
+        "output": "construido"
+    },
+    {
+        "input": "calcular",
+        "output": "calculado"
+    },
+    {
+        "input": "captura",
+        "output": "capturado"
+    },
+    {
+        "input": "llevar",
+        "output": "transportado"
+    },
+    {
+        "input": "desaf\u00edo",
+        "output": "desafiado"
+    },
+    {
+        "input": "cambio",
+        "output": "cambiado"
+    },
+    {
+        "input": "cargo",
+        "output": "cargado"
+    },
+    {
+        "input": "comprobar",
+        "output": "comprobado"
+    },
+    {
+        "input": "elegir",
+        "output": "elegido"
+    },
+    {
+        "input": "aclarar",
+        "output": "aclarado"
+    },
+    {
+        "input": "limpio",
+        "output": "limpiado"
+    },
+    {
+        "input": "combinar",
+        "output": "combinado"
+    },
+    {
+        "input": "comando",
+        "output": "ordenado"
+    },
+    {
+        "input": "comunicar",
+        "output": "comunicado"
+    },
+    {
+        "input": "comparar",
+        "output": "comparado"
+    },
+    {
+        "input": "competir",
+        "output": "compiti\u00f3"
+    },
+    {
+        "input": "completo",
+        "output": "completado"
+    },
+    {
+        "input": "componer",
+        "output": "compuesto"
+    },
+    {
+        "input": "calcular",
+        "output": "computado"
+    },
+    {
+        "input": "concluir",
+        "output": "concluido"
+    },
+    {
+        "input": "conectar",
+        "output": "conectado"
+    },
+    {
+        "input": "considerar",
+        "output": "considerado"
+    },
+    {
+        "input": "construir",
+        "output": "construido"
+    },
+    {
+        "input": "contener",
+        "output": "contenido"
+    },
+    {
+        "input": "continuar",
+        "output": "continuaci\u00f3n"
+    },
+    {
+        "input": "control",
+        "output": "controlado"
+    },
+    {
+        "input": "convertir",
+        "output": "convertido"
+    },
+    {
+        "input": "cooperar",
+        "output": "cooperado"
+    },
+    {
+        "input": "correcto",
+        "output": "corregido"
+    },
+    {
+        "input": "crear",
+        "output": "creado"
+    },
+    {
+        "input": "criticar",
+        "output": "criticado"
+    },
+    {
+        "input": "decidir",
+        "output": "decidido"
+    },
+    {
+        "input": "defender",
+        "output": "defendido"
+    },
+    {
+        "input": "definir",
+        "output": "definido"
+    },
+    {
+        "input": "entregar",
+        "output": "entregado"
+    },
+    {
+        "input": "demostrar",
+        "output": "demostrado"
+    },
+    {
+        "input": "negar",
+        "output": "negado"
+    },
+    {
+        "input": "depender",
+        "output": "dependi\u00f3"
+    },
+    {
+        "input": "describir",
+        "output": "descrito"
+    },
+    {
+        "input": "dise\u00f1o",
+        "output": "dise\u00f1ado"
+    },
+    {
+        "input": "destruir",
+        "output": "destruido"
+    },
+    {
+        "input": "detectar",
+        "output": "detectado"
+    },
+    {
+        "input": "desarrollar",
+        "output": "desarrollado"
+    },
+    {
+        "input": "idear",
+        "output": "ideado"
+    },
+    {
+        "input": "directo",
+        "output": "dirigido"
+    },
+    {
+        "input": "descubrir",
+        "output": "descubierto"
+    },
+    {
+        "input": "mostrar",
+        "output": "mostrado"
+    },
+    {
+        "input": "distribuir",
+        "output": "distribuido"
+    },
+    {
+        "input": "dividir",
+        "output": "dividido"
+    },
+    {
+        "input": "doble",
+        "output": "duplicado"
+    },
+    {
+        "input": "borrador",
+        "output": "redactado"
+    },
+    {
+        "input": "dibujar",
+        "output": "dibuj\u00f3"
+    },
+    {
+        "input": "conducir",
+        "output": "conduje"
+    },
+    {
+        "input": "ganar",
+        "output": "ganado"
+    },
+    {
+        "input": "editar",
+        "output": "editado"
+    },
+    {
+        "input": "educar",
+        "output": "educado"
+    },
+    {
+        "input": "eliminar",
+        "output": "eliminado"
+    },
+    {
+        "input": "enfatizar",
+        "output": "enfatiz\u00f3"
+    },
+    {
+        "input": "habilitar",
+        "output": "habilitado"
+    },
+    {
+        "input": "animar",
+        "output": "animado"
+    },
+    {
+        "input": "mejorar",
+        "output": "mejorado"
+    },
+    {
+        "input": "ampliar",
+        "output": "ampliado"
+    },
+    {
+        "input": "entrar",
+        "output": "introducido"
+    },
+    {
+        "input": "establecer",
+        "output": "establecido"
+    },
+    {
+        "input": "evaluar",
+        "output": "evaluado"
+    },
+    {
+        "input": "examinar",
+        "output": "examinado"
+    },
+    {
+        "input": "exceder",
+        "output": "superado"
+    },
+    {
+        "input": "ejecutar",
+        "output": "ejecutado"
+    },
+    {
+        "input": "existir",
+        "output": "existido"
+    },
+    {
+        "input": "ampliar",
+        "output": "ampliado"
+    },
+    {
+        "input": "explicar",
+        "output": "explicado"
+    },
+    {
+        "input": "expresar",
+        "output": "expresado"
+    },
+    {
+        "input": "extender",
+        "output": "ampliado"
+    },
+    {
+        "input": "cara",
+        "output": "enfrentado"
+    },
+    {
+        "input": "facilitar",
+        "output": "facilitado"
+    },
+    {
+        "input": "desvanecerse",
+        "output": "descolorido"
+    },
+    {
+        "input": "fallar",
+        "output": "fallido"
+    },
+    {
+        "input": "sujetar",
+        "output": "sujetado"
+    },
+    {
+        "input": "lucha",
+        "output": "luchado"
+    },
+    {
+        "input": "relleno",
+        "output": "relleno"
+    },
+    {
+        "input": "acabar",
+        "output": "terminado"
+    },
+    {
+        "input": "seguir",
+        "output": "seguido"
+    },
+    {
+        "input": "formulario",
+        "output": "formado"
+    },
+    {
+        "input": "encontrado",
+        "output": "encontrado"
+    },
+    {
+        "input": "ganancia",
+        "output": "ganado"
+    },
+    {
+        "input": "generar",
+        "output": "generado"
+    },
+    {
+        "input": "reunir",
+        "output": "reunidos"
+    },
+    {
+        "input": "dar",
+        "output": "dio"
+    },
+    {
+        "input": "gu\u00eda",
+        "output": "guiado"
+    },
+    {
+        "input": "mango",
+        "output": "manipulado"
+    },
+    {
+        "input": "colgar",
+        "output": "colgado"
+    },
+    {
+        "input": "ocurrir",
+        "output": "ocurri\u00f3"
+    },
+    {
+        "input": "ayuda",
+        "output": "ayudado"
+    },
+    {
+        "input": "ocultar",
+        "output": "escond\u00ed"
+    },
+    {
+        "input": "pista",
+        "output": "insinuado"
+    },
+    {
+        "input": "golpear",
+        "output": "golpear"
+    },
+    {
+        "input": "sujetar",
+        "output": "celebrado"
+    },
+    {
+        "input": "identificar",
+        "output": "identificado"
+    },
+    {
+        "input": "ignorar",
+        "output": "ignorada"
+    },
+    {
+        "input": "ilustrar",
+        "output": "ilustrado"
+    },
+    {
+        "input": "imaginar",
+        "output": "imaginado"
+    },
+    {
+        "input": "implicar",
+        "output": "impl\u00edcito"
+    },
+    {
+        "input": "mejorar",
+        "output": "mejorado"
+    },
+    {
+        "input": "incluir",
+        "output": "incluido"
+    },
+    {
+        "input": "aumentar",
+        "output": "aumentado"
+    },
+    {
+        "input": "indicar",
+        "output": "indicado"
+    },
+    {
+        "input": "influir",
+        "output": "influenciado"
+    },
+    {
+        "input": "informar",
+        "output": "informado"
+    },
+    {
+        "input": "iniciar",
+        "output": "iniciado"
+    },
+    {
+        "input": "insertar",
+        "output": "insertado"
+    },
+    {
+        "input": "instalar",
+        "output": "instalado"
+    },
+    {
+        "input": "instruir",
+        "output": "instruido"
+    },
+    {
+        "input": "integrar",
+        "output": "integrado"
+    },
+    {
+        "input": "interpretar",
+        "output": "interpretado"
+    },
+    {
+        "input": "introducir",
+        "output": "introducido"
+    },
+    {
+        "input": "investigar",
+        "output": "investigado"
+    },
+    {
+        "input": "implicar",
+        "output": "implicado"
+    },
+    {
+        "input": "unirse",
+        "output": "se uni\u00f3"
+    },
+    {
+        "input": "saltar",
+        "output": "salt\u00f3"
+    },
+    {
+        "input": "justificar",
+        "output": "justificado"
+    },
+    {
+        "input": "mantener",
+        "output": "guardado"
+    },
+    {
+        "input": "patada",
+        "output": "pateado"
+    },
+    {
+        "input": "saber",
+        "output": "sab\u00eda"
+    },
+    {
+        "input": "\u00faltimo",
+        "output": "dur\u00f3"
+    },
+    {
+        "input": "lanzamiento",
+        "output": "lanzado"
+    },
+    {
+        "input": "plomo",
+        "output": "LED"
+    },
+    {
+        "input": "aprender",
+        "output": "aprendido"
+    },
+    {
+        "input": "salir",
+        "output": "izquierda"
+    },
+    {
+        "input": "prestar",
+        "output": "prestado"
+    },
+    {
+        "input": "dejar",
+        "output": "dejar"
+    },
+    {
+        "input": "elevar",
+        "output": "levantado"
+    },
+    {
+        "input": "escuchar",
+        "output": "escuchado"
+    },
+    {
+        "input": "vivir",
+        "output": "vivido"
+    },
+    {
+        "input": "mira",
+        "output": "mir\u00f3"
+    },
+    {
+        "input": "perder",
+        "output": "perdido"
+    },
+    {
+        "input": "mantener",
+        "output": "mantenido"
+    },
+    {
+        "input": "hacer",
+        "output": "hecho"
+    },
+    {
+        "input": "gestionar",
+        "output": "gestionado"
+    },
+    {
+        "input": "manipular",
+        "output": "manipulado"
+    },
+    {
+        "input": "medida",
+        "output": "medido"
+    },
+    {
+        "input": "reunirse",
+        "output": "conocido"
+    },
+    {
+        "input": "mencionar",
+        "output": "mencionado"
+    },
+    {
+        "input": "fusionar",
+        "output": "fusionado"
+    },
+    {
+        "input": "modelo",
+        "output": "modelado"
+    },
+    {
+        "input": "monitor",
+        "output": "supervisado"
+    },
+    {
+        "input": "mover",
+        "output": "trasladado"
+    },
+    {
+        "input": "nombre",
+        "output": "llamado"
+    },
+    {
+        "input": "negociar",
+        "output": "negociado"
+    },
+    {
+        "input": "aviso",
+        "output": "notado"
+    },
+    {
+        "input": "obtener",
+        "output": "obtenido"
+    },
+    {
+        "input": "ocurrir",
+        "output": "ocurri\u00f3"
+    },
+    {
+        "input": "oferta",
+        "output": "ofrecido"
+    },
+    {
+        "input": "operar",
+        "output": "operado"
+    },
+    {
+        "input": "orden",
+        "output": "ordenado"
+    },
+    {
+        "input": "organizar",
+        "output": "organizado"
+    },
+    {
+        "input": "superar",
+        "output": "super\u00f3"
+    },
+    {
+        "input": "paso",
+        "output": "pasado por alto"
+    },
+    {
+        "input": "participar",
+        "output": "particip\u00f3"
+    },
+    {
+        "input": "pasar",
+        "output": "aprobado"
+    },
+    {
+        "input": "realizar",
+        "output": "realizado"
+    },
+    {
+        "input": "persuadir",
+        "output": "persuadido"
+    },
+    {
+        "input": "lugar",
+        "output": "colocado"
+    },
+    {
+        "input": "plan",
+        "output": "planificado"
+    },
+    {
+        "input": "jugar",
+        "output": "jugado"
+    },
+    {
+        "input": "punto",
+        "output": "puntiagudo"
+    },
+    {
+        "input": "poseer",
+        "output": "pose\u00eddo"
+    },
+    {
+        "input": "publicar",
+        "output": "publicado"
+    },
+    {
+        "input": "pr\u00e1ctica",
+        "output": "practicado"
+    },
+    {
+        "input": "preparar",
+        "output": "preparado"
+    },
+    {
+        "input": "conservar",
+        "output": "conservado"
+    },
+    {
+        "input": "preestablecido",
+        "output": "preestablecido"
+    },
+    {
+        "input": "prevenir",
+        "output": "impedido"
+    },
+    {
+        "input": "proceso",
+        "output": "procesado"
+    },
+    {
+        "input": "producir",
+        "output": "producido"
+    },
+    {
+        "input": "programa",
+        "output": "programado"
+    },
+    {
+        "input": "proyecto",
+        "output": "proyectado"
+    },
+    {
+        "input": "promover",
+        "output": "promovido"
+    },
+    {
+        "input": "proteger",
+        "output": "protegido"
+    },
+    {
+        "input": "proporcionar",
+        "output": "proporcionado"
+    },
+    {
+        "input": "publicar",
+        "output": "publicado"
+    },
+    {
+        "input": "tirar",
+        "output": "tirado"
+    },
+    {
+        "input": "perseguir",
+        "output": "perseguido"
+    },
+    {
+        "input": "empujar",
+        "output": "empujado"
+    },
+    {
+        "input": "calificar",
+        "output": "cualificado"
+    },
+    {
+        "input": "pregunta",
+        "output": "cuestionado"
+    },
+    {
+        "input": "levantar",
+        "output": "elevado"
+    },
+    {
+        "input": "alcanzar",
+        "output": "alcanzado"
+    },
+    {
+        "input": "recibir",
+        "output": "recibido"
+    },
+    {
+        "input": "reconocer",
+        "output": "reconocido"
+    },
+    {
+        "input": "registro",
+        "output": "registrado"
+    },
+    {
+        "input": "reducir",
+        "output": "reducido"
+    },
+    {
+        "input": "reflejar",
+        "output": "reflejado"
+    },
+    {
+        "input": "rechazar",
+        "output": "rechazado"
+    },
+    {
+        "input": "relacionar",
+        "output": "relacionado"
+    },
+    {
+        "input": "liberar",
+        "output": "publicado"
+    },
+    {
+        "input": "permanecer",
+        "output": "permaneci\u00f3"
+    },
+    {
+        "input": "recuerda",
+        "output": "recordado"
+    },
+    {
+        "input": "eliminar",
+        "output": "eliminado"
+    },
+    {
+        "input": "reparaci\u00f3n",
+        "output": "reparado"
+    },
+    {
+        "input": "repetir",
+        "output": "repetido"
+    },
+    {
+        "input": "reemplazar",
+        "output": "sustituido"
+    },
+    {
+        "input": "informe",
+        "output": "informado"
+    },
+    {
+        "input": "representar",
+        "output": "representado"
+    },
+    {
+        "input": "solicitud",
+        "output": "solicitado"
+    },
+    {
+        "input": "requerir",
+        "output": "requerido"
+    },
+    {
+        "input": "investigaci\u00f3n",
+        "output": "investigado"
+    },
+    {
+        "input": "resolver",
+        "output": "resuelto"
+    },
+    {
+        "input": "responder",
+        "output": "respondieron"
+    },
+    {
+        "input": "restaurar",
+        "output": "restaurado"
+    },
+    {
+        "input": "retener",
+        "output": "retenido"
+    },
+    {
+        "input": "devolver",
+        "output": "devolver"
+    },
+    {
+        "input": "revelar",
+        "output": "revelado"
+    },
+    {
+        "input": "revisar",
+        "output": "revisado"
+    },
+    {
+        "input": "revisar",
+        "output": "revisado"
+    },
+    {
+        "input": "recompensa",
+        "output": "recompensado"
+    },
+    {
+        "input": "correr",
+        "output": "corri\u00f3"
+    },
+    {
+        "input": "satisfacer",
+        "output": "satisfecho"
+    },
+    {
+        "input": "guardar",
+        "output": "guardado"
+    },
+    {
+        "input": "horario",
+        "output": "programado"
+    },
+    {
+        "input": "buscar",
+        "output": "buscado"
+    },
+    {
+        "input": "seguro",
+        "output": "asegurado"
+    },
+    {
+        "input": "seleccionar",
+        "output": "seleccionado"
+    },
+    {
+        "input": "separado",
+        "output": "separado"
+    },
+    {
+        "input": "servir",
+        "output": "servido"
+    },
+    {
+        "input": "establecer",
+        "output": "establecer"
+    },
+    {
+        "input": "mostrar",
+        "output": "mostr\u00f3"
+    },
+    {
+        "input": "se\u00f1al",
+        "output": "se\u00f1alado"
+    },
+    {
+        "input": "simplificar",
+        "output": "simplificado"
+    },
+    {
+        "input": "resolver",
+        "output": "resuelto"
+    },
+    {
+        "input": "hablar",
+        "output": "habl\u00f3"
+    },
+    {
+        "input": "especificar",
+        "output": "especificado"
+    },
+    {
+        "input": "propagarse",
+        "output": "propagarse"
+    },
+    {
+        "input": "stand",
+        "output": "se puso de pie"
+    },
+    {
+        "input": "comenzar",
+        "output": "comenz\u00f3"
+    },
+    {
+        "input": "quedarse",
+        "output": "permaneci\u00f3"
+    },
+    {
+        "input": "esforzarse",
+        "output": "esforzado"
+    },
+    {
+        "input": "estudio",
+        "output": "estudiado"
+    },
+    {
+        "input": "enviar",
+        "output": "presentado"
+    },
+    {
+        "input": "triunfar",
+        "output": "triunf\u00f3"
+    },
+    {
+        "input": "sugerir",
+        "output": "sugerido"
+    },
+    {
+        "input": "suministro",
+        "output": "suministrado"
+    },
+    {
+        "input": "apoyo",
+        "output": "apoyado"
+    },
+    {
+        "input": "sobrevivir",
+        "output": "sobrevivi\u00f3"
+    },
+    {
+        "input": "tomar",
+        "output": "tom\u00f3"
+    },
+    {
+        "input": "ense\u00f1ar",
+        "output": "ense\u00f1ado"
+    },
+    {
+        "input": "prueba",
+        "output": "probado"
+    },
+    {
+        "input": "pensar",
+        "output": "pensamiento"
+    },
+    {
+        "input": "comercio",
+        "output": "negociado"
+    },
+    {
+        "input": "entrenar",
+        "output": "entrenado"
+    },
+    {
+        "input": "transferencia",
+        "output": "transferido"
+    },
+    {
+        "input": "transformar",
+        "output": "transformado"
+    },
+    {
+        "input": "traducir",
+        "output": "traducido"
+    },
+    {
+        "input": "viajar",
+        "output": "viajado"
+    },
+    {
+        "input": "tratar",
+        "output": "tratado"
+    },
+    {
+        "input": "confianza",
+        "output": "de confianza"
+    },
+    {
+        "input": "intentar",
+        "output": "intentado"
+    },
+    {
+        "input": "girar",
+        "output": "girado"
+    },
+    {
+        "input": "comprender",
+        "output": "entendido"
+    },
+    {
+        "input": "unir",
+        "output": "unidos"
+    },
+    {
+        "input": "uso",
+        "output": "usado"
+    },
+    {
+        "input": "utilizar",
+        "output": "utilizado"
+    },
+    {
+        "input": "validar",
+        "output": "validado"
+    },
+    {
+        "input": "valor",
+        "output": "valorada"
+    },
+    {
+        "input": "verificar",
+        "output": "verificado"
+    },
+    {
+        "input": "ver",
+        "output": "visto"
+    },
+    {
+        "input": "visitar",
+        "output": "visit\u00f3"
+    },
+    {
+        "input": "espera",
+        "output": "esperado"
+    },
+    {
+        "input": "querer",
+        "output": "buscado"
+    },
+    {
+        "input": "advertir",
+        "output": "advertido"
+    },
+    {
+        "input": "reloj",
+        "output": "vi"
+    },
+    {
+        "input": "ganar",
+        "output": "ganado"
+    },
+    {
+        "input": "retirar",
+        "output": "se retir\u00f3"
+    },
+    {
+        "input": "trabajo",
+        "output": "trabajado"
+    },
+    {
+        "input": "preocupaci\u00f3n",
+        "output": "preocupado"
+    },
+    {
+        "input": "escribir",
+        "output": "escribi\u00f3"
+    },
+    {
+        "input": "rendimiento",
+        "output": "rendido"
+    },
+    {
+        "input": "ampliar",
+        "output": "ampliado"
+    }
+]

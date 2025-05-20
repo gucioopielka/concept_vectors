@@ -8,6 +8,7 @@ __pycache__
 
 # Files 
 results/**/*.pkl
+results/**/*.npy
 *write_up
 write_up/*
 src/report.py

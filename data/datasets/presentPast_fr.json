@@ -1,0 +1,1174 @@
+[
+    {
+        "input": "acc\u00e9l\u00e9rer",
+        "output": "acc\u00e9l\u00e9r\u00e9"
+    },
+    {
+        "input": "adapter",
+        "output": "adapt\u00e9"
+    },
+    {
+        "input": "adresse",
+        "output": "adress\u00e9"
+    },
+    {
+        "input": "viser",
+        "output": "vis\u00e9"
+    },
+    {
+        "input": "analyser",
+        "output": "analys\u00e9"
+    },
+    {
+        "input": "appara\u00eetre",
+        "output": "est apparu"
+    },
+    {
+        "input": "appliquer",
+        "output": "appliqu\u00e9"
+    },
+    {
+        "input": "arriver",
+        "output": "arriv\u00e9"
+    },
+    {
+        "input": "\u00e9valuer",
+        "output": "\u00e9valu\u00e9"
+    },
+    {
+        "input": "assister",
+        "output": "assist\u00e9"
+    },
+    {
+        "input": "attirer",
+        "output": "attir\u00e9"
+    },
+    {
+        "input": "\u00e9quilibre",
+        "output": "\u00e9quilibr\u00e9"
+    },
+    {
+        "input": "commencer",
+        "output": "commenc\u00e9"
+    },
+    {
+        "input": "croire",
+        "output": "croy\u00e9"
+    },
+    {
+        "input": "booster",
+        "output": "stimul\u00e9"
+    },
+    {
+        "input": "respirer",
+        "output": "souffl\u00e9"
+    },
+    {
+        "input": "construire",
+        "output": "construit"
+    },
+    {
+        "input": "calculer",
+        "output": "calcul\u00e9"
+    },
+    {
+        "input": "capturer",
+        "output": "captur\u00e9"
+    },
+    {
+        "input": "transporter",
+        "output": "transport\u00e9"
+    },
+    {
+        "input": "d\u00e9fi",
+        "output": "mis au d\u00e9fi"
+    },
+    {
+        "input": "changer",
+        "output": "chang\u00e9"
+    },
+    {
+        "input": "charge",
+        "output": "charg\u00e9"
+    },
+    {
+        "input": "v\u00e9rifier",
+        "output": "v\u00e9rifi\u00e9"
+    },
+    {
+        "input": "choisir",
+        "output": "choisi"
+    },
+    {
+        "input": "clarifier",
+        "output": "clarifi\u00e9"
+    },
+    {
+        "input": "propre",
+        "output": "nettoy\u00e9"
+    },
+    {
+        "input": "combiner",
+        "output": "combin\u00e9"
+    },
+    {
+        "input": "commande",
+        "output": "ordonn\u00e9"
+    },
+    {
+        "input": "communiquer",
+        "output": "communiqu\u00e9"
+    },
+    {
+        "input": "comparer",
+        "output": "compar\u00e9"
+    },
+    {
+        "input": "concurrencer",
+        "output": "a concouru"
+    },
+    {
+        "input": "compl\u00e8te",
+        "output": "termin\u00e9"
+    },
+    {
+        "input": "composer",
+        "output": "compos\u00e9"
+    },
+    {
+        "input": "calculer",
+        "output": "calcul\u00e9"
+    },
+    {
+        "input": "conclure",
+        "output": "conclu"
+    },
+    {
+        "input": "connecter",
+        "output": "connect\u00e9"
+    },
+    {
+        "input": "consid\u00e9rer",
+        "output": "consid\u00e9r\u00e9"
+    },
+    {
+        "input": "construire",
+        "output": "construit"
+    },
+    {
+        "input": "contenir",
+        "output": "contenu"
+    },
+    {
+        "input": "continuer",
+        "output": "suite"
+    },
+    {
+        "input": "contr\u00f4le",
+        "output": "contr\u00f4l\u00e9"
+    },
+    {
+        "input": "convertir",
+        "output": "converti"
+    },
+    {
+        "input": "coop\u00e9rer",
+        "output": "coop\u00e9r\u00e9"
+    },
+    {
+        "input": "correct",
+        "output": "corrig\u00e9"
+    },
+    {
+        "input": "cr\u00e9er",
+        "output": "cr\u00e9\u00e9"
+    },
+    {
+        "input": "critiquer",
+        "output": "critiqu\u00e9"
+    },
+    {
+        "input": "d\u00e9cider",
+        "output": "d\u00e9cid\u00e9"
+    },
+    {
+        "input": "d\u00e9fendre",
+        "output": "d\u00e9fendu"
+    },
+    {
+        "input": "d\u00e9finir",
+        "output": "d\u00e9fini"
+    },
+    {
+        "input": "livrer",
+        "output": "livr\u00e9"
+    },
+    {
+        "input": "d\u00e9montrer",
+        "output": "d\u00e9montr\u00e9"
+    },
+    {
+        "input": "nier",
+        "output": "refus\u00e9"
+    },
+    {
+        "input": "d\u00e9pendre",
+        "output": "d\u00e9pendait"
+    },
+    {
+        "input": "d\u00e9crire",
+        "output": "d\u00e9crit"
+    },
+    {
+        "input": "conception",
+        "output": "con\u00e7u"
+    },
+    {
+        "input": "d\u00e9truire",
+        "output": "d\u00e9truit"
+    },
+    {
+        "input": "d\u00e9tecter",
+        "output": "d\u00e9tect\u00e9"
+    },
+    {
+        "input": "d\u00e9velopper",
+        "output": "d\u00e9velopp\u00e9"
+    },
+    {
+        "input": "concevoir",
+        "output": "con\u00e7u"
+    },
+    {
+        "input": "direct",
+        "output": "dirig\u00e9"
+    },
+    {
+        "input": "d\u00e9couvrir",
+        "output": "d\u00e9couvert"
+    },
+    {
+        "input": "affichage",
+        "output": "affich\u00e9"
+    },
+    {
+        "input": "distribuer",
+        "output": "distribu\u00e9"
+    },
+    {
+        "input": "diviser",
+        "output": "divis\u00e9"
+    },
+    {
+        "input": "double",
+        "output": "doubl\u00e9"
+    },
+    {
+        "input": "\u00e9bauche",
+        "output": "r\u00e9dig\u00e9"
+    },
+    {
+        "input": "dessiner",
+        "output": "a dessin\u00e9"
+    },
+    {
+        "input": "conduire",
+        "output": "conduit"
+    },
+    {
+        "input": "gagner",
+        "output": "gagn\u00e9"
+    },
+    {
+        "input": "modifier",
+        "output": "\u00e9dit\u00e9"
+    },
+    {
+        "input": "\u00e9duquer",
+        "output": "instruit"
+    },
+    {
+        "input": "\u00e9liminer",
+        "output": "\u00e9limin\u00e9"
+    },
+    {
+        "input": "souligner",
+        "output": "soulign\u00e9"
+    },
+    {
+        "input": "permettre",
+        "output": "activ\u00e9"
+    },
+    {
+        "input": "encourager",
+        "output": "encourag\u00e9"
+    },
+    {
+        "input": "am\u00e9liorer",
+        "output": "am\u00e9lior\u00e9"
+    },
+    {
+        "input": "agrandir",
+        "output": "agrandi"
+    },
+    {
+        "input": "entrer",
+        "output": "entr\u00e9"
+    },
+    {
+        "input": "\u00e9tablir",
+        "output": "\u00e9tabli"
+    },
+    {
+        "input": "\u00e9valuer",
+        "output": "\u00e9valu\u00e9"
+    },
+    {
+        "input": "examiner",
+        "output": "examin\u00e9"
+    },
+    {
+        "input": "d\u00e9passer",
+        "output": "d\u00e9pass\u00e9"
+    },
+    {
+        "input": "ex\u00e9cuter",
+        "output": "ex\u00e9cut\u00e9"
+    },
+    {
+        "input": "exister",
+        "output": "exist\u00e9"
+    },
+    {
+        "input": "d\u00e9velopper",
+        "output": "\u00e9largi"
+    },
+    {
+        "input": "expliquer",
+        "output": "expliqu\u00e9"
+    },
+    {
+        "input": "exprimer",
+        "output": "exprim\u00e9"
+    },
+    {
+        "input": "prolonger",
+        "output": "prolong\u00e9"
+    },
+    {
+        "input": "visage",
+        "output": "confront\u00e9"
+    },
+    {
+        "input": "faciliter",
+        "output": "facilit\u00e9"
+    },
+    {
+        "input": "s'estomper",
+        "output": "d\u00e9color\u00e9"
+    },
+    {
+        "input": "\u00e9chouer",
+        "output": "\u00e9chou\u00e9"
+    },
+    {
+        "input": "fixer",
+        "output": "fix\u00e9"
+    },
+    {
+        "input": "combat",
+        "output": "combattu"
+    },
+    {
+        "input": "remplir",
+        "output": "rempli"
+    },
+    {
+        "input": "finir",
+        "output": "termin\u00e9"
+    },
+    {
+        "input": "suivre",
+        "output": "suivi"
+    },
+    {
+        "input": "forme",
+        "output": "form\u00e9"
+    },
+    {
+        "input": "trouv\u00e9",
+        "output": "trouv\u00e9"
+    },
+    {
+        "input": "gain",
+        "output": "acquis"
+    },
+    {
+        "input": "g\u00e9n\u00e9rer",
+        "output": "g\u00e9n\u00e9r\u00e9"
+    },
+    {
+        "input": "rassembler",
+        "output": "rassembl\u00e9s"
+    },
+    {
+        "input": "donner",
+        "output": "donn\u00e9"
+    },
+    {
+        "input": "guide",
+        "output": "guid\u00e9"
+    },
+    {
+        "input": "poign\u00e9e",
+        "output": "trait\u00e9"
+    },
+    {
+        "input": "accrocher",
+        "output": "accroch\u00e9"
+    },
+    {
+        "input": "se produire",
+        "output": "s'est produit"
+    },
+    {
+        "input": "aide",
+        "output": "a aid\u00e9"
+    },
+    {
+        "input": "cacher",
+        "output": "cach\u00e9"
+    },
+    {
+        "input": "indice",
+        "output": "sugg\u00e9r\u00e9"
+    },
+    {
+        "input": "frapper",
+        "output": "frapper"
+    },
+    {
+        "input": "tenir",
+        "output": "tenu"
+    },
+    {
+        "input": "identifier",
+        "output": "identifi\u00e9"
+    },
+    {
+        "input": "ignorer",
+        "output": "ignor\u00e9"
+    },
+    {
+        "input": "illustrer",
+        "output": "illustr\u00e9"
+    },
+    {
+        "input": "imaginer",
+        "output": "imagin\u00e9"
+    },
+    {
+        "input": "impliquer",
+        "output": "implicite"
+    },
+    {
+        "input": "am\u00e9liorer",
+        "output": "am\u00e9lior\u00e9"
+    },
+    {
+        "input": "inclure",
+        "output": "inclus"
+    },
+    {
+        "input": "augmenter",
+        "output": "augment\u00e9"
+    },
+    {
+        "input": "indiquer",
+        "output": "indiqu\u00e9"
+    },
+    {
+        "input": "influence",
+        "output": "influenc\u00e9"
+    },
+    {
+        "input": "informer",
+        "output": "inform\u00e9"
+    },
+    {
+        "input": "initier",
+        "output": "initi\u00e9"
+    },
+    {
+        "input": "ins\u00e9rer",
+        "output": "ins\u00e9r\u00e9"
+    },
+    {
+        "input": "installer",
+        "output": "install\u00e9"
+    },
+    {
+        "input": "instruire",
+        "output": "instruit"
+    },
+    {
+        "input": "int\u00e9grer",
+        "output": "int\u00e9gr\u00e9"
+    },
+    {
+        "input": "interpr\u00e9ter",
+        "output": "interpr\u00e9t\u00e9"
+    },
+    {
+        "input": "pr\u00e9senter",
+        "output": "introduit"
+    },
+    {
+        "input": "enqu\u00eater",
+        "output": "enqu\u00eat\u00e9"
+    },
+    {
+        "input": "impliquer",
+        "output": "impliqu\u00e9"
+    },
+    {
+        "input": "rejoindre",
+        "output": "rejoint"
+    },
+    {
+        "input": "sauter",
+        "output": "sauter"
+    },
+    {
+        "input": "justifier",
+        "output": "justifi\u00e9"
+    },
+    {
+        "input": "garder",
+        "output": "gard\u00e9"
+    },
+    {
+        "input": "coup de pied",
+        "output": "donn\u00e9 un coup de pied"
+    },
+    {
+        "input": "savoir",
+        "output": "savoir"
+    },
+    {
+        "input": "dernier",
+        "output": "dur\u00e9"
+    },
+    {
+        "input": "lancement",
+        "output": "lanc\u00e9"
+    },
+    {
+        "input": "plomb",
+        "output": "conduit"
+    },
+    {
+        "input": "apprendre",
+        "output": "appris"
+    },
+    {
+        "input": "partir",
+        "output": "gauche"
+    },
+    {
+        "input": "pr\u00eater",
+        "output": "pr\u00eat"
+    },
+    {
+        "input": "laisser",
+        "output": "laisser"
+    },
+    {
+        "input": "remont\u00e9e m\u00e9canique",
+        "output": "soulev\u00e9"
+    },
+    {
+        "input": "\u00e9couter",
+        "output": "\u00e9cout\u00e9"
+    },
+    {
+        "input": "vivre",
+        "output": "v\u00e9cu"
+    },
+    {
+        "input": "regarder",
+        "output": "regard\u00e9"
+    },
+    {
+        "input": "perdre",
+        "output": "perdu"
+    },
+    {
+        "input": "maintenir",
+        "output": "maintenu"
+    },
+    {
+        "input": "faire",
+        "output": "fabriqu\u00e9"
+    },
+    {
+        "input": "g\u00e9rer",
+        "output": "g\u00e9r\u00e9"
+    },
+    {
+        "input": "manipuler",
+        "output": "manipul\u00e9"
+    },
+    {
+        "input": "mesure",
+        "output": "mesur\u00e9"
+    },
+    {
+        "input": "rencontrer",
+        "output": "rencontr\u00e9"
+    },
+    {
+        "input": "mentionner",
+        "output": "mentionn\u00e9"
+    },
+    {
+        "input": "fusionner",
+        "output": "fusionn\u00e9"
+    },
+    {
+        "input": "mod\u00e8le",
+        "output": "mod\u00e9lis\u00e9"
+    },
+    {
+        "input": "surveiller",
+        "output": "surveill\u00e9"
+    },
+    {
+        "input": "d\u00e9placer",
+        "output": "d\u00e9plac\u00e9"
+    },
+    {
+        "input": "nom",
+        "output": "nomm\u00e9"
+    },
+    {
+        "input": "n\u00e9gocier",
+        "output": "n\u00e9goci\u00e9"
+    },
+    {
+        "input": "avis",
+        "output": "remarqu\u00e9"
+    },
+    {
+        "input": "obtenir",
+        "output": "obtenu"
+    },
+    {
+        "input": "se produire",
+        "output": "se produit"
+    },
+    {
+        "input": "offre",
+        "output": "offert"
+    },
+    {
+        "input": "exploiter",
+        "output": "exploit\u00e9"
+    },
+    {
+        "input": "commande",
+        "output": "command\u00e9"
+    },
+    {
+        "input": "organiser",
+        "output": "organis\u00e9"
+    },
+    {
+        "input": "surmonter",
+        "output": "surmont\u00e9"
+    },
+    {
+        "input": "surplomber",
+        "output": "n\u00e9glig\u00e9"
+    },
+    {
+        "input": "participer",
+        "output": "particip\u00e9"
+    },
+    {
+        "input": "passer",
+        "output": "pass\u00e9"
+    },
+    {
+        "input": "ex\u00e9cuter",
+        "output": "effectu\u00e9"
+    },
+    {
+        "input": "persuader",
+        "output": "persuad\u00e9"
+    },
+    {
+        "input": "lieu",
+        "output": "plac\u00e9"
+    },
+    {
+        "input": "plan",
+        "output": "pr\u00e9vu"
+    },
+    {
+        "input": "jouer",
+        "output": "jou\u00e9"
+    },
+    {
+        "input": "point",
+        "output": "pointu"
+    },
+    {
+        "input": "poss\u00e9der",
+        "output": "poss\u00e9d\u00e9"
+    },
+    {
+        "input": "poster",
+        "output": "publi\u00e9"
+    },
+    {
+        "input": "pratique",
+        "output": "pratiqu\u00e9"
+    },
+    {
+        "input": "pr\u00e9parer",
+        "output": "pr\u00e9par\u00e9"
+    },
+    {
+        "input": "pr\u00e9server",
+        "output": "conserv\u00e9"
+    },
+    {
+        "input": "pr\u00e9d\u00e9fini",
+        "output": "pr\u00e9d\u00e9fini"
+    },
+    {
+        "input": "emp\u00eacher",
+        "output": "emp\u00each\u00e9"
+    },
+    {
+        "input": "processus",
+        "output": "trait\u00e9"
+    },
+    {
+        "input": "produire",
+        "output": "produit"
+    },
+    {
+        "input": "programme",
+        "output": "programm\u00e9"
+    },
+    {
+        "input": "projet",
+        "output": "projet\u00e9"
+    },
+    {
+        "input": "promouvoir",
+        "output": "promu"
+    },
+    {
+        "input": "prot\u00e9ger",
+        "output": "prot\u00e9g\u00e9"
+    },
+    {
+        "input": "fournir",
+        "output": "fourni"
+    },
+    {
+        "input": "publier",
+        "output": "publi\u00e9"
+    },
+    {
+        "input": "tirer",
+        "output": "tir\u00e9"
+    },
+    {
+        "input": "poursuivre",
+        "output": "poursuivi"
+    },
+    {
+        "input": "pousser",
+        "output": "pouss\u00e9"
+    },
+    {
+        "input": "qualifier",
+        "output": "qualifi\u00e9"
+    },
+    {
+        "input": "question",
+        "output": "interrog\u00e9"
+    },
+    {
+        "input": "augmenter",
+        "output": "\u00e9lev\u00e9"
+    },
+    {
+        "input": "atteindre",
+        "output": "atteint"
+    },
+    {
+        "input": "recevoir",
+        "output": "re\u00e7u"
+    },
+    {
+        "input": "reconna\u00eetre",
+        "output": "reconnu"
+    },
+    {
+        "input": "enregistrer",
+        "output": "enregistr\u00e9"
+    },
+    {
+        "input": "r\u00e9duire",
+        "output": "r\u00e9duit"
+    },
+    {
+        "input": "r\u00e9fl\u00e9chir",
+        "output": "r\u00e9fl\u00e9chi"
+    },
+    {
+        "input": "rejeter",
+        "output": "rejet\u00e9"
+    },
+    {
+        "input": "relier",
+        "output": "connexe"
+    },
+    {
+        "input": "sortie",
+        "output": "publi\u00e9"
+    },
+    {
+        "input": "rester",
+        "output": "rest\u00e9"
+    },
+    {
+        "input": "se souvenir",
+        "output": "souvenu"
+    },
+    {
+        "input": "supprimer",
+        "output": "supprim\u00e9"
+    },
+    {
+        "input": "r\u00e9paration",
+        "output": "r\u00e9par\u00e9"
+    },
+    {
+        "input": "r\u00e9p\u00e9ter",
+        "output": "r\u00e9p\u00e9t\u00e9"
+    },
+    {
+        "input": "remplacer",
+        "output": "remplac\u00e9"
+    },
+    {
+        "input": "rapport",
+        "output": "signal\u00e9"
+    },
+    {
+        "input": "repr\u00e9senter",
+        "output": "repr\u00e9sent\u00e9"
+    },
+    {
+        "input": "demande",
+        "output": "demand\u00e9"
+    },
+    {
+        "input": "exiger",
+        "output": "requis"
+    },
+    {
+        "input": "recherche",
+        "output": "\u00e9tudi\u00e9"
+    },
+    {
+        "input": "r\u00e9soudre",
+        "output": "r\u00e9solu"
+    },
+    {
+        "input": "r\u00e9pondre",
+        "output": "r\u00e9pondu"
+    },
+    {
+        "input": "restaurer",
+        "output": "restaur\u00e9"
+    },
+    {
+        "input": "conserver",
+        "output": "conserv\u00e9"
+    },
+    {
+        "input": "retour",
+        "output": "retourn\u00e9"
+    },
+    {
+        "input": "r\u00e9v\u00e9ler",
+        "output": "r\u00e9v\u00e9l\u00e9"
+    },
+    {
+        "input": "r\u00e9vision",
+        "output": "r\u00e9vis\u00e9"
+    },
+    {
+        "input": "r\u00e9viser",
+        "output": "r\u00e9vis\u00e9"
+    },
+    {
+        "input": "r\u00e9compense",
+        "output": "r\u00e9compens\u00e9"
+    },
+    {
+        "input": "courir",
+        "output": "couru"
+    },
+    {
+        "input": "satisfaire",
+        "output": "satisfait"
+    },
+    {
+        "input": "sauvegarder",
+        "output": "enregistr\u00e9"
+    },
+    {
+        "input": "calendrier",
+        "output": "pr\u00e9vu"
+    },
+    {
+        "input": "recherche",
+        "output": "recherch\u00e9"
+    },
+    {
+        "input": "s\u00e9curiser",
+        "output": "s\u00e9curis\u00e9"
+    },
+    {
+        "input": "s\u00e9lectionner",
+        "output": "s\u00e9lectionn\u00e9"
+    },
+    {
+        "input": "s\u00e9parer",
+        "output": "s\u00e9par\u00e9"
+    },
+    {
+        "input": "servir",
+        "output": "servi"
+    },
+    {
+        "input": "ensemble",
+        "output": "ensemble"
+    },
+    {
+        "input": "montrer",
+        "output": "montr\u00e9"
+    },
+    {
+        "input": "signal",
+        "output": "signal\u00e9"
+    },
+    {
+        "input": "simplifier",
+        "output": "simplifi\u00e9"
+    },
+    {
+        "input": "r\u00e9soudre",
+        "output": "r\u00e9solu"
+    },
+    {
+        "input": "parler",
+        "output": "rayon"
+    },
+    {
+        "input": "pr\u00e9ciser",
+        "output": "sp\u00e9cifi\u00e9"
+    },
+    {
+        "input": "r\u00e9pandre",
+        "output": "r\u00e9pandre"
+    },
+    {
+        "input": "se tenir debout",
+        "output": "se tenait"
+    },
+    {
+        "input": "commencer",
+        "output": "commenc\u00e9"
+    },
+    {
+        "input": "rester",
+        "output": "rest\u00e9"
+    },
+    {
+        "input": "s'efforcer",
+        "output": "s'est efforc\u00e9"
+    },
+    {
+        "input": "\u00e9tude",
+        "output": "\u00e9tudi\u00e9"
+    },
+    {
+        "input": "soumettre",
+        "output": "soumis"
+    },
+    {
+        "input": "r\u00e9ussir",
+        "output": "r\u00e9ussi"
+    },
+    {
+        "input": "sugg\u00e9rer",
+        "output": "sugg\u00e9r\u00e9"
+    },
+    {
+        "input": "approvisionnement",
+        "output": "fourni"
+    },
+    {
+        "input": "soutien",
+        "output": "pris en charge"
+    },
+    {
+        "input": "survivre",
+        "output": "surv\u00e9cu"
+    },
+    {
+        "input": "prendre",
+        "output": "pris"
+    },
+    {
+        "input": "enseigner",
+        "output": "enseign\u00e9"
+    },
+    {
+        "input": "test",
+        "output": "test\u00e9"
+    },
+    {
+        "input": "penser",
+        "output": "pens\u00e9e"
+    },
+    {
+        "input": "commerce",
+        "output": "\u00e9chang\u00e9"
+    },
+    {
+        "input": "train",
+        "output": "form\u00e9"
+    },
+    {
+        "input": "transfert",
+        "output": "transf\u00e9r\u00e9"
+    },
+    {
+        "input": "transformer",
+        "output": "transform\u00e9"
+    },
+    {
+        "input": "traduire",
+        "output": "traduit"
+    },
+    {
+        "input": "voyager",
+        "output": "voyag\u00e9"
+    },
+    {
+        "input": "traiter",
+        "output": "trait\u00e9"
+    },
+    {
+        "input": "confiance",
+        "output": "de confiance"
+    },
+    {
+        "input": "essayer",
+        "output": "essay\u00e9"
+    },
+    {
+        "input": "tourner",
+        "output": "tourn\u00e9"
+    },
+    {
+        "input": "comprendre",
+        "output": "compris"
+    },
+    {
+        "input": "unir",
+        "output": "unis"
+    },
+    {
+        "input": "utiliser",
+        "output": "utilis\u00e9"
+    },
+    {
+        "input": "utiliser",
+        "output": "utilis\u00e9"
+    },
+    {
+        "input": "valider",
+        "output": "valid\u00e9"
+    },
+    {
+        "input": "valeur",
+        "output": "appr\u00e9ci\u00e9"
+    },
+    {
+        "input": "v\u00e9rifier",
+        "output": "v\u00e9rifi\u00e9"
+    },
+    {
+        "input": "vue",
+        "output": "vu"
+    },
+    {
+        "input": "visite",
+        "output": "visit\u00e9"
+    },
+    {
+        "input": "attendre",
+        "output": "attendu"
+    },
+    {
+        "input": "vouloir",
+        "output": "recherch\u00e9"
+    },
+    {
+        "input": "avertir",
+        "output": "averti"
+    },
+    {
+        "input": "regarder",
+        "output": "regard\u00e9"
+    },
+    {
+        "input": "gagner",
+        "output": "gagn\u00e9"
+    },
+    {
+        "input": "retirer",
+        "output": "retir\u00e9"
+    },
+    {
+        "input": "travail",
+        "output": "travaill\u00e9"
+    },
+    {
+        "input": "inqui\u00e9ter",
+        "output": "inquiet"
+    },
+    {
+        "input": "\u00e9crire",
+        "output": "a \u00e9crit"
+    },
+    {
+        "input": "rendement",
+        "output": "rendu"
+    },
+    {
+        "input": "zoom",
+        "output": "agrandi"
+    }
+]

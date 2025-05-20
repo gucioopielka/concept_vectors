@@ -1,8 +1,27 @@
+import sys
 import time
 import json
 import re
+import os
 from openai import OpenAI
+from utils.globals import DATASET_DIR
+
 client = OpenAI()
+concept = sys.argv[1]
+
+text = {
+    'categorical': {
+        'example': "\n1. america: country\n2. chocolate: food\n3. apple: fruit\n4. blue: colour\n5. ",
+        'pairs_text': 'exemplar:category pairs'
+    },
+    'causal': {
+        'example': "\n1. stumble: fall\n2. break: crack\n3. wash: clean\n4. cook: food\n5. ",
+        'pairs_text': 'cause:effect pairs'
+    }
+}
+
+if concept not in text:
+    raise ValueError(f"Invalid concept: {concept}")
 
 def unique_input(data):
     unique_dicts = {}
@@ -22,26 +41,23 @@ def clean_data(data):
     data = [pair for pair in data if pair['input'].count(' ') <= 1 and pair['output'].count(' ') <= 1]
     return data
 
-def generate_category_dataset(N: int):
+def generate_category_dataset(N: int, example: str, pairs_text: str):
     '''
     Generates 100 pairs of antonyms, in the form of a list of 2-tuples.
     '''
     t0 = time.time()
 
-    # Define a few examples (for our dataset, and for our prompt)
-    example_antonyms = "\n1. america: country\n2. chocolate: food\n3. apple: fruit\n4. blue: colour\n5. "
-
     response = client.chat.completions.create(
         model="gpt-4",
         messages=[
             {"role": "system", "content": "You are a helpful assistant."},
-            {"role": "user", "content": f"Give me {N} one word exemplar:category pairs."},
-            {"role": "assistant", "content": f"Sure! Here are {N} exemplar:category pairs satisfying this specification: {example_antonyms}"},
+            {"role": "user", "content": f"Give me {N} one word {pairs_text}."},
+            {"role": "assistant", "content": f"Sure! Here are {N} one word {pairs_text} satisfying this specification: {example}"},
         ]
     )
 
     # Add our examples to the response
-    response_text: str = example_antonyms + response.choices[0].message.content
+    response_text: str = example + response.choices[0].message.content
     
     # Parse the response
     pattern = r'\d+\.\s*([^:]+):\s*(.+)'
@@ -58,26 +74,26 @@ def generate_category_dataset(N: int):
 TOTAL_N = 1000
 GENERATE_N = 100
 N_RETRIES = 5
-print(f"Generating {TOTAL_N} categorical examples...")
-category_pairs = []
+print(f"Generating {TOTAL_N} {concept} examples...")
+pairs = []
 while True:
-    generated_cats = generate_category_dataset(GENERATE_N)
+    generated_pairs = generate_category_dataset(GENERATE_N, text[concept]['example'], text[concept]['pairs_text'])
 
     # Add the generated examples to the list
-    category_pairs.extend(generated_cats)
+    pairs.extend(generated_pairs)
 
     # Remove duplicates
-    category_pairs = unique_input(category_pairs)
+    pairs = unique_input(pairs)
 
-    # Clean the category pairs
-    category_pairs = clean_data(category_pairs)
+    # Clean the pairs
+    pairs = clean_data(pairs)
 
-    print(f"Total number of examples: {len(category_pairs)}")
-    if len(category_pairs) >= TOTAL_N or N_RETRIES == 0:
+    print(f"Total number of examples: {len(pairs)}")
+    if len(pairs) >= TOTAL_N or N_RETRIES == 0:
         break
 
     N_RETRIES -= 1
     print(f"Retrying... {N_RETRIES} retries left.")
 
 # Save the dataset
-json.dump(category_pairs, open('data/datasets/categorical_eng.json', 'w'), indent=4)
+json.dump(pairs, open(os.path.join(DATASET_DIR, f'{concept}_eng.json'), 'w'), indent=4)

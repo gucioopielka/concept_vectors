@@ -22,24 +22,23 @@ datasets=(
     'synonym_fr'
     'synonym_eng-mc'    
 )
-model_names=('meta-llama/Meta-LLama-3.1-8B' 'meta-llama/Meta-LLama-3.1-70B')
-batch_sizes=(32 40) # Corresponding batch sizes for each model
+model_names=('meta-llama/Meta-LLama-3.1-8B')
+batch_sizes=(10 20) # Corresponding batch sizes for each model
 
 for index in ${!model_names[@]}; do
     model_name=${model_names[index]}
-    base_layer_batch_size=${batch_sizes[index]}        
+    layer_batch_size=${batch_sizes[index]}
     while true; do
         echo "Running script for model ${model_name}..."
-        python3 calculate_CIE.py \
+        python3 calculate_RSA.py \
             --model ${model_name} \
             --datasets ${datasets[@]} \
             --dataset_size 50 \
-            --layer_batch_size ${base_layer_batch_size} \
             --prompt_batch_size 50 \
+            --layer_batch_size ${layer_batch_size} \
             --n_train 5 \
             --remote_run \
             --seed 42 \
-            --output_dir CIE_LowLevel/
         
         if [ $? -eq 0 ]; then
             echo "Script finished successfully for model ${model_name}."

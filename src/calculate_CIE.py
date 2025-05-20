@@ -3,12 +3,43 @@ from typing import *
 import torch
 import os
 import pickle
+import time
+import signal
+import functools
 
-from utils.query_utils import calculate_CIE
+from utils.query_utils import calculate_CIE as original_calculate_CIE
 from utils.ICL_utils import DatasetConstructor
 from utils.model_utils import ExtendedLanguageModel
 from utils.eval_utils import batch_process_layers
 from utils.globals import RESULTS_DIR
+
+def timeout(seconds: int = 4000) -> Callable:
+    """
+    Decorator that raises a TimeoutError if the function takes longer than specified seconds.
+    """
+    def decorator(func: Callable) -> Callable:
+        def _handle_timeout(signum, frame):
+            raise TimeoutError(f"Function {func.__name__} timed out after {seconds} seconds")
+
+        @functools.wraps(func)
+        def wrapper(*args, **kwargs) -> Any:
+            # Set the signal handler and a 1-hour alarm
+            signal.signal(signal.SIGALRM, _handle_timeout)
+            signal.alarm(seconds)
+            
+            try:
+                result = func(*args, **kwargs)
+            finally:
+                # Disable the alarm
+                signal.alarm(0)
+            
+            return result
+
+        return wrapper
+    return decorator
+
+# Wrap the original calculate_CIE with timeout
+calculate_CIE = timeout()(original_calculate_CIE)
 
 def save_to_csv(tensor: torch.Tensor, output_path: str):
     # Get indices for all elements
@@ -62,6 +93,7 @@ if __name__ == "__main__":
     # Load intermediate results if they exist
     intermediate_results_path = os.path.join(args.dataset_dir, args.output_dir, f'cie_{model.nickname}.pkl')
     if os.path.exists(intermediate_results_path):
+        print('Loading intermediate results...')
         cie = pickle.load(open(intermediate_results_path, 'rb'))
         datasets = args.datasets[len(cie):] # Only process the remaining datasets
         if not datasets:
@@ -84,20 +116,38 @@ if __name__ == "__main__":
             results = []
             start = 0
 
+        # Set the number of training examples
+        n_train = args.n_train
+        if dataset_name.endswith('-mc'):
+            n_train = 3 # For mc datasets, use 3 training examples
+        else:
+            n_train = args.n_train
+
         # Load the dataset
         dataset = DatasetConstructor(
             dataset_ids=dataset_name, 
-            dataset_size=args.dataset_size, 
-            n_train=args.n_train, 
+            dataset_size=args.dataset_size,
+            n_train=n_train, 
             seed=args.seed, 
             batch_size=args.prompt_batch_size
         )
 
+        # Layer batch size for 70B model and mc datasets
+        if args.model.endswith('70B') and dataset_name.endswith('-mc'):
+            layer_batch_size = 27
+        else:
+            layer_batch_size = args.layer_batch_size
+
         # Compute CIE for each batch of layers
-        for layers in batch_process_layers(n_layers, batch_size=args.layer_batch_size, start=start):
-            batch_cie = calculate_CIE(model=model, dataset=dataset.datasets[0], layers=layers, remote=args.remote_run)
-            results.append(batch_cie)
-            pickle.dump(results, open(intermediate_results_dataset_path, 'wb')) # Save intermediate results
+        for layers in batch_process_layers(n_layers, batch_size=layer_batch_size, start=start):
+            try:
+                batch_cie = calculate_CIE(model=model, dataset=dataset.datasets[0], layers=layers, remote=args.remote_run)
+                results.append(batch_cie)
+                pickle.dump(results, open(intermediate_results_dataset_path, 'wb')) # Save intermediate results
+            except TimeoutError:
+                print(f"\nTimeout occurred while processing layers {layers}. Saving intermediate results and exiting...")
+                pickle.dump(results, open(intermediate_results_dataset_path, 'wb'))
+                exit(1)
         cie.append(torch.cat(results, dim=0))
 
         # Delete intermediate dataset results

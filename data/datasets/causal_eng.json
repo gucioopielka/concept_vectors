@@ -1,0 +1,1242 @@
+[
+    {
+        "input": "stumble",
+        "output": "fall"
+    },
+    {
+        "input": "break",
+        "output": "crack"
+    },
+    {
+        "input": "wash",
+        "output": "clean"
+    },
+    {
+        "input": "cook",
+        "output": "food"
+    },
+    {
+        "input": "rain",
+        "output": "wet"
+    },
+    {
+        "input": "heat",
+        "output": "warmth"
+    },
+    {
+        "input": "eat",
+        "output": "full"
+    },
+    {
+        "input": "run",
+        "output": "sweat"
+    },
+    {
+        "input": "read",
+        "output": "knowledge"
+    },
+    {
+        "input": "study",
+        "output": "education"
+    },
+    {
+        "input": "love",
+        "output": "happiness"
+    },
+    {
+        "input": "hit",
+        "output": "pain"
+    },
+    {
+        "input": "sun",
+        "output": "light"
+    },
+    {
+        "input": "plant",
+        "output": "growth"
+    },
+    {
+        "input": "exercise",
+        "output": "fitness"
+    },
+    {
+        "input": "travel",
+        "output": "adventure"
+    },
+    {
+        "input": "inflate",
+        "output": "increase"
+    },
+    {
+        "input": "sing",
+        "output": "music"
+    },
+    {
+        "input": "age",
+        "output": "wisdom"
+    },
+    {
+        "input": "smoke",
+        "output": "pollution"
+    },
+    {
+        "input": "defrost",
+        "output": "melt"
+    },
+    {
+        "input": "laugh",
+        "output": "joy"
+    },
+    {
+        "input": "burn",
+        "output": "ashes"
+    },
+    {
+        "input": "diet",
+        "output": "weightloss"
+    },
+    {
+        "input": "find",
+        "output": "discovery"
+    },
+    {
+        "input": "worship",
+        "output": "faith"
+    },
+    {
+        "input": "learn",
+        "output": "understanding"
+    },
+    {
+        "input": "code",
+        "output": "software"
+    },
+    {
+        "input": "joke",
+        "output": "laughter"
+    },
+    {
+        "input": "paint",
+        "output": "color"
+    },
+    {
+        "input": "forget",
+        "output": "amnesia"
+    },
+    {
+        "input": "boil",
+        "output": "hot"
+    },
+    {
+        "input": "lie",
+        "output": "dishonest"
+    },
+    {
+        "input": "write",
+        "output": "literature"
+    },
+    {
+        "input": "wind",
+        "output": "movement"
+    },
+    {
+        "input": "shop",
+        "output": "products"
+    },
+    {
+        "input": "pour",
+        "output": "liquid"
+    },
+    {
+        "input": "win",
+        "output": "victory"
+    },
+    {
+        "input": "lose",
+        "output": "defeat"
+    },
+    {
+        "input": "saw",
+        "output": "cut"
+    },
+    {
+        "input": "throw",
+        "output": "distance"
+    },
+    {
+        "input": "explode",
+        "output": "destruction"
+    },
+    {
+        "input": "pollute",
+        "output": "contamination"
+    },
+    {
+        "input": "work",
+        "output": "money"
+    },
+    {
+        "input": "play",
+        "output": "fun"
+    },
+    {
+        "input": "fertilize",
+        "output": "growth"
+    },
+    {
+        "input": "cut",
+        "output": "wound"
+    },
+    {
+        "input": "switch",
+        "output": "change"
+    },
+    {
+        "input": "shoot",
+        "output": "recoil"
+    },
+    {
+        "input": "bake",
+        "output": "bread"
+    },
+    {
+        "input": "cry",
+        "output": "sadness"
+    },
+    {
+        "input": "sow",
+        "output": "crops"
+    },
+    {
+        "input": "sell",
+        "output": "profit"
+    },
+    {
+        "input": "sound",
+        "output": "noise"
+    },
+    {
+        "input": "destroy",
+        "output": "ruin"
+    },
+    {
+        "input": "dry",
+        "output": "moistureless"
+    },
+    {
+        "input": "build",
+        "output": "construction"
+    },
+    {
+        "input": "balance",
+        "output": "stability"
+    },
+    {
+        "input": "create",
+        "output": "creation"
+    },
+    {
+        "input": "scare",
+        "output": "fear"
+    },
+    {
+        "input": "sleeping",
+        "output": "rest"
+    },
+    {
+        "input": "starvation",
+        "output": "weaken"
+    },
+    {
+        "input": "drought",
+        "output": "dryness"
+    },
+    {
+        "input": "firstaid",
+        "output": "relief"
+    },
+    {
+        "input": "fire",
+        "output": "heat"
+    },
+    {
+        "input": "swim",
+        "output": "wet"
+    },
+    {
+        "input": "dive",
+        "output": "deep"
+    },
+    {
+        "input": "snow",
+        "output": "cold"
+    },
+    {
+        "input": "drive",
+        "output": "journey"
+    },
+    {
+        "input": "procrastinate",
+        "output": "delay"
+    },
+    {
+        "input": "invent",
+        "output": "innovation"
+    },
+    {
+        "input": "freeze",
+        "output": "cold"
+    },
+    {
+        "input": "feed",
+        "output": "satiety"
+    },
+    {
+        "input": "garden",
+        "output": "plants"
+    },
+    {
+        "input": "hug",
+        "output": "comfort"
+    },
+    {
+        "input": "bully",
+        "output": "hurt"
+    },
+    {
+        "input": "sketch",
+        "output": "drawing"
+    },
+    {
+        "input": "donate",
+        "output": "help"
+    },
+    {
+        "input": "cheat",
+        "output": "dishonesty"
+    },
+    {
+        "input": "exclude",
+        "output": "isolation"
+    },
+    {
+        "input": "graduation",
+        "output": "achievement"
+    },
+    {
+        "input": "criticize",
+        "output": "offense"
+    },
+    {
+        "input": "innovate",
+        "output": "change"
+    },
+    {
+        "input": "inspire",
+        "output": "motivation"
+    },
+    {
+        "input": "talk",
+        "output": "communication"
+    },
+    {
+        "input": "charge",
+        "output": "energy"
+    },
+    {
+        "input": "mistake",
+        "output": "error"
+    },
+    {
+        "input": "format",
+        "output": "clearance"
+    },
+    {
+        "input": "solve",
+        "output": "solution"
+    },
+    {
+        "input": "hike",
+        "output": "adventure"
+    },
+    {
+        "input": "slice",
+        "output": "pieces"
+    },
+    {
+        "input": "polish",
+        "output": "shine"
+    },
+    {
+        "input": "train",
+        "output": "skills"
+    },
+    {
+        "input": "wrap",
+        "output": "cover"
+    },
+    {
+        "input": "spray",
+        "output": "dispersion"
+    },
+    {
+        "input": "squeeze",
+        "output": "extract"
+    },
+    {
+        "input": "knock",
+        "output": "sound"
+    },
+    {
+        "input": "observe",
+        "output": "learn"
+    },
+    {
+        "input": "hunger",
+        "output": "eat"
+    },
+    {
+        "input": "thirst",
+        "output": "drink"
+    },
+    {
+        "input": "frost",
+        "output": "freeze"
+    },
+    {
+        "input": "ignition",
+        "output": "fire"
+    },
+    {
+        "input": "neglect",
+        "output": "decay"
+    },
+    {
+        "input": "earthquake",
+        "output": "tremor"
+    },
+    {
+        "input": "seed",
+        "output": "plant"
+    },
+    {
+        "input": "rust",
+        "output": "corrosion"
+    },
+    {
+        "input": "lightning",
+        "output": "thunder"
+    },
+    {
+        "input": "pollen",
+        "output": "allergies"
+    },
+    {
+        "input": "insult",
+        "output": "offense"
+    },
+    {
+        "input": "stress",
+        "output": "tension"
+    },
+    {
+        "input": "music",
+        "output": "melody"
+    },
+    {
+        "input": "ink",
+        "output": "stain"
+    },
+    {
+        "input": "gravity",
+        "output": "fall"
+    },
+    {
+        "input": "winter",
+        "output": "cold"
+    },
+    {
+        "input": "alcohol",
+        "output": "intoxication"
+    },
+    {
+        "input": "infection",
+        "output": "disease"
+    },
+    {
+        "input": "fear",
+        "output": "phobia"
+    },
+    {
+        "input": "miracle",
+        "output": "amazement"
+    },
+    {
+        "input": "kindness",
+        "output": "gratitude"
+    },
+    {
+        "input": "gift",
+        "output": "surprise"
+    },
+    {
+        "input": "poverty",
+        "output": "want"
+    },
+    {
+        "input": "crime",
+        "output": "punishment"
+    },
+    {
+        "input": "time",
+        "output": "change"
+    },
+    {
+        "input": "spoil",
+        "output": "waste"
+    },
+    {
+        "input": "tiredness",
+        "output": "sleep"
+    },
+    {
+        "input": "friction",
+        "output": "heat"
+    },
+    {
+        "input": "spices",
+        "output": "flavor"
+    },
+    {
+        "input": "evaporation",
+        "output": "vapor"
+    },
+    {
+        "input": "overeating",
+        "output": "obesity"
+    },
+    {
+        "input": "boredom",
+        "output": "yawn"
+    },
+    {
+        "input": "germs",
+        "output": "illness"
+    },
+    {
+        "input": "bravery",
+        "output": "heroism"
+    },
+    {
+        "input": "gamble",
+        "output": "loss"
+    },
+    {
+        "input": "caffeine",
+        "output": "alertness"
+    },
+    {
+        "input": "loyalty",
+        "output": "trust"
+    },
+    {
+        "input": "anger",
+        "output": "rage"
+    },
+    {
+        "input": "greed",
+        "output": "selfishness"
+    },
+    {
+        "input": "envy",
+        "output": "jealousy"
+    },
+    {
+        "input": "exploration",
+        "output": "discovery"
+    },
+    {
+        "input": "invention",
+        "output": "innovation"
+    },
+    {
+        "input": "storm",
+        "output": "damage"
+    },
+    {
+        "input": "pressure",
+        "output": "stress"
+    },
+    {
+        "input": "bereavement",
+        "output": "grief"
+    },
+    {
+        "input": "decay",
+        "output": "smell"
+    },
+    {
+        "input": "echo",
+        "output": "sound"
+    },
+    {
+        "input": "creativity",
+        "output": "art"
+    },
+    {
+        "input": "collision",
+        "output": "crash"
+    },
+    {
+        "input": "honesty",
+        "output": "trust"
+    },
+    {
+        "input": "scream",
+        "output": "fear"
+    },
+    {
+        "input": "pollution",
+        "output": "contamination"
+    },
+    {
+        "input": "hate",
+        "output": "animosity"
+    },
+    {
+        "input": "water",
+        "output": "flood"
+    },
+    {
+        "input": "pleasure",
+        "output": "smile"
+    },
+    {
+        "input": "warning",
+        "output": "alertness"
+    },
+    {
+        "input": "ignorance",
+        "output": "mistake"
+    },
+    {
+        "input": "sweat",
+        "output": "heat"
+    },
+    {
+        "input": "comfort",
+        "output": "relief"
+    },
+    {
+        "input": "nostalgia",
+        "output": "memory"
+    },
+    {
+        "input": "paranoia",
+        "output": "fear"
+    },
+    {
+        "input": "irritation",
+        "output": "anger"
+    },
+    {
+        "input": "speed",
+        "output": "zoom"
+    },
+    {
+        "input": "curiosity",
+        "output": "knowledge"
+    },
+    {
+        "input": "darkness",
+        "output": "fear"
+    },
+    {
+        "input": "light",
+        "output": "illumination"
+    },
+    {
+        "input": "sweetness",
+        "output": "sugar"
+    },
+    {
+        "input": "injury",
+        "output": "pain"
+    },
+    {
+        "input": "betrayal",
+        "output": "hurt"
+    },
+    {
+        "input": "teach",
+        "output": "learn"
+    },
+    {
+        "input": "growth",
+        "output": "progress"
+    },
+    {
+        "input": "rebellion",
+        "output": "change"
+    },
+    {
+        "input": "sunrise",
+        "output": "daylight."
+    },
+    {
+        "input": "overfeed",
+        "output": "obesity"
+    },
+    {
+        "input": "chill",
+        "output": "cool"
+    },
+    {
+        "input": "illness",
+        "output": "weak"
+    },
+    {
+        "input": "sleep",
+        "output": "rest"
+    },
+    {
+        "input": "pollination",
+        "output": "fruit"
+    },
+    {
+        "input": "disease",
+        "output": "sickness"
+    },
+    {
+        "input": "draw",
+        "output": "picture"
+    },
+    {
+        "input": "sew",
+        "output": "fabric"
+    },
+    {
+        "input": "bomb",
+        "output": "explode"
+    },
+    {
+        "input": "scratch",
+        "output": "itch"
+    },
+    {
+        "input": "overload",
+        "output": "break"
+    },
+    {
+        "input": "baking",
+        "output": "rise"
+    },
+    {
+        "input": "clean",
+        "output": "dirt"
+    },
+    {
+        "input": "shout",
+        "output": "noise"
+    },
+    {
+        "input": "push",
+        "output": "move"
+    },
+    {
+        "input": "fast",
+        "output": "lean"
+    },
+    {
+        "input": "spill",
+        "output": "mess"
+    },
+    {
+        "input": "hammer",
+        "output": "dent"
+    },
+    {
+        "input": "shock",
+        "output": "surprise"
+    },
+    {
+        "input": "rot",
+        "output": "bad"
+    },
+    {
+        "input": "frostbite",
+        "output": "numb"
+    },
+    {
+        "input": "divorce",
+        "output": "separate"
+    },
+    {
+        "input": "tsunami",
+        "output": "flood"
+    },
+    {
+        "input": "detonate",
+        "output": "blast"
+    },
+    {
+        "input": "meditate",
+        "output": "peace"
+    },
+    {
+        "input": "speak",
+        "output": "voice"
+    },
+    {
+        "input": "racing",
+        "output": "speed"
+    },
+    {
+        "input": "betray",
+        "output": "hurt"
+    },
+    {
+        "input": "hardwork",
+        "output": "success"
+    },
+    {
+        "input": "quake",
+        "output": "shake"
+    },
+    {
+        "input": "mine",
+        "output": "ore"
+    },
+    {
+        "input": "drown",
+        "output": "suffocate"
+    },
+    {
+        "input": "death",
+        "output": "grief"
+    },
+    {
+        "input": "rob",
+        "output": "steal"
+    },
+    {
+        "input": "moo",
+        "output": "sound"
+    },
+    {
+        "input": "bark",
+        "output": "sound"
+    },
+    {
+        "input": "scold",
+        "output": "upset"
+    },
+    {
+        "input": "repair",
+        "output": "fixed"
+    },
+    {
+        "input": "yell",
+        "output": "loud"
+    },
+    {
+        "input": "assemble",
+        "output": "build"
+    },
+    {
+        "input": "flash",
+        "output": "light"
+    },
+    {
+        "input": "evaporate",
+        "output": "vapor"
+    },
+    {
+        "input": "infest",
+        "output": "pests"
+    },
+    {
+        "input": "education",
+        "output": "knowledge"
+    },
+    {
+        "input": "running",
+        "output": "sweat"
+    },
+    {
+        "input": "snore",
+        "output": "noise"
+    },
+    {
+        "input": "puncture",
+        "output": "hole"
+    },
+    {
+        "input": "sugar",
+        "output": "sweet"
+    },
+    {
+        "input": "planting",
+        "output": "growth"
+    },
+    {
+        "input": "laughter",
+        "output": "happiness"
+    },
+    {
+        "input": "whisper",
+        "output": "quiet"
+    },
+    {
+        "input": "sprint",
+        "output": "speed"
+    },
+    {
+        "input": "earthquakes",
+        "output": "tremors"
+    },
+    {
+        "input": "hibernate",
+        "output": "sleep"
+    },
+    {
+        "input": "crying",
+        "output": "tears"
+    },
+    {
+        "input": "bathe",
+        "output": "clean"
+    },
+    {
+        "input": "harvest",
+        "output": "crops"
+    },
+    {
+        "input": "argue",
+        "output": "disagreement"
+    },
+    {
+        "input": "care",
+        "output": "tenderness"
+    },
+    {
+        "input": "pray",
+        "output": "hope"
+    },
+    {
+        "input": "shower",
+        "output": "fresh"
+    },
+    {
+        "input": "succeed",
+        "output": "celebration"
+    },
+    {
+        "input": "sacrifice",
+        "output": "loss"
+    },
+    {
+        "input": "loneliness",
+        "output": "sadness"
+    },
+    {
+        "input": "explore",
+        "output": "discover"
+    },
+    {
+        "input": "bang",
+        "output": "noise"
+    },
+    {
+        "input": "excite",
+        "output": "energy"
+    },
+    {
+        "input": "argument",
+        "output": "conflict"
+    },
+    {
+        "input": "recreate",
+        "output": "relax"
+    },
+    {
+        "input": "dance",
+        "output": "rhythm"
+    },
+    {
+        "input": "war",
+        "output": "destruction"
+    },
+    {
+        "input": "marry",
+        "output": "spouse"
+    },
+    {
+        "input": "poison",
+        "output": "sick"
+    },
+    {
+        "input": "invest",
+        "output": "profit"
+    },
+    {
+        "input": "steal",
+        "output": "theft"
+    },
+    {
+        "input": "celebrate",
+        "output": "happiness"
+    },
+    {
+        "input": "perfume",
+        "output": "scent"
+    },
+    {
+        "input": "fight",
+        "output": "injuries"
+    },
+    {
+        "input": "borrow",
+        "output": "owe"
+    },
+    {
+        "input": "relax",
+        "output": "peace"
+    },
+    {
+        "input": "fall",
+        "output": "hurt"
+    },
+    {
+        "input": "save",
+        "output": "money"
+    },
+    {
+        "input": "arson",
+        "output": "fire"
+    },
+    {
+        "input": "blend",
+        "output": "mix"
+    },
+    {
+        "input": "confess",
+        "output": "relief"
+    },
+    {
+        "input": "help",
+        "output": "aid"
+    },
+    {
+        "input": "ignore",
+        "output": "overlook"
+    },
+    {
+        "input": "smell",
+        "output": "scent"
+    },
+    {
+        "input": "shake",
+        "output": "tremble"
+    },
+    {
+        "input": "overeat",
+        "output": "obesity"
+    },
+    {
+        "input": "overwork",
+        "output": "stress"
+    },
+    {
+        "input": "injure",
+        "output": "pain"
+    },
+    {
+        "input": "dehydrate",
+        "output": "thirst"
+    },
+    {
+        "input": "radiate",
+        "output": "glow"
+    },
+    {
+        "input": "waste",
+        "output": "pollution"
+    },
+    {
+        "input": "crush",
+        "output": "destroy"
+    },
+    {
+        "input": "experiment",
+        "output": "result"
+    },
+    {
+        "input": "flood",
+        "output": "inundate"
+    },
+    {
+        "input": "vote",
+        "output": "democracy"
+    },
+    {
+        "input": "influence",
+        "output": "impact"
+    },
+    {
+        "input": "apologize",
+        "output": "forgiveness"
+    },
+    {
+        "input": "compete",
+        "output": "challenge"
+    },
+    {
+        "input": "lend",
+        "output": "debt"
+    },
+    {
+        "input": "trust",
+        "output": "confidence"
+    },
+    {
+        "input": "question",
+        "output": "curiosity"
+    },
+    {
+        "input": "admire",
+        "output": "respect"
+    },
+    {
+        "input": "organize",
+        "output": "order"
+    },
+    {
+        "input": "sunburn",
+        "output": "redness"
+    },
+    {
+        "input": "instruct",
+        "output": "teach"
+    },
+    {
+        "input": "pollinate",
+        "output": "fruit"
+    },
+    {
+        "input": "brainstorm",
+        "output": "idea"
+    },
+    {
+        "input": "ignite",
+        "output": "fire"
+    },
+    {
+        "input": "recycle",
+        "output": "conserve"
+    },
+    {
+        "input": "sadness",
+        "output": "cry"
+    },
+    {
+        "input": "allergen",
+        "output": "sneeze"
+    },
+    {
+        "input": "lack",
+        "output": "want"
+    },
+    {
+        "input": "tickle",
+        "output": "laugh"
+    },
+    {
+        "input": "tease",
+        "output": "annoyance"
+    },
+    {
+        "input": "brush",
+        "output": "clean"
+    },
+    {
+        "input": "warn",
+        "output": "prevent"
+    },
+    {
+        "input": "distract",
+        "output": "confuse"
+    },
+    {
+        "input": "reward",
+        "output": "prize"
+    },
+    {
+        "input": "jump",
+        "output": "action"
+    },
+    {
+        "input": "pull",
+        "output": "drag"
+    },
+    {
+        "input": "spin",
+        "output": "rotation"
+    },
+    {
+        "input": "stretch",
+        "output": "flexibility"
+    },
+    {
+        "input": "hide",
+        "output": "conceal"
+    },
+    {
+        "input": "slip",
+        "output": "fall"
+    },
+    {
+        "input": "sneeze",
+        "output": "expel"
+    },
+    {
+        "input": "blink",
+        "output": "close"
+    },
+    {
+        "input": "yawn",
+        "output": "tired"
+    },
+    {
+        "input": "chew",
+        "output": "masticate"
+    },
+    {
+        "input": "applause",
+        "output": "approval"
+    },
+    {
+        "input": "rush",
+        "output": "hurry"
+    },
+    {
+        "input": "smile",
+        "output": "cheer"
+    },
+    {
+        "input": "frown",
+        "output": "sadness"
+    },
+    {
+        "input": "sail",
+        "output": "move"
+    },
+    {
+        "input": "whistle",
+        "output": "sound"
+    },
+    {
+        "input": "error",
+        "output": "mistake"
+    }
+]

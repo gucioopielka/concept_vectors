@@ -1,0 +1,822 @@
+[
+    {
+        "input": "monedero",
+        "output": "carteras"
+    },
+    {
+        "input": "llavero",
+        "output": "llaveros"
+    },
+    {
+        "input": "monta\u00f1a",
+        "output": "monta\u00f1as"
+    },
+    {
+        "input": "peine",
+        "output": "peines"
+    },
+    {
+        "input": "monitor",
+        "output": "monitores"
+    },
+    {
+        "input": "isla",
+        "output": "islas"
+    },
+    {
+        "input": "rastrillo",
+        "output": "rastrillos"
+    },
+    {
+        "input": "aguja",
+        "output": "agujas"
+    },
+    {
+        "input": "m\u00e1s ligero",
+        "output": "encendedores"
+    },
+    {
+        "input": "zapatilla",
+        "output": "zapatillas"
+    },
+    {
+        "input": "chimenea",
+        "output": "chimeneas"
+    },
+    {
+        "input": "escalera",
+        "output": "escaleras"
+    },
+    {
+        "input": "chaqueta",
+        "output": "chaquetas"
+    },
+    {
+        "input": "helic\u00f3ptero",
+        "output": "helic\u00f3pteros"
+    },
+    {
+        "input": "pincel",
+        "output": "pinceles"
+    },
+    {
+        "input": "recogedor",
+        "output": "recogedores"
+    },
+    {
+        "input": "llave",
+        "output": "llaves"
+    },
+    {
+        "input": "tableta",
+        "output": "tabletas"
+    },
+    {
+        "input": "azada",
+        "output": "azadas"
+    },
+    {
+        "input": "empate",
+        "output": "lazos"
+    },
+    {
+        "input": "juguete",
+        "output": "juguetes"
+    },
+    {
+        "input": "vidrio",
+        "output": "gafas"
+    },
+    {
+        "input": "secador de pelo",
+        "output": "secadores de pelo"
+    },
+    {
+        "input": "hacha",
+        "output": "ejes"
+    },
+    {
+        "input": "vac\u00edo",
+        "output": "aspiradoras"
+    },
+    {
+        "input": "ruborizarse",
+        "output": "se sonroja"
+    },
+    {
+        "input": "estufa",
+        "output": "estufas"
+    },
+    {
+        "input": "cuchar\u00f3n",
+        "output": "cucharones"
+    },
+    {
+        "input": "cartel",
+        "output": "carteles"
+    },
+    {
+        "input": "sombrero",
+        "output": "sombreros"
+    },
+    {
+        "input": "lago",
+        "output": "lagos"
+    },
+    {
+        "input": "navaja",
+        "output": "navajas"
+    },
+    {
+        "input": "botella",
+        "output": "botellas"
+    },
+    {
+        "input": "guante",
+        "output": "guantes"
+    },
+    {
+        "input": "rallador",
+        "output": "ralladores"
+    },
+    {
+        "input": "lavavajillas",
+        "output": "lavavajillas"
+    },
+    {
+        "input": "sof\u00e1",
+        "output": "sof\u00e1s"
+    },
+    {
+        "input": "bolsa",
+        "output": "bolsos"
+    },
+    {
+        "input": "teclado",
+        "output": "teclados"
+    },
+    {
+        "input": "reloj",
+        "output": "relojes"
+    },
+    {
+        "input": "libro",
+        "output": "libros"
+    },
+    {
+        "input": "bufanda",
+        "output": "bufandas"
+    },
+    {
+        "input": "pantalones",
+        "output": "pantalones"
+    },
+    {
+        "input": "ventana",
+        "output": "ventanas"
+    },
+    {
+        "input": "casa",
+        "output": "casas"
+    },
+    {
+        "input": "congelador",
+        "output": "congeladores"
+    },
+    {
+        "input": "trapo",
+        "output": "trapos"
+    },
+    {
+        "input": "raqueta",
+        "output": "raquetas"
+    },
+    {
+        "input": "gel para el cabello",
+        "output": "geles para el cabello"
+    },
+    {
+        "input": "puerta",
+        "output": "puertas"
+    },
+    {
+        "input": "almohada",
+        "output": "almohadas"
+    },
+    {
+        "input": "regla",
+        "output": "gobernantes"
+    },
+    {
+        "input": "lavadora",
+        "output": "arandelas"
+    },
+    {
+        "input": "oc\u00e9ano",
+        "output": "oc\u00e9anos"
+    },
+    {
+        "input": "placa",
+        "output": "placas"
+    },
+    {
+        "input": "sombra de ojos",
+        "output": "sombras de ojos"
+    },
+    {
+        "input": "cremallera",
+        "output": "cremalleras"
+    },
+    {
+        "input": "radio",
+        "output": "radios"
+    },
+    {
+        "input": "flor",
+        "output": "flores"
+    },
+    {
+        "input": "ordenador port\u00e1til",
+        "output": "ordenadores port\u00e1tiles"
+    },
+    {
+        "input": "borrador",
+        "output": "borradores"
+    },
+    {
+        "input": "sacacorchos",
+        "output": "sacacorchos"
+    },
+    {
+        "input": "delineador de ojos",
+        "output": "delineadores de ojos"
+    },
+    {
+        "input": "escritorio",
+        "output": "escritorios"
+    },
+    {
+        "input": "cuchillo",
+        "output": "cuchillos"
+    },
+    {
+        "input": "casco",
+        "output": "cascos"
+    },
+    {
+        "input": "mezclador",
+        "output": "mezcladores"
+    },
+    {
+        "input": "microondas",
+        "output": "microondas"
+    },
+    {
+        "input": "bot\u00f3n",
+        "output": "botones"
+    },
+    {
+        "input": "tarro",
+        "output": "tarros"
+    },
+    {
+        "input": "sart\u00e9n",
+        "output": "sartenes"
+    },
+    {
+        "input": "clave",
+        "output": "llaves"
+    },
+    {
+        "input": "perfume",
+        "output": "perfumes"
+    },
+    {
+        "input": "cinta",
+        "output": "cintas"
+    },
+    {
+        "input": "zapatos",
+        "output": "zapatos"
+    },
+    {
+        "input": "camisa",
+        "output": "camisas"
+    },
+    {
+        "input": "vela",
+        "output": "velas"
+    },
+    {
+        "input": "exprimidor",
+        "output": "exprimidores"
+    },
+    {
+        "input": "pelador",
+        "output": "peladores"
+    },
+    {
+        "input": "espejo",
+        "output": "espejos"
+    },
+    {
+        "input": "m\u00e1scara",
+        "output": "m\u00e1scaras"
+    },
+    {
+        "input": "batir",
+        "output": "batidores"
+    },
+    {
+        "input": "pala",
+        "output": "palas"
+    },
+    {
+        "input": "marcador",
+        "output": "marcadores"
+    },
+    {
+        "input": "loci\u00f3n",
+        "output": "lociones"
+    },
+    {
+        "input": "partidos",
+        "output": "partidos"
+    },
+    {
+        "input": "luna",
+        "output": "lunas"
+    },
+    {
+        "input": "olla",
+        "output": "ollas"
+    },
+    {
+        "input": "fregona",
+        "output": "fregonas"
+    },
+    {
+        "input": "rociador",
+        "output": "rociadores"
+    },
+    {
+        "input": "puede",
+        "output": "latas"
+    },
+    {
+        "input": "cuaderno",
+        "output": "cuadernos"
+    },
+    {
+        "input": "avi\u00f3n",
+        "output": "aviones"
+    },
+    {
+        "input": "pinzas",
+        "output": "pinzas"
+    },
+    {
+        "input": "tel\u00e9fono",
+        "output": "tel\u00e9fonos"
+    },
+    {
+        "input": "pintar",
+        "output": "pinturas"
+    },
+    {
+        "input": "acondicionador",
+        "output": "acondicionadores"
+    },
+    {
+        "input": "bolso",
+        "output": "bolsos"
+    },
+    {
+        "input": "escoba",
+        "output": "escobros"
+    },
+    {
+        "input": "alfombra",
+        "output": "alfombras"
+    },
+    {
+        "input": "tostadora",
+        "output": "tostadoras"
+    },
+    {
+        "input": "hervidor",
+        "output": "hervidores"
+    },
+    {
+        "input": "licuadora",
+        "output": "licuadoras"
+    },
+    {
+        "input": "colador",
+        "output": "coladores"
+    },
+    {
+        "input": "pasta de dientes",
+        "output": "pastas dent\u00edfricas"
+    },
+    {
+        "input": "cama",
+        "output": "camas"
+    },
+    {
+        "input": "frigor\u00edfico",
+        "output": "refrigeradores"
+    },
+    {
+        "input": "grapadora",
+        "output": "grapadoras"
+    },
+    {
+        "input": "mochila",
+        "output": "mochilas"
+    },
+    {
+        "input": "tejido",
+        "output": "tejidos"
+    },
+    {
+        "input": "nuez",
+        "output": "frutos secos"
+    },
+    {
+        "input": "bol",
+        "output": "cuencos"
+    },
+    {
+        "input": "tornillo",
+        "output": "tornillos"
+    },
+    {
+        "input": "palillos",
+        "output": "palillos"
+    },
+    {
+        "input": "ordenador",
+        "output": "ordenadores"
+    },
+    {
+        "input": "valle",
+        "output": "valles"
+    },
+    {
+        "input": "linterna",
+        "output": "linternas"
+    },
+    {
+        "input": "bota",
+        "output": "botas"
+    },
+    {
+        "input": "cubo",
+        "output": "cubos"
+    },
+    {
+        "input": "sandalia",
+        "output": "sandalias"
+    },
+    {
+        "input": "cerrar con llave",
+        "output": "cerraduras"
+    },
+    {
+        "input": "taladro",
+        "output": "taladros"
+    },
+    {
+        "input": "cepillo de dientes",
+        "output": "cepillos de dientes"
+    },
+    {
+        "input": "l\u00e1mpara",
+        "output": "l\u00e1mparas"
+    },
+    {
+        "input": "estrella",
+        "output": "estrellas"
+    },
+    {
+        "input": "pa\u00f1uelo",
+        "output": "pa\u00f1uelos"
+    },
+    {
+        "input": "est\u00e9reo",
+        "output": "estereos"
+    },
+    {
+        "input": "tetera",
+        "output": "tetera"
+    },
+    {
+        "input": "hilo",
+        "output": "hilos"
+    },
+    {
+        "input": "cortac\u00e9sped",
+        "output": "cortac\u00e9spedes"
+    },
+    {
+        "input": "taza",
+        "output": "tazas"
+    },
+    {
+        "input": "juego",
+        "output": "juegos"
+    },
+    {
+        "input": "zapato",
+        "output": "zapatos"
+    },
+    {
+        "input": "colch\u00f3n",
+        "output": "colchones"
+    },
+    {
+        "input": "gafas de sol",
+        "output": "gafas de sol"
+    },
+    {
+        "input": "r\u00edo",
+        "output": "r\u00edos"
+    },
+    {
+        "input": "playa",
+        "output": "playas"
+    },
+    {
+        "input": "esponja",
+        "output": "esponjas"
+    },
+    {
+        "input": "manta",
+        "output": "mantas"
+    },
+    {
+        "input": "auriculares",
+        "output": "auriculares"
+    },
+    {
+        "input": "rat\u00f3n",
+        "output": "ratones"
+    },
+    {
+        "input": "pluma",
+        "output": "bol\u00edgrafos"
+    },
+    {
+        "input": "\u00e1rbol",
+        "output": "\u00e1rboles"
+    },
+    {
+        "input": "coche",
+        "output": "coches"
+    },
+    {
+        "input": "cintur\u00f3n",
+        "output": "cinturones"
+    },
+    {
+        "input": "cielo",
+        "output": "cielos"
+    },
+    {
+        "input": "calcetines",
+        "output": "calcetines"
+    },
+    {
+        "input": "malet\u00edn",
+        "output": "maletines"
+    },
+    {
+        "input": "l\u00e1piz de cera",
+        "output": "l\u00e1pices de colores"
+    },
+    {
+        "input": "tornillo",
+        "output": "tornillos"
+    },
+    {
+        "input": "bicicleta",
+        "output": "bicicletas"
+    },
+    {
+        "input": "parrilla",
+        "output": "parrillas"
+    },
+    {
+        "input": "sol",
+        "output": "soles"
+    },
+    {
+        "input": "cafetera",
+        "output": "cafeteras"
+    },
+    {
+        "input": "bosque",
+        "output": "bosques"
+    },
+    {
+        "input": "esp\u00e1tula",
+        "output": "esp\u00e1tulas"
+    },
+    {
+        "input": "cepillo",
+        "output": "cepillos"
+    },
+    {
+        "input": "copa",
+        "output": "tazas"
+    },
+    {
+        "input": "imagen",
+        "output": "im\u00e1genes"
+    },
+    {
+        "input": "joyer\u00eda",
+        "output": "joyas"
+    },
+    {
+        "input": "champ\u00fa",
+        "output": "champ\u00fas"
+    },
+    {
+        "input": "altavoz",
+        "output": "altavoces"
+    },
+    {
+        "input": "barco",
+        "output": "barcos"
+    },
+    {
+        "input": "autob\u00fas",
+        "output": "autobuses"
+    },
+    {
+        "input": "calcet\u00edn",
+        "output": "calcetines"
+    },
+    {
+        "input": "tenazas",
+        "output": "tenazas"
+    },
+    {
+        "input": "maleta",
+        "output": "maletas"
+    },
+    {
+        "input": "vi",
+        "output": "sierras"
+    },
+    {
+        "input": "horquilla",
+        "output": "tenedores"
+    },
+    {
+        "input": "calendario",
+        "output": "calendarios"
+    },
+    {
+        "input": "paraguas",
+        "output": "paraguas"
+    },
+    {
+        "input": "impresora",
+        "output": "impresoras"
+    },
+    {
+        "input": "manguera",
+        "output": "mangueras"
+    },
+    {
+        "input": "papel",
+        "output": "documentos"
+    },
+    {
+        "input": "televisi\u00f3n",
+        "output": "televisores"
+    },
+    {
+        "input": "peri\u00f3dico",
+        "output": "peri\u00f3dicos"
+    },
+    {
+        "input": "martillo",
+        "output": "martillos"
+    },
+    {
+        "input": "silla",
+        "output": "sillas"
+    },
+    {
+        "input": "bola",
+        "output": "bolas"
+    },
+    {
+        "input": "reloj",
+        "output": "relojes"
+    },
+    {
+        "input": "destornillador",
+        "output": "destornilladores"
+    },
+    {
+        "input": "nube",
+        "output": "nubes"
+    },
+    {
+        "input": "secadora",
+        "output": "secadoras"
+    },
+    {
+        "input": "entrenar",
+        "output": "trenes"
+    },
+    {
+        "input": "pintalabios",
+        "output": "barras de labios"
+    },
+    {
+        "input": "cepillo para el cabello",
+        "output": "cepillos para el cabello"
+    },
+    {
+        "input": "pegamento",
+        "output": "adhesivos"
+    },
+    {
+        "input": "murci\u00e9lago",
+        "output": "murci\u00e9lagos"
+    },
+    {
+        "input": "rodillo",
+        "output": "rodillos"
+    },
+    {
+        "input": "barco",
+        "output": "buques"
+    },
+    {
+        "input": "cuchara",
+        "output": "cucharas"
+    },
+    {
+        "input": "motocicleta",
+        "output": "motocicletas"
+    },
+    {
+        "input": "horno",
+        "output": "hornos"
+    },
+    {
+        "input": "jab\u00f3n",
+        "output": "jabones"
+    },
+    {
+        "input": "mesa",
+        "output": "tablas"
+    },
+    {
+        "input": "mu\u00f1eca",
+        "output": "mu\u00f1ecas"
+    },
+    {
+        "input": "linterna",
+        "output": "linternas"
+    },
+    {
+        "input": "tijeras",
+        "output": "tijeras"
+    },
+    {
+        "input": "l\u00e1piz",
+        "output": "l\u00e1pices"
+    },
+    {
+        "input": "revista",
+        "output": "revistas"
+    },
+    {
+        "input": "hierro",
+        "output": "hierros"
+    },
+    {
+        "input": "c\u00e1mara",
+        "output": "c\u00e1maras"
+    },
+    {
+        "input": "papelera",
+        "output": "contenedores de basura"
+    },
+    {
+        "input": "clavo",
+        "output": "u\u00f1as"
+    },
+    {
+        "input": "caja",
+        "output": "cajas"
+    }
+]

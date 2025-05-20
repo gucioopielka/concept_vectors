@@ -48,12 +48,18 @@ class ICLMultipleChoice:
     def __init__(
         self, 
         word_pairs: List[List[str]], 
-        all_word_pairs: List[List[str]],        
-        seed: int
+        all_word_pairs: List[List[str]],
+        seed: int,
+        format_prompt: str = 'letter',
+        padded_space: bool = True
     ):
+        assert format_prompt in ['letter', 'word'], "format_prompt must be either 'letter' or 'word'"
         self.word_pairs = word_pairs
         self.y_list = [pair[1] for pair in all_word_pairs]
         self.x, self.y = zip(*word_pairs)
+        self.format_prompt = format_prompt
+        self.format_prompt_func = eval(f"self.format_prompt_{format_prompt}")
+        self.padded_space = padded_space
 
         self.options = []
         self.correct = []
@@ -62,8 +68,10 @@ class ICLMultipleChoice:
             options = self.generate_unique_options(word)
             np.random.shuffle(options)
             self.options.append(options)
-            self.correct.append(options.index(word))
-
+            if self.format_prompt == 'letter':
+                self.correct.append(options.index(word))
+            elif self.format_prompt == 'word':
+                self.correct.append(word)
     def __len__(self):
         return len(self.word_pairs)
 
@@ -82,15 +90,18 @@ class ICLMultipleChoice:
         self.prompt = ''
         for idx in range(len(self.word_pairs)):
             if idx == len(self.word_pairs) - 1:
-                self.prompt += self.format_prompt(idx, correct=False)
+                self.prompt += self.format_prompt_func(idx, correct=False)
             else:
-                self.prompt += self.format_prompt(idx, correct=True)
+                self.prompt += self.format_prompt_func(idx, correct=True)
         return self.prompt
     
     def completion(self):
-        return ['a', 'b', 'c', 'd'][self.correct[-1]]
+        if self.format_prompt == 'letter':
+            return ['a', 'b', 'c', 'd'][self.correct[-1]]
+        elif self.format_prompt == 'word':
+            return ' ' + self.y[-1] if self.padded_space else self.y[-1]
     
-    def format_prompt(self, idx, correct=True):
+    def format_prompt_letter(self, idx, correct=True):
         prompt = f'''
         ### Instruction: Q: {self.x[idx]} A: ?
         (a) {self.options[idx][0]}
@@ -102,6 +113,21 @@ class ICLMultipleChoice:
             prompt += f'### Response: ({['a', 'b', 'c', 'd'][self.correct[idx]]})\n' 
         else:
             prompt += '### Response: ('
+
+        return dedent(prompt.lstrip('\n'))
+
+    def format_prompt_word(self, idx, correct=True):
+        prompt = f'''
+        ### Instruction: Q: {self.x[idx]} A: ?
+        {self.options[idx][0]}
+        {self.options[idx][1]}
+        {self.options[idx][2]}
+        {self.options[idx][3]}
+        '''
+        if correct:
+            prompt += f'### Response: {self.correct[idx]}\n'
+        else:
+            prompt += '### Response: ' if self.padded_space else '### Response:'
 
         return dedent(prompt.lstrip('\n'))
 
@@ -181,6 +207,7 @@ class ICLDataset:
         size: int,
         n_train: int,
         response_type: str = 'open_ended',
+        mc_format: str = 'letter',
         bidirectional: bool = False,
         seed: int = 0,
         seed_shuffle: int = 1,
@@ -191,6 +218,7 @@ class ICLDataset:
         tokenizer: Any = None,
         padded_space: bool = True,
         batch_size: int = None,
+        ambiguous_draws: List[int] = None,
         data_dir: str = DATASET_DIR,
     ):  
         self.dataset = dataset
@@ -207,6 +235,7 @@ class ICLDataset:
         self.seed = seed
         self.shuffle_prompts = shuffle_prompts
         self.seed_shuffle = seed_shuffle
+        self.mc_format = mc_format
 
         self.seqs = []
         self.prompts = []
@@ -233,45 +262,109 @@ class ICLDataset:
             self.create_seq_dataset()
             self.dataset_name = f"{self.dataset}_{symbols}"
         
-        elif isinstance(dataset, list):
-            seqs = []
-            for d in dataset:
-                icl_d = ICLDataset(
-                    d,
-                    size,
-                    n_train // len(dataset),
-                    response_type=response_type,
-                    bidirectional=bidirectional,
-                    seed=generate_seed(d, seed),
-                    corrupted=corrupted,
-                    shuffle_prompts=shuffle_prompts,
-                    symbols=symbols,
-                    seq_len=seq_len,
-                    tokenizer=tokenizer,
-                    padded_space=padded_space,
-                    batch_size=batch_size,
-                    data_dir=data_dir
-                )
-                seqs.append(icl_d.seqs)
+        # elif isinstance(dataset, list):
+        #     seqs = []
+        #     for d in dataset:
+        #         icl_d = ICLDataset(
+        #             d,
+        #             size,
+        #             n_train // len(dataset),
+        #             response_type=response_type,
+        #             bidirectional=bidirectional,
+        #             seed=generate_seed(d, seed),
+        #             corrupted=corrupted,
+        #             shuffle_prompts=shuffle_prompts,
+        #             symbols=symbols,
+        #             seq_len=seq_len,
+        #             tokenizer=tokenizer,
+        #             padded_space=padded_space,
+        #             batch_size=batch_size,
+        #             data_dir=data_dir
+        #         )
+        #         seqs.append(icl_d.seqs)
             
-            for seq1, seq2 in zip(*seqs):
-                # Concatenate the two arrays without the first element of the first sequence
-                combined = np.concatenate((seq1[1:], seq2), axis=0)
+        #     for seq1, seq2 in zip(*seqs):
+        #         # Concatenate the two arrays without the first element of the first sequence
+        #         combined = np.concatenate((seq1[1:], seq2), axis=0)
 
-                # Create a random permutation of indices for the combined array
-                permuted_indices = np.random.permutation(len(combined))
+        #         # Create a random permutation of indices for the combined array
+        #         permuted_indices = np.random.permutation(len(combined))
 
-                # Shuffle combined, and add the first element of the first sequence to the end
-                shuffled = combined[permuted_indices]
-                interleaved_array = np.concatenate((shuffled, seq1[:1]), axis=0)
+        #         # Shuffle combined, and add the first element of the first sequence to the end
+        #         shuffled = combined[permuted_indices]
+        #         interleaved_array = np.concatenate((shuffled, seq1[:1]), axis=0)
                                 
-                # Create the interleaved sequence
-                interleaved_seq = ICLSequence(interleaved_array.tolist(), padded_space=padded_space)
+        #         # Create the interleaved sequence
+        #         interleaved_seq = ICLSequence(interleaved_array.tolist(), padded_space=padded_space)
 
-                self.seqs.append(interleaved_seq)
-                self.prompts.append(interleaved_seq.prompt())
-                self.completions.append(interleaved_seq.completion())
+        #         self.seqs.append(interleaved_seq)
+        #         self.prompts.append(interleaved_seq.prompt())
+        #         self.completions.append(interleaved_seq.completion())
+        
+        elif isinstance(dataset, list):
+            xs = []
+            word_pairs = []
+            for d in dataset:
+                pairs = ICLDataset(d, size=1, n_train=0).word_pairs
+                if tokenizer: 
+                    pairs_to_keep = []
+                    for pair in pairs:
+                        if len(tokenizer.tokenize(pair[0])) == 1 and len(tokenizer.tokenize(pair[1])) == 1:
+                            pairs_to_keep.append(pair)
+                    pairs = pairs_to_keep
+                word_pairs.append(pairs)
+                xs.append([pair[0] for pair in pairs])
 
+            x_interesection = sorted(set(xs[0]).intersection(set(xs[1])))
+            print(f'Number of pairs: {len(x_interesection)}')
+
+            dataset_1_dict = {i[0]: i[1] for i in word_pairs[0]}
+            dataset_2_dict = {i[0]: i[1] for i in word_pairs[1]}
+
+            self.completions_1 = []
+            self.completions_2 = []
+            for i in range(size):
+                x = np.random.choice(x_interesection, n_train+1)
+                y_1 = np.array([dataset_1_dict[i] for i in x])
+                y_2 = np.array([dataset_2_dict[i] for i in x])
+
+                ys = np.stack([y_1, y_2]).transpose((1,0))
+                if ambiguous_draws:
+                    ys_chosen = np.array([y[draw] for y, draw in zip(ys, ambiguous_draws)])
+                else:
+                    ys_chosen = np.array([np.random.choice(i) for i in ys])
+
+                icl_seq = np.stack([x, ys_chosen]).transpose((1,0))
+
+                if response_type == 'multiple_choice':
+                    prompt = ''
+                    for i in range(n_train + 1):
+                        options = np.random.permutation(2)
+
+                        prompt += f"Q: {x[i]} A: ?\n"
+                        prompt += f"a {ys[i, options[0]]}\n"
+                        prompt += f"b {ys[i, options[1]]}\n"
+
+                        # Find correct option
+                        if ys_chosen[i] == ys[i, options[0]]:
+                            correct_option = 'a'
+                        elif ys_chosen[i] == ys[i, options[1]]:
+                            correct_option = 'b'
+                        if i == n_train:
+                            prompt += "Response: ("
+                        else:
+                            prompt += f"Response: ({correct_option})\n\n"
+                        
+                    self.prompts.append(prompt)
+                    self.completions_1.append(correct_option)
+                    self.completions_2.append('a' if correct_option == 'b' else 'b')
+                                            
+                else:
+                    interleaved_seq = ICLSequence(icl_seq, padded_space=padded_space)
+                    self.seqs.append(interleaved_seq)
+                    self.prompts.append(interleaved_seq.prompt())
+                    self.completions_1.append(' ' + y_1[-1] if padded_space else y_1[-1])
+                    self.completions_2.append(' ' + y_2[-1] if padded_space else y_2[-1])   
         else:
             # Load the data
             d_path = os.path.join(data_dir, f'{dataset}.json')
@@ -329,7 +422,7 @@ class ICLDataset:
             if self.response_type == 'open_ended':
                 seq = ICLSequence(word_pairs, padded_space=self.padded_space)
             elif self.response_type == 'multiple_choice':
-                seq = ICLMultipleChoice(word_pairs, self.word_pairs, seed=self.seed+n)
+                seq = ICLMultipleChoice(word_pairs, self.word_pairs, seed=self.seed+n, format_prompt=self.mc_format, padded_space=self.padded_space)
 
             self.seqs.append(seq)
             self.prompts.append(seq.prompt())
@@ -426,13 +519,14 @@ class DatasetConstructor:
                     'seq_len': seq_len,
                     'tokenizer': tokenizer,
                 }
-            elif dataset_id.split('-')[-1] == 'mc':
+            elif dataset_id.split('-')[-1].startswith('mc'):
                 # It's a multiple choice dataset
                 dataset_cfg = {
                     'size': dataset_size,
                     'n_train': n_train,
                     'dataset': dataset_id.split('-')[0],
-                    'response_type': 'multiple_choice'
+                    'response_type': 'multiple_choice',
+                    'mc_format': 'word' if dataset_id.split('.')[-1] == 'word' else 'letter'
                 }
             elif dataset_id in [f.split('.')[0] for f in os.listdir(data_dir)]:
                 # It's a JSON dataset
