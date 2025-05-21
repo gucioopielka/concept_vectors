@@ -16,3 +16,6 @@ test.py
 
 # Virtual environment
 .venv
+
+# LUMI
+lumi/
