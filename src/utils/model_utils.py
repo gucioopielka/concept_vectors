@@ -16,8 +16,8 @@ class ExtendedLanguageModel:
         remote: bool = False
     ):
         self.remote = remote
-        self.name = model_name.lower()
-        self.nickname = model_name.split('/')[1]
+        self.name = model_name#.lower()
+        self.nickname = model_name.lower().split('/')[1]
         self.lm = self.load_model()
         self.fv_heads_n = fv_heads_n
         self.rsa_heads_n = rsa_heads_n
@@ -61,7 +61,7 @@ class ExtendedLanguageModel:
         if self.remote:
             return LanguageModel(self.name)
         else:
-            from transformers import AutoTokenizer, AutoModelForCausalLM
+            from transformers import AutoTokenizer, AutoModelForCausalLM, AutoConfig
 
             tokenizer = AutoTokenizer.from_pretrained(self.name)
             if getattr(tokenizer, "pad_token", None) is None:
@@ -70,10 +70,12 @@ class ExtendedLanguageModel:
 
             model = AutoModelForCausalLM.from_pretrained(self.name, device_map='auto', torch_dtype='auto')
             model.eval()
-            return LanguageModel(model, tokenizer)
+
+            config = AutoConfig.from_pretrained(self.name)
+            return LanguageModel(model, tokenizer=tokenizer, config=config)
             
     def set_model_config(self):
-        if 'llama-3.1' in self.name:
+        if 'llama-3.1' in self.nickname:
             self.config = {
                 "n_heads": self.lm.config.num_attention_heads,
                 "n_layers": self.lm.config.num_hidden_layers,

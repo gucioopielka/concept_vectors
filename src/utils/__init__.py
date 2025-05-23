@@ -16,8 +16,5 @@ if any(env in os.environ for env in ['SLURM_JOB_ID', 'SLURM_CLUSTER_NAME']):
     _handlers.RotatingFileHandler = _NoOpHandler
 
 import nnsight
-if not nnsight.CONFIG.API.APIKEY:
-    if os.environ.get("NNSIGHT_API_KEY"):
-        nnsight.CONFIG.set_default_api_key(os.environ.get("NNSIGHT_API_KEY"))
-    else:
-        raise ValueError("NNSIGHT_API_KEY is not set. Please set it in your environment variables.")
+if not nnsight.CONFIG.API.APIKEY and os.environ.get("NNSIGHT_API_KEY"):
+    nnsight.CONFIG.set_default_api_key(os.environ.get("NNSIGHT_API_KEY"))

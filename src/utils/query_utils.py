@@ -1,5 +1,6 @@
 from collections import defaultdict
 from typing import *
+import functools
 
 import numpy as np
 import einops
@@ -10,6 +11,14 @@ import nnsight
 from .model_utils import ExtendedLanguageModel
 from .eval_utils import spearman_rho_torch, batch_process_layers
 from .ICL_utils import ICLDataset, DatasetConstructor
+
+def no_grad(func):
+    """Decorator to run a function with torch.no_grad() context."""
+    @functools.wraps(func)
+    def wrapper(*args, **kwargs):
+        with torch.no_grad():
+            return func(*args, **kwargs)
+    return wrapper
 
 def generate_completions(
     model: ExtendedLanguageModel,
@@ -330,12 +339,13 @@ def get_rsa(
     
     return torch.tensor(rsa_vals)
 
+@no_grad
 def calculate_CIE(
     model: ExtendedLanguageModel,
     dataset: ICLDataset,
     layers: Optional[List[int]] = None,
     remote: bool = True
-) -> np.ndarray:
+) -> torch.Tensor:
     '''
     Returns a tensor of shape (layers, heads), containing the CIE for each head.
 
@@ -359,6 +369,8 @@ def calculate_CIE(
     with model.lm.session(remote=remote) as sess:
         z_dict = {(layer, head): [] for layer in layers for head in heads}
         correct_logprobs_corrupted = []
+        
+        sess.log("Original prompts ...") 
         for (prompts, completions), (prompts_corrupted, _) in zip(dataset, corrupted_dataset):
             correct_completion_ids = model.config['get_first_token_ids'](completions)
             # Run a forward pass on corrupted prompts, where we don't intervene or store activations (just so we can
@@ -393,7 +405,7 @@ def calculate_CIE(
             for layer in layers:
                 sess.log(f"Dataset: {dataset.dataset} | Layer: {layer}")
                 for head in heads:
-                    with model.lm.trace(prompts_corrupted, scan=False) as t:
+                    with model.lm.trace(prompts_corrupted) as t:
                         # Get hidden states, reshape to get head dimension, then set it to the a-vector
                         out_proj = model.config['out_proj'](layer)
                         z = out_proj.inputs[0][0][:, T]

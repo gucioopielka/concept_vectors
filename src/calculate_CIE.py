@@ -140,13 +140,14 @@ if __name__ == "__main__":
 
         # Compute CIE for each batch of layers
         for layers in batch_process_layers(n_layers, batch_size=layer_batch_size, start=start):
+            print("Processing layers: ", layers)
             try:
                 batch_cie = calculate_CIE(model=model, dataset=dataset.datasets[0], layers=layers, remote=args.remote_run)
                 results.append(batch_cie)
-                pickle.dump(results, open(intermediate_results_dataset_path, 'wb')) # Save intermediate results
+                torch.save(results, intermediate_results_dataset_path) # Save intermediate results
             except TimeoutError:
                 print(f"\nTimeout occurred while processing layers {layers}. Saving intermediate results and exiting...")
-                pickle.dump(results, open(intermediate_results_dataset_path, 'wb'))
+                torch.save(results, intermediate_results_dataset_path)
                 exit(1)
         cie.append(torch.cat(results, dim=0))
 
