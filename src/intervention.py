@@ -6,11 +6,12 @@ from functools import wraps
 import numpy as np
 import sys
 import pandas as pd
+from itertools import batched
 
 from utils.query_utils import get_completions, get_avg_summed_vec, intervene_with_vec
 from utils.ICL_utils import ICLDataset, DatasetConstructor
 from utils.model_utils import ExtendedLanguageModel
-from utils.eval_utils import accuracy_completions, batch_process_layers
+from utils.eval_utils import accuracy_completions
 from utils.globals import RESULTS_DIR
 
 
@@ -114,7 +115,7 @@ if __name__ == "__main__":
     if not os.path.exists(int_layer_path):
         print('Finding the best layer to intervene with...')
         accs = []
-        for layers in batch_process_layers(n_layers, batch_size=args.layer_batch_size):
+        for layers in batched(range(n_layers), args.layer_batch_size):
             print(f"Processing layers: {', '.join(map(str, layers))} of {n_layers} ...")
             inter_cmpl = intervene_with_vec(model, dataset_intervene, rvs[args.extract_datasets[0]]*10, layers=layers, remote=args.remote_run)
             accs.extend([accuracy_completions(model, inter_cmpl[layer], dataset_intervene.completions) for layer in layers])

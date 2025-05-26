@@ -3,14 +3,13 @@ from typing import *
 import torch
 import os
 import pickle
-import time
 import signal
 import functools
+from itertools import batched
 
 from utils.query_utils import calculate_CIE as original_calculate_CIE
 from utils.ICL_utils import DatasetConstructor
 from utils.model_utils import ExtendedLanguageModel
-from utils.eval_utils import batch_process_layers
 from utils.globals import RESULTS_DIR
 
 def timeout(seconds: int = 4000) -> Callable:
@@ -139,7 +138,7 @@ if __name__ == "__main__":
             layer_batch_size = args.layer_batch_size
 
         # Compute CIE for each batch of layers
-        for layers in batch_process_layers(n_layers, batch_size=layer_batch_size, start=start):
+        for layers in batched(range(n_layers), layer_batch_size):
             print("Processing layers: ", layers)
             try:
                 batch_cie = calculate_CIE(model=model, dataset=dataset.datasets[0], layers=layers, remote=args.remote_run)

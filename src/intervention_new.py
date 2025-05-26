@@ -264,7 +264,7 @@ if __name__ == '__main__':
     n_heads = 5
     model_name = 'meta-llama/Meta-Llama-3.1-70B'
     low_level_cie_path = os.path.join(RESULTS_DIR, 'CIE_LowLevel', model_name.split('/')[-1] + '.csv')
-    model = ExtendedLanguageModel(model_name, rsa_heads_n=n_heads, fv_heads_n=n_heads, cie_path=low_level_cie_path)
+    model = ExtendedLanguageModel(model_name, rsa_heads_n=n_heads, fv_heads_n=n_heads, cie_path=low_level_cie_path, remote_run=True)
     cv_heads = model.get_rsa_heads(task_attribute='relation_verbal')
     fv_heads = model.get_fv_heads()
 
@@ -283,7 +283,7 @@ if __name__ == '__main__':
         )
     elif intervention_type == 'ambiguous':
         dataset_intervene = ICLDataset(
-            dataset=['antonym_eng', 'presentPast_eng'],
+            dataset=['antonym_eng', 'synonym_eng'],
             size=50, 
             n_train=5, 
             seed=42, 
@@ -414,7 +414,7 @@ if __name__ == '__main__':
 
 
     dataset_intervene_tokenized = ICLDataset(
-        dataset=['antonym_eng', 'presentPast_eng'],
+        dataset=['antonym_eng', 'synonym_eng'],
         size=50, 
         n_train=5, 
         seed=42, 
@@ -424,9 +424,9 @@ if __name__ == '__main__':
     )
     y_1 = dataset_intervene_tokenized.completions_1
     y_1_ids = model.config['get_first_token_ids'](y_1)
-    n_tokens = len(model.lm.tokenizer.tokenize(dataset_intervene_tokenized.prompts[0]))
-    cv_layer = 8
-    fv_layer = 18
+    n_tokens = len(model.lm.tokenizer.batch_encode_plus(dataset_intervene_tokenized.prompts)['input_ids'][0])
+    cv_layer = 31
+    fv_layer = 24
     with model.lm.session(remote=True) as sess:
         # Get the FVs and CVs
         sess.log('Getting FVs and CVs')

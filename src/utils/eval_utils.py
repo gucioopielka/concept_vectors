@@ -77,10 +77,6 @@ def rsa_torch(x, y):
     x_condensed = condense_matrix(x)
     y_condensed = condense_matrix(y)
     return spearman_rho_torch(x_condensed, y_condensed)
-    
-def batch_process_layers(n_layers, batch_size, start=0):
-    for i in range(start, n_layers, batch_size):
-        yield range(n_layers)[i : i + batch_size]
 
 def create_design_matrix(info_list: List[Any]):
     n_items = len(info_list)
@@ -89,7 +85,7 @@ def create_design_matrix(info_list: List[Any]):
         for j in range(i+1, n_items):
             m[i, j] = int(info_list[i] == info_list[j])
             m[j, i] = int(info_list[i] == info_list[j])
-    np.fill_diagonal(m, 1)  # Set diagonal to 1 
+    np.fill_diagonal(m, 1)
     return m
 
 def rsa(X: np.ndarray, Y: np.ndarray) -> float:

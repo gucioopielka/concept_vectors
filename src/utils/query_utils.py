@@ -9,7 +9,7 @@ import torch.nn.functional as F
 import nnsight
 
 from .model_utils import ExtendedLanguageModel
-from .eval_utils import spearman_rho_torch, batch_process_layers
+from .eval_utils import spearman_rho_torch
 from .ICL_utils import ICLDataset, DatasetConstructor
 
 def no_grad(func):
@@ -20,6 +20,7 @@ def no_grad(func):
             return func(*args, **kwargs)
     return wrapper
 
+@no_grad
 def generate_completions(
     model: ExtendedLanguageModel,
     dataset: List[str],
@@ -31,6 +32,7 @@ def generate_completions(
         out = model.lm.generator.output.save()
     return model.lm.tokenizer.batch_decode(out.cpu()[:, -max_new_tokens:])
     
+@no_grad
 def get_completions(
     model: ExtendedLanguageModel, 
     dataset: ICLDataset | DatasetConstructor,
@@ -44,6 +46,7 @@ def get_completions(
                 completion_ids.extend([logits.log_softmax(dim=-1).argmax(dim=-1).save()])
     return model.lm.tokenizer.batch_decode(torch.cat(completion_ids))
 
+@no_grad
 def get_completions_and_y_probs(
     model: ExtendedLanguageModel, 
     dataset: ICLDataset | DatasetConstructor,
@@ -63,6 +66,7 @@ def get_completions_and_y_probs(
     y_probs = torch.tensor(y_logits).exp()
     return completions, y_probs
 
+@no_grad
 def intervene_with_vec(
     model: ExtendedLanguageModel,
     dataset: ICLDataset | DatasetConstructor,
@@ -88,6 +92,7 @@ def intervene_with_vec(
     # Decode the completions
     return {layer: model.lm.tokenizer.batch_decode(torch.stack(ind).squeeze()) for layer, ind in intervention_top_ind.items()}
 
+@no_grad
 def intervene_and_get_probs(
     model: ExtendedLanguageModel,
     dataset: ICLDataset | DatasetConstructor,
@@ -115,32 +120,41 @@ def intervene_and_get_probs(
     y_probs = torch.tensor(y_logits).exp().tolist()
     return completions, y_probs
 
+def get_att_out_proj_input(
+    model: ExtendedLanguageModel,
+    layer: int,
+    token: int = -1,
+) -> torch.Tensor:
+    out_proj = model.config['out_proj'](layer).inputs[0][0][:, token]
+    return out_proj.view(out_proj.shape[0], model.config['n_heads'], model.config['d_head'])
+
 def get_avg_att_output(
     model: ExtendedLanguageModel,
-    out_proj: torch.nn.Linear,
+    layer: int,
     heads: List[int],
     token: int = -1,
 ) -> torch.Tensor:
     heads_to_ablate = list(set(range(model.config['n_heads'])) - set(heads))
-    z = out_proj.inputs[0][0][:, token]
-    z_ablated = z.view(z.shape[0], model.config['n_heads'], model.config['d_head']).mean(dim=0)
+    z = get_att_out_proj_input(model, layer, token)
+    z_ablated = z.mean(dim=0)
     z_ablated[heads_to_ablate, :] = 0.0
     z_ablated = z_ablated.view(-1)
-    return out_proj(z_ablated) # If multiple heads are in the list of heads to keep, the output will be the sum of those heads
+    return model.config['out_proj'](layer)(z_ablated) # If multiple heads are in the list of heads to keep, the output will be the sum of those heads
 
 def get_att_output_per_item(
     model: ExtendedLanguageModel,
-    out_proj: torch.nn.Linear,
+    layer: int,
     heads: List[int],
     token: int = -1,
 ) -> torch.Tensor:
     heads_to_ablate = list(set(range(model.config['n_heads'])) - set(heads))
-    z = out_proj.inputs[0][0][:, token]
-    z_ablated = z.view(z.shape[0], model.config['n_heads'], model.config['d_head']).clone()
+    z = get_att_out_proj_input(model, layer, token)
+    z_ablated = z.clone()
     z_ablated[:, heads_to_ablate, :] = 0.0
     z_ablated = z_ablated.view(z.shape[0], -1)
-    return out_proj(z_ablated) # If multiple heads are in the list of heads to keep, the output will be the sum of those heads
+    return model.config['out_proj'](layer)(z_ablated) # If multiple heads are in the list of heads to keep, the output will be the sum of those heads
 
+@no_grad
 def get_summed_vec_per_item(
     model: ExtendedLanguageModel,
     prompts: List[str],
@@ -156,6 +170,7 @@ def get_summed_vec_per_item(
 
     return torch.stack(head_outputs).sum(dim=0)
 
+@no_grad
 def get_avg_summed_vec(
     model: ExtendedLanguageModel, 
     dataset: ICLDataset | DatasetConstructor,
@@ -184,8 +199,7 @@ def get_avg_summed_vec(
     with model.lm.session(remote=remote) as sess:
         with model.lm.trace(dataset.prompts) as runner:
             for layer, head_list in head_dict.items():        
-                out_proj = model.config['out_proj'](layer)
-                out_proj_output = get_avg_att_output(model, out_proj, head_list, token=token)
+                out_proj_output = get_avg_att_output(model, layer, head_list, token=token)
                 relation_vec_list.append(out_proj_output.save())
 
     # Sum all the attention heads per item
@@ -254,43 +268,39 @@ def compute_similarity_matrix(vectors: torch.Tensor) -> torch.Tensor:
     norm_v = F.normalize(vectors, p=2, dim=1)
     return torch.matmul(norm_v, torch.transpose(norm_v, 0, 1))
 
-def get_simmats(
+@no_grad 
+def get_att_simmats(
     model: ExtendedLanguageModel,
     dataset: ICLDataset | DatasetConstructor,
     layers: List[int] = None,
     heads: List[List[int]] = None,
     token: int = -1,
-    remote: bool = True
-):
+) -> torch.Tensor:
     layers = range(model.config['n_layers']) if (layers is None) else layers
     heads = range(model.config['n_heads'])
-    N_HEADS = model.config['n_heads']
-    D_HEAD = model.config['resid_dim'] // N_HEADS
-    T = token
 
-    with model.lm.session(remote=remote) as sess:
+    with model.lm.session(remote=model.remote_run) as sess:
 
+        sess.log(f"Getting hidden states ...")
         simmat_dict = {(layer, head): [] for layer in layers for head in heads}
         for idx, (batched_prompts, _) in enumerate(dataset):
-            sess.log(f"Batch: {idx}")
+            sess.log(f"Batch: {idx} / {len(dataset)}")
             
             # Collect the hidden states for each head
             with model.lm.trace(batched_prompts) as t:
                 for layer in layers:
-                    # Get hidden states, reshape to get head dimension, store the mean tensor
-                    out_proj = model.config['out_proj'](layer)
-                    z = out_proj.inputs[0][0][:, T]
-                    z_reshaped = z.reshape(len(batched_prompts), N_HEADS, D_HEAD)
+                    att_out = get_att_out_proj_input(model, layer, token)
                     for head in heads:
-                        z_head = z_reshaped[:, head]
-                        simmat_dict[(layer, head)].extend([z_head])
+                        simmat_dict[(layer, head)].extend([att_out[:, head]])
 
         sess.log(f"Computing similarity matrices ...")
-        for k, v in simmat_dict.items():
-            simmat_dict[k] = compute_similarity_matrix(torch.concat(v)).save()
+        simmats = nnsight.list([[[] for _ in heads] for _ in layers]).save()
+        for (layer, head), v in simmat_dict.items():
+            simmats[layer][head] = compute_similarity_matrix(torch.concat(v))
     
-    return simmat_dict
+    return torch.stack([torch.stack(simmats[layer]) for layer in layers])
 
+@no_grad
 def get_rsa(
     model: ExtendedLanguageModel,
     dataset: ICLDataset | DatasetConstructor,

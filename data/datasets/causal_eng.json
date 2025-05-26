@@ -912,22 +912,6 @@
         "output": "crops"
     },
     {
-        "input": "argue",
-        "output": "disagreement"
-    },
-    {
-        "input": "care",
-        "output": "tenderness"
-    },
-    {
-        "input": "pray",
-        "output": "hope"
-    },
-    {
-        "input": "shower",
-        "output": "fresh"
-    },
-    {
         "input": "succeed",
         "output": "celebration"
     },
@@ -960,32 +944,12 @@
         "output": "relax"
     },
     {
-        "input": "dance",
-        "output": "rhythm"
-    },
-    {
         "input": "war",
         "output": "destruction"
     },
     {
-        "input": "marry",
-        "output": "spouse"
-    },
-    {
         "input": "poison",
-        "output": "sick"
-    },
-    {
-        "input": "invest",
-        "output": "profit"
-    },
-    {
-        "input": "steal",
-        "output": "theft"
-    },
-    {
-        "input": "celebrate",
-        "output": "happiness"
+        "output": "sickness"
     },
     {
         "input": "perfume",
@@ -1076,10 +1040,6 @@
         "output": "inundate"
     },
     {
-        "input": "vote",
-        "output": "democracy"
-    },
-    {
         "input": "influence",
         "output": "impact"
     },
@@ -1100,14 +1060,6 @@
         "output": "confidence"
     },
     {
-        "input": "question",
-        "output": "curiosity"
-    },
-    {
-        "input": "admire",
-        "output": "respect"
-    },
-    {
         "input": "organize",
         "output": "order"
     },
@@ -1116,24 +1068,12 @@
         "output": "redness"
     },
     {
-        "input": "instruct",
-        "output": "teach"
-    },
-    {
         "input": "pollinate",
         "output": "fruit"
     },
     {
-        "input": "brainstorm",
-        "output": "idea"
-    },
-    {
         "input": "ignite",
         "output": "fire"
-    },
-    {
-        "input": "recycle",
-        "output": "conserve"
     },
     {
         "input": "sadness",
@@ -1144,12 +1084,8 @@
         "output": "sneeze"
     },
     {
-        "input": "lack",
-        "output": "want"
-    },
-    {
         "input": "tickle",
-        "output": "laugh"
+        "output": "laughter"
     },
     {
         "input": "tease",
@@ -1198,14 +1134,6 @@
     {
         "input": "sneeze",
         "output": "expel"
-    },
-    {
-        "input": "blink",
-        "output": "close"
-    },
-    {
-        "input": "yawn",
-        "output": "tired"
     },
     {
         "input": "chew",

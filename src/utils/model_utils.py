@@ -13,9 +13,9 @@ class ExtendedLanguageModel:
         fv_heads_n: int = None,
         cie_path: str = None,
         rsa_path: str = None,
-        remote: bool = False
+        remote_run: bool = False
     ):
-        self.remote = remote
+        self.remote_run = remote_run
         self.name = model_name#.lower()
         self.nickname = model_name.lower().split('/')[1]
         self.lm = self.load_model()
@@ -58,7 +58,7 @@ class ExtendedLanguageModel:
         return self.name
     
     def load_model(self):
-        if self.remote:
+        if self.remote_run:
             return LanguageModel(self.name)
         else:
             from transformers import AutoTokenizer, AutoModelForCausalLM, AutoConfig
