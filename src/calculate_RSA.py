@@ -20,11 +20,12 @@ if __name__ == "__main__":
     parser.add_argument("--model", type=str, help="Name of the model to use.")
     parser.add_argument("--datasets", nargs="+", type=str, help="List of datasets to use.")
     parser.add_argument("--dataset_size", type=int, help="Size of the dataset to use.", default=20)
-    parser.add_argument("--layer_batch_size", type=int, help="Number of layers to process at once.", default=None)
+    parser.add_argument("--layer_batch_size", type=int, help="Number of layers to process at once.")
     parser.add_argument("--prompt_batch_size", type=int, help="Number of prompts to process at once.", default=20)
     parser.add_argument("--seq_len", type=int, help="Length of the sequence to use.", default=20)
     parser.add_argument('--n_train', type=int, help="Number of training examples to use.", default=5)
     parser.add_argument("--remote_run", type=bool, help="Whether to run the script on a remote server.", default=True, action=argparse.BooleanOptionalAction)
+    parser.add_argument("--save_simmats", type=bool, help="Whether to save the similarity matrices.", default=True, action=argparse.BooleanOptionalAction)
     parser.add_argument("--seed", type=int, help="Random seed to use.", default=42)
     parser.add_argument("--output_dir", type=str, help="Path to save the output files.", default=RESULTS_DIR + '/RSA')
 
@@ -34,6 +35,10 @@ if __name__ == "__main__":
     model = ExtendedLanguageModel(args.model, remote_run=args.remote_run)
     n_heads = model.config['n_heads']
     n_layers = model.config['n_layers']
+
+    # Output directory
+    output_dir = os.path.join(RESULTS_DIR, args.output_dir, model.nickname)
+    os.makedirs(output_dir, exist_ok=True)
     
     # Create the dataset
     dataset_constructor = DatasetConstructor(
@@ -46,13 +51,12 @@ if __name__ == "__main__":
     )
 
     # Load intermediate results if they exist
-    intermediate_results_path = os.path.join(args.output_dir, f'rsa_{model.nickname}_temp.pkl')
-    if os.path.exists(intermediate_results_path):
-        simmat_tensor = torch.load(intermediate_results_path)
+    simmats_file = os.path.join(output_dir, 'simmats.pkl')
+    if os.path.exists(simmats_file):
+        simmat_tensor = torch.load(simmats_file)
         start = (~torch.all(simmat_tensor == 0, dim=(1, 2, 3))).sum() # Calculate number of layers with nonzero values
         if start == n_layers:
             print(f"All layers have been processed.")
-            exit()
         else:
             print(f"Resuming from layer {start}...")
     else:
@@ -61,9 +65,9 @@ if __name__ == "__main__":
 
     # Compute similarity matrices for each layer and head
     for layer_batch in batched(range(start, n_layers), args.layer_batch_size):
-        print(f"Computing RSA for layers {layer_batch[0]} - {layer_batch[-1]} ...")
+        print(f"Computing RSA for layers {layer_batch[0]+1} - {layer_batch[-1]+1} ...")
         simmat_tensor[layer_batch[0]:layer_batch[-1]+1] = get_att_simmats(model, dataset_constructor, layers=layer_batch)
-        torch.save(simmat_tensor, intermediate_results_path)
+        torch.save(simmat_tensor, simmats_file)
 
     # Create design matrix
     concepts = [dataset.split('_')[0] for dataset in args.datasets]
@@ -76,8 +80,9 @@ if __name__ == "__main__":
                           for layer in tqdm(range(n_layers), desc='Computing RSA')
                           for head in range(n_heads)],
                          columns=['layer', 'head', 'rsa'])
-    rsa_path = os.path.join(args.output_dir, f'rsa_{model.nickname}.csv')
     
     # Save results and remove intermediate results
-    rsa_df.to_csv(rsa_path, index=False)
-    os.remove(intermediate_results_path)
+    rsa_file = os.path.join(output_dir, 'rsa.csv')
+    rsa_df.to_csv(rsa_file, index=False)
+    if not args.save_simmats:
+        os.remove(simmats_file)

@@ -284,7 +284,7 @@ def get_att_simmats(
         sess.log(f"Getting hidden states ...")
         simmat_dict = {(layer, head): [] for layer in layers for head in heads}
         for idx, (batched_prompts, _) in enumerate(dataset):
-            sess.log(f"Batch: {idx} / {len(dataset)}")
+            sess.log(f"Batch: {idx+1} / {len(dataset)}")
             
             # Collect the hidden states for each head
             with model.lm.trace(batched_prompts) as t:
