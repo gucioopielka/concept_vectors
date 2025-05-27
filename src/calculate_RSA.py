@@ -66,7 +66,7 @@ if __name__ == "__main__":
     # Compute similarity matrices for each layer and head
     for layer_batch in batched(range(start, n_layers), args.layer_batch_size):
         print(f"Computing RSA for layers {layer_batch[0]+1} - {layer_batch[-1]+1} ...")
-        simmat_tensor[layer_batch[0]:layer_batch[-1]+1] = get_att_simmats(model, dataset_constructor, layers=layer_batch)
+        simmat_tensor[layer_batch[0]:layer_batch[-1]+1] = get_att_simmats(model, dataset_constructor, layers=list(layer_batch))
         torch.save(simmat_tensor, simmats_file)
 
     # Create design matrix

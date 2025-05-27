@@ -276,29 +276,29 @@ def get_att_simmats(
     heads: List[List[int]] = None,
     token: int = -1,
 ) -> torch.Tensor:
-    layers = range(model.config['n_layers']) if (layers is None) else layers
-    heads = range(model.config['n_heads'])
+    layers = list(range(model.config['n_layers'])) if (layers is None) else layers
+    heads = list(range(model.config['n_heads']))
 
     with model.lm.session(remote=model.remote_run) as sess:
 
         sess.log(f"Getting hidden states ...")
-        simmat_dict = {(layer, head): [] for layer in layers for head in heads}
+        simmat_dict = {(layer, head): [] for layer in range(len(layers)) for head in range(len(heads))}
         for idx, (batched_prompts, _) in enumerate(dataset):
             sess.log(f"Batch: {idx+1} / {len(dataset)}")
             
             # Collect the hidden states for each head
             with model.lm.trace(batched_prompts) as t:
-                for layer in layers:
+                for layer_idx, layer in enumerate(layers):
                     att_out = get_att_out_proj_input(model, layer, token)
-                    for head in heads:
-                        simmat_dict[(layer, head)].extend([att_out[:, head]])
+                    for head_idx, head in enumerate(heads):
+                        simmat_dict[(layer_idx, head_idx)].extend([att_out[:, head]])
 
         sess.log(f"Computing similarity matrices ...")
-        simmats = nnsight.list([[[] for _ in heads] for _ in layers]).save()
+        simmats = nnsight.list([[[] for _ in range(len(heads))] for _ in range(len(layers))]).save()
         for (layer, head), v in simmat_dict.items():
             simmats[layer][head] = compute_similarity_matrix(torch.concat(v))
     
-    return torch.stack([torch.stack(simmats[layer]) for layer in layers])
+    return torch.stack([torch.stack(simmats[layer]) for layer in range(len(layers))])
 
 @no_grad
 def get_rsa(
