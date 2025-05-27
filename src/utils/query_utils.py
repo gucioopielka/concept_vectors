@@ -20,6 +20,16 @@ def no_grad(func):
             return func(*args, **kwargs)
     return wrapper
 
+def flush_torch_ram(func):
+    """Decorator to flush torch RAM after function execution."""
+    @functools.wraps(func)
+    def wrapper(*args, **kwargs):
+        result = func(*args, **kwargs)
+        if torch.cuda.is_available():
+            torch.cuda.empty_cache()
+        return result
+    return wrapper
+
 @no_grad
 def generate_completions(
     model: ExtendedLanguageModel,
@@ -264,10 +274,12 @@ def get_avg_summed_vec(
 
 #     return torch.stack(relation_vecs).float() # (B, D_MODEL)
 
+#@flush_torch_ram
 def compute_similarity_matrix(vectors: torch.Tensor) -> torch.Tensor:
     norm_v = F.normalize(vectors, p=2, dim=1)
     return torch.matmul(norm_v, torch.transpose(norm_v, 0, 1))
 
+@flush_torch_ram
 @no_grad 
 def get_att_simmats(
     model: ExtendedLanguageModel,
@@ -291,7 +303,9 @@ def get_att_simmats(
                 for layer_idx, layer in enumerate(layers):
                     att_out = get_att_out_proj_input(model, layer, token)
                     for head_idx, head in enumerate(heads):
-                        simmat_dict[(layer_idx, head_idx)].extend([att_out[:, head]])
+                        act = att_out[:, head]
+                        act = act if model.remote_run else act.cpu()
+                        simmat_dict[(layer_idx, head_idx)].append(act)
 
         sess.log(f"Computing similarity matrices ...")
         simmats = nnsight.list([[[] for _ in range(len(heads))] for _ in range(len(layers))]).save()
