@@ -1,0 +1,734 @@
+[
+    {
+        "input": "tropezar",
+        "output": "caer"
+    },
+    {
+        "input": "tormenta",
+        "output": "inundaci\u00f3n"
+    },
+    {
+        "input": "medicaci\u00f3n",
+        "output": "cura"
+    },
+    {
+        "input": "calor",
+        "output": "fuego"
+    },
+    {
+        "input": "luz solar",
+        "output": "crecimiento"
+    },
+    {
+        "input": "virus",
+        "output": "enfermedad"
+    },
+    {
+        "input": "fuego",
+        "output": "ceniza"
+    },
+    {
+        "input": "nieve",
+        "output": "avalancha"
+    },
+    {
+        "input": "hambre",
+        "output": "debilidad"
+    },
+    {
+        "input": "fr\u00edo",
+        "output": "temblando"
+    },
+    {
+        "input": "lesi\u00f3n",
+        "output": "dolor"
+    },
+    {
+        "input": "risa",
+        "output": "alegr\u00eda"
+    },
+    {
+        "input": "m\u00fasica",
+        "output": "relajaci\u00f3n"
+    },
+    {
+        "input": "ruido",
+        "output": "distracci\u00f3n"
+    },
+    {
+        "input": "estudio",
+        "output": "conocimiento"
+    },
+    {
+        "input": "viento",
+        "output": "erosi\u00f3n"
+    },
+    {
+        "input": "terremoto",
+        "output": "da\u00f1o"
+    },
+    {
+        "input": "agua",
+        "output": "hidrataci\u00f3n"
+    },
+    {
+        "input": "dormir",
+        "output": "descansar"
+    },
+    {
+        "input": "comer en exceso",
+        "output": "obesidad"
+    },
+    {
+        "input": "ejercicio",
+        "output": "fuerza"
+    },
+    {
+        "input": "contaminaci\u00f3n",
+        "output": "smog"
+    },
+    {
+        "input": "pobreza",
+        "output": "hambre"
+    },
+    {
+        "input": "guerra",
+        "output": "destrucci\u00f3n"
+    },
+    {
+        "input": "sequ\u00eda",
+        "output": "hambruna"
+    },
+    {
+        "input": "inundaci\u00f3n",
+        "output": "destrucci\u00f3n"
+    },
+    {
+        "input": "fracaso",
+        "output": "frustraci\u00f3n"
+    },
+    {
+        "input": "atardecer",
+        "output": "oscuridad"
+    },
+    {
+        "input": "hervir",
+        "output": "vapor"
+    },
+    {
+        "input": "tinte",
+        "output": "color"
+    },
+    {
+        "input": "congelar",
+        "output": "hielo"
+    },
+    {
+        "input": "inanici\u00f3n",
+        "output": "muerte"
+    },
+    {
+        "input": "regalo",
+        "output": "gratitud"
+    },
+    {
+        "input": "golpear",
+        "output": "sonido"
+    },
+    {
+        "input": "caer",
+        "output": "salpicadura"
+    },
+    {
+        "input": "derrame",
+        "output": "mancha"
+    },
+    {
+        "input": "amor",
+        "output": "felicidad"
+    },
+    {
+        "input": "cr\u00edtica",
+        "output": "mejora"
+    },
+    {
+        "input": "pr\u00e1ctica",
+        "output": "habilidad"
+    },
+    {
+        "input": "correr",
+        "output": "fatiga"
+    },
+    {
+        "input": "traici\u00f3n",
+        "output": "ira"
+    },
+    {
+        "input": "victoria",
+        "output": "orgullo"
+    },
+    {
+        "input": "broma",
+        "output": "risa"
+    },
+    {
+        "input": "lucha",
+        "output": "herida"
+    },
+    {
+        "input": "planta",
+        "output": "cosecha"
+    },
+    {
+        "input": "escribir",
+        "output": "publicaci\u00f3n"
+    },
+    {
+        "input": "pez",
+        "output": "atrapar"
+    },
+    {
+        "input": "trampa",
+        "output": "castigo"
+    },
+    {
+        "input": "pista",
+        "output": "comprensi\u00f3n"
+    },
+    {
+        "input": "demanda",
+        "output": "suministro"
+    },
+    {
+        "input": "cantar",
+        "output": "canci\u00f3n"
+    },
+    {
+        "input": "pintar",
+        "output": "arte"
+    },
+    {
+        "input": "sol",
+        "output": "luz"
+    },
+    {
+        "input": "cortar",
+        "output": "sangrar"
+    },
+    {
+        "input": "ense\u00f1ar",
+        "output": "aprender"
+    },
+    {
+        "input": "empujar",
+        "output": "mover"
+    },
+    {
+        "input": "quemar",
+        "output": "cicatriz"
+    },
+    {
+        "input": "construir",
+        "output": "estructura"
+    },
+    {
+        "input": "derretir",
+        "output": "l\u00edquido"
+    },
+    {
+        "input": "girar",
+        "output": "mareado"
+    },
+    {
+        "input": "precipitaci\u00f3n",
+        "output": "crecimiento"
+    },
+    {
+        "input": "polen",
+        "output": "estornudo"
+    },
+    {
+        "input": "ira",
+        "output": "argumento"
+    },
+    {
+        "input": "herida",
+        "output": "cicatriz"
+    },
+    {
+        "input": "bondad",
+        "output": "amistad"
+    },
+    {
+        "input": "descuido",
+        "output": "decadencia"
+    },
+    {
+        "input": "curiosidad",
+        "output": "descubrimiento"
+    },
+    {
+        "input": "gravedad",
+        "output": "descenso"
+    },
+    {
+        "input": "miedo",
+        "output": "vacilaci\u00f3n"
+    },
+    {
+        "input": "estr\u00e9s",
+        "output": "fatiga"
+    },
+    {
+        "input": "peligro",
+        "output": "precauci\u00f3n"
+    },
+    {
+        "input": "confianza",
+        "output": "lealtad"
+    },
+    {
+        "input": "ambici\u00f3n",
+        "output": "\u00e9xito"
+    },
+    {
+        "input": "riego",
+        "output": "florecer"
+    },
+    {
+        "input": "fricci\u00f3n",
+        "output": "calor"
+    },
+    {
+        "input": "enfermedad",
+        "output": "enfermedad"
+    },
+    {
+        "input": "lluvia",
+        "output": "arco\u00edris"
+    },
+    {
+        "input": "inversi\u00f3n",
+        "output": "beneficio"
+    },
+    {
+        "input": "p\u00e1nico",
+        "output": "confusi\u00f3n"
+    },
+    {
+        "input": "tensi\u00f3n",
+        "output": "conflicto"
+    },
+    {
+        "input": "desbordamiento",
+        "output": "derrame"
+    },
+    {
+        "input": "impulso",
+        "output": "decisi\u00f3n"
+    },
+    {
+        "input": "valent\u00eda",
+        "output": "admiraci\u00f3n"
+    },
+    {
+        "input": "error",
+        "output": "correcci\u00f3n"
+    },
+    {
+        "input": "oscuridad",
+        "output": "miedo"
+    },
+    {
+        "input": "invenci\u00f3n",
+        "output": "innovaci\u00f3n"
+    },
+    {
+        "input": "celos",
+        "output": "rivalidad"
+    },
+    {
+        "input": "nevasada",
+        "output": "congelaci\u00f3n"
+    },
+    {
+        "input": "rumor",
+        "output": "desconfianza"
+    },
+    {
+        "input": "tecnolog\u00eda",
+        "output": "eficiencia"
+    },
+    {
+        "input": "deforestaci\u00f3n",
+        "output": "erosi\u00f3n"
+    },
+    {
+        "input": "est\u00edmulo",
+        "output": "confianza"
+    },
+    {
+        "input": "relajaci\u00f3n",
+        "output": "paz"
+    },
+    {
+        "input": "meditaci\u00f3n",
+        "output": "tranquilidad"
+    },
+    {
+        "input": "cooperaci\u00f3n",
+        "output": "trabajo en equipo"
+    },
+    {
+        "input": "generosidad",
+        "output": "gratitud"
+    },
+    {
+        "input": "falta de comunicaci\u00f3n",
+        "output": "malentendido"
+    },
+    {
+        "input": "disculpa",
+        "output": "perd\u00f3n"
+    },
+    {
+        "input": "honestidad",
+        "output": "integridad"
+    },
+    {
+        "input": "explosi\u00f3n",
+        "output": "escombros"
+    },
+    {
+        "input": "fitness",
+        "output": "salud"
+    },
+    {
+        "input": "intimidaci\u00f3n",
+        "output": "miedo"
+    },
+    {
+        "input": "aislamiento",
+        "output": "soledad"
+    },
+    {
+        "input": "temperatura",
+        "output": "clima"
+    },
+    {
+        "input": "votos",
+        "output": "elecci\u00f3n"
+    },
+    {
+        "input": "conocimiento",
+        "output": "sabidur\u00eda"
+    },
+    {
+        "input": "creatividad",
+        "output": "ideas"
+    },
+    {
+        "input": "se\u00f1al",
+        "output": "transmisi\u00f3n"
+    },
+    {
+        "input": "erupci\u00f3n",
+        "output": "lava"
+    },
+    {
+        "input": "lealtad",
+        "output": "confianza"
+    },
+    {
+        "input": "preparaci\u00f3n",
+        "output": "preparaci\u00f3n"
+    },
+    {
+        "input": "estrategia",
+        "output": "victoria"
+    },
+    {
+        "input": "desacuerdo",
+        "output": "debate"
+    },
+    {
+        "input": "calor",
+        "output": "comodidad"
+    },
+    {
+        "input": "silencio",
+        "output": "paz"
+    },
+    {
+        "input": "tejido",
+        "output": "textura"
+    },
+    {
+        "input": "necesidad",
+        "output": "demanda"
+    },
+    {
+        "input": "luz",
+        "output": "visi\u00f3n"
+    },
+    {
+        "input": "poblaci\u00f3n",
+        "output": "densidad"
+    },
+    {
+        "input": "exploraci\u00f3n",
+        "output": "descubrimiento"
+    },
+    {
+        "input": "competencia",
+        "output": "desaf\u00edo"
+    },
+    {
+        "input": "conmoci\u00f3n",
+        "output": "miedo"
+    },
+    {
+        "input": "caer",
+        "output": "lesi\u00f3n"
+    },
+    {
+        "input": "error",
+        "output": "error"
+    },
+    {
+        "input": "sonrisa",
+        "output": "felicidad"
+    },
+    {
+        "input": "dieta",
+        "output": "salud"
+    },
+    {
+        "input": "humo",
+        "output": "fuego"
+    },
+    {
+        "input": "re\u00edr",
+        "output": "alegr\u00eda"
+    },
+    {
+        "input": "procrastinaci\u00f3n",
+        "output": "retraso"
+    },
+    {
+        "input": "semilla",
+        "output": "planta"
+    },
+    {
+        "input": "tiempo",
+        "output": "crecimiento"
+    },
+    {
+        "input": "velocidad",
+        "output": "accidente"
+    },
+    {
+        "input": "fatiga",
+        "output": "agotamiento"
+    },
+    {
+        "input": "cocinar",
+        "output": "comida"
+    },
+    {
+        "input": "robo",
+        "output": "p\u00e9rdida"
+    },
+    {
+        "input": "argumento",
+        "output": "conflicto"
+    },
+    {
+        "input": "descansar",
+        "output": "recuperaci\u00f3n"
+    },
+    {
+        "input": "planificaci\u00f3n",
+        "output": "organizaci\u00f3n"
+    },
+    {
+        "input": "romper",
+        "output": "reparaci\u00f3n"
+    },
+    {
+        "input": "sue\u00f1o",
+        "output": "inspiraci\u00f3n"
+    },
+    {
+        "input": "insomnio",
+        "output": "fatiga"
+    },
+    {
+        "input": "ense\u00f1anza",
+        "output": "aprendizaje"
+    },
+    {
+        "input": "ahorro",
+        "output": "riqueza"
+    },
+    {
+        "input": "liderazgo",
+        "output": "influir"
+    },
+    {
+        "input": "paz",
+        "output": "armon\u00eda"
+    },
+    {
+        "input": "lectura",
+        "output": "imaginaci\u00f3n"
+    },
+    {
+        "input": "escritura",
+        "output": "expresi\u00f3n"
+    },
+    {
+        "input": "memoria",
+        "output": "recordar"
+    },
+    {
+        "input": "pintura",
+        "output": "arte"
+    },
+    {
+        "input": "infecci\u00f3n",
+        "output": "enfermedad"
+    },
+    {
+        "input": "vacunaci\u00f3n",
+        "output": "inmunidad"
+    },
+    {
+        "input": "conversaci\u00f3n",
+        "output": "comprensi\u00f3n"
+    },
+    {
+        "input": "experimento",
+        "output": "resultado"
+    },
+    {
+        "input": "promesa",
+        "output": "confianza"
+    },
+    {
+        "input": "viajar",
+        "output": "aventura"
+    },
+    {
+        "input": "compromiso",
+        "output": "acuerdo"
+    },
+    {
+        "input": "escasez",
+        "output": "valor"
+    },
+    {
+        "input": "sorpresa",
+        "output": "conmoci\u00f3n"
+    },
+    {
+        "input": "valor",
+        "output": "valent\u00eda"
+    },
+    {
+        "input": "pregunta",
+        "output": "respuesta"
+    },
+    {
+        "input": "esfuerzo",
+        "output": "logro"
+    },
+    {
+        "input": "apetito",
+        "output": "satisfacci\u00f3n"
+    },
+    {
+        "input": "celebraci\u00f3n",
+        "output": "alegr\u00eda"
+    },
+    {
+        "input": "c\u00e1lculo",
+        "output": "soluci\u00f3n"
+    },
+    {
+        "input": "pron\u00f3stico",
+        "output": "predicci\u00f3n"
+    },
+    {
+        "input": "debate",
+        "output": "conclusi\u00f3n"
+    },
+    {
+        "input": "colaboraci\u00f3n",
+        "output": "\u00e9xito"
+    },
+    {
+        "input": "negaci\u00f3n",
+        "output": "rechazo"
+    },
+    {
+        "input": "ignorancia",
+        "output": "malentendido"
+    },
+    {
+        "input": "evoluci\u00f3n",
+        "output": "adaptaci\u00f3n"
+    },
+    {
+        "input": "revoluci\u00f3n",
+        "output": "cambio"
+    },
+    {
+        "input": "desaf\u00edo",
+        "output": "progreso"
+    },
+    {
+        "input": "riesgo",
+        "output": "recompensa"
+    },
+    {
+        "input": "ganga",
+        "output": "descuento"
+    },
+    {
+        "input": "claridad",
+        "output": "enfocar"
+    },
+    {
+        "input": "so\u00f1ar despierto",
+        "output": "creatividad"
+    },
+    {
+        "input": "h\u00e1bito",
+        "output": "rutina"
+    },
+    {
+        "input": "insulto",
+        "output": "ofensa"
+    },
+    {
+        "input": "escapar",
+        "output": "libertad"
+    },
+    {
+        "input": "simpat\u00eda",
+        "output": "apoyo"
+    },
+    {
+        "input": "experiencia",
+        "output": "sabidur\u00eda"
+    },
+    {
+        "input": "esperanza",
+        "output": "optimismo"
+    },
+    {
+        "input": "gratitud",
+        "output": "satisfacci\u00f3n"
+    }
+]

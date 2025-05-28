@@ -1,0 +1,734 @@
+[
+    {
+        "input": "tr\u00e9bucher",
+        "output": "tomber"
+    },
+    {
+        "input": "temp\u00eate",
+        "output": "inondation"
+    },
+    {
+        "input": "m\u00e9dicament",
+        "output": "gu\u00e9rir"
+    },
+    {
+        "input": "chaleur",
+        "output": "feu"
+    },
+    {
+        "input": "lumi\u00e8re du soleil",
+        "output": "croissance"
+    },
+    {
+        "input": "virus",
+        "output": "maladie"
+    },
+    {
+        "input": "feu",
+        "output": "cendre"
+    },
+    {
+        "input": "neige",
+        "output": "avalanche"
+    },
+    {
+        "input": "faim",
+        "output": "faiblesse"
+    },
+    {
+        "input": "froid",
+        "output": "frissonnant"
+    },
+    {
+        "input": "blessure",
+        "output": "douleur"
+    },
+    {
+        "input": "rire",
+        "output": "joie"
+    },
+    {
+        "input": "musique",
+        "output": "relaxation"
+    },
+    {
+        "input": "bruit",
+        "output": "distraction"
+    },
+    {
+        "input": "\u00e9tude",
+        "output": "connaissance"
+    },
+    {
+        "input": "vent",
+        "output": "\u00e9rosion"
+    },
+    {
+        "input": "s\u00e9isme",
+        "output": "dommage"
+    },
+    {
+        "input": "eau",
+        "output": "hydratation"
+    },
+    {
+        "input": "sommeil",
+        "output": "repos"
+    },
+    {
+        "input": "manger trop",
+        "output": "ob\u00e9sit\u00e9"
+    },
+    {
+        "input": "exercice",
+        "output": "force"
+    },
+    {
+        "input": "pollution",
+        "output": "smog"
+    },
+    {
+        "input": "pauvret\u00e9",
+        "output": "faim"
+    },
+    {
+        "input": "guerre",
+        "output": "destruction"
+    },
+    {
+        "input": "s\u00e9cheresse",
+        "output": "famine"
+    },
+    {
+        "input": "inondation",
+        "output": "destruction"
+    },
+    {
+        "input": "\u00e9chec",
+        "output": "frustration"
+    },
+    {
+        "input": "coucher de soleil",
+        "output": "obscurit\u00e9"
+    },
+    {
+        "input": "bouillir",
+        "output": "vapeur"
+    },
+    {
+        "input": "teinture",
+        "output": "couleur"
+    },
+    {
+        "input": "geler",
+        "output": "glace"
+    },
+    {
+        "input": "famine",
+        "output": "mort"
+    },
+    {
+        "input": "cadeau",
+        "output": "reconnaissance"
+    },
+    {
+        "input": "frapper",
+        "output": "son"
+    },
+    {
+        "input": "chute",
+        "output": "\u00e9claboussure"
+    },
+    {
+        "input": "d\u00e9versement",
+        "output": "tache"
+    },
+    {
+        "input": "amour",
+        "output": "bonheur"
+    },
+    {
+        "input": "critique",
+        "output": "am\u00e9lioration"
+    },
+    {
+        "input": "pratique",
+        "output": "comp\u00e9tence"
+    },
+    {
+        "input": "courir",
+        "output": "fatigue"
+    },
+    {
+        "input": "trahison",
+        "output": "col\u00e8re"
+    },
+    {
+        "input": "victoire",
+        "output": "fiert\u00e9"
+    },
+    {
+        "input": "blague",
+        "output": "rire"
+    },
+    {
+        "input": "combat",
+        "output": "blessure"
+    },
+    {
+        "input": "plante",
+        "output": "r\u00e9colte"
+    },
+    {
+        "input": "\u00e9crire",
+        "output": "publication"
+    },
+    {
+        "input": "poisson",
+        "output": "attraper"
+    },
+    {
+        "input": "tricot",
+        "output": "punition"
+    },
+    {
+        "input": "indice",
+        "output": "compr\u00e9hension"
+    },
+    {
+        "input": "demande",
+        "output": "approvisionnement"
+    },
+    {
+        "input": "chanter",
+        "output": "chanson"
+    },
+    {
+        "input": "peindre",
+        "output": "art"
+    },
+    {
+        "input": "soleil",
+        "output": "lumi\u00e8re"
+    },
+    {
+        "input": "couper",
+        "output": "saigner"
+    },
+    {
+        "input": "enseigner",
+        "output": "apprendre"
+    },
+    {
+        "input": "pousser",
+        "output": "d\u00e9placer"
+    },
+    {
+        "input": "br\u00fbler",
+        "output": "cicatrice"
+    },
+    {
+        "input": "construire",
+        "output": "structure"
+    },
+    {
+        "input": "fondre",
+        "output": "liquide"
+    },
+    {
+        "input": "tourner",
+        "output": "\u00e9tourdi"
+    },
+    {
+        "input": "pr\u00e9cipitations",
+        "output": "croissance"
+    },
+    {
+        "input": "pollen",
+        "output": "\u00e9ternuer"
+    },
+    {
+        "input": "col\u00e8re",
+        "output": "argument"
+    },
+    {
+        "input": "blessure",
+        "output": "cicatrice"
+    },
+    {
+        "input": "bont\u00e9",
+        "output": "amiti\u00e9"
+    },
+    {
+        "input": "n\u00e9gliger",
+        "output": "d\u00e9composition"
+    },
+    {
+        "input": "curiosit\u00e9",
+        "output": "d\u00e9couverte"
+    },
+    {
+        "input": "gravit\u00e9",
+        "output": "descente"
+    },
+    {
+        "input": "peur",
+        "output": "h\u00e9sitation"
+    },
+    {
+        "input": "stress",
+        "output": "fatigue"
+    },
+    {
+        "input": "danger",
+        "output": "attention"
+    },
+    {
+        "input": "confiance",
+        "output": "fid\u00e9lit\u00e9"
+    },
+    {
+        "input": "ambition",
+        "output": "succ\u00e8s"
+    },
+    {
+        "input": "arrosage",
+        "output": "\u00e9closion"
+    },
+    {
+        "input": "friction",
+        "output": "chaleur"
+    },
+    {
+        "input": "maladie",
+        "output": "maladie"
+    },
+    {
+        "input": "pluie",
+        "output": "arc-en-ciel"
+    },
+    {
+        "input": "investissement",
+        "output": "profit"
+    },
+    {
+        "input": "panique",
+        "output": "confusion"
+    },
+    {
+        "input": "tension",
+        "output": "conflit"
+    },
+    {
+        "input": "d\u00e9bordement",
+        "output": "d\u00e9versement"
+    },
+    {
+        "input": "impulsion",
+        "output": "d\u00e9cision"
+    },
+    {
+        "input": "courage",
+        "output": "admiration"
+    },
+    {
+        "input": "erreur",
+        "output": "correction"
+    },
+    {
+        "input": "obscurit\u00e9",
+        "output": "peur"
+    },
+    {
+        "input": "invention",
+        "output": "innovation"
+    },
+    {
+        "input": "jalousie",
+        "output": "rivalit\u00e9"
+    },
+    {
+        "input": "chute de neige",
+        "output": "cong\u00e9lation"
+    },
+    {
+        "input": "rumeur",
+        "output": "m\u00e9fiance"
+    },
+    {
+        "input": "technologie",
+        "output": "efficacit\u00e9"
+    },
+    {
+        "input": "d\u00e9forestation",
+        "output": "\u00e9rosion"
+    },
+    {
+        "input": "encouragement",
+        "output": "confiance"
+    },
+    {
+        "input": "relaxation",
+        "output": "paix"
+    },
+    {
+        "input": "m\u00e9ditation",
+        "output": "tranquillit\u00e9"
+    },
+    {
+        "input": "coop\u00e9ration",
+        "output": "travail en \u00e9quipe"
+    },
+    {
+        "input": "g\u00e9n\u00e9rosit\u00e9",
+        "output": "reconnaissance"
+    },
+    {
+        "input": "malentendu",
+        "output": "malentendu"
+    },
+    {
+        "input": "excuses",
+        "output": "pardon"
+    },
+    {
+        "input": "honn\u00eatet\u00e9",
+        "output": "int\u00e9grit\u00e9"
+    },
+    {
+        "input": "explosion",
+        "output": "d\u00e9bris"
+    },
+    {
+        "input": "condition physique",
+        "output": "sant\u00e9"
+    },
+    {
+        "input": "intimidation",
+        "output": "peur"
+    },
+    {
+        "input": "isolement",
+        "output": "solitude"
+    },
+    {
+        "input": "temp\u00e9rature",
+        "output": "climat"
+    },
+    {
+        "input": "votes",
+        "output": "\u00e9lection"
+    },
+    {
+        "input": "connaissance",
+        "output": "sagesse"
+    },
+    {
+        "input": "cr\u00e9ativit\u00e9",
+        "output": "id\u00e9es"
+    },
+    {
+        "input": "signal",
+        "output": "transmission"
+    },
+    {
+        "input": "\u00e9ruption",
+        "output": "lave"
+    },
+    {
+        "input": "fid\u00e9lit\u00e9",
+        "output": "confiance"
+    },
+    {
+        "input": "pr\u00e9paration",
+        "output": "\u00e9tat de pr\u00e9paration"
+    },
+    {
+        "input": "strat\u00e9gie",
+        "output": "victoire"
+    },
+    {
+        "input": "d\u00e9saccord",
+        "output": "d\u00e9bat"
+    },
+    {
+        "input": "chaleur",
+        "output": "confort"
+    },
+    {
+        "input": "silence",
+        "output": "paix"
+    },
+    {
+        "input": "tissu",
+        "output": "texture"
+    },
+    {
+        "input": "besoin",
+        "output": "demande"
+    },
+    {
+        "input": "lumi\u00e8re",
+        "output": "vision"
+    },
+    {
+        "input": "population",
+        "output": "densit\u00e9"
+    },
+    {
+        "input": "exploration",
+        "output": "d\u00e9couverte"
+    },
+    {
+        "input": "concurrence",
+        "output": "d\u00e9fi"
+    },
+    {
+        "input": "choc",
+        "output": "peur"
+    },
+    {
+        "input": "tomber",
+        "output": "blessure"
+    },
+    {
+        "input": "erreur",
+        "output": "erreur"
+    },
+    {
+        "input": "sourire",
+        "output": "bonheur"
+    },
+    {
+        "input": "r\u00e9gime alimentaire",
+        "output": "sant\u00e9"
+    },
+    {
+        "input": "fum\u00e9e",
+        "output": "feu"
+    },
+    {
+        "input": "rire",
+        "output": "joie"
+    },
+    {
+        "input": "procrastination",
+        "output": "retard"
+    },
+    {
+        "input": "graine",
+        "output": "plante"
+    },
+    {
+        "input": "temps",
+        "output": "croissance"
+    },
+    {
+        "input": "vitesse",
+        "output": "accident"
+    },
+    {
+        "input": "fatigue",
+        "output": "\u00e9puisement"
+    },
+    {
+        "input": "cuisson",
+        "output": "repas"
+    },
+    {
+        "input": "vol",
+        "output": "perte"
+    },
+    {
+        "input": "argument",
+        "output": "conflit"
+    },
+    {
+        "input": "repos",
+        "output": "r\u00e9cup\u00e9ration"
+    },
+    {
+        "input": "planification",
+        "output": "organisation"
+    },
+    {
+        "input": "pause",
+        "output": "r\u00e9paration"
+    },
+    {
+        "input": "r\u00eave",
+        "output": "inspiration"
+    },
+    {
+        "input": "insomnie",
+        "output": "fatigue"
+    },
+    {
+        "input": "enseignement",
+        "output": "apprentissage"
+    },
+    {
+        "input": "\u00e9conomiser",
+        "output": "richesse"
+    },
+    {
+        "input": "leadership",
+        "output": "influence"
+    },
+    {
+        "input": "paix",
+        "output": "harmonie"
+    },
+    {
+        "input": "lecture",
+        "output": "imagination"
+    },
+    {
+        "input": "\u00e9criture",
+        "output": "expression"
+    },
+    {
+        "input": "m\u00e9moire",
+        "output": "rappel"
+    },
+    {
+        "input": "peinture",
+        "output": "art"
+    },
+    {
+        "input": "infection",
+        "output": "maladie"
+    },
+    {
+        "input": "vaccination",
+        "output": "immunit\u00e9"
+    },
+    {
+        "input": "conversation",
+        "output": "compr\u00e9hension"
+    },
+    {
+        "input": "exp\u00e9rience",
+        "output": "r\u00e9sultat"
+    },
+    {
+        "input": "promesse",
+        "output": "confiance"
+    },
+    {
+        "input": "voyager",
+        "output": "aventure"
+    },
+    {
+        "input": "compromis",
+        "output": "accord"
+    },
+    {
+        "input": "raret\u00e9",
+        "output": "valeur"
+    },
+    {
+        "input": "surprise",
+        "output": "choc"
+    },
+    {
+        "input": "courage",
+        "output": "courage"
+    },
+    {
+        "input": "question",
+        "output": "r\u00e9ponse"
+    },
+    {
+        "input": "effort",
+        "output": "r\u00e9alisation"
+    },
+    {
+        "input": "app\u00e9tit",
+        "output": "satisfaction"
+    },
+    {
+        "input": "c\u00e9l\u00e9bration",
+        "output": "joie"
+    },
+    {
+        "input": "calcul",
+        "output": "solution"
+    },
+    {
+        "input": "pr\u00e9vision",
+        "output": "pr\u00e9diction"
+    },
+    {
+        "input": "d\u00e9bat",
+        "output": "conclusion"
+    },
+    {
+        "input": "collaboration",
+        "output": "succ\u00e8s"
+    },
+    {
+        "input": "d\u00e9ni",
+        "output": "rejet"
+    },
+    {
+        "input": "ignorance",
+        "output": "malentendu"
+    },
+    {
+        "input": "\u00e9volution",
+        "output": "adaptation"
+    },
+    {
+        "input": "r\u00e9volution",
+        "output": "changer"
+    },
+    {
+        "input": "d\u00e9fi",
+        "output": "progr\u00e8s"
+    },
+    {
+        "input": "risque",
+        "output": "r\u00e9compense"
+    },
+    {
+        "input": "bonne affaire",
+        "output": "r\u00e9duction"
+    },
+    {
+        "input": "clart\u00e9",
+        "output": "se concentrer"
+    },
+    {
+        "input": "r\u00eaverie",
+        "output": "cr\u00e9ativit\u00e9"
+    },
+    {
+        "input": "habitude",
+        "output": "routine"
+    },
+    {
+        "input": "insulte",
+        "output": "infraction"
+    },
+    {
+        "input": "\u00e9chapper",
+        "output": "libert\u00e9"
+    },
+    {
+        "input": "sympathie",
+        "output": "soutien"
+    },
+    {
+        "input": "exp\u00e9rience",
+        "output": "sagesse"
+    },
+    {
+        "input": "espoir",
+        "output": "optimisme"
+    },
+    {
+        "input": "reconnaissance",
+        "output": "contentement"
+    }
+]
