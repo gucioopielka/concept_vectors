@@ -7,7 +7,7 @@ from utils.globals import DATASET_DIR
 
 translator = deepl.Translator(os.environ.get('DEEPL_API_KEY'))
 target_langs = ['FR', 'ES']
-tasks_to_translate = ['antonym_eng', 'categorical_eng', 'present_past_eng', 'singular_plural_eng', 'synonym_eng']
+tasks_to_translate = ['causal_eng']
 
 for target_lang in target_langs:
     for task in tasks_to_translate:

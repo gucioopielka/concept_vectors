@@ -15,7 +15,7 @@ text = {
         'pairs_text': 'exemplar:category pairs'
     },
     'causal': {
-        'example': "\n1. stumble: fall\n2. break: crack\n3. wash: clean\n4. cook: food\n5. ",
+        'example': "\n1. stumble: fall\n2. storm: flood\n3. medication: cure\n4. heat: fire\n5. ",
         'pairs_text': 'cause:effect pairs'
     }
 }
@@ -48,7 +48,7 @@ def generate_category_dataset(N: int, example: str, pairs_text: str):
     t0 = time.time()
 
     response = client.chat.completions.create(
-        model="gpt-4",
+        model="gpt-4o",
         messages=[
             {"role": "system", "content": "You are a helpful assistant."},
             {"role": "user", "content": f"Give me {N} one word {pairs_text}."},
@@ -73,9 +73,16 @@ def generate_category_dataset(N: int, example: str, pairs_text: str):
 
 TOTAL_N = 1000
 GENERATE_N = 100
-N_RETRIES = 5
+N_RETRIES = 1
 print(f"Generating {TOTAL_N} {concept} examples...")
-pairs = []
+
+file_path = os.path.join(DATASET_DIR, f'{concept}_eng.json')
+if os.path.exists(file_path):
+    pairs = json.load(open(file_path))
+    print(f"Loaded {len(pairs)} {concept} examples from {file_path}")
+else:
+    pairs = []
+
 while True:
     generated_pairs = generate_category_dataset(GENERATE_N, text[concept]['example'], text[concept]['pairs_text'])
 
@@ -96,4 +103,4 @@ while True:
     print(f"Retrying... {N_RETRIES} retries left.")
 
 # Save the dataset
-json.dump(pairs, open(os.path.join(DATASET_DIR, f'{concept}_eng.json'), 'w'), indent=4)
+json.dump(pairs, open(file_path, 'w'), indent=4)
