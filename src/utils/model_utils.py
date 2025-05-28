@@ -1,5 +1,6 @@
 import os
 import json
+import torch
 import pandas as pd
 from collections import defaultdict
 from nnsight import LanguageModel
@@ -21,6 +22,7 @@ class ExtendedLanguageModel:
         self.lm = self.load_model()
         self.fv_heads_n = fv_heads_n
         self.rsa_heads_n = rsa_heads_n
+        self.device = 'cuda' if torch.cuda.is_available() else 'cpu'
 
         # Set model configuration based on the model type
         self.set_model_config()
@@ -143,6 +145,34 @@ class ExtendedLanguageModel:
         # Turn head_list into a dict of {layer: heads we need in this layer}
         head_dict = defaultdict(set)
         for layer, head in rsa_heads[:n]:
+            head_dict[layer].add(head)
+        head_dict = dict(head_dict)
+
+        return head_dict
+
+    def get_heads(self, df: pd.DataFrame, n: int = None, quantile: float = None):
+        '''
+        Get the heads from a CSV file.
+        Args:
+            df (pd.DataFrame): The DataFrame to get the heads from.
+            The first column should be the layer, the second column should be the head, and the third column should be the value.
+            n (int): The number of heads to get.
+            quantile (float): The quantile to use to get the heads.
+        Returns:
+            dict: A dictionary of {layer: heads}
+        '''
+        df = df.rename(columns={df.columns[0]: 'layer', df.columns[1]: 'head', df.columns[2]: 'value'})
+
+        if quantile is not None and n is None:
+            n = (df['value'] > df['value'].quantile(quantile)).sum()
+            print(f'Using {n} heads')
+        
+        if n is not None:
+            df = df.sort_values(by='value', ascending=False)
+            df = df.head(n)
+
+        head_dict = defaultdict(set)
+        for layer, head in zip(df['layer'], df['head']):
             head_dict[layer].add(head)
         head_dict = dict(head_dict)
 

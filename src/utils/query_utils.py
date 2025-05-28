@@ -167,18 +167,28 @@ def get_att_output_per_item(
 @no_grad
 def get_summed_vec_per_item(
     model: ExtendedLanguageModel,
-    prompts: List[str],
+    dataset: ICLDataset | DatasetConstructor,
     heads: Dict[int, List[int]],
     token: int = -1,
 ) -> torch.Tensor:
-    with model.lm.trace(prompts) as t:
-        head_outputs = []
-        for layer, head_list in heads.items():
-            out_proj = model.config['out_proj'](layer)
-            out_proj_output = get_att_output_per_item(model, out_proj, head_list, token=token)
-            head_outputs.append(out_proj_output)
+    with model.lm.session(remote=model.remote_run) as sess:
+        all_head_outputs = nnsight.list().save()
+        
+        for idx, (batched_prompts, _) in enumerate(dataset):
+            sess.log(f"Batch: {idx+1} / {len(dataset)}")
+            
+            with model.lm.trace(batched_prompts) as t:
+                batch_head_outputs = []
+                for layer, head_list in heads.items():
+                    out_proj_output = get_att_output_per_item(model, layer, head_list, token=token)
+                    batch_head_outputs.append(out_proj_output)
+                
+                # Stack and sum for this batch
+                batch_summed = torch.stack(batch_head_outputs).sum(dim=0)
+                batch_summed = batch_summed if model.remote_run else batch_summed.cpu()
+                all_head_outputs.append(batch_summed)
 
-    return torch.stack(head_outputs).sum(dim=0)
+    return torch.cat(all_head_outputs, dim=0).to(model.device)
 
 @no_grad
 def get_avg_summed_vec(
@@ -274,7 +284,7 @@ def get_avg_summed_vec(
 
 #     return torch.stack(relation_vecs).float() # (B, D_MODEL)
 
-#@flush_torch_ram
+@flush_torch_ram
 def compute_similarity_matrix(vectors: torch.Tensor) -> torch.Tensor:
     norm_v = F.normalize(vectors, p=2, dim=1)
     return torch.matmul(norm_v, torch.transpose(norm_v, 0, 1))
@@ -310,7 +320,8 @@ def get_att_simmats(
         sess.log(f"Computing similarity matrices ...")
         simmats = nnsight.list([[[] for _ in range(len(heads))] for _ in range(len(layers))]).save()
         for (layer, head), v in simmat_dict.items():
-            simmats[layer][head] = compute_similarity_matrix(torch.concat(v))
+            v = torch.concat(v).to(model.device)
+            simmats[layer][head] = compute_similarity_matrix(v).cpu()
     
     return torch.stack([torch.stack(simmats[layer]) for layer in range(len(layers))])
 

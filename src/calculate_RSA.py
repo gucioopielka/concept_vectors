@@ -8,10 +8,10 @@ import numpy as np
 import torch
 from tqdm import tqdm
 
-from utils.query_utils import get_att_simmats
+from utils.query_utils import get_att_simmats, get_summed_vec_per_item, compute_similarity_matrix
 from utils.ICL_utils import DatasetConstructor
 from utils.model_utils import ExtendedLanguageModel
-from utils.eval_utils import rsa, create_design_matrix
+from utils.eval_utils import rsa, create_design_matrix, SimilarityMatrix
 from utils.globals import RESULTS_DIR
 
 
@@ -27,6 +27,7 @@ if __name__ == "__main__":
     parser.add_argument("--remote_run", type=bool, help="Whether to run the script on a remote server.", default=True, action=argparse.BooleanOptionalAction)
     parser.add_argument("--save_simmats", type=bool, help="Whether to save the similarity matrices.", default=True, action=argparse.BooleanOptionalAction)
     parser.add_argument("--seed", type=int, help="Random seed to use.", default=42)
+    parser.add_argument("--rsa_quantile", type=float, help="Quantile to use to get the RSA heads.", default=0.99)
     parser.add_argument("--output_dir", type=str, help="Path to save the output files.", required=True)
 
     args = parser.parse_args()
@@ -87,3 +88,21 @@ if __name__ == "__main__":
     rsa_df.to_csv(rsa_file, index=False)
     if not args.save_simmats:
         os.remove(simmats_file)
+
+    # Get CV similarity matrices
+    print('Getting CV similarity matrices...')
+    cv_heads = model.get_heads(rsa_df, n=5) #quantile=args.rsa_quantile)
+    print(cv_heads)
+    cvs = get_summed_vec_per_item(model, dataset_constructor, cv_heads)
+    cv_simmat = compute_similarity_matrix(cvs).cpu().to(torch.float32).numpy()
+
+    # Plot CV similarity matrices
+    print('Plotting CV similarity matrices...')
+    SimilarityMatrix(
+        sim_mat=cv_simmat,
+        tasks=args.datasets,
+        attribute_list=concepts
+    ).plot(
+        bounding_boxes=True,
+        save_path=os.path.join(output_dir, 'cv_simmat.pdf')
+    )

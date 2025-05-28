@@ -297,7 +297,7 @@ class SimilarityMatrix:
             cmap: str = 'coolwarm',
             show_labels: bool = True,
             plot_lower_diag: bool = False,
-            bounding_boxes: List[str] = None,
+            bounding_boxes: bool = False,
             bounding_box_color: str = 'black',
             fontsize: int = 12
         ):
