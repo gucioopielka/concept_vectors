@@ -22,7 +22,6 @@ if __name__ == "__main__":
     parser.add_argument("--dataset_size", type=int, help="Size of the dataset to use.", default=20)
     parser.add_argument("--layer_batch_size", help="Number of layers to process at once. If None, all layers will be processed at once.", default=None, type=lambda x: None if x == 'None' else int(x))
     parser.add_argument("--prompt_batch_size", type=int, help="Number of prompts to process at once.", default=20)
-    parser.add_argument("--seq_len", type=int, help="Length of the sequence to use.", default=20)
     parser.add_argument('--n_train', type=int, help="Number of training examples to use.", default=5)
     parser.add_argument("--remote_run", type=bool, help="Whether to run the script on a remote server.", default=True, action=argparse.BooleanOptionalAction)
     parser.add_argument("--save_simmats", type=bool, help="Whether to save the similarity matrices.", default=True, action=argparse.BooleanOptionalAction)
@@ -48,11 +47,10 @@ if __name__ == "__main__":
         dataset_size=args.dataset_size, 
         n_train=args.n_train,
         batch_size=args.prompt_batch_size,
-        seq_len=args.seq_len, 
         seed=args.seed
     )
 
-    # Load intermediate results if they exist
+    # # Load intermediate results if they exist
     simmats_file = os.path.join(output_dir, 'simmats.pkl')
     if os.path.exists(simmats_file):
         simmat_tensor = torch.load(simmats_file)
@@ -76,7 +74,7 @@ if __name__ == "__main__":
     concepts = np.repeat(concepts, args.dataset_size)
     design_matrix = torch.tensor(create_design_matrix(concepts))
 
-    # Compute RSA for each layer and head
+    # # Compute RSA for each layer and head
     print('Computing RSA...')
     rsa_df = pd.DataFrame([(layer, head, rsa(simmat_tensor[layer, head], design_matrix)) 
                           for layer in tqdm(range(n_layers), desc='Computing RSA')
@@ -92,6 +90,7 @@ if __name__ == "__main__":
     # Get CV similarity matrices
     print('Getting CV similarity matrices...')
     cv_heads = model.get_heads(rsa_df, n=5) #quantile=args.rsa_quantile)
+    cv_heads={33: {9, 10}, 27: {16}, 29: {49, 14}}
     print(cv_heads)
     cvs = get_summed_vec_per_item(model, dataset_constructor, cv_heads)
     cv_simmat = compute_similarity_matrix(cvs).cpu().to(torch.float32).numpy()
