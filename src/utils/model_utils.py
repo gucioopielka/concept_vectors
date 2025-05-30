@@ -65,7 +65,7 @@ class ExtendedLanguageModel:
         else:
             from transformers import AutoTokenizer, AutoModelForCausalLM, AutoConfig
 
-            tokenizer = AutoTokenizer.from_pretrained(self.name)
+            tokenizer = AutoTokenizer.from_pretrained(self.name, padding_side='left')
             if getattr(tokenizer, "pad_token", None) is None:
                 # Set pad token to eos token if it is not set
                 tokenizer.pad_token = tokenizer.eos_token
