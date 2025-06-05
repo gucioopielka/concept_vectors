@@ -116,7 +116,6 @@ if __name__ == "__main__":
             start = 0
 
         # Set the number of training examples
-        n_train = args.n_train
         if dataset_name.endswith('-mc'):
             n_train = 3 # For mc datasets, use 3 training examples
         else:
