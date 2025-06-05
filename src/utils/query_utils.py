@@ -374,12 +374,12 @@ def get_rsa(
     
     return torch.tensor(rsa_vals)
 
+@flush_torch_ram
 @no_grad
 def calculate_CIE(
     model: ExtendedLanguageModel,
     dataset: ICLDataset,
     layers: Optional[List[int]] = None,
-    remote: bool = True
 ) -> torch.Tensor:
     '''
     Returns a tensor of shape (layers, heads), containing the CIE for each head.
@@ -401,7 +401,7 @@ def calculate_CIE(
     D_HEAD = model.config['resid_dim'] // N_HEADS
     T = -1 # values taken from last token
         
-    with model.lm.session(remote=remote) as sess:
+    with model.lm.session(remote=model.remote_run) as sess:
         z_dict = {(layer, head): [] for layer in layers for head in heads}
         correct_logprobs_corrupted = []
         
@@ -447,7 +447,9 @@ def calculate_CIE(
                         z.reshape(len(prompts), N_HEADS, D_HEAD)[:, head] = z_dict[(layer, head)]
                         # Get logprobs at the end, which we'll compare with our corrupted logprobs
                         logits = model.lm.lm_head.output[:, -1]
-                        correct_logprobs_dict[(layer, head)] = logits.log_softmax(dim=-1)[torch.arange(len(prompts)), correct_completion_ids].save()
+                        correct_logprobs = logits.log_softmax(dim=-1)[torch.arange(len(prompts)), correct_completion_ids]
+                        correct_logprobs = correct_logprobs if model.remote_run else correct_logprobs.cpu()
+                        correct_logprobs_dict[(layer, head)] = correct_logprobs.save()
 
     # Get difference between intervention logprobs and corrupted logprobs, and take mean over batch dim
     all_correct_logprobs_intervention = einops.rearrange(
@@ -455,7 +457,8 @@ def calculate_CIE(
         "(layers heads) batch -> layers heads batch",
         layers = len(layers),
     )
-    logprobs_diff = all_correct_logprobs_intervention - torch.stack(correct_logprobs_corrupted).squeeze() # shape [layers heads batch]
+    correct_logprobs_corrupted = torch.stack(correct_logprobs_corrupted).squeeze() if model.remote_run else torch.stack(correct_logprobs_corrupted).squeeze().cpu()
+    logprobs_diff = all_correct_logprobs_intervention - correct_logprobs_corrupted # shape [layers heads batch]
 
     # Return mean effect of intervention, over the batch dimension
     return logprobs_diff.mean(dim=-1)

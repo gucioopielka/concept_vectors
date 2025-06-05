@@ -1,4 +1,5 @@
 import os
+import pickle
 import argparse
 from typing import *
 from itertools import batched
@@ -90,10 +91,9 @@ if __name__ == "__main__":
     # Get CV similarity matrices
     print('Getting CV similarity matrices...')
     cv_heads = model.get_heads(rsa_df, n=5) #quantile=args.rsa_quantile)
-    cv_heads={33: {9, 10}, 27: {16}, 29: {49, 14}}
-    print(cv_heads)
     cvs = get_summed_vec_per_item(model, dataset_constructor, cv_heads)
     cv_simmat = compute_similarity_matrix(cvs).cpu().to(torch.float32).numpy()
+    pickle.dump(cv_simmat, open(os.path.join(output_dir, 'cv_simmat.pkl'), 'wb'))
 
     # Plot CV similarity matrices
     print('Plotting CV similarity matrices...')
@@ -103,5 +103,5 @@ if __name__ == "__main__":
         attribute_list=concepts
     ).plot(
         bounding_boxes=True,
-        save_path=os.path.join(output_dir, 'cv_simmat.pdf')
+        save_path=os.path.join(output_dir, 'cv_simmat.png')
     )

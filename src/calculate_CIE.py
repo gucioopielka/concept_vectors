@@ -85,7 +85,7 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     # Load the model
-    model = ExtendedLanguageModel(args.model)
+    model = ExtendedLanguageModel(args.model, remote_run=args.remote_run)
     n_heads = model.config['n_heads']
     n_layers = model.config['n_layers']
 
@@ -132,16 +132,17 @@ if __name__ == "__main__":
         )
 
         # Layer batch size for 70B model and mc datasets
-        if args.model.endswith('70B') and dataset_name.endswith('-mc'):
-            layer_batch_size = 27
-        else:
-            layer_batch_size = args.layer_batch_size
+        # if args.model.endswith('70B') and dataset_name.endswith('-mc'):
+        #     layer_batch_size = 27
+        # else:
+        #     layer_batch_size = args.layer_batch_size
+        layer_batch_size = args.layer_batch_size
 
         # Compute CIE for each batch of layers
         for layers in batched(range(n_layers), layer_batch_size):
             print("Processing layers: ", layers)
             try:
-                batch_cie = calculate_CIE(model=model, dataset=dataset.datasets[0], layers=layers, remote=args.remote_run)
+                batch_cie = calculate_CIE(model=model, dataset=dataset.datasets[0], layers=layers)
                 results.append(batch_cie)
                 torch.save(results, intermediate_results_dataset_path) # Save intermediate results
             except TimeoutError:
