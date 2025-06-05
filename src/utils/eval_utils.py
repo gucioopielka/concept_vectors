@@ -378,6 +378,7 @@ class SimilarityMatrix:
                 ax.spines['bottom'].set_visible(False)
 
             if save_path:
+                plt.tight_layout()
                 plt.savefig(save_path, dpi=dpi)
 
             if axis is None:
