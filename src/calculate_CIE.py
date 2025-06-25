@@ -7,7 +7,7 @@ import signal
 import functools
 from itertools import batched
 
-from utils.query_utils import calculate_CIE as original_calculate_CIE
+from utils.query_utils import calculate_CIE
 from utils.ICL_utils import DatasetConstructor
 from utils.model_utils import ExtendedLanguageModel
 from utils.globals import RESULTS_DIR
@@ -38,7 +38,7 @@ def timeout(seconds: int = 4000) -> Callable:
     return decorator
 
 # Wrap the original calculate_CIE with timeout
-calculate_CIE = timeout()(original_calculate_CIE)
+#calculate_CIE = timeout()(calculate_CIE)
 
 def save_to_csv(tensor: torch.Tensor, output_path: str):
     # Get indices for all elements
@@ -90,6 +90,7 @@ if __name__ == "__main__":
     n_layers = model.config['n_layers']
 
     # Load intermediate results if they exist
+    os.makedirs(os.path.join(args.dataset_dir, args.output_dir), exist_ok=True)
     intermediate_results_path = os.path.join(args.dataset_dir, args.output_dir, f'cie_{model.nickname}.pkl')
     if os.path.exists(intermediate_results_path):
         print('Loading intermediate results...')
@@ -109,8 +110,9 @@ if __name__ == "__main__":
         # Load intermediate results if they exist
         intermediate_results_dataset_path = os.path.join(args.dataset_dir, args.output_dir, f'cie_{model.nickname}_{dataset_name}.pkl')
         if os.path.exists(intermediate_results_dataset_path):
-            results = pickle.load(open(intermediate_results_dataset_path, 'rb'))
+            results = torch.load(intermediate_results_dataset_path)
             start = sum(batch.size(0) for batch in results) # Calculate the total number of layers processed so far
+            print(f'Resuming from layer {start}...')
         else:
             results = []
             start = 0
@@ -129,6 +131,7 @@ if __name__ == "__main__":
             seed=args.seed, 
             batch_size=args.prompt_batch_size
         )
+        print(dataset.prompts[0])
 
         # Layer batch size for 70B model and mc datasets
         # if args.model.endswith('70B') and dataset_name.endswith('-mc'):
@@ -138,7 +141,7 @@ if __name__ == "__main__":
         layer_batch_size = args.layer_batch_size
 
         # Compute CIE for each batch of layers
-        for layers in batched(range(n_layers), layer_batch_size):
+        for layers in batched(range(start, n_layers), layer_batch_size):
             print("Processing layers: ", layers)
             try:
                 batch_cie = calculate_CIE(model=model, dataset=dataset.datasets[0], layers=layers)
