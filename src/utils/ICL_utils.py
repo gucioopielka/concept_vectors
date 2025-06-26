@@ -493,7 +493,7 @@ class DatasetConstructor:
         dataset_ids: List[str] | str,
         dataset_size: int,
         n_train: int,
-        batch_size: int=None,
+        batch_size: int | List[int] = None,
         tokenizer: Any=None,
         seq_len: int = 20,
         seed: int = 42,
@@ -528,6 +528,13 @@ class DatasetConstructor:
                     'response_type': 'multiple_choice',
                     'mc_format': 'word' if dataset_id.split('.')[-1] == 'word' else 'letter'
                 }
+            elif dataset_id.split('-')[-1].startswith('oe'):
+                # It's an open ended dataset
+                dataset_cfg = {
+                    'size': dataset_size,
+                    'n_train': n_train,
+                    'dataset': dataset_id.split('-')[0],
+                }
             elif dataset_id in [f.split('.')[0] for f in os.listdir(data_dir)]:
                 # It's a JSON dataset
                 dataset_cfg = {
@@ -550,14 +557,22 @@ class DatasetConstructor:
             self.completions.extend(dataset.completions)
             self.dataset_ids.append(dataset_id)
 
-        self.batch_size = batch_size if batch_size else len(self.prompts)
+        # Support batch_size as int or list
+        if isinstance(batch_size, int):
+            self.batch_sizes = [batch_size] * ((len(self.prompts) + batch_size - 1) // batch_size)
+        else:
+            assert sum(batch_size) == len(self.prompts), "Sum of batch sizes must equal number of prompts"
+            self.batch_sizes = batch_size
+        self.cum_batch_sizes = [0]
+        for b in self.batch_sizes:
+            self.cum_batch_sizes.append(self.cum_batch_sizes[-1] + b)
 
     def __getitem__(self, idx):
-        if idx >= len(self.prompts) // self.batch_size:
+        if idx >= len(self.batch_sizes):
             raise IndexError("Index out of range")
-        start_idx = idx * self.batch_size
-        end_idx = min(start_idx + self.batch_size, len(self.prompts))
+        start_idx = self.cum_batch_sizes[idx]
+        end_idx = self.cum_batch_sizes[idx + 1]
         return self.prompts[start_idx:end_idx], self.completions[start_idx:end_idx]
 
     def __len__(self):
-        return len(self.prompts) // self.batch_size + (0 if len(self.prompts) % self.batch_size == 0 else 1)
+        return len(self.batch_sizes)

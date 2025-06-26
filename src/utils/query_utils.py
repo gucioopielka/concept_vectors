@@ -30,6 +30,25 @@ def flush_torch_ram(func):
         return result
     return wrapper
 
+def convert_bfloat(func):
+    """Decorator to convert bfloat tensors to their corresponding float types."""
+    @functools.wraps(func)
+    def wrapper(*args, **kwargs):
+        result = func(*args, **kwargs)
+        if isinstance(result, torch.Tensor) and 'bfloat' in str(result.dtype):
+            target_dtype = str(result.dtype).split('.')[-1].replace('bfloat', 'float')
+            return result.to(getattr(torch, target_dtype))
+        return result
+    return wrapper
+
+def condense_matrix(X, n=None):
+    '''
+    Condense a square matrix into a condensed vector
+    '''
+    n = X.size(0) if n is None else n
+    inds = torch.triu_indices(n, n, offset=1)
+    return X[inds[0], inds[1]]
+
 @no_grad
 def generate_completions(
     model: ExtendedLanguageModel,
@@ -189,6 +208,36 @@ def get_summed_vec_per_item(
                 all_head_outputs.append(batch_summed)
 
     return torch.cat(all_head_outputs, dim=0).to(model.device)
+
+@no_grad
+@convert_bfloat
+def get_summed_vec_simmat(
+    model: ExtendedLanguageModel,
+    dataset: ICLDataset | DatasetConstructor,
+    heads: Dict[int, List[int]],
+    token: int = -1,
+) -> torch.Tensor:
+    with model.lm.session(remote=model.remote_run) as sess:
+        all_head_outputs = nnsight.list()
+        
+        for idx, (batched_prompts, _) in enumerate(dataset):
+            sess.log(f"Batch: {idx+1} / {len(dataset)}")
+            
+            with model.lm.trace(batched_prompts) as t:
+                batch_head_outputs = []
+                for layer, head_list in heads.items():
+                    out_proj_output = get_att_output_per_item(model, layer, head_list, token=token)
+                    batch_head_outputs.append(out_proj_output)
+                
+                # Stack and sum for this batch
+                batch_summed = torch.stack(batch_head_outputs).sum(dim=0)
+                batch_summed = batch_summed if model.remote_run else batch_summed.cpu()
+                all_head_outputs.append(batch_summed)
+        
+        simmat = compute_similarity_matrix(torch.cat(all_head_outputs, dim=0))
+        simmat_condensed = condense_matrix(simmat, n=len(dataset.prompts)).save()
+
+    return simmat_condensed.cpu()
 
 @no_grad
 def get_avg_summed_vec(

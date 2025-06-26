@@ -89,8 +89,8 @@ def create_design_matrix(info_list: List[Any]):
     return m
 
 def rsa(X: np.ndarray, Y: np.ndarray) -> float:
-    X = squareform(X, checks=False)
-    Y = squareform(Y, checks=False)
+    X = squareform(X, checks=False) if X.ndim == 2 else X
+    Y = squareform(Y, checks=False) if Y.ndim == 2 else Y
     return spearmanr(X, Y).correlation
 
 def get_unique_indices(s: pd.Series) -> Dict:
@@ -182,7 +182,7 @@ class SimilarityMatrix:
             tasks (List[str]): The tasks (must be equal to the number of rows in the similarity matrix or divisible by the number of rows)
             attribute_list (List[str]): The attributes of the tasks (e.g. the concepts that represent the tasks). The number of attributes must be equal to the number of rows in the similarity matrix, or the number of rows must be divisible by the number of attributes.
         '''
-        self.matrix = sim_mat
+        self.matrix = self.vec_to_simmat(sim_mat) if sim_mat.ndim == 1 else sim_mat
         self.sim_mode = 'Similarity'
         self.design_matrix = None
         
@@ -205,6 +205,7 @@ class SimilarityMatrix:
         if attribute_list is not None:
             # Repeat the task names if the data is divisible by the number of tasks
             if self.matrix.shape[0] % len(attribute_list) == 0:
+                self.attribute_list_per_task = attribute_list
                 self.attribute_list = np.repeat(attribute_list, self.matrix.shape[0] // len(attribute_list))
             elif self.matrix.shape[0] == len(attribute_list):
                 self.attribute_list = np.array(attribute_list)
@@ -212,6 +213,12 @@ class SimilarityMatrix:
                 raise ValueError('The number of attributes must be equal to the number of rows in the similarity matrix, or the number of rows must be divisible by the number of attributes.')
             
             self.design_matrix = create_design_matrix(self.attribute_list)
+
+    @staticmethod
+    def vec_to_simmat(matrix: np.ndarray | torch.Tensor) -> np.ndarray:
+        matrix = squareform(matrix, checks=False)
+        np.fill_diagonal(matrix, 1)  # Set diagonal to 1
+        return matrix
 
     def toggle_similarity(self):
         '''
@@ -242,6 +249,7 @@ class SimilarityMatrix:
         self.tasks_list = np.repeat(tasks, self.matrix.shape[0] // len(tasks))
         self.tasks_idx = get_unique_indices(self.tasks_list)
         self.matrix = self.matrix[np.ix_(new_indices, new_indices)]
+
         if self.design_matrix is not None:
             self.design_matrix = self.design_matrix[np.ix_(new_indices, new_indices)]
             self.attribute_list = self.attribute_list[new_indices]
@@ -295,6 +303,7 @@ class SimilarityMatrix:
             save_path: str = None,
             dpi: int = 500,
             cmap: str = 'coolwarm',
+            label_colors: bool = False,
             show_labels: bool = True,
             plot_lower_diag: bool = False,
             bounding_boxes: bool = False,
@@ -318,7 +327,7 @@ class SimilarityMatrix:
             # Plot the RDM on the specified (or new) axes object
             cax = ax.imshow(matrix_to_plot, cmap=cmap, interpolation='nearest', norm=plt.Normalize(*norm) if norm else None)
             if title:
-                ax.set_title(title, fontsize=16)
+                ax.set_title(title, fontsize=fontsize+4)
 
             if self.tasks_idx:            
                 if rel_ticks:
@@ -336,6 +345,28 @@ class SimilarityMatrix:
                         labels = self.tasks_idx.keys()
                     ax.set_xticklabels(list(labels), rotation=90, fontsize=fontsize)
                     ax.set_yticklabels(list(labels), fontsize=fontsize)
+                    
+                    if label_colors:
+                        # label_colors = []
+                        # prev_color = 'black'
+                        # for i, attr in enumerate(self.attribute_list_per_task):
+                        #     if i == 0:
+                        #         label_colors.append('black')
+                        #     else:
+                        #         if attr != self.attribute_list_per_task[i-1]:
+                        #             color = 'grey' if prev_color == 'black' else 'black'
+                        #             label_colors.append(color)
+                        #             prev_color = color
+                        #         else:
+                        #             label_colors.append(prev_color)
+
+                        # print(label_colors)
+                        
+                        # Set individual colors for tick labels
+                        for i, (tick, color) in enumerate(zip(ax.get_xticklabels(), label_colors)):
+                            tick.set_color(color)
+                        for i, (tick, color) in enumerate(zip(ax.get_yticklabels(), label_colors)):
+                            tick.set_color(color)
 
             if plot_means:    
                 if self.tasks_idx and plot_means:
