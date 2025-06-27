@@ -14,6 +14,8 @@ if any(env in os.environ for env in ['SLURM_JOB_ID', 'SLURM_CLUSTER_NAME']):
             pass
 
     _handlers.RotatingFileHandler = _NoOpHandler
-
-import nnsight
-nnsight.CONFIG.set_default_api_key(os.environ.get("NNSIGHT_API_KEY"))
+    import nnsight
+    
+else:
+    import nnsight
+    nnsight.CONFIG.set_default_api_key(os.environ.get("NNSIGHT_API_KEY"))

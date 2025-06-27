@@ -55,13 +55,14 @@ if __name__ == "__main__":
     simmats_file = os.path.join(output_dir, 'simmats.pkl')
     if os.path.exists(simmats_file):
         simmat_tensor = torch.load(simmats_file)
-        start = (~torch.all(simmat_tensor == 0, dim=(1, 2, 3))).sum() # Calculate number of layers with nonzero values
+        start = (~torch.all(simmat_tensor == 0, dim=(1, 2))).sum() # Calculate number of layers with nonzero values
         if start == n_layers:
             print(f"All layers have been processed.")
         else:
             print(f"Resuming from layer {start}...")
     else:
-        simmat_tensor = torch.zeros(n_layers, n_heads, len(dataset_constructor.prompts), len(dataset_constructor.prompts))
+        condensed_vec_size = torch.triu_indices(len(dataset_constructor.prompts), len(dataset_constructor.prompts), offset=1).shape[1]
+        simmat_tensor = torch.zeros(n_layers, n_heads, condensed_vec_size)
         start = 0
 
     # Compute similarity matrices for each layer and head

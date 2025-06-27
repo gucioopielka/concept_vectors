@@ -340,6 +340,7 @@ def compute_similarity_matrix(vectors: torch.Tensor) -> torch.Tensor:
 
 @flush_torch_ram
 @no_grad 
+@convert_bfloat
 def get_att_simmats(
     model: ExtendedLanguageModel,
     dataset: ICLDataset | DatasetConstructor,
@@ -370,7 +371,8 @@ def get_att_simmats(
         simmats = nnsight.list([[[] for _ in range(len(heads))] for _ in range(len(layers))]).save()
         for (layer, head), v in simmat_dict.items():
             v = torch.concat(v).to(model.device)
-            simmats[layer][head] = compute_similarity_matrix(v).cpu()
+            simmat = compute_similarity_matrix(v)
+            simmats[layer][head] = condense_matrix(simmat, n=len(dataset.prompts)).cpu()
     
     return torch.stack([torch.stack(simmats[layer]) for layer in range(len(layers))])
 

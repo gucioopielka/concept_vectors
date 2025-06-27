@@ -71,6 +71,9 @@ def condense_matrix(X):
         print(X.size(0).item())
     n = X.size(0).item() if hasattr(X.size(0), 'item') else X.size(0)
     inds = torch.triu_indices(n, n, offset=1)
+    # Size of inds tensor: (2, n*(n-1)//2)
+    # - 2 rows: one for row indices, one for column indices
+    # - n*(n-1)//2 columns: number of upper triangular elements (excluding diagonal)
     return X[inds[0], inds[1]]
 
 def rsa_torch(x, y):
