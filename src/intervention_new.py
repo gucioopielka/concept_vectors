@@ -23,8 +23,7 @@ def get_probs_by_indices(probs, indices):
 def get_summed_vector(heads_dict, token=-1):
     head_outputs = []
     for layer, head_list in heads_dict.items():
-        out_proj = model.config['out_proj'](layer)
-        out_proj_output = get_avg_att_output(model, out_proj, head_list, token=token)
+        out_proj_output = get_avg_att_output(model, layer, head_list, token=token)
         head_outputs.append(out_proj_output)
     return torch.stack(head_outputs).sum(dim=0)
 
@@ -260,13 +259,12 @@ class InterventionEvaluation:
 if __name__ == '__main__':
     intervention_type = 'ambiguous'
     assert intervention_type in ['zeroshot', 'ambiguous']
-    translations = False
+    translations = True
     n_heads = 5
     model_name = 'meta-llama/Meta-Llama-3.1-70B'
-    low_level_cie_path = os.path.join(RESULTS_DIR, 'CIE_LowLevel', model_name.split('/')[-1] + '.csv')
     model = ExtendedLanguageModel(model_name)
-    cv_heads = model.get_rsa_heads(task_attribute='relation_verbal')
-    fv_heads = model.get_fv_heads()
+    cv_heads = model.get_top_heads('RSA', n_heads)
+    fv_heads = model.get_top_heads('CIE', n_heads)
 
     # Extract
     extract_datasets = ['antonym_eng', 'antonym_fr', 'antonym_es', 'antonym_eng-mc']
@@ -283,7 +281,7 @@ if __name__ == '__main__':
         )
     elif intervention_type == 'ambiguous':
         dataset_intervene = ICLDataset(
-            dataset=['translation_eng_fr', 'antonym_eng'],
+            dataset=['antonym_eng', 'translation_eng_fr'],
             size=50, 
             n_train=5, 
             seed=42, 
@@ -310,15 +308,15 @@ if __name__ == '__main__':
         y_1_es = f.readlines()
     y_1_es = [' '+line.strip() for line in y_1_es]
 
-    # if translations:
-    #     print('Translating...')
-    #     y_1_fr = [translate(x, 'EN', 'FR') for x in y_1]
-    #     y_1_es = [translate(x, 'EN', 'ES') for x in y_1]
-    #     y_1_fr_ids = model.config['get_first_token_ids'](y_1_fr)
-    #     y_1_es_ids = model.config['get_first_token_ids'](y_1_es)
-    # else:
-    #     y_1_fr_ids = None
-    #     y_1_es_ids = None
+    if translations:
+        # print('Translating...')
+        # y_1_fr = [translate(x, 'EN', 'FR') for x in y_1]
+        # y_1_es = [translate(x, 'EN', 'ES') for x in y_1]
+        y_1_fr_ids = model.config['get_first_token_ids'](y_1_fr)
+        y_1_es_ids = model.config['get_first_token_ids'](y_1_es)
+    else:
+        y_1_fr_ids = None
+        y_1_es_ids = None
 
     layers = range(model.config['n_layers'])
     #layers = [18, 31]
