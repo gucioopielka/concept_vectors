@@ -1,5 +1,6 @@
 import os
 import json
+import pickle
 import torch
 import pandas as pd
 from collections import defaultdict
@@ -12,11 +13,11 @@ class ExtendedLanguageModel:
         self, model_name: str, 
         rsa_heads_n: int = None,
         fv_heads_n: int = None,
-        cie_path: str = None,
-        rsa_path: str = None,
-        remote_run: bool = False
+        cie_path = None,
+        rsa_path = None,
+        remote_run: bool = None
     ):
-        self.remote_run = remote_run
+        self.remote_run = remote_run if remote_run is not None else self.auto_set_remote_run()
         self.name = model_name#.lower()
         self.nickname = model_name.lower().split('/')[1]
         self.lm = self.load_model()
@@ -29,14 +30,21 @@ class ExtendedLanguageModel:
 
         # Construct file paths for head data
         if cie_path is None:
-            self.cie_path = os.path.join(RESULTS_DIR, 'CIE_LowLevel', f'{self.nickname}.csv')
-        else:
-            self.cie_path = cie_path
+            LUMI_DIR = os.path.join(RESULTS_DIR, 'LUMI')
+            cie_mc = pickle.load(open(os.path.join(LUMI_DIR, 'CIE_mc', f'cie_{self.nickname}.pkl'), 'rb'))
+            cie_mc = torch.stack(cie_mc).to(torch.float32)
+            cie_oe = pickle.load(open(os.path.join(LUMI_DIR, 'CIE_oe', f'cie_{self.nickname}.pkl'), 'rb'))
+            cie_oe = torch.stack(cie_oe).to(torch.float32)
+            cie = torch.concat([cie_oe, cie_mc])
 
         if rsa_path is None:
-            self.rsa_path = os.path.join(RESULTS_DIR, 'RSA', f'rsa_{self.nickname}.csv')
-        else:
-            self.rsa_path = rsa_path
+            df = pd.read_csv(os.path.join(LUMI_DIR, 'RSA', self.nickname, f'rsa.csv'))
+            df.rename(columns={'rsa': 'RSA'}, inplace=True)
+            df['CIE'] = cie.mean(dim=0).flatten()
+            df['CIE_eng'] = cie_oe[::2].mean(dim=0).flatten()
+            df['CIE_fr'] = cie_oe[1::2].mean(dim=0).flatten()
+            df['CIE_mc'] = cie_mc.mean(dim=0).flatten()
+            self.metrics = df
 
         # # Load fv heads if available
         # if os.path.exists(self.cie_path):
@@ -50,14 +58,20 @@ class ExtendedLanguageModel:
         #     self.language = self.get_rsa_heads(task_attribute='language')
         #     self.q_type = self.get_rsa_heads(task_attribute='prompt_format')
 
-        # Load best layer to intervene with if available
-        self.int_layer_path = os.path.join(RESULTS_DIR, 'intervention', f"{self.nickname}_intervene_layers.json")
-        if os.path.exists(self.int_layer_path):
-            layers = json.load(open(self.int_layer_path, 'r'))
-            self.cv_intervention_layer = int(layers.index(max(layers)))
+        # # Load best layer to intervene with if available
+        # self.int_layer_path = os.path.join(RESULTS_DIR, 'intervention', f"{self.nickname}_intervene_layers.json")
+        # if os.path.exists(self.int_layer_path):
+        #     layers = json.load(open(self.int_layer_path, 'r'))
+        #     self.cv_intervention_layer = int(layers.index(max(layers)))
 
     def __str__(self) -> str:
         return self.name
+    
+    def auto_set_remote_run(self):
+        if any(env in os.environ for env in ['SLURM_JOB_ID', 'SLURM_CLUSTER_NAME']):
+            self.remote_run = False
+        else:
+            self.remote_run = True
     
     def load_model(self):
         if self.remote_run:

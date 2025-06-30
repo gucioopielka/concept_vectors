@@ -264,7 +264,7 @@ if __name__ == '__main__':
     n_heads = 5
     model_name = 'meta-llama/Meta-Llama-3.1-70B'
     low_level_cie_path = os.path.join(RESULTS_DIR, 'CIE_LowLevel', model_name.split('/')[-1] + '.csv')
-    model = ExtendedLanguageModel(model_name, rsa_heads_n=n_heads, fv_heads_n=n_heads, cie_path=low_level_cie_path, remote_run=True)
+    model = ExtendedLanguageModel(model_name)
     cv_heads = model.get_rsa_heads(task_attribute='relation_verbal')
     fv_heads = model.get_fv_heads()
 
@@ -283,7 +283,7 @@ if __name__ == '__main__':
         )
     elif intervention_type == 'ambiguous':
         dataset_intervene = ICLDataset(
-            dataset=['antonym_eng', 'synonym_eng'],
+            dataset=['translation_eng_fr', 'antonym_eng'],
             size=50, 
             n_train=5, 
             seed=42, 
@@ -302,23 +302,23 @@ if __name__ == '__main__':
         y_1_ids = model.config['get_first_token_ids'](y_1)
         y_2_ids = None  
     
-    # with open('translations_fr.txt', 'r') as f:
-    #     y_1_fr = f.readlines()
-    # y_1_fr = [' '+line.strip() for line in y_1_fr]
+    with open('translations_fr.txt', 'r') as f:
+        y_1_fr = f.readlines()
+    y_1_fr = [' '+line.strip() for line in y_1_fr]
 
-    # with open('translations_es.txt', 'r') as f:
-    #     y_1_es = f.readlines()
-    # y_1_es = [' '+line.strip() for line in y_1_es]
+    with open('translations_es.txt', 'r') as f:
+        y_1_es = f.readlines()
+    y_1_es = [' '+line.strip() for line in y_1_es]
 
-    if translations:
-        print('Translating...')
-        y_1_fr = [translate(x, 'EN', 'FR') for x in y_1]
-        y_1_es = [translate(x, 'EN', 'ES') for x in y_1]
-        y_1_fr_ids = model.config['get_first_token_ids'](y_1_fr)
-        y_1_es_ids = model.config['get_first_token_ids'](y_1_es)
-    else:
-        y_1_fr_ids = None
-        y_1_es_ids = None
+    # if translations:
+    #     print('Translating...')
+    #     y_1_fr = [translate(x, 'EN', 'FR') for x in y_1]
+    #     y_1_es = [translate(x, 'EN', 'ES') for x in y_1]
+    #     y_1_fr_ids = model.config['get_first_token_ids'](y_1_fr)
+    #     y_1_es_ids = model.config['get_first_token_ids'](y_1_es)
+    # else:
+    #     y_1_fr_ids = None
+    #     y_1_es_ids = None
 
     layers = range(model.config['n_layers'])
     #layers = [18, 31]

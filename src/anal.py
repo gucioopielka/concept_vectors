@@ -287,12 +287,6 @@ plt.show()
 
 simmats_all = torch.load(open(os.path.join(LUMI_DIR, 'RSA', model.nickname, 'simmats.pkl'), 'rb'))
 
-
-dataset_ = get_datasets(['antonym', 'categorical', 'synonym', 'translation', 'presentPast', 'singularPlural'], size, n_train, seed, n_batches_oe, n_batches_mc)
-
-concepts_ = [d.split('_')[0] for d in dataset_.dataset_ids]
-antonym = [c if c == 'antonym' else 'other' for c in concepts_]
-
 def create_concept_design_matrix(info_list, concept):
     n_items = len(info_list)
     m = np.zeros((n_items, n_items))
@@ -323,13 +317,30 @@ df_rsa = pd.DataFrame(
 
 df_rsa.groupby('Layer')['RSA'].mean().plot(kind='bar')
 
-for rsa_, layer, head in df_rsa.sort_values(by='RSA', ascending=False).head(10)[['RSA', 'Layer', 'Head']].values:
+for rsa_, layer, head in df.sort_values(by='RSA', ascending=False).head(10)[['RSA', 'layer', 'head']].values:
     print(rsa_, layer, head)
     SimilarityMatrix(
-        sim_mat=simmats_all[int(27), int(16)],
-        #tasks=dataset_.dataset_ids,
-        # attribute_list=concepts_
+        sim_mat=simmats_all[int(layer), int(head)],
+        tasks=names_sorted,
     ).plot(
         bounding_boxes=True,
         title=f'RSA: {rsa_:.2f}',
     )
+
+
+
+
+top_simmats = torch.load(os.path.join(LUMI_DIR, f'{model.nickname}_progressive_simmats_1_to_100.pkl')).to(torch.float32)
+rsa_top_k = []
+for i, simmat in enumerate(top_simmats):
+    rsa_top_k.append(rsa(simmat, concept_dm))
+
+i = 99
+s=SimilarityMatrix(
+    sim_mat=top_simmats[i],
+    tasks=dataset.dataset_ids,
+)
+s.relocate_tasks(names_sorted)
+s.plot(
+    title=f'RSA: {rsa_top_k[i]:.2f}',
+)
