@@ -1,4 +1,4 @@
-from utils.query_utils import get_att_output_per_item
+from utils.query_utils import get_att_out_proj_input, get_att_output_per_item
 from utils.model_utils import ExtendedLanguageModel
 from utils.ICL_utils import DatasetConstructor, ICLDataset
 from utils.query_utils import convert_bfloat, no_grad, compute_similarity_matrix, condense_matrix
@@ -10,6 +10,7 @@ import nnsight
 import pandas as pd
 import os
 from collections import defaultdict
+import sys
 
 def get_datasets(dataset_names, size, n_train, seed, n_batches_oe, n_batches_mc):
     """Load datasets for the analysis."""
@@ -43,19 +44,7 @@ def get_k_summed_vec_simmats(
     top_heads: List[Tuple[int, int]],
     token: int = -1,
 ) -> List[torch.Tensor]:
-    """
-    Get similarity matrices for summed vectors from 1 to k heads in a single tracing context.
-    
-    Args:
-        model: The language model
-        dataset: The dataset to use
-        top_heads: List of (layer, head) tuples sorted by importance
-        k_values: List of k values to compute (e.g., [1, 2, 3, ..., 100])
-        token: Token position to extract activations from
-    
-    Returns:
-        List of similarity matrices, one for each k value
-    """    
+
     k_values = list(range(1, len(top_heads) + 1))
     heads_by_layer = defaultdict(list)
     for layer, head in top_heads:
@@ -72,8 +61,9 @@ def get_k_summed_vec_simmats(
                 # Extract all needed head outputs in one forward pass
                 for layer, head_list in heads_by_layer.items():
                     for head in head_list:
-                        out_proj_output = get_att_output_per_item(model, layer, [head], token=token)
-                        all_head_outputs[layer][head].append(out_proj_output)
+                        att_out = get_att_output_per_item(model, layer, [head], token)
+                        att_out = att_out if model.remote_run else att_out.cpu()
+                        all_head_outputs[layer][head].append(att_out)
                     
         # Concatenate all batches for each head
         for layer in all_head_outputs:
@@ -88,23 +78,20 @@ def get_k_summed_vec_simmats(
             k_heads = top_heads[:k]
             
             # Sum the outputs for these k heads
-            summed_outputs = []
+            summed_vector = 0
             for layer, head in k_heads:
-                summed_outputs.append(all_head_outputs[layer][head])
-            
-            # Stack and sum all head outputs
-            summed_vector = torch.stack(summed_outputs).sum(dim=0)
+                summed_vector += all_head_outputs[layer][head]
             
             # Compute similarity matrix
-            simmat = compute_similarity_matrix(summed_vector)
+            simmat = compute_similarity_matrix(summed_vector.to(model.device))
             simmat_condensed = condense_matrix(simmat, n=len(dataset.prompts))
-            simmats.append(simmat_condensed.cpu())
+            simmats.append(simmat_condensed.cpu().save())
     
     return simmats
 
 # Load model and data
-model_name = 'meta-llama/Meta-Llama-3.1-70B'
-model = ExtendedLanguageModel(model_name, remote_run=True)
+model_name = sys.argv[1]
+model = ExtendedLanguageModel(model_name)
 
 LUMI_DIR = os.path.join(RESULTS_DIR, 'LUMI')
 df_metrics = pd.read_csv(os.path.join(LUMI_DIR, 'RSA', model.nickname, f'metrics.csv'))
@@ -112,12 +99,9 @@ df_metrics = pd.read_csv(os.path.join(LUMI_DIR, 'RSA', model.nickname, f'metrics
 # Get top 100 heads sorted by RSA
 top_100_heads = df_metrics.sort_values(by='RSA', ascending=False).head(100)[['layer', 'head']].values.tolist()
 
-# Define k values (1 to 100)
-k_values = list(range(1, 101))
-
 # Load dataset
 dataset_names = ['antonym', 'categorical', 'causal', 'synonym', 'translation', 'presentPast', 'singularPlural']
-size = 10
+size = 20
 n_train = 5
 seed = 42
 n_batches_oe = 4
@@ -127,23 +111,10 @@ dataset = get_datasets(dataset_names, size, n_train, seed, n_batches_oe, n_batch
 # Check if results already exist
 progressive_simmats_path = os.path.join(LUMI_DIR, f'{model.nickname}_progressive_simmats_1_to_100.pkl')
 
-if not os.path.exists(progressive_simmats_path):
-    print("Computing progressive similarity matrices...")
-    # Compute similarity matrices for each k
-    simmats = get_k_summed_vec_simmats(model, dataset, top_100_heads, k_values)
-    
-    # Save results
-    torch.save(torch.stack(simmats), progressive_simmats_path)
-    print(f"Saved progressive similarity matrices to {progressive_simmats_path}")
-else:
-    print(f"Loading existing progressive similarity matrices from {progressive_simmats_path}")
-    simmats = torch.load(progressive_simmats_path)
+print("Computing progressive similarity matrices...")
+# Compute similarity matrices for each k
+simmats = get_k_summed_vec_simmats(model, dataset, top_100_heads)
 
-print("Top 10 heads by RSA:")
-for i, (layer, head) in enumerate(top_100_heads[:10]):
-    print(f"{i+1}. Layer {layer}, Head {head}")
-
-print(f"\nComputed {len(simmats)} similarity matrices for k = 1 to {len(simmats)}")
-print(f"Each similarity matrix shape: {simmats[0].shape}")
-
-
+# Save results
+torch.save(torch.stack(simmats), progressive_simmats_path)
+print(f"Saved progressive similarity matrices to {progressive_simmats_path}")

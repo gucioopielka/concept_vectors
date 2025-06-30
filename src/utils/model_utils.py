@@ -10,35 +10,35 @@ from .globals import RESULTS_DIR
 
 class ExtendedLanguageModel:
     def __init__(
-        self, model_name: str, 
-        rsa_heads_n: int = None,
-        fv_heads_n: int = None,
-        cie_path = None,
-        rsa_path = None,
+        self, 
+        model_name: str, 
+        load_metrics: bool = False,
+        metrics_path: str = None,
         remote_run: bool = None
     ):
         self.remote_run = remote_run if remote_run is not None else self.auto_set_remote_run()
         self.name = model_name#.lower()
         self.nickname = model_name.lower().split('/')[1]
         self.lm = self.load_model()
-        self.fv_heads_n = fv_heads_n
-        self.rsa_heads_n = rsa_heads_n
         self.device = 'cuda' if torch.cuda.is_available() else 'cpu'
 
         # Set model configuration based on the model type
         self.set_model_config()
 
         # Construct file paths for head data
-        if cie_path is None:
-            LUMI_DIR = os.path.join(RESULTS_DIR, 'LUMI')
-            cie_mc = pickle.load(open(os.path.join(LUMI_DIR, 'CIE_mc', f'cie_{self.nickname}.pkl'), 'rb'))
+        if load_metrics:
+            if metrics_path is not None:
+                self.metrics_path = metrics_path 
+            else:
+                self.metrics_path = os.path.join(RESULTS_DIR, 'LUMI', 'RSA', self.nickname, f'rsa.csv')
+
+            cie_mc = pickle.load(open(os.path.join(self.metrics_path, f'cie_{self.nickname}.pkl'), 'rb'))
             cie_mc = torch.stack(cie_mc).to(torch.float32)
-            cie_oe = pickle.load(open(os.path.join(LUMI_DIR, 'CIE_oe', f'cie_{self.nickname}.pkl'), 'rb'))
+            cie_oe = pickle.load(open(os.path.join(self.metrics_path, f'cie_{self.nickname}.pkl'), 'rb'))
             cie_oe = torch.stack(cie_oe).to(torch.float32)
             cie = torch.concat([cie_oe, cie_mc])
 
-        if rsa_path is None:
-            df = pd.read_csv(os.path.join(LUMI_DIR, 'RSA', self.nickname, f'rsa.csv'))
+            df = pd.read_csv(os.path.join(self.metrics_path, f'rsa.csv'))
             df.rename(columns={'rsa': 'RSA'}, inplace=True)
             df['CIE'] = cie.mean(dim=0).flatten()
             df['CIE_eng'] = cie_oe[::2].mean(dim=0).flatten()
@@ -46,32 +46,14 @@ class ExtendedLanguageModel:
             df['CIE_mc'] = cie_mc.mean(dim=0).flatten()
             self.metrics = df
 
-        # # Load fv heads if available
-        # if os.path.exists(self.cie_path):
-        #     self.get_fv_heads()
-
-        # # Load cv heads if available
-        # if os.path.exists(self.rsa_path):
-        #     self.cv_heads = self.get_rsa_heads(task_attribute='relation_verbal')
-        #     self.info_source = self.get_rsa_heads(task_attribute='task_type')
-        #     self.response_type = self.get_rsa_heads(task_attribute='response_type')
-        #     self.language = self.get_rsa_heads(task_attribute='language')
-        #     self.q_type = self.get_rsa_heads(task_attribute='prompt_format')
-
-        # # Load best layer to intervene with if available
-        # self.int_layer_path = os.path.join(RESULTS_DIR, 'intervention', f"{self.nickname}_intervene_layers.json")
-        # if os.path.exists(self.int_layer_path):
-        #     layers = json.load(open(self.int_layer_path, 'r'))
-        #     self.cv_intervention_layer = int(layers.index(max(layers)))
-
     def __str__(self) -> str:
         return self.name
     
     def auto_set_remote_run(self):
         if any(env in os.environ for env in ['SLURM_JOB_ID', 'SLURM_CLUSTER_NAME']):
-            self.remote_run = False
+            return True
         else:
-            self.remote_run = True
+            return False
     
     def load_model(self):
         if self.remote_run:
