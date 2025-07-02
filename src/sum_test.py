@@ -101,7 +101,7 @@ top_100_heads = df_metrics.sort_values(by='RSA', ascending=False).head(100)[['la
 
 # Load dataset
 dataset_names = ['antonym', 'categorical', 'causal', 'synonym', 'translation', 'presentPast', 'singularPlural']
-size = 20
+size = 50
 n_train = 5
 seed = 42
 n_batches_oe = 4

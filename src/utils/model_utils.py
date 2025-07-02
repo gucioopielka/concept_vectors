@@ -7,6 +7,12 @@ from collections import defaultdict
 from nnsight import LanguageModel
 from .globals import RESULTS_DIR
 
+def heads_to_dict(list_of_tuples):
+    head_dict = defaultdict(set)
+    for layer, head in list_of_tuples:
+        head_dict[layer].add(head)
+    head_dict = dict(head_dict)
+    return head_dict
 
 class ExtendedLanguageModel:
     def __init__(
@@ -17,7 +23,7 @@ class ExtendedLanguageModel:
         remote_run: bool = None
     ):
         self.remote_run = remote_run if remote_run is not None else self.auto_set_remote_run()
-        self.name = model_name#.lower()
+        self.name = model_name
         self.nickname = model_name.lower().split('/')[1]
         self.lm = self.load_model()
         self.device = 'cuda' if torch.cuda.is_available() else 'cpu'
@@ -30,15 +36,15 @@ class ExtendedLanguageModel:
             if metrics_path is not None:
                 self.metrics_path = metrics_path 
             else:
-                self.metrics_path = os.path.join(RESULTS_DIR, 'LUMI', 'RSA', self.nickname, f'rsa.csv')
+                self.metrics_path = os.path.join(RESULTS_DIR, 'LUMI')
 
-            cie_mc = pickle.load(open(os.path.join(self.metrics_path, f'cie_{self.nickname}.pkl'), 'rb'))
+            cie_mc = pickle.load(open(os.path.join(self.metrics_path, 'CIE_mc', f'cie_{self.nickname}.pkl'), 'rb'))
             cie_mc = torch.stack(cie_mc).to(torch.float32)
-            cie_oe = pickle.load(open(os.path.join(self.metrics_path, f'cie_{self.nickname}.pkl'), 'rb'))
+            cie_oe = pickle.load(open(os.path.join(self.metrics_path, 'CIE_oe', f'cie_{self.nickname}.pkl'), 'rb'))
             cie_oe = torch.stack(cie_oe).to(torch.float32)
             cie = torch.concat([cie_oe, cie_mc])
 
-            df = pd.read_csv(os.path.join(self.metrics_path, f'rsa.csv'))
+            df = pd.read_csv(os.path.join(self.metrics_path, 'RSA', self.nickname, f'rsa.csv'))
             df.rename(columns={'rsa': 'RSA'}, inplace=True)
             df['CIE'] = cie.mean(dim=0).flatten()
             df['CIE_eng'] = cie_oe[::2].mean(dim=0).flatten()
@@ -51,9 +57,9 @@ class ExtendedLanguageModel:
     
     def auto_set_remote_run(self):
         if any(env in os.environ for env in ['SLURM_JOB_ID', 'SLURM_CLUSTER_NAME']):
-            return True
-        else:
             return False
+        else:
+            return True
     
     def load_model(self):
         if self.remote_run:
@@ -86,6 +92,18 @@ class ExtendedLanguageModel:
                 ],
                 "get_first_token": lambda string: self.lm.tokenizer.tokenize(string)[0].replace('Ġ', ' ')
             }
+
+    def get_top_heads(
+            self, 
+            metric: str, # 'RSA', 'CIE', 'CIE_eng', 'CIE_fr', 'CIE_mc'
+            n: int = 5,
+            to_dict: bool = False
+        ):
+        heads = self.metrics.sort_values(by=metric, ascending=False).head(n)[['layer', 'head']].values.tolist()
+        if to_dict:
+            return heads_to_dict(heads)
+        else:
+            return heads
 
     def get_fv_heads(self, n=None):
         if n is None:
