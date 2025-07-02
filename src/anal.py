@@ -139,8 +139,6 @@ if not os.path.exists(random_pairs_path):
 else:
     random_simmats = pickle.load(open(random_pairs_path, 'rb'))
 
-
-
 prompt_format_dm = create_design_matrix(np.repeat([d.split('-')[1] for d in dataset.dataset_ids], size))
 concept_dm = create_design_matrix(np.repeat(concepts, size))
 
@@ -330,17 +328,20 @@ for rsa_, layer, head in df.sort_values(by='RSA', ascending=False).head(10)[['RS
 
 
 
-top_simmats = torch.load(os.path.join(LUMI_DIR, f'{model.nickname}_progressive_simmats_1_to_100.pkl')).to(torch.float32)
+top_simmats = torch.load(os.path.join(LUMI_DIR, f'{model.nickname}_progressive_simmats_1_to_100 (2).pkl')).to(torch.float32)
 rsa_top_k = []
 for i, simmat in enumerate(top_simmats):
     rsa_top_k.append(rsa(simmat, concept_dm))
 
-i = 99
+i = 4
 s=SimilarityMatrix(
     sim_mat=top_simmats[i],
     tasks=dataset.dataset_ids,
 )
-s.relocate_tasks(names_sorted)
+#s.relocate_tasks(names_sorted)
 s.plot(
     title=f'RSA: {rsa_top_k[i]:.2f}',
 )
+
+
+
