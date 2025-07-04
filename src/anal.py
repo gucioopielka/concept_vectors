@@ -16,6 +16,7 @@ from utils.ICL_utils import DatasetConstructor
 from utils.query_utils import get_summed_vec_simmat
 mpl.rcParams['figure.dpi'] = 200
 torch.manual_seed(42)
+LUMI_DIR = os.path.join(RESULTS_DIR, 'LUMI')
 
 def get_top_heads(metric, n=5):
     head_df = df.sort_values(by=metric, ascending=False).head(n)
@@ -85,25 +86,46 @@ def sort_by_concept(dataset_ids, concepts):
 
 # Load model
 model_name = 'meta-llama/Meta-Llama-3.1-70B'
-model = ExtendedLanguageModel(model_name, remote_run=True)
+model = ExtendedLanguageModel(model_name, remote_run=True, load_metrics=True)
+df = model.metrics
 
-# Load CIE and RSA results
-LUMI_DIR = os.path.join(RESULTS_DIR, 'LUMI')
-cie_mc = pickle.load(open(os.path.join(LUMI_DIR, 'CIE_mc', f'cie_{model.nickname}.pkl'), 'rb'))
-cie_mc = torch.stack(cie_mc).to(torch.float32)
-cie_oe = pickle.load(open(os.path.join(LUMI_DIR, 'CIE_oe', f'cie_{model.nickname}.pkl'), 'rb'))
-cie_oe = torch.stack(cie_oe).to(torch.float32)
-cie = torch.concat([cie_oe, cie_mc])
+# Plot CIE and RSA across heads and layers
+fig, axes = plt.subplots(1, 2, figsize=(12, 5))
+im0 = axes[0].imshow(
+    df['CIE'].values.reshape(model.config['n_layers'], model.config['n_heads']).T,
+    cmap='coolwarm'
+)
+plt.colorbar(im0, ax=axes[0], shrink=0.5)
+axes[0].set_title('CIE')
+axes[0].set_xlabel('Head')
+axes[0].set_ylabel('Layer')
+im1 = axes[1].imshow(
+    df['RSA'].values.reshape(model.config['n_layers'], model.config['n_heads']).T,
+    cmap='coolwarm'
+)
+plt.colorbar(im1, ax=axes[1], shrink=0.5)
+axes[1].set_title('RSA')
+axes[1].set_xlabel('Head')
+axes[1].set_ylabel('Layer')
+plt.tight_layout()
+plt.show()
 
-# Create dataframe with CIE and RSA results
-df = pd.read_csv(os.path.join(LUMI_DIR, 'RSA', model.nickname, f'rsa.csv'))
-df.rename(columns={'rsa': 'RSA'}, inplace=True)
-df['CIE'] = cie.mean(dim=0).flatten()
-df['CIE_eng'] = cie_oe[::2].mean(dim=0).flatten()
-df['CIE_fr'] = cie_oe[1::2].mean(dim=0).flatten()
-df['CIE_mc'] = cie_mc.mean(dim=0).flatten()
-df_path = os.path.join(LUMI_DIR, 'RSA', model.nickname, f'metrics.csv')
-if not os.path.exists(df_path): df.to_csv(df_path, index=False)
+# Plot CIE
+fig, axes = plt.subplots(1, 4, figsize=(12, 5))
+for i, metric in enumerate(['CIE', 'CIE_eng', 'CIE_fr', 'CIE_mc']):
+    axes[i].imshow(
+        df[metric].values.reshape(model.config['n_layers'], model.config['n_heads']).T,
+        cmap='coolwarm',
+        # vmin=df['CIE_eng'].min(),
+        # vmax=df['CIE_eng'].max()
+    )
+    axes[i].set_title(metric)
+    axes[i].set_xlabel('Head')
+    axes[i].set_ylabel('Layer')
+plt.tight_layout()
+#plt.colorbar(im0, ax=axes[-1], shrink=0.5)
+plt.show()
+
 
 # Load datasets
 dataset_names = ['antonym', 'categorical', 'causal', 'synonym', 'translation', 'presentPast', 'singularPlural']
@@ -185,6 +207,28 @@ for i, (simmat, metric) in enumerate(zip(simmats[2:], metrics[2:])):
         #cmap='viridis',
         label_colors=label_colors
     )
+
+fig, axs = plt.subplots(1, 2, figsize=(15, 15))
+min_sim, max_sim = simmats.min(), simmats.max()
+plt.subplots_adjust(wspace=0.5)  # Add horizontal space between subplots
+for i, (simmat, metric) in enumerate(zip(simmats[:2], metrics[:2])):
+    sm=SimilarityMatrix(
+        sim_mat=simmat,
+        tasks=dataset.dataset_ids,
+        attribute_list=concepts
+    )
+    sm.relocate_tasks(names_sorted)
+    sm.plot(
+        #norm=(min_sim, max_sim),
+        bounding_boxes=True,
+        labels=labels,
+        axis=axs[i],
+        title='Concept Vector' if i == 0 else 'Function Vector',
+        bounding_box_color='black',
+        #cmap='viridis',
+        label_colors=label_colors
+    )
+plt.savefig(os.path.join(PLOTS_DIR, 'concept_vector_rsa.pdf'), bbox_inches='tight')
 
 fig, axs = plt.subplots(10, 1, figsize=(15, 50))
 plt.subplots_adjust(wspace=0.5)  # Add horizontal space between subplots

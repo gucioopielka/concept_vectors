@@ -72,7 +72,107 @@ def perform_intervention(model, prompts, intervention_vector, intervention_layer
         bottom_delta_probs = (probs - org_probs).topk(5, dim=-1, largest=False)
         results.bottom_delta_probs.append(bottom_delta_probs.values.tolist())
         results.bottom_delta_ids.append(bottom_delta_probs.indices.tolist())
-    
+
+# ============================================================
+# Pure PyTorch / HuggingFace implementation (KV-cache) for
+# local experiments where NN-Sight is not desired. The original
+# `perform_intervention` function above remains unchanged and
+# relies on NN-Sight tracing. Use the new function when
+# `model.remote_run` is False.
+# ============================================================
+
+def perform_intervention_kv(
+    model,
+    prompts,
+    intervention_vector: torch.Tensor,
+    intervention_layer: int,
+    results,
+    org_probs: torch.Tensor,
+    y_1_ids,
+    y_2_ids=None,
+    y_1_fr_ids=None,
+    y_1_es_ids=None,
+    token: int = -1,
+    steer_weight: int = 10,
+    past_key_values_batch=None,
+    last_ids_batch=None,
+):
+    """Intervene in the residual stream using a forward hook and KV cache.
+
+    This version is fully independent of NN-Sight – it works directly with
+    the underlying Hugging Face model stored in ``model.lm.model``. It adds
+    ``steer_weight * intervention_vector`` to the hidden state at
+    ``intervention_layer`` for the position ``token`` (default last) across
+    all prompts, then logs the resulting probabilities in ``results``.
+    """
+
+    # Convenience handles
+    hf_model = model.lm.model  # type: ignore[attr-defined]
+    tokenizer = model.lm.tokenizer  # type: ignore[attr-defined]
+    device = model.device if hasattr(model, "device") else ("cuda" if torch.cuda.is_available() else "cpu")
+
+    if past_key_values_batch is not None and last_ids_batch is not None:
+        vec = intervention_vector.to(device) * steer_weight
+
+        def patch_hidden(module, module_input, module_output):
+            hidden = module_output[0]
+            patched = hidden.clone()
+            patched[:, 0, :] += vec  # seq len = 1 in continuation pass
+            return (patched,) + module_output[1:]
+
+        handle = hf_model.transformer.h[intervention_layer].register_forward_hook(patch_hidden)
+
+        with torch.no_grad():
+            out = hf_model(last_ids_batch.to(device), past_key_values=past_key_values_batch, use_cache=True)
+            logits = out.logits[:, -1]
+            probs = logits.log_softmax(dim=-1).exp()
+
+        handle.remove()
+    else:
+        # Fallback: tokenize whole prompts, build cache inside, then intervene batch-wise.
+        enc = tokenizer(prompts, return_tensors="pt", padding=True).to(device)
+
+        vec = intervention_vector.to(device) * steer_weight
+
+        def patch_hidden(module, module_input, module_output):
+            hidden = module_output[0]
+            patched = hidden.clone()
+            patched[:, token, :] += vec
+            return (patched,) + module_output[1:]
+
+        with torch.no_grad():
+            _ = hf_model(**enc, use_cache=True)
+
+        handle = hf_model.transformer.h[intervention_layer].register_forward_hook(patch_hidden)
+
+        with torch.no_grad():
+            out = hf_model(**enc, use_cache=True)
+            logits = out.logits[:, -1]
+            probs = logits.log_softmax(dim=-1).exp()
+
+        handle.remove()
+
+    # Record metrics
+    max_probs = probs.max(dim=-1)
+    results.completion_ids.append(max_probs.indices.tolist())
+    results.completion_probs.append(max_probs.values.tolist())
+    results.y_probs_1.append(get_probs_by_indices(probs, y_1_ids))
+    if y_2_ids is not None:
+        results.y_probs_2.append(get_probs_by_indices(probs, y_2_ids))
+    if y_1_fr_ids is not None:
+        results.y_probs_1_fr.append(get_probs_by_indices(probs, y_1_fr_ids))
+    if y_1_es_ids is not None:
+        results.y_probs_1_es.append(get_probs_by_indices(probs, y_1_es_ids))
+
+    # Delta statistics
+    top_delta = (probs - org_probs).topk(5, dim=-1)
+    results.top_delta_probs.append(top_delta.values.tolist())
+    results.top_delta_ids.append(top_delta.indices.tolist())
+
+    bottom_delta = (probs - org_probs).topk(5, dim=-1, largest=False)
+    results.bottom_delta_probs.append(bottom_delta.values.tolist())
+    results.bottom_delta_ids.append(bottom_delta.indices.tolist())
+
 class InterventionEvaluation:
     def __init__(self, tokenizer, dataset: ICLDataset, extract_datasets: list, org_results: InterventionResults, fv_results: InterventionResults, cv_results: InterventionResults, random_results: InterventionResults=None):
         self.tokenizer = tokenizer
