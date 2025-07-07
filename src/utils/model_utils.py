@@ -38,19 +38,22 @@ class ExtendedLanguageModel:
             else:
                 self.metrics_path = os.path.join(RESULTS_DIR, 'LUMI')
 
-            cie_mc = pickle.load(open(os.path.join(self.metrics_path, 'CIE_mc', f'cie_{self.nickname}.pkl'), 'rb'))
-            cie_mc = torch.stack(cie_mc).to(torch.float32)
-            cie_oe = pickle.load(open(os.path.join(self.metrics_path, 'CIE_oe', f'cie_{self.nickname}.pkl'), 'rb'))
-            cie_oe = torch.stack(cie_oe).to(torch.float32)
-            cie = torch.concat([cie_oe, cie_mc])
+            if self.nickname == 'meta-llama-3.1-70b':
+                cie_mc = pickle.load(open(os.path.join(self.metrics_path, 'CIE_mc', f'cie_{self.nickname}.pkl'), 'rb'))
+                cie_mc = torch.stack(cie_mc).to(torch.float32)
+                cie_oe = pickle.load(open(os.path.join(self.metrics_path, 'CIE_oe', f'cie_{self.nickname}.pkl'), 'rb'))
+                cie_oe = torch.stack(cie_oe).to(torch.float32)
+                cie = torch.concat([cie_oe, cie_mc])
 
-            df = pd.read_csv(os.path.join(self.metrics_path, 'RSA', self.nickname, f'rsa.csv'))
-            df.rename(columns={'rsa': 'RSA'}, inplace=True)
-            df['CIE'] = cie.mean(dim=0).flatten()
-            df['CIE_eng'] = cie_oe[::2].mean(dim=0).flatten()
-            df['CIE_fr'] = cie_oe[1::2].mean(dim=0).flatten()
-            df['CIE_mc'] = cie_mc.mean(dim=0).flatten()
-            self.metrics = df
+                df = pd.read_csv(os.path.join(self.metrics_path, 'RSA', self.nickname, f'rsa.csv'))
+                df.rename(columns={'rsa': 'RSA'}, inplace=True)
+                df['CIE'] = cie.mean(dim=0).flatten()
+                df['CIE_eng'] = cie_oe[::2].mean(dim=0).flatten()
+                df['CIE_fr'] = cie_oe[1::2].mean(dim=0).flatten()
+                df['CIE_mc'] = cie_mc.mean(dim=0).flatten()
+                self.metrics = df
+            else:
+                self.metrics = pd.read_csv('/scratch/project_465001574/cv/results/LUMI/RSA/meta-llama-3.1-8b/metrics.csv')
 
     def __str__(self) -> str:
         return self.name

@@ -14,17 +14,17 @@ import nnsight
 from nnsight.intervention.graph.proxy import InterventionProxy
 
 class InterventionResults:
-    def __init__(self):
-        self.completion_ids = nnsight.list().save()
-        self.completion_probs = nnsight.list().save()
-        self.y_probs_1 = nnsight.list().save()
-        self.y_probs_2 = nnsight.list().save()
-        self.top_delta_ids = nnsight.list().save()
-        self.top_delta_probs = nnsight.list().save()
-        self.bottom_delta_ids = nnsight.list().save()
-        self.bottom_delta_probs = nnsight.list().save()
-        self.y_probs_1_fr = nnsight.list().save()
-        self.y_probs_1_es = nnsight.list().save()
+    def __init__(self, use_nnsight=True):
+        self.completion_ids = nnsight.list().save() if use_nnsight else []
+        self.completion_probs = nnsight.list().save() if use_nnsight else []
+        self.y_probs_1 = nnsight.list().save() if use_nnsight else []
+        self.y_probs_2 = nnsight.list().save() if use_nnsight else []
+        self.top_delta_ids = nnsight.list().save() if use_nnsight else []
+        self.top_delta_probs = nnsight.list().save() if use_nnsight else []
+        self.bottom_delta_ids = nnsight.list().save() if use_nnsight else []
+        self.bottom_delta_probs = nnsight.list().save() if use_nnsight else []
+        self.y_probs_1_fr = nnsight.list().save() if use_nnsight else []
+        self.y_probs_1_es = nnsight.list().save() if use_nnsight else []
 
     def save(self):
         for key, value in self.__dict__.items():
@@ -112,23 +112,24 @@ def perform_intervention_kv(
     device = model.device if hasattr(model, "device") else ("cuda" if torch.cuda.is_available() else "cpu")
 
     if past_key_values_batch is not None and last_ids_batch is not None:
-        vec = intervention_vector.to(device) * steer_weight
+        vec = intervention_vector * steer_weight
 
         def patch_hidden(module, module_input, module_output):
             hidden = module_output[0]
             patched = hidden.clone()
-            patched[:, 0, :] += vec  # seq len = 1 in continuation pass
+            patched[:, token, :] += vec.to(hidden.device)
             return (patched,) + module_output[1:]
 
-        handle = hf_model.transformer.h[intervention_layer].register_forward_hook(patch_hidden)
+        handle = hf_model.layers[intervention_layer].register_forward_hook(patch_hidden)
 
         with torch.no_grad():
             out = hf_model(last_ids_batch.to(device), past_key_values=past_key_values_batch, use_cache=True)
-            logits = out.logits[:, -1]
+            logits = model.lm.lm_head(out.last_hidden_state)[:, -1]
             probs = logits.log_softmax(dim=-1).exp()
 
         handle.remove()
     else:
+        print('Using fallback...')
         # Fallback: tokenize whole prompts, build cache inside, then intervene batch-wise.
         enc = tokenizer(prompts, return_tensors="pt", padding=True).to(device)
 
@@ -137,7 +138,9 @@ def perform_intervention_kv(
         def patch_hidden(module, module_input, module_output):
             hidden = module_output[0]
             patched = hidden.clone()
-            patched[:, token, :] += vec
+            # Move vec to the same device as the hidden states
+            vec_device = vec.to(hidden.device)
+            patched[:, token, :] += vec_device
             return (patched,) + module_output[1:]
 
         with torch.no_grad():

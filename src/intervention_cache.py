@@ -5,6 +5,7 @@ import os
 import matplotlib.pyplot as plt
 from rich.console import Console
 import pickle
+from tqdm import tqdm
 # import deepl
 import argparse
 from utils.model_utils import ExtendedLanguageModel
@@ -115,82 +116,82 @@ if __name__ == '__main__':
                 
                 # Get FVs and CVs
                 with model.lm.trace(dataset_extract.prompts) as t:
-                    fvs[dataset_name] = get_summed_vector(model, fv_heads)
-                    cvs[dataset_name] = get_summed_vector(model, cv_heads)
+                    fvs[dataset_name] = get_summed_vector(model, fv_heads).save()
+                    cvs[dataset_name] = get_summed_vector(model, cv_heads).save()
 
-            # -------------------------
-            # Baseline probabilities (no intervention) using pure HF model
-            # -------------------------
-            org_results = InterventionResults()
-            tokenizer = model.lm.tokenizer
-            hf_model = model.lm.model
-            device = model.device
+        # -------------------------
+        # Baseline probabilities (no intervention) using pure HF model
+        # -------------------------
+        org_results = InterventionResults(use_nnsight=False)
+        tokenizer = model.lm.tokenizer
+        hf_model = model.lm.model
+        device = model.device
 
-            ids_batch = tokenizer(dataset_intervene.prompts, return_tensors="pt", padding=True).input_ids.to(device)
-            prefix_ids_batch = ids_batch[:, :-1]
-            last_ids_batch = ids_batch[:, -1:].to(device)  # shape (B,1)
+        ids_batch = tokenizer(dataset_intervene.prompts, return_tensors="pt", padding=True).input_ids.to(device)
+        prefix_ids_batch = ids_batch[:, :-1]
+        last_ids_batch = ids_batch[:, -1:].to(device)  # shape (B,1)
 
-            with torch.no_grad():
-                prefix_out = hf_model(prefix_ids_batch, use_cache=True)
-                pkv_batch = prefix_out.past_key_values
-                last_out = hf_model(last_ids_batch, past_key_values=pkv_batch)
-                logits_batch = last_out.logits[:, -1]
+        with torch.no_grad():
+            prefix_out = hf_model(prefix_ids_batch, use_cache=True)
+            pkv_batch = prefix_out.past_key_values
+            last_out = hf_model(last_ids_batch, past_key_values=pkv_batch)
+            logits_batch = model.lm.lm_head(last_out.last_hidden_state)[:, -1]
 
-            org_probs = logits_batch.log_softmax(dim=-1).exp()
+        org_probs = logits_batch.log_softmax(dim=-1).exp()
 
-            # Store baseline metrics
-            org_results.y_probs_1 = get_probs_by_indices(org_probs, y_1_ids)
-            if y_2_ids is not None:
-                org_results.y_probs_2 = get_probs_by_indices(org_probs, y_2_ids)
-            if y_1_fr_ids is not None:
-                org_results.y_probs_1_fr = get_probs_by_indices(org_probs, y_1_fr_ids)
-            if y_1_es_ids is not None:
-                org_results.y_probs_1_es = get_probs_by_indices(org_probs, y_1_es_ids)
+        # Store baseline metrics
+        org_results.y_probs_1 = get_probs_by_indices(org_probs, y_1_ids)
+        if y_2_ids is not None:
+            org_results.y_probs_2 = get_probs_by_indices(org_probs, y_2_ids)
+        if y_1_fr_ids is not None:
+            org_results.y_probs_1_fr = get_probs_by_indices(org_probs, y_1_fr_ids)
+        if y_1_es_ids is not None:
+            org_results.y_probs_1_es = get_probs_by_indices(org_probs, y_1_es_ids)
 
-            max_probs = org_probs.max(dim=-1)
-            org_results.completion_ids = max_probs.indices.tolist()
-            org_results.completion_probs = max_probs.values.tolist()
+        max_probs = org_probs.max(dim=-1)
+        org_results.completion_ids = max_probs.indices.tolist()
+        org_results.completion_probs = max_probs.values.tolist()
 
-            torch.cuda.empty_cache()
+        torch.cuda.empty_cache()
 
-            results = {
-                'org': org_results,
-                'fv': [],
-                'cv': [],
-                'random': []
-            }
-            for layer in layers:
-                sess.log(f'Intervening layer {layer+1}')
+        results = {
+            'org': org_results,
+            'fv': [],
+            'cv': [],
+            'random': []
+        }
+        print('Intervening...')
+        for layer in tqdm(layers):
 
-                # Perform interventions for each dataset
-                fv_results = InterventionResults()
-                cv_results = InterventionResults()
-                
-                for dataset_name in extract_datasets:
-                    perform_intervention_kv(model, dataset_intervene.prompts, fvs[dataset_name], layer, fv_results, org_probs, y_1_ids,
-                        y_2_ids,
-                        y_1_fr_ids,
-                        y_1_es_ids,
-                        past_key_values_batch=pkv_batch,
-                        last_ids_batch=last_ids_batch,
-                    )
-                    perform_intervention_kv(
-                        model,
-                        dataset_intervene.prompts,
-                        cvs[dataset_name],
-                        layer,
-                        cv_results,
-                        org_probs,
-                        y_1_ids,
-                        y_2_ids,
-                        y_1_fr_ids,
-                        y_1_es_ids,
-                        past_key_values_batch=pkv_batch,
-                        last_ids_batch=last_ids_batch,
-                    )
-                
-                results['fv'].append(fv_results)
-                results['cv'].append(cv_results)
+            # Perform interventions for each dataset
+            fv_results = InterventionResults(use_nnsight=False)
+            cv_results = InterventionResults(use_nnsight=False)
+            
+            for dataset_name in extract_datasets:
+                perform_intervention_kv(model, dataset_intervene.prompts, fvs[dataset_name], layer, fv_results, org_probs, y_1_ids,
+                    y_2_ids,
+                    y_1_fr_ids,
+                    y_1_es_ids,
+                    past_key_values_batch=pkv_batch,
+                    last_ids_batch=last_ids_batch,
+                )
+                perform_intervention_kv(
+                    model,
+                    dataset_intervene.prompts,
+                    cvs[dataset_name],
+                    layer,
+                    cv_results,
+                    org_probs,
+                    y_1_ids,
+                    y_2_ids,
+                    y_1_fr_ids,
+                    y_1_es_ids,
+                    past_key_values_batch=pkv_batch,
+                    last_ids_batch=last_ids_batch,
+                )
+            
+            results['fv'].append(fv_results)
+            results['cv'].append(cv_results)
 
     # Evaluate results
     delta_probs = []
