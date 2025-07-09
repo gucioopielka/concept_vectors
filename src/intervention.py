@@ -111,10 +111,10 @@ if __name__ == '__main__':
                 
                 # Get FVs and CVs
                 with model.lm.trace(dataset_extract.prompts) as t:
-                    fvs[dataset_name] = get_summed_vector(model, fv_heads)
-                    cvs[dataset_name] = get_summed_vector(model, cv_heads)
+                    fvs[dataset_name] = get_summed_vector(model, fv_heads).save()
+                    cvs[dataset_name] = get_summed_vector(model, cv_heads).save()
 
-            # Get original probabilities
+            # # Get original probabilities
             org_results = InterventionResults()
             with model.lm.trace(dataset_intervene.prompts) as t:
                 org_probs = model.lm.lm_head.output[:, -1].log_softmax(dim=-1).exp()
@@ -130,25 +130,30 @@ if __name__ == '__main__':
                 org_results.completion_probs = max_probs.values.tolist().save()
             torch.cuda.empty_cache()
 
-            results = {
-                'org': org_results,
-                'fv': [],
-                'cv': [],
-                'random': []
-            }
-            for layer in layers:
-                sess.log(f'Intervening layer {layer+1}')
+            # results = {
+            #     'org': org_results,
+            #     'fv': [],
+            #     'cv': [],
+            #     'random': []
+            # }
+            # for layer in layers:
+            #     sess.log(f'Intervening layer {layer+1}')
 
-                # Perform interventions for each dataset
-                fv_results = InterventionResults()
-                cv_results = InterventionResults()
+            #     # Perform interventions for each dataset
+            #     fv_results = InterventionResults()
+            #     cv_results = InterventionResults()
                 
-                for dataset_name in extract_datasets:
-                    perform_intervention(model, dataset_intervene.prompts, fvs[dataset_name], layer, fv_results, org_probs, y_1_ids, y_2_ids, y_1_fr_ids, y_1_es_ids)
-                    perform_intervention(model, dataset_intervene.prompts, cvs[dataset_name], layer, cv_results, org_probs, y_1_ids, y_2_ids, y_1_fr_ids, y_1_es_ids)
+            #     for dataset_name in extract_datasets:
+            #         perform_intervention(model, dataset_intervene.prompts, fvs[dataset_name], layer, fv_results, org_probs, y_1_ids, y_2_ids, y_1_fr_ids, y_1_es_ids)
+            #         perform_intervention(model, dataset_intervene.prompts, cvs[dataset_name], layer, cv_results, org_probs, y_1_ids, y_2_ids, y_1_fr_ids, y_1_es_ids)
                 
-                results['fv'].append(fv_results)
-                results['cv'].append(cv_results)
+            #     results['fv'].append(fv_results)
+            #     results['cv'].append(cv_results)
+        
+        print(fvs)
+        print(cvs)
+        print(org_results.completion_probs)
+        exit()
 
     # Evaluate results
     delta_probs = []

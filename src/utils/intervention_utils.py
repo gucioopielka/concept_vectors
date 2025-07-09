@@ -5,6 +5,7 @@ from rich.console import Console
 import matplotlib.pyplot as plt
 import numpy as np
 import torch
+import copy
 
 from utils.eval_utils import accuracy_completions
 from utils.ICL_utils import ICLDataset
@@ -83,7 +84,6 @@ def perform_intervention(model, prompts, intervention_vector, intervention_layer
 
 def perform_intervention_kv(
     model,
-    prompts,
     intervention_vector: torch.Tensor,
     intervention_layer: int,
     results,
@@ -94,8 +94,9 @@ def perform_intervention_kv(
     y_1_es_ids=None,
     token: int = -1,
     steer_weight: int = 10,
-    past_key_values_batch=None,
+    cache=None,
     last_ids_batch=None,
+    attention_mask=None,
 ):
     """Intervene in the residual stream using a forward hook and KV cache.
 
@@ -107,53 +108,26 @@ def perform_intervention_kv(
     """
 
     # Convenience handles
-    hf_model = model.lm.model  # type: ignore[attr-defined]
-    tokenizer = model.lm.tokenizer  # type: ignore[attr-defined]
+    hf_model = model.hf_model
     device = model.device if hasattr(model, "device") else ("cuda" if torch.cuda.is_available() else "cpu")
 
-    if past_key_values_batch is not None and last_ids_batch is not None:
-        vec = intervention_vector * steer_weight
+    vec = intervention_vector * steer_weight
 
-        def patch_hidden(module, module_input, module_output):
-            hidden = module_output[0]
-            patched = hidden.clone()
-            patched[:, token, :] += vec.to(hidden.device)
-            return (patched,) + module_output[1:]
+    def patch_hidden(module, module_input, module_output):
+        hidden = module_output[0]
+        patched = hidden.clone()
+        patched[:, token, :] += vec.to(hidden.device)
+        return (patched,) + module_output[1:]
 
-        handle = hf_model.layers[intervention_layer].register_forward_hook(patch_hidden)
+    handle = hf_model.model.layers[intervention_layer].register_forward_hook(patch_hidden)
 
-        with torch.no_grad():
-            out = hf_model(last_ids_batch.to(device), past_key_values=past_key_values_batch, use_cache=True)
-            logits = model.lm.lm_head(out.last_hidden_state)[:, -1]
-            probs = logits.log_softmax(dim=-1).exp()
+    with torch.no_grad():
+        past_key_values = copy.deepcopy(cache)
+        out = hf_model(last_ids_batch, attention_mask=attention_mask, past_key_values=past_key_values, use_cache=True, return_dict=True)
+        logits = out.logits[:, -1]
+        probs = logits.log_softmax(dim=-1).exp()
 
-        handle.remove()
-    else:
-        print('Using fallback...')
-        # Fallback: tokenize whole prompts, build cache inside, then intervene batch-wise.
-        enc = tokenizer(prompts, return_tensors="pt", padding=True).to(device)
-
-        vec = intervention_vector.to(device) * steer_weight
-
-        def patch_hidden(module, module_input, module_output):
-            hidden = module_output[0]
-            patched = hidden.clone()
-            # Move vec to the same device as the hidden states
-            vec_device = vec.to(hidden.device)
-            patched[:, token, :] += vec_device
-            return (patched,) + module_output[1:]
-
-        with torch.no_grad():
-            _ = hf_model(**enc, use_cache=True)
-
-        handle = hf_model.transformer.h[intervention_layer].register_forward_hook(patch_hidden)
-
-        with torch.no_grad():
-            out = hf_model(**enc, use_cache=True)
-            logits = out.logits[:, -1]
-            probs = logits.log_softmax(dim=-1).exp()
-
-        handle.remove()
+    handle.remove()
 
     # Record metrics
     max_probs = probs.max(dim=-1)

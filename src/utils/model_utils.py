@@ -69,16 +69,15 @@ class ExtendedLanguageModel:
             return LanguageModel(self.name)
         else:
             from transformers import AutoTokenizer, AutoModelForCausalLM, AutoConfig
+            config = AutoConfig.from_pretrained(self.name)
 
-            tokenizer = AutoTokenizer.from_pretrained(self.name, padding_side='left')
+            tokenizer = AutoTokenizer.from_pretrained(self.name, padding_side='left', config=config)
             if getattr(tokenizer, "pad_token", None) is None:
-                # Set pad token to eos token if it is not set
                 tokenizer.pad_token = tokenizer.eos_token
 
             model = AutoModelForCausalLM.from_pretrained(self.name, device_map='auto', torch_dtype='auto')
             model.eval()
-
-            config = AutoConfig.from_pretrained(self.name)
+            self.hf_model = model
             return LanguageModel(model, tokenizer=tokenizer, config=config)
             
     def set_model_config(self):
