@@ -305,7 +305,10 @@ class ICLDataset:
             xs = []
             word_pairs = []
             for d in dataset:
-                pairs = ICLDataset(d, size=1, n_train=0).word_pairs
+                if 'translation' in d:
+                    pairs = ICLDataset(d, size=1, n_train=0, data_dir=os.path.join(data_dir, '..', 'ambigous_translations')).word_pairs
+                else:
+                    pairs = ICLDataset(d, size=1, n_train=0).word_pairs
                 if tokenizer: 
                     pairs_to_keep = []
                     for pair in pairs:

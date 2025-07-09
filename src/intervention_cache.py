@@ -1,10 +1,8 @@
 import numpy as np
-import pandas as pd
 import torch
+import json
 import os
 import copy
-import matplotlib.pyplot as plt
-from rich.console import Console
 import pickle
 from tqdm import tqdm
 from transformers import StaticCache
@@ -12,7 +10,6 @@ import deepl
 import argparse
 from utils.model_utils import ExtendedLanguageModel
 from utils.ICL_utils import ICLDataset, DatasetConstructor
-from utils.query_utils import no_grad, flush_torch_ram
 from utils.globals import RESULTS_DIR, DATASET_DIR
 from utils.intervention_utils import (
     InterventionResults,
@@ -21,21 +18,29 @@ from utils.intervention_utils import (
     perform_intervention_kv,
     get_probs_by_indices,
 )
-
 np.set_printoptions(suppress=True)
 torch.set_printoptions(sci_mode=False)
-
-torch.manual_seed(42)
-    
+   
 def translate(text, source_lang, target_lang, model_type='quality_optimized'):
     translator = deepl.Translator(os.environ.get('DEEPL_API_KEY'))
     return translator.translate_text(text, source_lang=source_lang, target_lang=target_lang, model_type=model_type).text
+
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--model_name', type=str, default='meta-llama/Meta-Llama-3.1-70B')
     parser.add_argument('--intervention_type', type=str, default='ambiguous')
+    parser.add_argument('--intervene_size', type=int, default=100)
+    parser.add_argument('--extract_size', type=int, default=50)
+    parser.add_argument('--weights', type=int, nargs='+', default=[1, 5, 10], help='List of weights for interventions')
+    parser.add_argument('--seed', type=int, default=42)
     args = parser.parse_args()
+
+    seed = args.seed
+    intervene_size = args.intervene_size
+    extract_size = args.extract_size
+    weights = args.weights
+    torch.manual_seed(seed)
     
     intervention_type = args.intervention_type
     assert intervention_type in ['zeroshot', 'ambiguous']
@@ -46,6 +51,7 @@ if __name__ == '__main__':
     fv_heads = model.get_top_heads('CIE', n_heads, to_dict=True)
 
     for concept in ['antonym', 'categorical', 'causal', 'presentPast', 'singularPlural', 'synonym']:
+        print(f'Intervening on {concept}')
 
         OUTPUT_DIR = os.path.join(RESULTS_DIR, 'LUMI', 'intervention_kv', intervention_type, concept, model.nickname)
         os.makedirs(OUTPUT_DIR, exist_ok=True)
@@ -57,20 +63,20 @@ if __name__ == '__main__':
         if intervention_type == 'zeroshot':
             dataset_intervene = ICLDataset(
                 dataset=f'{concept}_eng',
-                size=50, 
+                size=intervene_size, 
                 n_train=0, 
-                seed=42, 
-                batch_size=50,
+                seed=seed, 
+                batch_size=intervene_size,
             )
         elif intervention_type == 'ambiguous':
             dataset_intervene = ICLDataset(
                 dataset=[f'{concept}_eng', 'translation_eng_fr'],
-                size=50, 
+                size=intervene_size, 
                 n_train=5, 
-                seed=42, 
-                batch_size=50,
+                seed=seed, 
+                batch_size=intervene_size,
                 ambiguous_draws=[0, 0, 0, 1, 1, 1],
-            )
+            )            
 
         prompts = dataset_intervene.prompts
         if hasattr(dataset_intervene, 'completions_2'):
@@ -82,29 +88,29 @@ if __name__ == '__main__':
             y_1 = dataset_intervene.completions
             y_1_ids = model.config['get_first_token_ids'](y_1)
             y_2_ids = None  
-        
-        # Translate to French and Spanish
-        if intervention_type == 'ambiguous':
-            path_fr = os.path.join(DATASET_DIR, 'ambigous_translations', f'{concept}_fr.txt')
-            path_es = os.path.join(DATASET_DIR, 'ambigous_translations', f'{concept}_es.txt')
-            
-            if not os.path.exists(path_fr):
-                y_1_fr = [translate(x, 'EN', 'FR') for x in y_1]
-            else:
-                with open(path_fr, 'r') as f:
-                    y_1_fr = [' '+line.strip() for line in f.readlines()]
 
-            if not os.path.exists(path_es):
-                y_1_es = [translate(x, 'EN', 'ES') for x in y_1]
-            else:
-                with open(path_es, 'r') as f:
-                    y_1_es = [' '+line.strip() for line in f.readlines()]
+        # Translate concept ys to French and Spanish
+        if intervention_type == 'ambiguous':
+            path_fr = os.path.join(DATASET_DIR, '..', 'ambigous_translations', f'{concept}_fr_seed{seed}_size{intervene_size}.txt')
+            path_es = os.path.join(DATASET_DIR, '..', 'ambigous_translations', f'{concept}_es_seed{seed}_size{intervene_size}.txt')
+            
+            def load_translations(path, lang):
+                if not os.path.exists(path):           
+                    y_1_lang = [translate(x, 'EN', lang) for x in y_1]
+                    with open(path, 'w') as f:
+                        f.write('\n'.join(y_1_lang))
+                with open(path, 'r') as f:
+                    return [' '+line.strip() for line in f.readlines()]
+            
+            y_1_fr = load_translations(path_fr, 'FR')
+            y_1_es = load_translations(path_es, 'ES')
             
             y_1_fr_ids = model.config['get_first_token_ids'](y_1_fr)
             y_1_es_ids = model.config['get_first_token_ids'](y_1_es)
         else:
             y_1_fr_ids = None
             y_1_es_ids = None
+
 
         layers = range(model.config['n_layers'])
         with torch.no_grad():
@@ -116,10 +122,10 @@ if __name__ == '__main__':
                 for dataset_name in extract_datasets:
                     dataset_extract = DatasetConstructor(
                         dataset_ids=dataset_name, 
-                        dataset_size=50, 
+                        dataset_size=extract_size, 
                         n_train=5, 
-                        batch_size=50, 
-                        seed=42
+                        batch_size=extract_size, 
+                        seed=seed,
                     )
                     
                     # Get FVs and CVs
@@ -167,7 +173,7 @@ if __name__ == '__main__':
         torch.cuda.empty_cache()
 
         # Intervene
-        for steer_weight in range(1, 16):
+        for steer_weight in weights:
             results = {
                 'org': org_results,
                 'fv': [],
