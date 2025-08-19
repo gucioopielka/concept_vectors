@@ -8,6 +8,7 @@ from tqdm import tqdm
 from transformers import StaticCache
 import deepl
 import argparse
+from torch.nn.functional import kl_div
 from utils.model_utils import ExtendedLanguageModel
 from utils.ICL_utils import ICLDataset, DatasetConstructor
 from utils.globals import RESULTS_DIR, DATASET_DIR
@@ -111,7 +112,6 @@ if __name__ == '__main__':
             y_1_fr_ids = None
             y_1_es_ids = None
 
-
         layers = range(model.config['n_layers'])
         with torch.no_grad():
             with model.lm.session(remote=model.remote_run) as sess:
@@ -187,9 +187,10 @@ if __name__ == '__main__':
                 fv_results = InterventionResults(use_nnsight=False)
                 cv_results = InterventionResults(use_nnsight=False)
                 
-                for dataset_name in extract_datasets:
-                    for vec, res in [(fvs[dataset_name], fv_results), (cvs[dataset_name], cv_results)]:
-                        perform_intervention_kv(
+                logits = {}
+                for dataset_idx, dataset_name in enumerate(extract_datasets):
+                    for vec, res, vec_name in [(fvs[dataset_name], fv_results, 'fv'), (cvs[dataset_name], cv_results, 'cv')]:
+                        logits = perform_intervention_kv(
                             model=model,
                             intervention_vector=vec,
                             intervention_layer=layer,
@@ -204,10 +205,19 @@ if __name__ == '__main__':
                             last_ids_batch=last_ids_batch,
                             attention_mask=attention_mask,
                         )
-                
+                        logits[vec_name][dataset_name] = logits                            
+
                 results['fv'].append(fv_results)
                 results['cv'].append(cv_results)
 
+                kl_divs = torch.zeros(len(extract_datasets) - 1, 2)
+                for vec_idx, vec_name in enumerate(['fv', 'cv']):
+                    logits_iid = logits[vec_name][extract_datasets[0]]
+                    for dataset_idx, dataset_name in enumerate(extract_datasets[1:]):
+                        logits_ood = logits[vec_name][dataset_name]
+                        kl = kl_div(input=logits_ood, target=logits_iid, log_target=True, reduction='batchmean')
+                        kl_divs[dataset_idx, vec_idx] = kl
+            
             # Evaluate results
             delta_probs = []
             delta_probs_lang = []
@@ -240,3 +250,4 @@ if __name__ == '__main__':
             np.save(os.path.join(OUTPUT_DIR, f"delta_probs_x{steer_weight}.npy"), np.stack(delta_probs))
             if intervention_type == 'ambiguous':
                 np.save(os.path.join(OUTPUT_DIR, f"delta_probs_lang_x{steer_weight}.npy"), np.stack(delta_probs_lang))
+                np.save(os.path.join(OUTPUT_DIR, f"kl_divs_x{steer_weight}.npy"), kl_divs.numpy())

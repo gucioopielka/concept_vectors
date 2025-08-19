@@ -14,7 +14,7 @@ from utils.eval_utils import SimilarityMatrix, create_design_matrix, rsa
 from utils.globals import PLOTS_DIR, RESULTS_DIR, DATASET_DIR
 from utils.ICL_utils import DatasetConstructor
 from utils.query_utils import get_summed_vec_simmat
-mpl.rcParams['figure.dpi'] = 200
+mpl.rcParams['figure.dpi'] = 300
 torch.manual_seed(42)
 LUMI_DIR = os.path.join(RESULTS_DIR, 'LUMI')
 
@@ -89,24 +89,71 @@ model_name = 'meta-llama/Meta-Llama-3.1-70B'
 model = ExtendedLanguageModel(model_name, remote_run=True, load_metrics=True)
 df = model.metrics
 
-# Plot CIE and RSA across heads and layers
+# Plot CIE and RSA across heads and layers with specified tick spacing
+layer_ticks = np.array([0, 19, 39, 59, 79])
+head_ticks = np.array([0, 19, 39, 59])
+
 fig, axes = plt.subplots(1, 2, figsize=(12, 5))
 im0 = axes[0].imshow(
     df['CIE'].values.reshape(model.config['n_layers'], model.config['n_heads']).T,
     cmap='coolwarm'
 )
-plt.colorbar(im0, ax=axes[0], shrink=0.5)
-axes[0].set_title('CIE')
-axes[0].set_xlabel('Head')
-axes[0].set_ylabel('Layer')
+cbar0 = plt.colorbar(im0, ax=axes[0], shrink=0.5)
+cbar0.set_label('CIE', fontsize=16)
+cbar0.ax.tick_params(labelsize=14)
+axes[0].set_title('Llama 3.1 70B', fontsize=18)
+axes[0].set_xlabel('Layer', fontsize=14)
+axes[0].set_ylabel('Head', fontsize=14)
+axes[0].set_xticks(layer_ticks)
+axes[0].set_xticklabels(layer_ticks + 1)
+axes[0].set_yticks(head_ticks)
+axes[0].set_yticklabels(head_ticks + 1)
+axes[0].tick_params(axis='both', labelsize=14)  # Increase x and y ticks
+
 im1 = axes[1].imshow(
     df['RSA'].values.reshape(model.config['n_layers'], model.config['n_heads']).T,
     cmap='coolwarm'
 )
-plt.colorbar(im1, ax=axes[1], shrink=0.5)
-axes[1].set_title('RSA')
-axes[1].set_xlabel('Head')
-axes[1].set_ylabel('Layer')
+cbar1 = plt.colorbar(im1, ax=axes[1], shrink=0.5)
+cbar1.set_label('RSA', fontsize=16)
+cbar1.ax.tick_params(labelsize=14)
+axes[1].set_title('Llama 3.1 70B', fontsize=18)
+axes[1].set_xlabel('Layer', fontsize=14)
+axes[1].set_ylabel('Head', fontsize=14)
+axes[1].set_xticks(layer_ticks)
+axes[1].set_xticklabels(layer_ticks + 1)
+axes[1].set_yticks(head_ticks)
+axes[1].set_yticklabels(head_ticks + 1)
+axes[1].tick_params(axis='both', labelsize=14)  # Increase x and y ticks
+
+plt.tight_layout()
+plt.show()
+
+fig, axes = plt.subplots(1, 2, figsize=(12, 5))
+im0 = axes[0].imshow(
+    df['CIE'].values.reshape(model.config['n_layers'], model.config['n_heads']).T,
+    cmap='coolwarm'
+)
+cbar0 = plt.colorbar(im0, ax=axes[0], shrink=0.5)
+cbar0.set_label('CIE', fontsize=16)
+cbar0.ax.tick_params(labelsize=14)
+axes[0].set_title('Llama 3.1 70B', fontsize=18)
+axes[0].set_xlabel('Layer', fontsize=14)
+axes[0].set_ylabel('Head', fontsize=14)
+axes[0].tick_params(axis='both', labelsize=14)  # Increase x and y ticks
+
+im1 = axes[1].imshow(
+    df['RSA'].values.reshape(model.config['n_layers'], model.config['n_heads']).T,
+    cmap='coolwarm'
+)
+cbar1 = plt.colorbar(im1, ax=axes[1], shrink=0.5)
+cbar1.set_label('RSA', fontsize=16)
+cbar1.ax.tick_params(labelsize=14)
+axes[1].set_title('Llama 3.1 70B', fontsize=18)
+axes[1].set_xlabel('Head', fontsize=14)
+axes[1].set_ylabel('Layer', fontsize=14)
+axes[1].tick_params(axis='both', labelsize=14)  # Increase x and y ticks
+
 plt.tight_layout()
 plt.show()
 
@@ -211,7 +258,7 @@ for i, (simmat, metric) in enumerate(zip(simmats[2:], metrics[2:])):
 fig, axs = plt.subplots(1, 2, figsize=(15, 15))
 min_sim, max_sim = simmats.min(), simmats.max()
 plt.subplots_adjust(wspace=0.5)  # Add horizontal space between subplots
-for i, (simmat, metric) in enumerate(zip(simmats[:2], metrics[:2])):
+for i, (simmat, metric) in enumerate(zip(simmats[[1, 0]], np.array(metrics)[[1, 0]])):
     sm=SimilarityMatrix(
         sim_mat=simmat,
         tasks=dataset.dataset_ids,
@@ -223,12 +270,53 @@ for i, (simmat, metric) in enumerate(zip(simmats[:2], metrics[:2])):
         bounding_boxes=True,
         labels=labels,
         axis=axs[i],
-        title='Concept Vector' if i == 0 else 'Function Vector',
+        title='Concept Vector' if i == 1 else 'Function Vector',
         bounding_box_color='black',
         #cmap='viridis',
         label_colors=label_colors
     )
-plt.savefig(os.path.join(PLOTS_DIR, 'concept_vector_rsa.pdf'), bbox_inches='tight')
+
+
+
+sm=SimilarityMatrix(
+    sim_mat=simmats[0],
+    tasks=dataset.dataset_ids,
+    attribute_list=concepts
+)
+sm.relocate_tasks(names_sorted)
+sm.filter_tasks([name for name in names_sorted if name.split('_')[0] == 'antonym' or name.split('_')[0] == 'categorical'])
+sm.plot(
+    #norm=(min_sim, max_sim),
+    bounding_boxes=True,
+    labels=['Antonym', 'Antonym', 'Antonym', 'Categorical', 'Categorical', 'Categorical'],
+    bounding_box_color='black',
+    #cmap='viridis',
+)
+
+plt.imshow(sm.design_matrix)
+dm = SimilarityMatrix(
+    sim_mat=sm.design_matrix,
+    tasks=names_sorted,
+    attribute_list=concepts
+)
+dm.plot(
+    labels=labels,
+    bounding_box_color='black',
+    label_colors=label_colors
+)
+
+dm = SimilarityMatrix(
+    sim_mat=np.random.rand(*sm.design_matrix.shape),
+    tasks=names_sorted,
+    attribute_list=concepts
+)
+dm.plot(
+    labels=labels,
+    bounding_box_color='black',
+    label_colors=label_colors
+)
+
+#plt.savefig(os.path.join(PLOTS_DIR, 'concept_vector_rsa.pdf'), bbox_inches='tight')
 
 fig, axs = plt.subplots(10, 1, figsize=(15, 50))
 plt.subplots_adjust(wspace=0.5)  # Add horizontal space between subplots

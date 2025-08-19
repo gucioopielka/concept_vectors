@@ -44,6 +44,8 @@ def get_summed_vector(model, heads_dict, token=-1):
         head_outputs.append(out_proj_output)
     return torch.stack(head_outputs).sum(dim=0)
 
+
+
 def perform_intervention(model, prompts, intervention_vector, intervention_layer, results, org_probs, y_1_ids, y_2_ids=None, y_1_fr_ids=None, y_1_es_ids=None, token=-1, steer_weight=10):
     with model.lm.trace(prompts) as t:
         # Intervene
@@ -51,7 +53,8 @@ def perform_intervention(model, prompts, intervention_vector, intervention_layer
         hidden_states[:, token] += intervention_vector * steer_weight
 
         # Get probabilities
-        probs = model.lm.lm_head.output[:, -1].log_softmax(dim=-1).exp()
+        logits = model.lm.lm_head.output[:, -1].log_softmax(dim=-1)
+        probs = logits.exp()
         max_probs = probs.max(dim=-1)
         
         # Save results
@@ -73,6 +76,8 @@ def perform_intervention(model, prompts, intervention_vector, intervention_layer
         bottom_delta_probs = (probs - org_probs).topk(5, dim=-1, largest=False)
         results.bottom_delta_probs.append(bottom_delta_probs.values.tolist())
         results.bottom_delta_ids.append(bottom_delta_probs.indices.tolist())
+
+        return logits.save()
 
 # ============================================================
 # Pure PyTorch / HuggingFace implementation (KV-cache) for
@@ -124,8 +129,8 @@ def perform_intervention_kv(
     with torch.no_grad():
         past_key_values = copy.deepcopy(cache)
         out = hf_model(last_ids_batch, attention_mask=attention_mask, past_key_values=past_key_values, use_cache=True, return_dict=True)
-        logits = out.logits[:, -1]
-        probs = logits.log_softmax(dim=-1).exp()
+        logits = out.logits[:, -1].log_softmax(dim=-1)
+        probs = logits.exp()
 
     handle.remove()
 
@@ -149,6 +154,8 @@ def perform_intervention_kv(
     bottom_delta = (probs - org_probs).topk(5, dim=-1, largest=False)
     results.bottom_delta_probs.append(bottom_delta.values.tolist())
     results.bottom_delta_ids.append(bottom_delta.indices.tolist())
+
+    return logits
 
 class InterventionEvaluation:
     def __init__(self, tokenizer, dataset: ICLDataset, extract_datasets: list, org_results: InterventionResults, fv_results: InterventionResults, cv_results: InterventionResults, random_results: InterventionResults=None):

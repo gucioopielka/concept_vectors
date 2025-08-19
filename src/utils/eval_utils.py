@@ -113,22 +113,24 @@ def get_unique_indices(s: pd.Series) -> Dict:
     
     return result_dict
     
-def within_task_similarity(rdm: np.ndarray, rel_idx: Dict[str, Tuple[int, int]]) -> Dict[str, float]:
+def within_task_similarity(rdm: np.ndarray, rel_idx: Dict[str, Tuple[int, int]], metric: str = 'mean') -> Dict[str, float]:
     within_task_similarities = {}
     for task, (start_idx, end_idx) in rel_idx.items():
         task_rdm = rdm[start_idx:end_idx+1, start_idx:end_idx+1]
         lower_triangle = np.tril(task_rdm, -1)  # Only take elements below the diagonal
-        within_task_similarities[task] = np.mean(lower_triangle[lower_triangle != 0])  # Ignore zeros which represent the upper triangle
+        lower_triangle_nonzero = lower_triangle[lower_triangle != 0]
+        within_task_similarities[task] = eval(f'np.{metric}(lower_triangle_nonzero)')  # Ignore zeros which represent the upper triangle
 
     return within_task_similarities
 
-def between_task_similarity(rdm: np.ndarray, rel_idx: Dict[str, Tuple[int, int]]) -> Dict[Tuple[str, str], float]:
+def between_task_similarity(rdm: np.ndarray, rel_idx: Dict[str, Tuple[int, int]], metric: str = 'mean') -> Dict[Tuple[str, str], float]:
     between_task_similarities = {}
     for i, (task1, (start1, end1)) in enumerate(rel_idx.items()):
         for j, (task2, (start2, end2)) in enumerate(rel_idx.items()):
             if i > j:  # This ensures that we only consider each pair once
                 between_rdm = rdm[start1:end1+1, start2:end2+1]
-                between_task_similarities[(task1, task2)] = np.mean(between_rdm)
+                between_rdm_nonzero = between_rdm[between_rdm != 0]
+                between_task_similarities[(task1, task2)] = eval(f'np.{metric}(between_rdm_nonzero)')
 
     return between_task_similarities
 
@@ -200,22 +202,24 @@ class SimilarityMatrix:
             
             # Create a dictionary of unique indices for each task
             self.tasks_idx = get_unique_indices(self.tasks_list)
-
-            # Calculate within and between task similarities
-            self.within_task_sims = within_task_similarity(self.matrix, self.tasks_idx)
-            self.between_task_sims = between_task_similarity(self.matrix, self.tasks_idx)
     
         if attribute_list is not None:
             # Repeat the task names if the data is divisible by the number of tasks
             if self.matrix.shape[0] % len(attribute_list) == 0:
-                self.attribute_list_per_task = attribute_list
                 self.attribute_list = np.repeat(attribute_list, self.matrix.shape[0] // len(attribute_list))
             elif self.matrix.shape[0] == len(attribute_list):
                 self.attribute_list = np.array(attribute_list)
             else:
                 raise ValueError('The number of attributes must be equal to the number of rows in the similarity matrix, or the number of rows must be divisible by the number of attributes.')
             
+            self.attribute_idx = get_unique_indices(self.attribute_list)            
             self.design_matrix = create_design_matrix(self.attribute_list)
+
+    def get_within_task_sims(self, metric: str = 'mean'): return within_task_similarity(self.matrix, self.tasks_idx, metric)
+    def get_between_task_sims(self, metric: str = 'mean'): return between_task_similarity(self.matrix, self.tasks_idx, metric)
+
+    def get_within_attribute_sims(self, metric: str = 'mean'): return within_task_similarity(self.matrix, self.attribute_idx, metric)
+    def get_between_attribute_sims(self, metric: str = 'mean'): return between_task_similarity(self.matrix, self.attribute_idx, metric)
 
     @staticmethod
     def vec_to_simmat(matrix: np.ndarray | torch.Tensor) -> np.ndarray:
@@ -256,6 +260,7 @@ class SimilarityMatrix:
         if self.design_matrix is not None:
             self.design_matrix = self.design_matrix[np.ix_(new_indices, new_indices)]
             self.attribute_list = self.attribute_list[new_indices]
+            self.attribute_idx = get_unique_indices(self.attribute_list)
         
     def filter_tasks(self, tasks: List[str]):
         '''
@@ -283,6 +288,7 @@ class SimilarityMatrix:
             
             self.tasks_list = np.delete(self.tasks_list, np.s_[start:end+1])
             self.tasks_idx = get_unique_indices(self.tasks_list)
+            self.attribute_idx = get_unique_indices(self.attribute_list)
 
             indices_to_delete.append((start, end))
 
@@ -350,21 +356,6 @@ class SimilarityMatrix:
                     ax.set_yticklabels(list(labels), fontsize=fontsize)
                     
                     if label_colors:
-                        # label_colors = []
-                        # prev_color = 'black'
-                        # for i, attr in enumerate(self.attribute_list_per_task):
-                        #     if i == 0:
-                        #         label_colors.append('black')
-                        #     else:
-                        #         if attr != self.attribute_list_per_task[i-1]:
-                        #             color = 'grey' if prev_color == 'black' else 'black'
-                        #             label_colors.append(color)
-                        #             prev_color = color
-                        #         else:
-                        #             label_colors.append(prev_color)
-
-                        # print(label_colors)
-                        
                         # Set individual colors for tick labels
                         for i, (tick, color) in enumerate(zip(ax.get_xticklabels(), label_colors)):
                             tick.set_color(color)

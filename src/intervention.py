@@ -6,6 +6,7 @@ import matplotlib.pyplot as plt
 from rich.console import Console
 import pickle
 # import deepl
+import torch.nn.functional as F
 import argparse
 from utils.model_utils import ExtendedLanguageModel
 from utils.ICL_utils import ICLDataset, DatasetConstructor
@@ -13,16 +14,12 @@ from utils.query_utils import no_grad, flush_torch_ram
 from utils.globals import RESULTS_DIR
 from utils.intervention_utils import InterventionResults, InterventionEvaluation, get_summed_vector, perform_intervention, get_probs_by_indices
 
+
 np.set_printoptions(suppress=True)
 torch.set_printoptions(sci_mode=False)
 
 torch.manual_seed(42)
     
-# def translate(text, source_lang, target_lang, model_type='quality_optimized'):
-#     translator = deepl.Translator(os.environ.get('DEEPL_API_KEY'))
-#     return translator.translate_text(text, source_lang=source_lang, target_lang=target_lang, model_type=model_type).text
-
-
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
@@ -93,7 +90,7 @@ if __name__ == '__main__':
         y_1_fr_ids = None
         y_1_es_ids = None
 
-    layers = range(model.config['n_layers'])
+    layers = [30]
     with torch.no_grad():
         with model.lm.session(remote=model.remote_run) as sess:
             # Get the FVs and CVs
@@ -130,30 +127,31 @@ if __name__ == '__main__':
                 org_results.completion_probs = max_probs.values.tolist().save()
             torch.cuda.empty_cache()
 
-            # results = {
-            #     'org': org_results,
-            #     'fv': [],
-            #     'cv': [],
-            #     'random': []
-            # }
-            # for layer in layers:
-            #     sess.log(f'Intervening layer {layer+1}')
+            results = {
+                'org': org_results,
+                'fv': [],
+                'cv': [],
+                'random': []
+            }
+            for layer in layers:
+                sess.log(f'Intervening layer {layer+1}')
 
-            #     # Perform interventions for each dataset
-            #     fv_results = InterventionResults()
-            #     cv_results = InterventionResults()
+                # Perform interventions for each dataset
+                fv_results = InterventionResults()
+                cv_results = InterventionResults()
                 
-            #     for dataset_name in extract_datasets:
-            #         perform_intervention(model, dataset_intervene.prompts, fvs[dataset_name], layer, fv_results, org_probs, y_1_ids, y_2_ids, y_1_fr_ids, y_1_es_ids)
-            #         perform_intervention(model, dataset_intervene.prompts, cvs[dataset_name], layer, cv_results, org_probs, y_1_ids, y_2_ids, y_1_fr_ids, y_1_es_ids)
+                fv_logits_iid, fv_delta_probs_iid = perform_intervention(model, dataset_intervene.prompts, fvs[extract_datasets[0]], layer, fv_results, org_probs, y_1_ids, y_2_ids, y_1_fr_ids, y_1_es_ids)
+                cv_logits_iid, cv_delta_probs_iid = perform_intervention(model, dataset_intervene.prompts, cvs[extract_datasets[0]], layer, cv_results, org_probs, y_1_ids, y_2_ids, y_1_fr_ids, y_1_es_ids)                
                 
-            #     results['fv'].append(fv_results)
-            #     results['cv'].append(cv_results)
+                fv_logits_ood = {}
+                cv_logits_ood = {}
+                for dataset_name in extract_datasets[1:]:
+                    fv_logits_ood[dataset_name] = perform_intervention(model, dataset_intervene.prompts, fvs[dataset_name], layer, fv_results, org_probs, y_1_ids, y_2_ids, y_1_fr_ids, y_1_es_ids)
+                    cv_logits_ood[dataset_name] = perform_intervention(model, dataset_intervene.prompts, cvs[dataset_name], layer, cv_results, org_probs, y_1_ids, y_2_ids, y_1_fr_ids, y_1_es_ids)
+                    
+                results['fv'].append(fv_results)
+                results['cv'].append(cv_results)
         
-        print(fvs)
-        print(cvs)
-        print(org_results.completion_probs)
-        exit()
 
     # Evaluate results
     delta_probs = []
@@ -187,3 +185,12 @@ if __name__ == '__main__':
     np.save(os.path.join(OUTPUT_DIR, "delta_probs.npy"), np.stack(delta_probs))
     if intervention_type == 'ambiguous':
         np.save(os.path.join(OUTPUT_DIR, "delta_probs_lang.npy"), np.stack(delta_probs_lang))
+
+
+
+    F.kl_div(input=fv_logits_ood['antonym_fr'][0], target=fv_logits_iid, log_target=True, reduction='batchmean')
+
+    
+    logQ = (fv_delta_probs_iid + 1e-12).log()
+    logP = (fv_logits_ood['antonym_fr'][1] + 1e-12).log()
+    F.kl_div(input=logQ, target=fv_logits_ood['antonym_fr'][1], reduction='batchmean')
