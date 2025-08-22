@@ -2,7 +2,6 @@ from collections import defaultdict
 from typing import *
 import functools
 
-import numpy as np
 import einops
 import torch
 import torch.nn.functional as F
@@ -48,52 +47,20 @@ def condense_matrix(X, n=None):
     n = X.size(0) if n is None else n
     inds = torch.triu_indices(n, n, offset=1)
     return X[inds[0], inds[1]]
-
-@no_grad
-def generate_completions(
-    model: ExtendedLanguageModel,
-    dataset: List[str],
-    max_new_tokens: int = 10,
-    remote: bool = True,
-    do_sample: bool = False
-) -> List[str]:
-    with model.lm.generate(dataset, max_new_tokens=max_new_tokens, remote=remote, do_sample=do_sample) as tracer:
-        out = model.lm.generator.output.save()
-    return model.lm.tokenizer.batch_decode(out.cpu()[:, -max_new_tokens:])
     
 @no_grad
 def get_completions(
     model: ExtendedLanguageModel, 
     dataset: ICLDataset | DatasetConstructor,
-    remote: bool=True
 ) -> List[str]:
-    with model.lm.session(remote=remote) as sess:
+    with model.lm.session(remote=model.remote_run) as sess:
         completion_ids = []
-        for prompts, _ in dataset:
+        for idx, (prompts, _) in enumerate(dataset):
+            sess.log(f"Batch: {idx+1} / {len(dataset)}")
             with model.lm.trace(prompts) as t:
                 logits = model.lm.lm_head.output[:, -1]
                 completion_ids.extend([logits.log_softmax(dim=-1).argmax(dim=-1).save()])
     return model.lm.tokenizer.batch_decode(torch.cat(completion_ids))
-
-@no_grad
-def get_completions_and_y_probs(
-    model: ExtendedLanguageModel, 
-    dataset: ICLDataset | DatasetConstructor,
-    remote: bool=True
-):
-    with model.lm.session(remote=remote) as sess:
-        completion_ids = nnsight.list().save()
-        y_logits = nnsight.list().save()
-        for prompts, y in dataset:
-            y_ids = model.config['get_first_token_ids'](y)
-            with model.lm.trace(prompts) as t:
-                logits = model.lm.lm_head.output[:, -1].log_softmax(dim=-1)
-                completion_ids.extend(logits.argmax(dim=-1).tolist())
-                y_logits.extend(logits[torch.arange(len(prompts)), y_ids].tolist())
-    
-    completions = model.lm.tokenizer.batch_decode(torch.tensor(completion_ids))
-    y_probs = torch.tensor(y_logits).exp()
-    return completions, y_probs
 
 @no_grad
 def intervene_with_vec(
@@ -276,62 +243,6 @@ def get_avg_summed_vec(
     relation_vecs = torch.sum(relation_vec_tensor, dim=0)
 
     return relation_vecs
-
-# def get_summed_vec_per_item(
-#     model: ExtendedLanguageModel,
-#     dataset: ICLDataset | DatasetConstructor,
-#     heads: List[Tuple[int, int]],
-#     token: int = -1,
-#     remote: bool = True
-# ):
-#     D_MODEL = model.config['resid_dim']
-#     N_HEADS = model.config['n_heads']
-#     D_HEAD = D_MODEL // N_HEADS # dimension of each head
-#     T = token
-
-#     # Turn head_list into a dict of {layer: heads we need in this layer}
-#     head_dict = defaultdict(set)
-#     for layer, head in heads:
-#         head_dict[layer].add(head)
-#     head_dict = dict(head_dict)
-
-#     relation_vec_list = []
-#     with model.lm.session(remote=remote) as sess:
-#         for batched_prompts, _ in dataset:
-#             B = len(batched_prompts)
-#             batch_relation_vecs = []
-#             with model.lm.trace(batched_prompts) as runner:
-#                 for layer, head_list in head_dict.items():
-#                     # Get the output projection layer
-#                     out_proj = model.config['out_proj'](layer)
-
-#                     heads_to_ablate = list(set(range(N_HEADS)) - head_list)
-            
-#                     # Output projection input
-#                     z = out_proj.inputs[0][0][:, T]
-
-#                     # Reshape output projection input into heads
-#                     z_ablated = z.view(B, N_HEADS, D_HEAD).clone()
-                    
-#                     # Zero-ablate all heads which aren't in our list of infuential heads
-#                     z_ablated[:, heads_to_ablate, :] = 0.0
-                    
-#                     # Concatanate the heads back into the residual dimension
-#                     z_ablated = z_ablated.view(B, -1) # (B, D_MODEL)
-
-#                     # Get the projection (if more than one head is in the list of heads to keep, 
-#                     # the output will be the sum of those heads)
-#                     out_proj_output = out_proj(z_ablated)
-
-#                     batch_relation_vecs.append(out_proj_output.save())
-#             relation_vec_list.append(batch_relation_vecs)
-
-#     # Sum all the attention heads per item
-#     relation_vecs = []
-#     for batch_vecs in relation_vec_list:
-#         relation_vecs.extend(torch.sum(torch.stack(batch_vecs), dim=0))
-
-#     return torch.stack(relation_vecs).float() # (B, D_MODEL)
 
 @flush_torch_ram
 def compute_similarity_matrix(vectors: torch.Tensor) -> torch.Tensor:

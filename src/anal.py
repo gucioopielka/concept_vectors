@@ -85,8 +85,8 @@ def sort_by_concept(dataset_ids, concepts):
     return sorted(dataset_ids, key=lambda x: order_index.get(x.split('_')[0]))
 
 # Load model
-model_name = 'meta-llama/Meta-Llama-3.1-70B'
-model = ExtendedLanguageModel(model_name, remote_run=True, load_metrics=True)
+model_name = 'meta-llama/Meta-Llama-3.1-8B'
+model = ExtendedLanguageModel(model_name)
 df = model.metrics
 
 # Plot CIE and RSA across heads and layers with specified tick spacing

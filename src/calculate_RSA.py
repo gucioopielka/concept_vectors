@@ -88,21 +88,3 @@ if __name__ == "__main__":
     rsa_df.to_csv(rsa_file, index=False)
     if not args.save_simmats:
         os.remove(simmats_file)
-
-    # # Get CV similarity matrices
-    # print('Getting CV similarity matrices...')
-    # cv_heads = model.get_heads(rsa_df, n=5) #quantile=args.rsa_quantile)
-    # cvs = get_summed_vec_per_item(model, dataset_constructor, cv_heads)
-    # cv_simmat = compute_similarity_matrix(cvs).cpu().to(torch.float32).numpy()
-    # pickle.dump(cv_simmat, open(os.path.join(output_dir, 'cv_simmat.pkl'), 'wb'))
-
-    # # Plot CV similarity matrices
-    # print('Plotting CV similarity matrices...')
-    # SimilarityMatrix(
-    #     sim_mat=cv_simmat,
-    #     tasks=args.datasets,
-    #     attribute_list=concepts
-    # ).plot(
-    #     bounding_boxes=True,
-    #     save_path=os.path.join(output_dir, 'cv_simmat.png')
-    # )
