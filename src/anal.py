@@ -293,7 +293,7 @@ sm.plot(
     #cmap='viridis',
 )
 
-plt.imshow(sm.design_matrix)
+`plt.imshow(sm.design_matrix)
 dm = SimilarityMatrix(
     sim_mat=sm.design_matrix,
     tasks=names_sorted,
@@ -303,7 +303,7 @@ dm.plot(
     labels=labels,
     bounding_box_color='black',
     label_colors=label_colors
-)
+)`
 
 dm = SimilarityMatrix(
     sim_mat=np.random.rand(*sm.design_matrix.shape),
