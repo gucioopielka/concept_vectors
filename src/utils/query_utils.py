@@ -52,11 +52,13 @@ def condense_matrix(X, n=None):
 def get_completions(
     model: ExtendedLanguageModel, 
     dataset: ICLDataset | DatasetConstructor,
+    logging: bool = True,
 ) -> List[str]:
     with model.lm.session(remote=model.remote_run) as sess:
         completion_ids = []
         for idx, (prompts, _) in enumerate(dataset):
-            sess.log(f"Batch: {idx+1} / {len(dataset)}")
+            if logging:
+                sess.log(f"Batch: {idx+1} / {len(dataset)}")
             with model.lm.trace(prompts) as t:
                 logits = model.lm.lm_head.output[:, -1]
                 completion_ids.extend([logits.log_softmax(dim=-1).argmax(dim=-1).save()])
@@ -69,14 +71,16 @@ def intervene_with_vec(
     vector: torch.Tensor,
     layers: List[int] = None,
     token: int = -1,
-    remote: bool = True
+    remote: bool = True,
+    logging: bool = True
 ) -> Dict[int, List[str]]:
     T = token
     with model.lm.session(remote=remote) as sess:
         intervention_top_ind = {layer: [] for layer in layers}
         for prompts, _ in dataset:
             for layer in layers:
-                sess.log(f'Layer: {layer}')
+                if logging:
+                    sess.log(f'Layer: {layer}')
                 with model.lm.trace(prompts) as t:
                     # Add the vector to the residual stream, at the last sequence position
                     hidden_states = model.lm.model.layers[layer].output[0]
@@ -95,7 +99,8 @@ def intervene_and_get_probs(
     vector: torch.Tensor,
     layer: int,
     token: int = -1,
-    remote: bool = True
+    remote: bool = True,
+    logging: bool = True
 ) -> Tuple[List[str], List[float]]:
     T = token
     with model.lm.session(remote=remote) as sess:
@@ -156,12 +161,14 @@ def get_summed_vec_per_item(
     dataset: ICLDataset | DatasetConstructor,
     heads: Dict[int, List[int]],
     token: int = -1,
+    logging: bool = True
 ) -> torch.Tensor:
     with model.lm.session(remote=model.remote_run) as sess:
         all_head_outputs = nnsight.list().save()
         
         for idx, (batched_prompts, _) in enumerate(dataset):
-            sess.log(f"Batch: {idx+1} / {len(dataset)}")
+            if logging:
+                sess.log(f"Batch: {idx+1} / {len(dataset)}")
             
             with model.lm.trace(batched_prompts) as t:
                 batch_head_outputs = []
@@ -183,12 +190,14 @@ def get_summed_vec_simmat(
     dataset: ICLDataset | DatasetConstructor,
     heads: Dict[int, List[int]],
     token: int = -1,
+    logging: bool = True
 ) -> torch.Tensor:
     with model.lm.session(remote=model.remote_run) as sess:
         all_head_outputs = nnsight.list()
         
         for idx, (batched_prompts, _) in enumerate(dataset):
-            sess.log(f"Batch: {idx+1} / {len(dataset)}")
+            if logging:
+                sess.log(f"Batch: {idx+1} / {len(dataset)}")
             
             with model.lm.trace(batched_prompts) as t:
                 batch_head_outputs = []
@@ -212,7 +221,8 @@ def get_avg_summed_vec(
     dataset: ICLDataset | DatasetConstructor,
     heads: List[Tuple[int, int, float]],
     token: int = -1,
-    remote: bool = True
+    remote: bool = True,
+    logging: bool = True
 ) -> torch.Tensor:
     '''
     Get the relation vector by summing the output of the most influential attention heads for the 
@@ -258,6 +268,7 @@ def get_att_simmats(
     layers: List[int] = None,
     heads: List[List[int]] = None,
     token: int = -1,
+    logging: bool = True
 ) -> torch.Tensor:
     layers = list(range(model.config['n_layers'])) if (layers is None) else layers
     heads = list(range(model.config['n_heads']))
@@ -267,7 +278,8 @@ def get_att_simmats(
         sess.log(f"Getting hidden states ...")
         simmat_dict = {(layer, head): [] for layer in range(len(layers)) for head in range(len(heads))}
         for idx, (batched_prompts, _) in enumerate(dataset):
-            sess.log(f"Batch: {idx+1} / {len(dataset)}")
+            if logging:
+                sess.log(f"Batch: {idx+1} / {len(dataset)}")
             
             # Collect the hidden states for each head
             with model.lm.trace(batched_prompts) as t:
@@ -294,7 +306,8 @@ def get_rsa(
     design_matrix: torch.Tensor,
     layers: Optional[List[int]] = None,
     token: int = -1,
-    remote: bool = True
+    remote: bool = True,
+    logging: bool = True
 ) -> torch.Tensor:
     layers = range(model.config['n_layers']) if (layers is None) else layers
     heads = range(model.config['n_heads'])

@@ -29,9 +29,9 @@ if __name__ == '__main__':
     
     intervention_type = args.intervention_type
     assert intervention_type in ['zeroshot', 'ambiguous']
-    n_heads = 5
+    n_heads = 1
     model_name = args.model_name
-    model = ExtendedLanguageModel(model_name, load_metrics=True)
+    model = ExtendedLanguageModel(model_name)
     cv_heads = model.get_top_heads('RSA', n_heads, to_dict=True)
     fv_heads = model.get_top_heads('CIE', n_heads, to_dict=True)
 
@@ -46,7 +46,7 @@ if __name__ == '__main__':
     if intervention_type == 'zeroshot':
         dataset_intervene = ICLDataset(
             dataset='antonym_eng',
-            size=50, 
+            size=100, 
             n_train=0, 
             seed=42, 
             batch_size=50,
@@ -90,7 +90,7 @@ if __name__ == '__main__':
         y_1_fr_ids = None
         y_1_es_ids = None
 
-    layers = [30]
+    layers = range(model.config['n_layers'])
     with torch.no_grad():
         with model.lm.session(remote=model.remote_run) as sess:
             # Get the FVs and CVs
@@ -146,8 +146,8 @@ if __name__ == '__main__':
                 fv_logits_ood = {}
                 cv_logits_ood = {}
                 for dataset_name in extract_datasets[1:]:
-                    fv_logits_ood[dataset_name] = perform_intervention(model, dataset_intervene.prompts, fvs[dataset_name], layer, fv_results, org_probs, y_1_ids, y_2_ids, y_1_fr_ids, y_1_es_ids)
-                    cv_logits_ood[dataset_name] = perform_intervention(model, dataset_intervene.prompts, cvs[dataset_name], layer, cv_results, org_probs, y_1_ids, y_2_ids, y_1_fr_ids, y_1_es_ids)
+                    fv_logits_ood[dataset_name], _ = perform_intervention(model, dataset_intervene.prompts, fvs[dataset_name], layer, fv_results, org_probs, y_1_ids, y_2_ids, y_1_fr_ids, y_1_es_ids)
+                    cv_logits_ood[dataset_name], _ = perform_intervention(model, dataset_intervene.prompts, cvs[dataset_name], layer, cv_results, org_probs, y_1_ids, y_2_ids, y_1_fr_ids, y_1_es_ids)
                     
                 results['fv'].append(fv_results)
                 results['cv'].append(cv_results)
@@ -185,12 +185,3 @@ if __name__ == '__main__':
     np.save(os.path.join(OUTPUT_DIR, "delta_probs.npy"), np.stack(delta_probs))
     if intervention_type == 'ambiguous':
         np.save(os.path.join(OUTPUT_DIR, "delta_probs_lang.npy"), np.stack(delta_probs_lang))
-
-
-
-    F.kl_div(input=fv_logits_ood['antonym_fr'][0], target=fv_logits_iid, log_target=True, reduction='batchmean')
-
-    
-    logQ = (fv_delta_probs_iid + 1e-12).log()
-    logP = (fv_logits_ood['antonym_fr'][1] + 1e-12).log()
-    F.kl_div(input=logQ, target=fv_logits_ood['antonym_fr'][1], reduction='batchmean')

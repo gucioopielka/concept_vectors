@@ -98,11 +98,24 @@ class ExtendedLanguageModel:
                 "n_heads": self.lm.config.num_attention_heads,
                 "n_layers": self.lm.config.num_hidden_layers,
                 "resid_dim": self.lm.config.hidden_size,
-                "hidden_layer": lambda layer: self.lm.model.layers[layer],
                 "d_head": self.lm.config.hidden_size // self.lm.config.num_attention_heads,
+                "hidden_layer": lambda layer: self.lm.model.layers[layer],
                 "out_proj": lambda layer: self.lm.model.layers[layer].self_attn.o_proj,
                 "get_first_token_ids": lambda token_list: [
                     toks[1] for toks in self.lm.tokenizer(token_list)["input_ids"]
+                ],
+                "get_first_token": lambda string: self.lm.tokenizer.tokenize(string)[0].replace('Ġ', ' ')
+            }
+        if 'qwen' in self.nickname:
+            self.config = {
+                "n_heads": self.lm.config.num_attention_heads,
+                "n_layers": self.lm.config.num_hidden_layers,
+                "resid_dim": self.lm.config.hidden_size,
+                "d_head": self.lm.config.hidden_size // self.lm.config.num_attention_heads,
+                "hidden_layer": lambda layer: self.lm.model.layers[layer],
+                "out_proj": lambda layer: self.lm.model.layers[layer].self_attn.o_proj,
+                "get_first_token_ids": lambda token_list: [
+                    toks[0] for toks in self.lm.tokenizer(token_list)["input_ids"]
                 ],
                 "get_first_token": lambda string: self.lm.tokenizer.tokenize(string)[0].replace('Ġ', ' ')
             }

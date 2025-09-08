@@ -77,7 +77,10 @@ def perform_intervention(model, prompts, intervention_vector, intervention_layer
         results.bottom_delta_probs.append(bottom_delta_probs.values.tolist())
         results.bottom_delta_ids.append(bottom_delta_probs.indices.tolist())
 
-        return logits.save()
+        # Calculate delta probabilities for the specific tokens we're interested in
+        delta_probs = probs - org_probs
+        
+        return logits.save(), delta_probs.save()
 
 # ============================================================
 # Pure PyTorch / HuggingFace implementation (KV-cache) for
