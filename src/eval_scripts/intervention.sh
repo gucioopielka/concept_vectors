@@ -8,19 +8,15 @@ for index in ${!model_names[@]}; do
     model_name=${model_names[index]}
     while true; do
         echo "Running script for model ${model_name}..."
-        python3 intervention.py \
+        python3 intervention_cache.py \
             --model ${model_name} \
-            --interleaved_datasets antonym_eng english_french \
-            --extract_datasets antonym_eng antonym_fr antonym_eng-mc \
-            --layer_batch_size 20 \
-            --dataset_extract_size 50 \
-            --dataset_eval_size 50 \
-            --prompt_batch_size 50 \
-            --n_train 10 \
-            --remote_run \
+            --intervention_type zeroshot \
+            --extract_size 50 \
+            --intervene_size 100 \
+            --n_heads 5 \
+            --concepts antonym categorical causal presentPast singularPlural synonym \
+            --weights 1 5 10 \
             --seed 42 \
-            --output_dir intervention/ \
-            --sleep_time 5
         
         if [ $? -eq 0 ]; then
             echo "Script finished successfully for model ${model_name}."

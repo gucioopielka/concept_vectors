@@ -13,6 +13,7 @@ results/**/*.npy
 write_up/*
 src/report.py
 test.py
+pyrightconfig.json
 
 # Virtual environment
 .venv

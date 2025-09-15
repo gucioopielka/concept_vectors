@@ -165,6 +165,8 @@ class InterventionEvaluation:
         self.tokenizer = tokenizer
         self.dataset = dataset
         self.dataset_names = extract_datasets
+        from utils.model_utils import ExtendedLanguageModel
+        self.model = ExtendedLanguageModel(tokenizer.name_or_path)
         
         # Store results directly
         self.org_results = org_results
@@ -234,18 +236,22 @@ class InterventionEvaluation:
     def get_delta_probs(self, completion='1'):
         delta = self.get_yprobs_arr(completion) - eval(f'self.org_results.y_probs_{str(completion)}')
         return delta.transpose(2, 1, 0)
-
+    
     @property
-    def acc_org(self):
-        return accuracy_completions(self.tokenizer, self.expected_completions, self.completions_org)
+    def model(self):
+        if not hasattr(self, '_model'):
+            from utils.model_utils import ExtendedLanguageModel
+            self._model = ExtendedLanguageModel(self.tokenizer.name_or_path)
+        return self._model
 
-    @property
-    def acc_fv(self):
-        return [accuracy_completions(self.tokenizer, self.expected_completions, d) for d in self.completions_fv]
+    def acc_org(self, model=None):
+        return accuracy_completions(self.model if model is None else model, self.expected_completions, self.completions_org)
 
-    @property
-    def acc_cv(self):
-        return [accuracy_completions(self.tokenizer, self.expected_completions, d) for d in self.completions_cv]
+    def acc_fv(self, model=None):
+        return [accuracy_completions(self.model if model is None else model, self.expected_completions, d) for d in self.completions_fv]
+
+    def acc_cv(self, model=None):
+        return [accuracy_completions(self.model if model is None else model, self.expected_completions, d) for d in self.completions_cv]
 
     def plot_acc(self):
         x = np.arange(len(self.dataset_names))

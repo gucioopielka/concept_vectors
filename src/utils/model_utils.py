@@ -50,7 +50,7 @@ class ExtendedLanguageModel:
         with open(cie_oe_path, 'rb') as f:
             cie_oe = pickle.load(f)
         cie_oe = torch.stack(cie_oe).to(torch.float32)
-        
+
         # Concatenate CIE metrics
         cie = torch.concat([cie_oe, cie_mc])
 
@@ -60,11 +60,19 @@ class ExtendedLanguageModel:
         df.rename(columns={'rsa': 'RSA'}, inplace=True)
         
         # Add CIE metrics to dataframe            
-        df['CIE'] = cie.mean(dim=0).flatten()
-        df['CIE_eng'] = cie_oe[::2].mean(dim=0).flatten()
-        df['CIE_fr'] = cie_oe[1::2].mean(dim=0).flatten()
-        df['CIE_mc'] = cie_mc.mean(dim=0).flatten()
-        
+        if self.name == 'Qwen/Qwen2.5-72b':
+            df['CIE'] = cie[[i for i in range(len(cie)) if i not in [3, 15]]].mean(dim=0).flatten()
+            category_mask = [True, False, True, True, True, True, True]
+            df['CIE_eng'] = cie_oe[::2].mean(dim=0).flatten()
+            df['CIE_fr'] = cie_oe[1::2][category_mask].mean(dim=0).flatten()
+            df['CIE_mc'] = cie_mc[category_mask].mean(dim=0).flatten()
+
+        else:
+            df['CIE'] = cie.mean(dim=0).flatten()
+            df['CIE_eng'] = cie_oe[::2].mean(dim=0).flatten()
+            df['CIE_fr'] = cie_oe[1::2].mean(dim=0).flatten()
+            df['CIE_mc'] = cie_mc.mean(dim=0).flatten()
+            
         self._metrics = df
 
     def __str__(self) -> str:

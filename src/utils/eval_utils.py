@@ -286,8 +286,14 @@ class SimilarityMatrix:
             label_colors: bool = False,
             show_labels: bool = True,
             plot_lower_diag: bool = False,
+            grey_upper_diag: bool = False,
+            grey_upper_diag_alpha: float = 0.3,
+            upper_diag_color: str = 'grey',
+            fade_upper_diag: bool = False,
+            upper_diag_fade_alpha: float = 0.15,
             bounding_boxes: bool = False,
             bounding_box_color: str = 'black',
+            bounding_box_width: int = 2,
             fontsize: int = 12
         ):
             
@@ -303,11 +309,39 @@ class SimilarityMatrix:
                 matrix_to_plot = np.ma.array(self.matrix, mask=mask) 
             else:
                 matrix_to_plot = self.matrix
-            
+            # Optionally prepare a per-pixel alpha mask to fade the upper triangle (including the diagonal)
+            alpha_array = None
+            if fade_upper_diag:
+                alpha_array = np.ones_like(self.matrix, dtype=float)
+                upper_mask = np.triu(np.ones_like(self.matrix, dtype=bool), k=0)
+                fade_val = float(np.clip(upper_diag_fade_alpha, 0.0, 1.0))
+                alpha_array[upper_mask] = fade_val
+
             # Plot the RDM on the specified (or new) axes object
-            cax = ax.imshow(matrix_to_plot, cmap=cmap, interpolation='nearest', norm=plt.Normalize(*norm) if norm else None)
+            cax = ax.imshow(
+                matrix_to_plot,
+                cmap=cmap,
+                interpolation='nearest',
+                norm=plt.Normalize(*norm) if norm else None,
+                alpha=alpha_array if fade_upper_diag else None
+            )
             if title:
                 ax.set_title(title, fontsize=fontsize+4)
+
+            # Optionally shade the upper triangle with a grey overlay (including the main diagonal)
+            # Skipped if fading is enabled
+            if grey_upper_diag and not fade_upper_diag:
+                upper_mask = np.triu(np.ones_like(self.matrix, dtype=bool), k=0)
+                overlay_value = 0.5
+                overlay = np.ma.masked_where(~upper_mask, np.full_like(self.matrix, overlay_value, dtype=float))
+                ax.imshow(
+                    overlay,
+                    cmap=upper_diag_color,
+                    vmin=0.0,
+                    vmax=1.0,
+                    interpolation='nearest',
+                    alpha=grey_upper_diag_alpha
+                )
 
             if self.tasks_idx:            
                 if rel_ticks:
@@ -357,7 +391,7 @@ class SimilarityMatrix:
                     rect = Rectangle(
                         (tl[1] - 0.5, tl[0] - 0.5), 
                         br[1] - tl[1] + 1, br[0] - tl[0] + 1, 
-                        linewidth=2, edgecolor=bounding_box_color, facecolor='none', linestyle='--'
+                        linewidth=bounding_box_width, edgecolor=bounding_box_color, facecolor='none', linestyle='--'
                     )
                     ax.add_patch(rect)
                 
