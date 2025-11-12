@@ -26,6 +26,7 @@ class InterventionResults:
         self.bottom_delta_probs = nnsight.list().save() if use_nnsight else []
         self.y_probs_1_fr = nnsight.list().save() if use_nnsight else []
         self.y_probs_1_es = nnsight.list().save() if use_nnsight else []
+        self.y_probs_bracket = nnsight.list().save() if use_nnsight else []
 
     def save(self):
         for key, value in self.__dict__.items():
@@ -46,7 +47,7 @@ def get_summed_vector(model, heads_dict, token=-1):
 
 
 
-def perform_intervention(model, prompts, intervention_vector, intervention_layer, results, org_probs, y_1_ids, y_2_ids=None, y_1_fr_ids=None, y_1_es_ids=None, token=-1, steer_weight=10):
+def perform_intervention(model, prompts, intervention_vector, intervention_layer, results, org_probs, y_1_ids, y_2_ids=None, y_1_fr_ids=None, y_1_es_ids=None, bracket_ids=None, token=-1, steer_weight=10):
     with model.lm.trace(prompts) as t:
         # Intervene
         hidden_states = model.lm.model.layers[intervention_layer].output[0]
@@ -67,6 +68,8 @@ def perform_intervention(model, prompts, intervention_vector, intervention_layer
             results.y_probs_1_fr.append(get_probs_by_indices(probs, y_1_fr_ids))
         if y_1_es_ids is not None:
             results.y_probs_1_es.append(get_probs_by_indices(probs, y_1_es_ids))
+        if bracket_ids is not None:
+            results.y_probs_bracket.append(get_probs_by_indices(probs, bracket_ids))
 
         # Calculate and save deltas
         top_delta_probs = (probs - org_probs).topk(5, dim=-1)
@@ -100,6 +103,7 @@ def perform_intervention_kv(
     y_2_ids=None,
     y_1_fr_ids=None,
     y_1_es_ids=None,
+    bracket_ids=None,
     token: int = -1,
     steer_weight: int = 10,
     cache=None,
@@ -148,6 +152,8 @@ def perform_intervention_kv(
         results.y_probs_1_fr.append(get_probs_by_indices(probs, y_1_fr_ids))
     if y_1_es_ids is not None:
         results.y_probs_1_es.append(get_probs_by_indices(probs, y_1_es_ids))
+    if bracket_ids is not None:
+        results.y_probs_bracket.append(get_probs_by_indices(probs, bracket_ids))
 
     # Delta statistics
     top_delta = (probs - org_probs).topk(5, dim=-1)
@@ -165,8 +171,8 @@ class InterventionEvaluation:
         self.tokenizer = tokenizer
         self.dataset = dataset
         self.dataset_names = extract_datasets
-        from utils.model_utils import ExtendedLanguageModel
-        self.model = ExtendedLanguageModel(tokenizer.name_or_path)
+        # from utils.model_utils import ExtendedLanguageModel
+        # self.model = ExtendedLanguageModel(tokenizer.name_or_path)
         
         # Store results directly
         self.org_results = org_results

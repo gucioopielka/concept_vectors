@@ -12,33 +12,6 @@ from utils.ICL_utils import DatasetConstructor
 from utils.model_utils import ExtendedLanguageModel
 from utils.globals import RESULTS_DIR
 
-def timeout(seconds: int = 4000) -> Callable:
-    """
-    Decorator that raises a TimeoutError if the function takes longer than specified seconds.
-    """
-    def decorator(func: Callable) -> Callable:
-        def _handle_timeout(signum, frame):
-            raise TimeoutError(f"Function {func.__name__} timed out after {seconds} seconds")
-
-        @functools.wraps(func)
-        def wrapper(*args, **kwargs) -> Any:
-            # Set the signal handler and a 1-hour alarm
-            signal.signal(signal.SIGALRM, _handle_timeout)
-            signal.alarm(seconds)
-            
-            try:
-                result = func(*args, **kwargs)
-            finally:
-                # Disable the alarm
-                signal.alarm(0)
-            
-            return result
-
-        return wrapper
-    return decorator
-
-# Wrap the original calculate_CIE with timeout
-#calculate_CIE = timeout()(calculate_CIE)
 
 def save_to_csv(tensor: torch.Tensor, output_path: str):
     # Get indices for all elements
