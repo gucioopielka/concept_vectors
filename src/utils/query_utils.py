@@ -437,3 +437,92 @@ def calculate_CIE(
 
     # Return mean effect of intervention, over the batch dimension
     return logprobs_diff.mean(dim=-1)
+
+@flush_torch_ram
+@no_grad
+def calculate_cross_format_CIE(
+    model: ExtendedLanguageModel,
+    clean_dataset: ICLDataset,
+    target_dataset: ICLDataset,
+    layers: Optional[List[int]] = None,
+) -> torch.Tensor:
+    '''
+    Returns a tensor of shape (layers, heads), containing the Cross-Format CIE for each head.
+    
+    Extracts mean activations from clean_dataset.
+    Patches them into corrupted version of target_dataset.
+    '''
+    corrupted_target_dataset = target_dataset.create_corrupted_dataset()
+    layers = range(model.config['n_layers']) if (layers is None) else layers
+    heads = range(model.config['n_heads'])
+
+    N_HEADS = model.config['n_heads']
+    D_HEAD = model.config['resid_dim'] // N_HEADS
+    T = -1 # values taken from last token
+        
+    with model.lm.session(remote=model.remote_run) as sess:
+        z_dict = {(layer, head): [] for layer in layers for head in heads}
+        
+        # 1. Extract activations from Clean Dataset
+        sess.log("Extracting activations from clean dataset ...")
+        for prompts, _ in clean_dataset:
+            with model.lm.trace(prompts) as t:
+                for layer in layers:
+                    out_proj = model.config['out_proj'](layer)
+                    z = out_proj.inputs[0][0][:, T]
+                    z_reshaped = z.reshape(len(prompts), N_HEADS, D_HEAD)
+                    for head in heads:
+                        z_head = z_reshaped[:, head]
+                        z_dict[(layer, head)].extend([z_head])
+
+        # Get the mean of the head activations
+        z_dict = {
+            k: torch.stack(v).squeeze().mean(dim=0)
+            for k, v in z_dict.items()
+        }
+        
+        # 2. Compute Baseline on Corrupted Target Dataset
+        # We need P(y | corrupted_prompt)
+        correct_logprobs_corrupted = []
+        sess.log("Computing baseline on corrupted target dataset ...")
+        for (prompts, completions), (prompts_corrupted, _) in zip(target_dataset, corrupted_target_dataset):
+            correct_completion_ids = model.config['get_first_token_ids'](completions)
+            with model.lm.trace(prompts_corrupted) as t:
+                logits = model.lm.lm_head.output[:, -1]
+                correct_logprobs_corrupted.extend([logits.log_softmax(dim=-1)[torch.arange(len(prompts)), correct_completion_ids].save()])
+        
+        # 3. Compute Patched Performance on Corrupted Target Dataset
+        # We need P(y | corrupted_prompt, patched_activation)
+        correct_logprobs_dict = {}
+        sess.log("Computing patched performance ...")
+        
+        # We iterate again. 
+        # Note: In nnsight/remote execution, we might want to batch this differently if possible, 
+        # but following calculate_CIE pattern:
+        for (prompts, completions), (prompts_corrupted, _) in zip(target_dataset, corrupted_target_dataset):
+            correct_completion_ids = model.config['get_first_token_ids'](completions)
+            
+            for layer in layers:
+                sess.log(f"Layer: {layer}")
+                for head in heads:
+                    with model.lm.trace(prompts_corrupted) as t:
+                        out_proj = model.config['out_proj'](layer)
+                        z = out_proj.inputs[0][0][:, T]
+                        z.reshape(len(prompts), N_HEADS, D_HEAD)[:, head] = z_dict[(layer, head)]
+                        
+                        logits = model.lm.lm_head.output[:, -1]
+                        correct_logprobs = logits.log_softmax(dim=-1)[torch.arange(len(prompts)), correct_completion_ids]
+                        correct_logprobs = correct_logprobs if model.remote_run else correct_logprobs.cpu()
+                        correct_logprobs_dict[(layer, head)] = correct_logprobs.save()
+
+    # Get difference between intervention logprobs and corrupted logprobs, and take mean over batch dim
+    all_correct_logprobs_intervention = einops.rearrange(
+        torch.stack([v.value for v in correct_logprobs_dict.values()]),
+        "(layers heads) batch -> layers heads batch",
+        layers = len(layers),
+    )
+    correct_logprobs_corrupted = torch.stack(correct_logprobs_corrupted).squeeze() if model.remote_run else torch.stack(correct_logprobs_corrupted).squeeze().cpu()
+    logprobs_diff = all_correct_logprobs_intervention - correct_logprobs_corrupted # shape [layers heads batch]
+
+    # Return mean effect of intervention, over the batch dimension
+    return logprobs_diff.mean(dim=-1)

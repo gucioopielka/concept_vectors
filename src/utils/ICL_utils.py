@@ -529,7 +529,8 @@ class DatasetConstructor:
                     'n_train': n_train,
                     'dataset': dataset_id.split('-')[0],
                     'response_type': 'multiple_choice',
-                    'mc_format': 'word' if dataset_id.split('.')[-1] == 'word' else 'letter'
+                    'mc_format': 'word' if dataset_id.split('.')[-1] == 'word' else 'letter',
+                    'padded_space': False if dataset_id.split('.')[-1] == 'word' else True
                 }
             elif dataset_id.split('-')[-1].startswith('oe'):
                 # It's an open ended dataset
