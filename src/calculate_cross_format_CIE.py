@@ -48,7 +48,7 @@ if __name__ == "__main__":
     parser.add_argument("--layer_batch_size", type=int, help="Number of layers to process at once.", default=4)
     parser.add_argument("--prompt_batch_size", type=int, help="Number of prompts to process at once.", default=20)
     parser.add_argument('--n_train', type=int, help="Number of training examples to use.", default=5)
-    parser.add_argument("--remote_run", type=bool, help="Whether to run the script on a remote server.", default=True, action=argparse.BooleanOptionalAction)
+    parser.add_argument("--remote_run", type=bool, help="Whether to run the script on a remote server.", default=False, action=argparse.BooleanOptionalAction)
     parser.add_argument("--seed", type=int, help="Random seed to use.", default=42)
     parser.add_argument("--output_dir", type=str, help="Path to save the files.", default="CIE_cross_format")
 
@@ -76,7 +76,7 @@ if __name__ == "__main__":
             # Let's assume standard variants exist.
             formats = [f"{concept}-oe", f"{concept}-mc"]
         else:
-            formats = [f"{concept}_eng-oe", f"{concept}_eng-mc", f"{concept}_fr-oe"]
+            formats = [f"{concept}_eng-oe", f"{concept}_fr-oe", f"{concept}_eng-mc"]
 
         # Generate all pairs
         format_pairs = list(itertools.product(formats, formats))
