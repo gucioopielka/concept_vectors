@@ -31,6 +31,7 @@ if __name__ == '__main__':
     parser.add_argument('--intervention_type', type=str, default='ambiguous')
     parser.add_argument('--extract_size', type=int, default=50)
     parser.add_argument('--intervene_size', type=int, default=100)
+    parser.add_argument('--prior_lang', type=str, default='eng', choices=['eng', 'fr', 'es'])
     parser.add_argument('--n_train_zeroshot', type=int, nargs='+', default=[0])
     parser.add_argument('--n_train_ambiguous', type=int, nargs='+', default=[5])
     parser.add_argument('--n_heads', type=int, nargs='+', default=[5])
@@ -72,7 +73,7 @@ if __name__ == '__main__':
                 print(f'Intervening with {n_t} training examples')
                 if intervention_type == 'zeroshot':
                     dataset_intervene = ICLDataset(
-                        dataset=f'{concept}_eng',
+                        dataset=f'{concept}_{args.prior_lang}',
                         size=intervene_size, 
                         n_train=n_t, 
                         seed=seed, 
@@ -80,7 +81,7 @@ if __name__ == '__main__':
                     )
                 elif intervention_type == 'ambiguous':
                     dataset_intervene = ICLDataset(
-                        dataset=[f'{concept}_eng', 'translation_eng_fr'],
+                        dataset=[f'{concept}_{args.prior_lang}', f'translation_{args.prior_lang}_fr'],
                         size=intervene_size, 
                         n_train=n_t, 
                         seed=seed, 
@@ -105,8 +106,9 @@ if __name__ == '__main__':
                     path_es = os.path.join(DATASET_DIR, '..', 'ambigous_translations', f'{concept}_es_seed{seed}_size{intervene_size}.txt')
                     
                     def load_translations(path, lang):
-                        if not os.path.exists(path):           
-                            y_1_lang = [translate(x, 'EN', lang) for x in y_1]
+                        if not os.path.exists(path):  
+                            print('Translating...')         
+                            y_1_lang = [translate(x, 'EN', lang) for x in tqdm(y_1)]
                             with open(path, 'w') as f:
                                 f.write('\n'.join(y_1_lang))
                         with open(path, 'r') as f:
